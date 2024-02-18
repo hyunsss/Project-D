@@ -3,8 +3,8 @@ using UnityEngine;
 
 public enum MonsterType
 {
-    Bat,
-    Ghost
+    Sword,
+    Magic
 } 
 
 public class MosterSpawnerTest : MonoBehaviour

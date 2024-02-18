@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef7769a442c2b64f9f9cb8d0c71711e, type: 3}
-  m_Name: Bat
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  monsterName: "\uBC15\uC950"
-  monsterHp: 20
+  monsterName: "\uAC80\uC0AC"
+  monsterHp: 30
   monsterSpeed: 3
   monsterDamage: 2
   monsterPrefab: {fileID: 2737887079789851824, guid: 7e53535965418e246af66fd14a57bf56, type: 3}

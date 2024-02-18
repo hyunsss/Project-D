@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MonsterData", menuName = "Scripts Objectable/MonsterData", order = int.MaxValue)]
 public class MonsterDataTest : ScriptableObject
 {
-
     [SerializeField]
     private string monsterName;
     public string MonsterName { get { return monsterName; } }

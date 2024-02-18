@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef7769a442c2b64f9f9cb8d0c71711e, type: 3}
-  m_Name: Ghost
+  m_Name: Magic
   m_EditorClassIdentifier: 
-  monsterName: "\uC720\uB839"
-  monsterHp: 30
+  monsterName: "\uB9C8\uBC95\uC0AC"
+  monsterHp: 20
   monsterSpeed: 2
   monsterDamage: 3
   monsterPrefab: {fileID: 4081055980989148467, guid: 58eb7d8de7339004286b2fd16f13aabb, type: 3}
