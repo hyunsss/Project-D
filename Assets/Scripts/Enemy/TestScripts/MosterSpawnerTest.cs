@@ -10,21 +10,31 @@ public enum MonsterType
 public class MosterSpawnerTest : MonoBehaviour
 {
     [SerializeField]
-    private List<MonsterDataTest> monsterDatas;
+    private List<MonsterDataTest>   monsterDatas;
     [SerializeField]
-    private GameObject monsterSpawnPoint;
+    private GameObject              monsterSpawnPoint;
+    [SerializeField]
+    private MonsterTest             monsterPrefab;
 
-    private MonsterType monsterType;
-   // private 
-    void Start()
+    private MonsterType             monsterType;
+
+    private int                     spawnData;
+    private int                     spawnDataRandomValue;
+    
+    // private 
+    private void Awake()
     {
+        spawnData = monsterDatas.Count;
 
     }
-
     public void SpawnMonster()
     {
-       // var newMonster = Instantiate(monsterPrefab).GetComponent<MonsterTest>();
-       // newMonster.MonsterData = monsterDatas[(int)_type];
+        spawnDataRandomValue = Random.Range(0, spawnData);
+        
+        MonsterTest newMonster  = Instantiate(monsterDatas[spawnDataRandomValue].MonsterPrefab,
+            monsterSpawnPoint.transform).GetComponent<MonsterTest>();
+
+        newMonster.MonsterData = monsterDatas[spawnDataRandomValue];
 
     }
 }

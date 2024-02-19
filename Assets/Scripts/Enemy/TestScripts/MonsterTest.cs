@@ -7,4 +7,5 @@ public class MonsterTest : MonoBehaviour
     [SerializeField]
     private MonsterDataTest monsterData;
     public MonsterDataTest MonsterData { set { monsterData = value; } }
+
 }

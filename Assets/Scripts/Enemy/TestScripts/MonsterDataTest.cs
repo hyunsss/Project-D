@@ -19,6 +19,5 @@ public class MonsterDataTest : ScriptableObject
     public float MonsterDamage { get {  return monsterDamage; } }
     [SerializeField]
     private GameObject monsterPrefab;
-    public GameObject MonsterPrefab { get { return monsterPrefab; } }
-
+    public GameObject MonsterPrefab { get {  return monsterPrefab; } }
 }
