@@ -8,4 +8,5 @@ public class MonsterTest : MonoBehaviour
     private MonsterDataTest monsterData;
     public MonsterDataTest MonsterData { set { monsterData = value; } }
 
+    
 }
