@@ -32070,7 +32070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6808777644748962021, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6808934326155794434, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
       propertyPath: m_Layer
@@ -43818,7 +43818,7 @@ Transform:
   m_GameObject: {fileID: 1278460445}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 402.9, y: 200, z: 7}
+  m_LocalPosition: {x: 402.9, y: 100, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44047,6 +44047,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 534c30d9369be4d7784866923b285b58, type: 3}
+--- !u!1 &1550461620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1550461621}
+  m_Layer: 0
+  m_Name: CameraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1550461621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550461620}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 261.4792, y: -1187.1367, z: 810.1991}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1864010355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6111255058889188474, guid: 534c30d9369be4d7784866923b285b58, type: 3}
@@ -44137,3 +44168,4 @@ SceneRoots:
   - {fileID: 1300370581}
   - {fileID: 410666500}
   - {fileID: 1193906236}
+  - {fileID: 1550461621}
