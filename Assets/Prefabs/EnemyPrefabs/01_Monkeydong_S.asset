@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef7769a442c2b64f9f9cb8d0c71711e, type: 3}
+  m_Name: 01_Monkeydong_S
+  m_EditorClassIdentifier: 
+  monsterName: Level 1 Monkey
+  monsterHp: 25
+  monsterSpeed: 3
+  monsterDamage: 1
+  monsterPrefab: {fileID: 4773305875034289141, guid: 0cc85bc464d8f684bb22328dd930248f, type: 3}
