@@ -15,7 +15,7 @@ public class Pathfinding : MonoBehaviour
 
     void Update()
     {
-        FindPath(seeker.position, target.position);
+        FindPath(seeker.position, target.position); // 코루틴으로 변경해서 최적화 하기
     }
 
     void FindPath(Vector3 startPos, Vector3 targetPos)
