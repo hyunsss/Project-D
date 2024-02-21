@@ -52,12 +52,13 @@ public abstract class UnitAction : MonoBehaviour
         this.target = target;
     }
 
+    Collider[] attackColliders;
     private void SetTarget()
     {
         int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
-        Collider[] attackColliders = Physics.OverlapSphere(transform.position, attackRange, enemyLayerMask);
+        attackColliders = Physics.OverlapSphere(transform.position, attackRange, enemyLayerMask);
 
-        print(attackColliders.Length);
+        //print(attackColliders.Length);
         /*foreach (Collider collider in attackColliders)
         {
             print(collider.gameObject);
@@ -77,7 +78,7 @@ public abstract class UnitAction : MonoBehaviour
         }
         //print(nearTarget);
         this.target = nearTarget;
-        print(target);
+        //print(target);
     }
 
     private void OnDrawGizmos()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
@@ -10,11 +11,11 @@ public class UnitMove : MonoBehaviour
 {
     public float moveSpeed;
 
+    bool isCommand = false; //명령을 받은 상태인지?
     public enum State
     {
         Idle,
-        CommandMove, //사용자의 명령에 의한 움직임
-        AutoMaticChase //자동으로 적을 추적하는 상태
+        Move
     }
     public State state;
 
@@ -25,9 +26,6 @@ public class UnitMove : MonoBehaviour
 
     private Transform target;
 
-    private Vector3 goalPoint;
-    //private Vector3 moveDir;
-
     private void Awake()
     {
         attackRange = GetComponent<UnitAction>().attackRange;
@@ -36,41 +34,47 @@ public class UnitMove : MonoBehaviour
 
     private void Update()
     {
-        DetectTarget();
+        if (!isCommand) //명령을 수행 중이지 않을 때에만 타겟팅
+        {
+            DetectEnemy();
+        }
 
+        print(target);
         switch (state)
         {
             case State.Idle:
-                nav.SetDestination(transform.position);
-                if (target != null)
-                    state = State.AutoMaticChase;
+                if(target != null)
+                {
+                    state = State.Move;
+                    break;
+                }
                 break;
-            case State.CommandMove:
 
+            case State.Move:
+                if(target == null)
+                {
+                    print("Move to Idle");
+                    state = State.Idle;
+                    break;
+                }
+                MoveToTarget();
                 break;
-            case State.AutoMaticChase:
-                ChaseTarget();
-                break;
+
             default:
                 break;
         }
     }
 
-    public void SetTarget(Transform target)
+    public void CommandTargeting(Transform target)
     {
         this.target = target;
+        isCommand = true;
     }
 
-    private void DetectTarget()
+    private void DetectEnemy()
     {
         int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
         Collider[] detectedColliders = Physics.OverlapSphere(transform.position, detectingRange, enemyLayerMask);
-
-        /*print(detectedColliders.Length);
-        foreach (Collider collider in detectedColliders)
-        {
-            print(collider.gameObject);
-        }*/
 
         float minDis = 999;
         Transform nearTarget = null;
@@ -84,7 +88,11 @@ public class UnitMove : MonoBehaviour
                 nearTarget = collider.transform;
             }
         }
-        target = nearTarget;
+
+        if(minDis > attackRange || minDis < 999)
+        {
+            target = nearTarget;
+        }
     }
 
     private void OnDrawGizmos()
@@ -93,16 +101,9 @@ public class UnitMove : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectingRange);
     }
 
-    private void ChaseTarget()
+    private void MoveToTarget()
     {
-        if (target == null)
-        {
-            nav.SetDestination(transform.position);
-            state = State.Idle;
-            return;
-        }
-
-        //타겟이 사정거리보다 멀리있으면
+        /*타겟이 사정거리보다 멀리있으면
         if (Vector3.Distance(target.position, transform.position) > attackRange)
         {
             nav.SetDestination(target.position);
@@ -111,6 +112,33 @@ public class UnitMove : MonoBehaviour
         {
             nav.SetDestination(transform.position);
             state = State.Idle;
+        }*/
+
+        //타겟이 적일 경우 사정거리 안에 들어올 때 까지만 이동
+        if (target.gameObject.layer == LayerMask.NameToLayer("Enemy")) 
+        {
+            if(nav.stoppingDistance != attackRange)
+                nav.stoppingDistance = attackRange;
+        }
+        //아닐 경우 끝까지 이동
+        else
+        {
+            if(nav.stoppingDistance != 0)
+                nav.stoppingDistance = 0;
+        }
+
+        nav.SetDestination(target.position);
+
+        if (nav.remainingDistance <= nav.stoppingDistance)
+        {
+            if (!nav.hasPath || nav.velocity.sqrMagnitude == 0f)
+            {
+                if (isCommand)
+                    isCommand = false;
+
+                target = null;
+                //nav.SetDestination(transform.position);
+            }
         }
     }
 }
