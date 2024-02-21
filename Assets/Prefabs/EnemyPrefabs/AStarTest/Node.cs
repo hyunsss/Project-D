@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
-public class Node : MonoBehaviour
+public class Node
 {
+
     public bool walkable;
     public Vector3 worldPosition;
     public int gridX;
@@ -17,9 +17,10 @@ public class Node : MonoBehaviour
     {
         walkable = _walkable;
         worldPosition = _worldPos;
-        this.gridX = _gridX;
-        this.gridY = _gridY;
+        gridX = _gridX;
+        gridY = _gridY;
     }
+
     public int fCost
     {
         get
@@ -27,5 +28,4 @@ public class Node : MonoBehaviour
             return gCost + hCost;
         }
     }
-
 }
