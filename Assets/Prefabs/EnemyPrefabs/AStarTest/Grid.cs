@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Grid : MonoBehaviour
 {
+
     public bool onlyDisplayPathGizmos;
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize;
@@ -13,7 +14,7 @@ public class Grid : MonoBehaviour
     float nodeDiameter;
     int gridSizeX, gridSizeY;
 
-    void Awake()
+    void Start()
     {
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
@@ -23,7 +24,10 @@ public class Grid : MonoBehaviour
 
     public int MaxSize
     {
-        get { return gridSizeX*gridSizeY    ; }
+        get
+        {
+            return gridSizeX * gridSizeY;
+        }
     }
 
     void CreateGrid()
@@ -69,14 +73,13 @@ public class Grid : MonoBehaviour
 
     public Node NodeFromWorldPoint(Vector3 worldPosition)
     {
-        float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x ;
-        float percentY = (worldPosition.z + gridWorldSize.y / 2) / gridWorldSize.y ; 
+        float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
+        float percentY = (worldPosition.z + gridWorldSize.y / 2) / gridWorldSize.y;
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
 
         int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
-
         return grid[x, y];
     }
 
@@ -84,6 +87,7 @@ public class Grid : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
+
         if (onlyDisplayPathGizmos)
         {
             if (path != null)
@@ -97,6 +101,7 @@ public class Grid : MonoBehaviour
         }
         else
         {
+
             if (grid != null)
             {
                 foreach (Node n in grid)

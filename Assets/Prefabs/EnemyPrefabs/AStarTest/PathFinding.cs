@@ -6,6 +6,7 @@ public class Pathfinding : MonoBehaviour
 {
 
     public Transform seeker, target;
+
     Grid grid;
 
     void Awake()
@@ -15,12 +16,11 @@ public class Pathfinding : MonoBehaviour
 
     void Update()
     {
-        FindPath(seeker.position, target.position); // 코루틴으로 변경해서 최적화 하기
+        FindPath(seeker.position, target.position);
     }
 
     void FindPath(Vector3 startPos, Vector3 targetPos)
     {
-
 
         Node startNode = grid.NodeFromWorldPoint(startPos);
         Node targetNode = grid.NodeFromWorldPoint(targetPos);
@@ -31,33 +31,35 @@ public class Pathfinding : MonoBehaviour
 
         while (openSet.Count > 0)
         {
-            Node node = openSet.RemoveFirst();
+            Node currentNode = openSet.RemoveFirst();
+            closedSet.Add(currentNode);
 
-            closedSet.Add(node);
-
-            if (node == targetNode)
+            if (currentNode == targetNode)
             {
-
                 RetracePath(startNode, targetNode);
                 return;
             }
 
-            foreach (Node neighbour in grid.GetNeighbours(node))
+            foreach (Node neighbour in grid.GetNeighbours(currentNode))
             {
                 if (!neighbour.walkable || closedSet.Contains(neighbour))
                 {
                     continue;
                 }
 
-                int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
-                if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
+                int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
+                if (newMovementCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
                 {
-                    neighbour.gCost = newCostToNeighbour;
+                    neighbour.gCost = newMovementCostToNeighbour;
                     neighbour.hCost = GetDistance(neighbour, targetNode);
-                    neighbour.parent = node;
+                    neighbour.parent = currentNode;
 
                     if (!openSet.Contains(neighbour))
                         openSet.Add(neighbour);
+                    else
+                    {
+                        //openSet.UpdateItem(neighbour);
+                    }
                 }
             }
         }
@@ -88,4 +90,6 @@ public class Pathfinding : MonoBehaviour
             return 14 * dstY + 10 * (dstX - dstY);
         return 14 * dstX + 10 * (dstY - dstX);
     }
+
+
 }
