@@ -11,26 +11,33 @@ public class Cell : MonoBehaviour
 
     public bool isBuilding;
 
-    private Vector3 boxsize = new Vector3(4, 0.5f, 4);
+    private int Layermasks;
+
+    private Vector3 boxsize = new Vector3(4, 6, 4);
     [HideInInspector] public MeshRenderer meshRenderer;
 
     public GameObject Target;
 
     private void Awake() {
         meshRenderer = GetComponent<MeshRenderer>();
+        Layermasks = 1 << 30 | 1 << 31;
     }
 
     private void Update() {
         MapManager.Instance.grid.GetXY(transform.position, out Posx, out Posy);
 
         Debug.Log(IsInOfArea());
-        if(Physics.OverlapBox(transform.position, boxsize, Quaternion.identity, 1 << 30).Length != 0) {
+        if(Physics.OverlapBox(transform.position, boxsize, Quaternion.identity, Layermasks).Length != 0) {
             meshRenderer.material.color = Color.red;
         } else if(IsInOfArea() == false) {
             meshRenderer.material.color = Color.red;
         } else {
             meshRenderer.material.color = Color.green;
         } 
+
+        if(BuildingManager.Instance.targetBuilding == null) {
+            transform.position = new Vector3(999,999,999);
+        }
     }
 
     private bool IsInOfArea() {
@@ -39,7 +46,7 @@ public class Cell : MonoBehaviour
     }
 
     private void OnDrawGizmos() {
-        Gizmos.DrawWireCube(transform.position, new Vector3(8,1,8));
+        Gizmos.DrawWireCube(transform.position, boxsize * 2);
         Gizmos.color = Color.yellow;
     }
 }

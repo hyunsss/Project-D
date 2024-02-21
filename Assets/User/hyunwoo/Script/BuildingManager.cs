@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using Lean.Pool;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class BuildingManager : MonoBehaviour
 {
-    public TestBuilding targetBuilding;
+    public List<TestBuilding> buildList = new List<TestBuilding>();
+
+    [HideInInspector]public TestBuilding targetBuilding;
 
     public static BuildingManager Instance;
     private GridXY grid;
@@ -42,11 +46,13 @@ public class BuildingManager : MonoBehaviour
 
         isInstallPossible = true;
         TempPos = Vector3.zero;
+        targetBuilding = null;
     }
     // Start is called before the first frame update
     void Start()
     {
         grid = MapManager.Instance.grid;
+        InitButtons();
     }
 
     // Update is called once per frame
@@ -69,11 +75,13 @@ public class BuildingManager : MonoBehaviour
                 }
 
             }
+
+            if (Input.GetMouseButtonDown(0) && isInstallPossible == true)
+            {
+                SearchBuilding(targetBuilding.gameObject, InstallPosition);
+            }
         }
-        if (Input.GetMouseButtonDown(0) && isInstallPossible == true)
-        {
-            SearchBuilding(targetBuilding.gameObject, InstallPosition);
-        }
+
     }
 
 
@@ -87,10 +95,14 @@ public class BuildingManager : MonoBehaviour
     {
         if (cells.Count != build.AreaWidth * build.AreaHeight)
         {
+            foreach(Cell cell in cells) {
+                LeanPool.Despawn(cell);
+            }
             cells.Clear();
+            
             for (int i = 0; i < build.AreaWidth * build.AreaHeight; i++)
             {
-                Cell cell = Instantiate(MapManager.Instance.cell, new Vector3(-999,999,999), Quaternion.identity).GetComponent<Cell>();
+                Cell cell = LeanPool.Spawn(MapManager.Instance.cell, new Vector3(999, 999, 999), Quaternion.identity).GetComponent<Cell>();
                 cells.Add(cell);
             }
         }
@@ -104,8 +116,8 @@ public class BuildingManager : MonoBehaviour
             {
                 // 셀의 위치를 업데이트
                 Cell cell = cells[index];
-                cell.transform.position = grid.GetWorldPosition(X, Y) + new Vector3(grid.CellSize / 2, 0 , grid.CellSize / 2);
-                
+                cell.transform.position = grid.GetWorldPosition(X, Y) + new Vector3(grid.CellSize / 2, 0, grid.CellSize / 2);
+
                 index++;
             }
         }
@@ -118,8 +130,10 @@ public class BuildingManager : MonoBehaviour
     /// <param name="position"></param>
     public void SearchBuilding(GameObject BuildPrefab, Vector3 position)
     {
-        foreach(Cell cell in cells) {
-            if(cell.meshRenderer.material.color == Color.red) {
+        foreach (Cell cell in cells)
+        {
+            if (cell.meshRenderer.material.color == Color.red)
+            {
                 Debug.Log("이곳에는 지을 수 없습니다");
                 return;
             }
@@ -131,7 +145,7 @@ public class BuildingManager : MonoBehaviour
         int x, y;
         grid.GetXY(position, out x, out y);
         GameObject Build = Instantiate(BuildPrefab, new Vector3(x, 0, y) * grid.CellSize, Quaternion.identity);
-        
+
     }
 
     public void RemoveBuilding(Vector3 position)
@@ -141,4 +155,22 @@ public class BuildingManager : MonoBehaviour
 
         //Remove
     }
+
+    private void SetTargetBuild(TestBuilding building)
+    {
+        targetBuilding = building;
+    }
+
+    #region Test BuildButton ----
+    public UnityEngine.UI.Button CancelButton;
+    public UnityEngine.UI.Button SingleCanon;
+    public UnityEngine.UI.Button MageCanon;
+
+    private void InitButtons()
+    {
+        CancelButton.onClick.AddListener(() => SetTargetBuild(null));
+        SingleCanon.onClick.AddListener(() => SetTargetBuild(buildList[0]));
+        MageCanon.onClick.AddListener(() => SetTargetBuild(buildList[1]));
+    }
+    #endregion
 }
