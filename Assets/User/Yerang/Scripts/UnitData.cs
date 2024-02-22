@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : ScriptableObject
+public class UnitData : ScriptableObject
 {
     public string unitName;
 

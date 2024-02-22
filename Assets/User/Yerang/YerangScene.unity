@@ -241,14 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aed9dc0c10583a4489c7f76f391ad78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: 
-  maxHp: 0
-  dp: 0
-  ap: 0
-  attackCycle: 0
-  attackRange: 0
-  target: {fileID: 0}
-  shotPoint: {fileID: 0}
 --- !u!1 &205760720
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,14 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aed9dc0c10583a4489c7f76f391ad78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: 
-  maxHp: 0
-  dp: 0
-  ap: 0
-  attackCycle: 0
-  attackRange: 0
-  target: {fileID: 0}
-  shotPoint: {fileID: 0}
 --- !u!65 &761533116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1063,14 +1047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aed9dc0c10583a4489c7f76f391ad78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: 
-  maxHp: 0
-  dp: 0
-  ap: 0
-  attackCycle: 0
-  attackRange: 0
-  target: {fileID: 0}
-  shotPoint: {fileID: 0}
 --- !u!65 &1730070052
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1554,14 +1530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aed9dc0c10583a4489c7f76f391ad78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: 
-  maxHp: 0
-  dp: 0
-  ap: 0
-  attackCycle: 0
-  attackRange: 0
-  target: {fileID: 0}
-  shotPoint: {fileID: 0}
 --- !u!65 &2070658166
 BoxCollider:
   m_ObjectHideFlags: 0

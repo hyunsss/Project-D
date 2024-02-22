@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class FriendlyUnit : UnitAction
+public class TestEnemy : MonoBehaviour
 {
-    public int price;
+
 }

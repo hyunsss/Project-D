@@ -17,6 +17,8 @@ public abstract class UnitAction : MonoBehaviour
     public Transform target;
     public Transform shotPoint;
 
+    public int price; //
+
     private void Awake()
     {
         currentHp = maxHp;
@@ -26,7 +28,6 @@ public abstract class UnitAction : MonoBehaviour
     {
         SetTarget();
     }
-
     
 
     public abstract void Attack();
