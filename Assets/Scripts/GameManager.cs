@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         print(tower_Player[0]);
     }
 
-    public List<Transform> tower_Player = new();
+    public List<Transform> tower_Player = new List<Transform>();
     public List<Transform> unit_Player  = new List<Transform>();      
     
 }
