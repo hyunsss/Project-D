@@ -6,10 +6,10 @@ using System;
 public class PathRequestManager : MonoBehaviour
 {
 
-    Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();
+    public Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();
     PathRequest currentPathRequest;
 
-    static PathRequestManager instance;
+    public static PathRequestManager instance;
     Pathfinding pathfinding;
 
     bool isProcessingPath;
@@ -20,7 +20,7 @@ public class PathRequestManager : MonoBehaviour
         pathfinding = GetComponent<Pathfinding>();
     }
 
-    public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback)
+    public void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback)
     {
         PathRequest newRequest = new PathRequest(pathStart, pathEnd, callback);
         instance.pathRequestQueue.Enqueue(newRequest);
@@ -44,7 +44,7 @@ public class PathRequestManager : MonoBehaviour
         TryProcessNext();
     }
 
-    struct PathRequest
+    public struct PathRequest
     {
         public Vector3 pathStart;
         public Vector3 pathEnd;

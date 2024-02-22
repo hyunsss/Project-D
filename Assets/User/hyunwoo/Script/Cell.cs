@@ -26,7 +26,6 @@ public class Cell : MonoBehaviour
     private void Update() {
         MapManager.Instance.grid.GetXY(transform.position, out Posx, out Posy);
 
-        Debug.Log(IsInOfArea());
         if(Physics.OverlapBox(transform.position, boxsize, Quaternion.identity, Layermasks).Length != 0) {
             meshRenderer.material.color = Color.red;
         } else if(IsInOfArea() == false) {

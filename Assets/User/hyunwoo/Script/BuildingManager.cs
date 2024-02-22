@@ -80,6 +80,9 @@ public class BuildingManager : MonoBehaviour
             {
                 SearchBuilding(targetBuilding.gameObject, InstallPosition);
             }
+            grid.GetXY(InstallPosition, out int posx, out int posy);
+            // Debug.Log(grid.NodeFromWorldPoint(InstallPosition).worldPosition + "," + grid.GetWorldPosition(posx, posy));
+            Debug.Log(grid.NodeFromWorldPoint(InstallPosition).walkable);
         }
 
     }
@@ -145,6 +148,12 @@ public class BuildingManager : MonoBehaviour
         int x, y;
         grid.GetXY(position, out x, out y);
         GameObject Build = Instantiate(BuildPrefab, new Vector3(x, 0, y) * grid.CellSize, Quaternion.identity);
+
+        //지으려는 구역의 cell의 위치를 인자로 넘겨 해당 위치들의 node.walkable 값을 바꿈
+        foreach (Cell cell in cells)
+        {
+            grid.ChangeWalkableNode(cell.transform.position, false);
+        }
 
     }
 

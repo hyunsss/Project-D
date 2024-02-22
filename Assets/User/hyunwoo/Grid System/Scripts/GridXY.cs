@@ -19,6 +19,7 @@ public class GridXY : MonoBehaviour
     public float CellSize => cellSize;
     public Node[,] GridArray => nodeArray;
     public List<Node> path;
+    int checkableLayer = 1 << 30 | 1 << 31;
 
     public int MaxSize { get => width * height; }
 
@@ -32,14 +33,14 @@ public class GridXY : MonoBehaviour
         nodeArray = new Node[width, height];
     }
 
-    public void GenerateGrid(GameObject cell)
+    public void GenerateGrid()
     {
         for (int x = 0; x < nodeArray.GetLength(0); x++)
         {
             for (int y = 0; y < nodeArray.GetLength(1); y++)
             {
                 DrawGrid(GetWorldPosition(x, y), GetString(x, y));
-                CreateNewNode(x, y);
+                nodeArray[x, y] = CreateNewNode(x, y);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.red, 100f);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.red, 100f);
             }
@@ -76,14 +77,22 @@ public class GridXY : MonoBehaviour
     {
         int x, y;
         GetXY(worldPosition, out x, out y);
+
+        if(x >= width || x <= 0 || y <= 0 || y >= height) return nodeArray[1, 1];
+
         return nodeArray[x, y];
     }
 
     private Node CreateNewNode(int x, int y) {
-        Vector3 nodeWorldPos = GetWorldPosition(x, y);        
-        bool walkable = !Physics.CheckBox(nodeWorldPos, new Vector3(4, 6, 4), Quaternion.identity);
+        Vector3 nodeWorldPos = GetWorldPosition(x, y) + new Vector3(5, 0, 5);        
+        bool walkable = !Physics.CheckBox(nodeWorldPos, new Vector3(3, 3, 3), Quaternion.identity, checkableLayer);
 
         return new Node(walkable, nodeWorldPos, x, y);
+    }
+
+    public void ChangeWalkableNode(Vector3 worldPosition, bool value) {
+        Node targetNode = NodeFromWorldPoint(worldPosition);
+        targetNode.walkable = value;
     }
 
     /// <summary>

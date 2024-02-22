@@ -3,17 +3,14 @@ using System.Collections;
 
 public class UnitAStar : MonoBehaviour
 {
-
-
     public Transform target;
     float speed = 20;
     Vector3[] path;
     int targetIndex;
 
-    void Start()
+    void OnEnable()
     {
-        PathRequestManager.RequestPath(gameObject.transform.position, target.position, OnPathFound);
-        
+        PathRequestManager.instance.RequestPath(gameObject.transform.position, target.position, OnPathFound);
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)

@@ -24,7 +24,7 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         grid.InitGrid(currentMapWidth, currentMapHeight, cellsize);
-        grid.GenerateGrid(cell);
+        grid.GenerateGrid();
     }
 
     private void Update() {
