@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 //알아서 가까운 타겟 찾아 이동
 //수동으로 이동 시키기
@@ -11,7 +11,6 @@ public class UnitMove : MonoBehaviour
 {
     public float moveSpeed;
 
-    bool isCommand = false; //명령을 받은 상태인지?
     public enum State
     {
         Idle,
@@ -25,19 +24,33 @@ public class UnitMove : MonoBehaviour
     private NavMeshAgent nav;
 
     private Transform target;
+    private Transform priorityTarget;
+
+    private ArrowDrawer arrowDrawer;
 
     private void Awake()
     {
         attackRange = GetComponent<UnitAction>().attackRange;
         nav = GetComponent<NavMeshAgent>();
+        arrowDrawer = GetComponent<ArrowDrawer>();
+
+        state = State.Idle;
     }
 
     private void Update()
     {
-        /*if (!isCommand) //명령을 수행 중이지 않을 때에만 타겟팅
+        //Input
+        priorityTarget = arrowDrawer.destination;
+
+
+        if (priorityTarget != null) 
+        {
+            target = priorityTarget;
+        }
+        else //명령을 수행 중이지 않을 때에만 타겟팅
         {
             DetectEnemy();
-        }*/
+        }
 
         switch (state)
         {
@@ -45,39 +58,29 @@ public class UnitMove : MonoBehaviour
                 if(target != null)
                 {
                     state = State.Move;
-                    break;
-                }
-                if (!isCommand) //명령을 수행 중이지 않을 때에만 타겟팅
-                {
-                    DetectEnemy();
                 }
                 break;
 
             case State.Move:
-                if (target == null)
+                if(target == null)
                 {
                     state = State.Idle;
                     break;
                 }
                 MoveToTarget();
-
                 break;
             default:
                 break;
         }
-
-        print(state);
-    }
-
-    public void CommandTargeting(Transform target)
-    {
-        this.target = target;
-        isCommand = true;
-        //print("명령 입력됨");
     }
 
     private void DetectEnemy()
     {
+        if (priorityTarget != null)
+        {
+            return;
+        }
+
         int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
         Collider[] detectedColliders = Physics.OverlapSphere(transform.position, detectingRange, enemyLayerMask);
 
@@ -94,7 +97,7 @@ public class UnitMove : MonoBehaviour
             }
         }
 
-        if(minDis > attackRange && minDis < 999)
+        if (minDis > attackRange && minDis < 999)
         {
             target = nearTarget;
         }
@@ -122,27 +125,27 @@ public class UnitMove : MonoBehaviour
             nav.SetDestination(transform.position);
             state = State.Idle;
         }*/
-        print("MovetoTarget Enable");
         //타겟이 적일 경우 사정거리 안에 들어올 때 까지만 이동
         if (target.gameObject.layer == LayerMask.NameToLayer("Enemy")) 
         {
-            if(nav.stoppingDistance != attackRange)
-                nav.stoppingDistance = attackRange;
+            if(nav.stoppingDistance != attackRange - 0.1f)
+                nav.stoppingDistance = attackRange - 0.1f;
         }
         //아닐 경우 끝까지 이동
         else
         {
-            if(nav.stoppingDistance != 0)
-                nav.stoppingDistance = 0;
+            if(nav.stoppingDistance != 0f)
+                nav.stoppingDistance = 0f;
         }
 
         nav.SetDestination(target.position);
 
-        if (nav.remainingDistance <= nav.stoppingDistance)
+        if (nav.remainingDistance <= nav.stoppingDistance + 0.1f)
         {
             target = null;
-            if (isCommand)
-                isCommand = false;
+            priorityTarget = null;
+            arrowDrawer.destination = null;
+            state = State.Idle;
         }
     }
 }

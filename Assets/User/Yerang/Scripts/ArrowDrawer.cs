@@ -12,12 +12,13 @@ public class ArrowDrawer : MonoBehaviour
     private Vector3 startPos;
     private Vector3 endPos;
 
+    public Transform destination = null;
 
     public void OnMouseDown()
     {
         arrowRenderer.enabled = true;
 
-        startPos = this.transform.position;
+        startPos = transform.position;
         startPos.y = 0.01f;
     }
 
@@ -39,8 +40,7 @@ public class ArrowDrawer : MonoBehaviour
         arrowRenderer.enabled = false;
         GameObject goalPoint = Instantiate(goalPointPrefab, endPos, Quaternion.identity);
 
-        UnitMove unitMove = gameObject.GetComponent<UnitMove>();
-        unitMove.CommandTargeting(goalPoint.transform);
+        destination = goalPoint.transform;
     }
 
     public void DrawArrow()
