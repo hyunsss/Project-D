@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
 
 
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
 
     }
     private void Start()
