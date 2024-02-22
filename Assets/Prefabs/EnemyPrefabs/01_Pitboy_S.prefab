@@ -787,6 +787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4570197347612569292}
   - component: {fileID: 7609589856513601491}
+  - component: {fileID: -7217128975790432210}
   m_Layer: 0
   m_Name: 01_Pitboy_S
   m_TagString: Untagged
@@ -803,7 +804,7 @@ Transform:
   m_GameObject: {fileID: 6904802638445669043}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 153.02437, y: 0, z: 17.200409}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -824,7 +825,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 0}
+  aStar: {fileID: 0}
   state: 0
+--- !u!114 &-7217128975790432210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904802638445669043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f899fb9e7ed176740ac0d1e9c03ce3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &7165660141031920848
 GameObject:
   m_ObjectHideFlags: 0

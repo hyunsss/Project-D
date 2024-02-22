@@ -15,7 +15,15 @@ public class GameManager : MonoBehaviour
 
 
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
+
     }
+    private void Start()
+    {
+        print(tower_Player[0]);
+    }
+
+    public List<Transform> tower_Player = new();
+    public List<Transform> unit_Player  = new List<Transform>();      
     
 }
