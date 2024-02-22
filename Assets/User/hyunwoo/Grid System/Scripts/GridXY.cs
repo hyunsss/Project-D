@@ -12,12 +12,15 @@ public class GridXY : MonoBehaviour
     private int width;
     private int height;
     private float cellSize;
-    private int[,] gridArray;
+    private Node[,] nodeArray;
 
     public int Width => width;
     public int Height => height;
     public float CellSize => cellSize;
-    public int[,] GridArray => gridArray;
+    public Node[,] GridArray => nodeArray;
+    public List<Node> path;
+
+    public int MaxSize { get => width * height; }
 
     public void InitGrid(int width, int height, float cellSize)
     {
@@ -26,22 +29,61 @@ public class GridXY : MonoBehaviour
         this.cellSize = cellSize;
 
         //각 cell 위치를 저장하는 배열
-        gridArray = new int[width, height];
+        nodeArray = new Node[width, height];
     }
 
     public void GenerateGrid(GameObject cell)
     {
-        for (int x = 0; x < gridArray.GetLength(0); x++)
+        for (int x = 0; x < nodeArray.GetLength(0); x++)
         {
-            for (int y = 0; y < gridArray.GetLength(1); y++)
+            for (int y = 0; y < nodeArray.GetLength(1); y++)
             {
                 DrawGrid(GetWorldPosition(x, y), GetString(x, y));
+                CreateNewNode(x, y);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.red, 100f);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.red, 100f);
             }
         }
         Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.red, 100f);
         Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.red, 100f);
+    }
+
+    public List<Node> GetNeighbours(Node node)
+    {
+        List<Node> neighbours = new List<Node>();
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if (x == 0 && y == 0)
+                    continue;
+
+                int checkX = node.gridX + x;
+                int checkY = node.gridY + y;
+
+                if (checkX >= 0 && checkX < width && checkY >= 0 && checkY < height)
+                {
+                    neighbours.Add(nodeArray[checkX, checkY]);
+                }
+            }
+        }
+
+        return neighbours;
+    }
+
+    public Node NodeFromWorldPoint(Vector3 worldPosition)
+    {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        return nodeArray[x, y];
+    }
+
+    private Node CreateNewNode(int x, int y) {
+        Vector3 nodeWorldPos = GetWorldPosition(x, y);        
+        bool walkable = !Physics.CheckBox(nodeWorldPos, new Vector3(4, 6, 4), Quaternion.identity);
+
+        return new Node(walkable, nodeWorldPos, x, y);
     }
 
     /// <summary>
