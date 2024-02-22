@@ -32,7 +32,7 @@ public class AchievementManager : MonoBehaviour
     private void EnableSuccessPanel(Achievement achievement) {
         //성공 했을 경우 성공화면을 잠깐 띄워주는 함수
 
-        //그 후 
+        //그 후 성공한 업적은 삭제
         RemoveAchievement(achievement);
     }
 
