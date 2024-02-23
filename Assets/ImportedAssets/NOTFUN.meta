@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/ImportedAssets/NOTFUN.meta
 guid: ec0d1b0f546876848802a34525bb31b2
 folderAsset: yes
+========
+guid: 8c44a0b0b29ce364783d1655bb2450be
+>>>>>>>> main:Assets/ImportedAssets/NOTFUN/Monsters Pack 04/Demo/Demo scene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
