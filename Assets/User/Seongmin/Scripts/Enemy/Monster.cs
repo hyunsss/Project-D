@@ -95,6 +95,6 @@ public class Monster : MonoBehaviour
     }
     private void Die()
     {
-        gameObject.SetActive(false); // ������Ʈ Ǯ�� or ��Ǯ�� ���� ����
+        gameObject.SetActive(false); // TODO 린풀로 변경
     }
 }
