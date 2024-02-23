@@ -3,13 +3,16 @@ using System.Collections;
 
 public class UnitAStar : MonoBehaviour
 {
+
     public Transform target;
-    float speed = 20;
+    public float speed = 20;
     Vector3[] path;
     int targetIndex;
 
-    void OnEnable()
+    public void Chase(Transform _target)
     {
+
+        target = _target;
         PathRequestManager.instance.RequestPath(gameObject.transform.position, target.position, OnPathFound);
     }
 
@@ -26,23 +29,27 @@ public class UnitAStar : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        Vector3 currentWaypoint = path[0];
-        while (true)
+        if (path.Length != 0)
         {
-            if (transform.position == currentWaypoint)
+            Vector3 currentWaypoint = path[0];
+            while (true)
             {
-                targetIndex++;
-                if (targetIndex >= path.Length)
+                if (transform.position == currentWaypoint)
                 {
-                    yield break;
+                    targetIndex++;
+                    if (targetIndex >= path.Length)
+                    {
+                        yield break;
+                    }
+                    currentWaypoint = path[targetIndex];
                 }
-                currentWaypoint = path[targetIndex];
+
+                transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+                yield return null;
+
             }
-
-            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
-            yield return null;
-
         }
+
     }
 
 }

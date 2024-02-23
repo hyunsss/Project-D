@@ -95,6 +95,6 @@ public class Monster : MonoBehaviour
     }
     private void Die()
     {
-        gameObject.SetActive(false); // ¿ÀºêÁ§Æ® Ç®¸µ or ¸°Ç®·Î Á¦°Å ¿¹Á¤
+        gameObject.SetActive(false); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ç®ï¿½ï¿½ or ï¿½ï¿½Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }
