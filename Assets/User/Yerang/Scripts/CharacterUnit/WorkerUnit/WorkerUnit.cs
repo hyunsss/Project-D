@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//일꾼 유닛: 건설, 자원캐기...
-public class WorkerUnit : UnitAction
+//일꾼 유닛: 건설, 수리, 자원캐기
+public class WorkerUnit : MonoBehaviour
 {
     public void Build()
     {
 
     }
 
-    public override void Attack()
+    public void Fix()
     {
 
     }
 
-    public override void EndAttack()
+    public void Mine()
     {
-        
+
     }
 }

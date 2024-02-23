@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //2022.3.19
-public abstract class UnitAction : MonoBehaviour
+public abstract class BattleUnit : MonoBehaviour
 {
     public string unitName;
 
@@ -17,7 +17,7 @@ public abstract class UnitAction : MonoBehaviour
     public Transform priorityTarget;
     public Transform target;
 
-    private UnitMove unitMove;
+    private BattleUnitMove unitMove;
     protected Animator animator;
 
     [SerializeField]
@@ -26,7 +26,7 @@ public abstract class UnitAction : MonoBehaviour
 
     private void Awake()
     {
-        unitMove = GetComponent<UnitMove>();
+        unitMove = GetComponent<BattleUnitMove>();
         animator = GetComponentInChildren<Animator>();
         currentHp = maxHp;
     }
@@ -36,12 +36,12 @@ public abstract class UnitAction : MonoBehaviour
         SetTarget();
 
         if (target != null && attackCoroutine == null 
-            && unitMove.state != UnitMove.State.Move)
+            && unitMove.state != BattleUnitMove.State.Move)
         {
             Attack();
         }
         else if(attackCoroutine != null
-            && ((target == null) || (unitMove.state == UnitMove.State.Move)))
+            && ((target == null) || (unitMove.state == BattleUnitMove.State.Move)))
         {
             EndAttack();
         }

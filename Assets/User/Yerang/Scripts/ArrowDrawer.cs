@@ -25,20 +25,11 @@ public class ArrowDrawer : MonoBehaviour
     public void OnMouseDrag() //Plane.Raycast
     {
         RaycastHit hit;
-        int targetLayerMask
-            = 1 << LayerMask.NameToLayer("Ground")
-            | 1 << LayerMask.NameToLayer("Enemy") | 1 << LayerMask.NameToLayer("Tower");
+        int targetLayerMask = 1 << LayerMask.NameToLayer("Ground");
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 999, targetLayerMask))
         {
-            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")
-                || hit.collider.gameObject.layer == LayerMask.NameToLayer("Tower"))
-            {
-                endPos = hit.collider.transform.position;
-            }
-            else
-            {
-                endPos = hit.point;
-            }
+            endPos = hit.point;
+            endPos.y = 0.1f;
         }
 
         DrawArrow();

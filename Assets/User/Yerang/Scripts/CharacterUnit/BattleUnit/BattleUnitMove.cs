@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 //알아서 가까운 타겟 찾아 이동
 //수동으로 이동 시키기
-public class UnitMove : MonoBehaviour
+public class BattleUnitMove : MonoBehaviour
 {
     public enum State
     {
@@ -33,7 +33,7 @@ public class UnitMove : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
 
-        attackRange = GetComponent<UnitAction>().attackRange;
+        attackRange = GetComponent<BattleUnit>().attackRange;
         arrowDrawer = GetComponent<ArrowDrawer>();
 
         state = State.Idle;
@@ -113,16 +113,6 @@ public class UnitMove : MonoBehaviour
 
     private void MoveToTarget()
     {
-        /*타겟이 사정거리보다 멀리있으면
-        if (Vector3.Distance(target.position, transform.position) > attackRange)
-        {
-            nav.SetDestination(target.position);
-        }
-        else
-        {
-            nav.SetDestination(transform.position);
-            state = State.Idle;
-        }*/
         //타겟이 적일 경우 사정거리 안에 들어올 때 까지만 이동
         if (target.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
@@ -143,8 +133,9 @@ public class UnitMove : MonoBehaviour
         {
             target = null;
 
-            if (priorityTarget != null)
-                Destroy(priorityTarget.gameObject);
+            if(arrowDrawer.destination != null)
+                Destroy(arrowDrawer.destination.gameObject);
+            
         }
     }
 }
