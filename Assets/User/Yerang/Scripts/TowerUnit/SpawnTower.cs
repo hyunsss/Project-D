@@ -37,5 +37,7 @@ public class SpawnTower : MonoBehaviour
                 Instantiate(characterPrefab, spawnPoint, transform.rotation,
                 transform.GetChild(0)); //0: SpawnCharacters
         }
+
+        spawnCount = 0;
     }
 }
