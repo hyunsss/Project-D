@@ -13,7 +13,6 @@ public class UnitMove : MonoBehaviour
     public State state;
 
     public float moveSpeed;
-    public float detectingRange;
 
     private NavMeshAgent nav;
     private Animator animator;
@@ -64,9 +63,6 @@ public class UnitMove : MonoBehaviour
 
     private void MoveToTarget()
     {
-        if (nav.stoppingDistance != 0f)
-            nav.stoppingDistance = 0f;
-
         nav.SetDestination(target.position);
 
         if (nav.velocity.sqrMagnitude >= 0.1f //길찾기 시작할때도 남은 거리가 0으로 뜨게되므로, 움직이는 상태인지 체크
@@ -76,7 +72,6 @@ public class UnitMove : MonoBehaviour
 
             if (arrowDrawer.destination != null)
                 Destroy(arrowDrawer.destination.gameObject);
-
         }
     }
 }

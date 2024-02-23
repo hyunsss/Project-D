@@ -135,7 +135,6 @@ public class BattleUnitMove : MonoBehaviour
 
             if(arrowDrawer.destination != null)
                 Destroy(arrowDrawer.destination.gameObject);
-            
         }
     }
 }

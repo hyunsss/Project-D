@@ -71,6 +71,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        print("OnCollisionEnter");
+        if (other.gameObject.TryGetComponent<TestEnemy>(out TestEnemy testEnemy))
+        {
+            testEnemy.GetDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }
