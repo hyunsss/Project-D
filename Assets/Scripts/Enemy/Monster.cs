@@ -7,11 +7,12 @@ public class Monster : MonoBehaviour
 {
     [SerializeField]
     private MonsterData monsterData;
-    public MonsterData MonsterData { set { monsterData = value; } }
+    public MonsterData  MonsterData { set { monsterData = value; } }
 
-
-    public UnitAStar aStar;
-    Transform target;
+    private float       currentHp;
+    public UnitAStar    aStar;
+    private Animator    animator;
+    Transform           target;
 
     public enum State
     {
@@ -23,11 +24,18 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         aStar =  GetComponent<UnitAStar>();
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
         state = State.chase;
+        currentHp = monsterData.MonsterHp;
+        aStar.speed = monsterData.MonsterSpeed;
          StartCoroutine(TargetChase());
+    }
+    void  Update() {
+        transform.LookAt(target);
+        transform.Rotate(new Vector3(0, transform.rotation.y, transform.rotation.z));
     }
 
     IEnumerator TargetChase()
@@ -44,7 +52,7 @@ public class Monster : MonoBehaviour
                 SetUnitTarget();
                 aStar.Chase(target);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.7f);
         }
     }
     private void SetTowerTarget()
@@ -74,5 +82,19 @@ public class Monster : MonoBehaviour
                 target = _target;
             }
         }
+    }
+
+    private void HitDamage(float _damage)
+    {
+       currentHp -= _damage;
+        if (currentHp <= 0)
+        {
+            state = State.die;
+            animator.SetTrigger("isDie");
+        }
+    }
+    private void Die()
+    {
+        gameObject.SetActive(false); // 오브젝트 풀링 or 린풀로 제거 예정
     }
 }

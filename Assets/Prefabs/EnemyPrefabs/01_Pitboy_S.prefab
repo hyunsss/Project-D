@@ -788,6 +788,7 @@ GameObject:
   - component: {fileID: 4570197347612569292}
   - component: {fileID: 7609589856513601491}
   - component: {fileID: -7217128975790432210}
+  - component: {fileID: 1995569378490859455}
   m_Layer: 0
   m_Name: 01_Pitboy_S
   m_TagString: Untagged
@@ -840,6 +841,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  speed: 0
+--- !u!95 &1995569378490859455
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904802638445669043}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 6bb413cec4e6f534088ab495e0e9a333, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7165660141031920848
 GameObject:
   m_ObjectHideFlags: 0

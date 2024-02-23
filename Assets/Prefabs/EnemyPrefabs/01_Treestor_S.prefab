@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1447946326076164248}
   - component: {fileID: 4549829476668443031}
   - component: {fileID: 529943174573573951}
+  - component: {fileID: -1496695226015842938}
   m_Layer: 0
   m_Name: 01_Treestor_S
   m_TagString: Untagged
@@ -95,6 +96,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  speed: 0
+--- !u!95 &-1496695226015842938
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22502332593657507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: cceb5a4c7e6dc1347922025b7746e66f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &78819398191202854
 GameObject:
   m_ObjectHideFlags: 0
