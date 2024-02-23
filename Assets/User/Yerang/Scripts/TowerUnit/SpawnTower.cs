@@ -8,10 +8,9 @@ public class SpawnTower : MonoBehaviour
     private int currentHp;
 
     public float iteration;
-    public int maxSpawnCount;
+    public int spawnCount;
 
     public GameObject characterPrefab;
-    private List<GameObject> spawnList = new List<GameObject>();
 
     private Vector3 spawnPoint;
 
@@ -30,17 +29,13 @@ public class SpawnTower : MonoBehaviour
 
     private IEnumerator Spawn()
     {
-        while (true)
+        for (int i = 0; i < spawnCount; i++)
         {
             yield return new WaitForSeconds(iteration);
 
-            if(spawnList.Count < maxSpawnCount)
-            {
-                GameObject spawnedCharacter =
-                    Instantiate(characterPrefab, spawnPoint, transform.rotation,
-                    transform.GetChild(0)); //0: SpawnCharacters
-                spawnList.Add(spawnedCharacter);
-            }
+            GameObject spawnedCharacter =
+                Instantiate(characterPrefab, spawnPoint, transform.rotation,
+                transform.GetChild(0)); //0: SpawnCharacters
         }
     }
 }
