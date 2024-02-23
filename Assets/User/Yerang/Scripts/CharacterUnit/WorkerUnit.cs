@@ -14,4 +14,9 @@ public class WorkerUnit : UnitAction
     {
 
     }
+
+    public override void EndAttack()
+    {
+        
+    }
 }

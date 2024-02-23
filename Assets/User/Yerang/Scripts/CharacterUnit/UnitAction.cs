@@ -14,23 +14,42 @@ public abstract class UnitAction : MonoBehaviour
     public int attackCycle;
     public float attackRange;
 
+    public Transform priorityTarget;
     public Transform target;
-    public Transform shotPoint;
 
-    public int price; //
+    private UnitMove unitMove;
+    protected Animator animator;
+
+    [SerializeField]
+    protected Transform shotPoint;
+    protected Coroutine attackCoroutine = null;
 
     private void Awake()
     {
+        unitMove = GetComponent<UnitMove>();
+        animator = GetComponentInChildren<Animator>();
         currentHp = maxHp;
     }
 
     private void Update()
     {
         SetTarget();
+
+        if (target != null && attackCoroutine == null 
+            && unitMove.state != UnitMove.State.Move)
+        {
+            Attack();
+        }
+        else if(attackCoroutine != null
+            && ((target == null) || (unitMove.state == UnitMove.State.Move)))
+        {
+            EndAttack();
+        }
     }
     
 
     public abstract void Attack();
+    public abstract void EndAttack();
 
     public void GetDamage(int damage)
     {
@@ -45,25 +64,25 @@ public abstract class UnitAction : MonoBehaviour
 
     public void Die()
     {
-
+        Destroy(gameObject);
     }
 
-    public void SetTarget(Transform target)
+    public void SetPriorityTarget(Transform target)
     {
-        this.target = target;
+        priorityTarget = target;
     }
 
     Collider[] attackColliders;
     private void SetTarget()
     {
+        if (priorityTarget != null) //우선으로 타겟할 대상이 있으면 priorityTarget을 target으로 지정하고 빠져나감
+        {
+            target = priorityTarget;
+            return;
+        }
+
         int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
         attackColliders = Physics.OverlapSphere(transform.position, attackRange, enemyLayerMask);
-
-        //print(attackColliders.Length);
-        /*foreach (Collider collider in attackColliders)
-        {
-            print(collider.gameObject);
-        }*/
 
         float minDis = 999;
         Transform nearTarget = null;
@@ -77,9 +96,8 @@ public abstract class UnitAction : MonoBehaviour
                 nearTarget = collider.transform;
             }
         }
-        //print(nearTarget);
+
         this.target = nearTarget;
-        //print(target);
     }
 
     private void OnDrawGizmos()

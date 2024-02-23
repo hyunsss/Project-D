@@ -25,12 +25,21 @@ public class ArrowDrawer : MonoBehaviour
     public void OnMouseDrag() //Plane.Raycast
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 999, 1 << LayerMask.NameToLayer("Ground")))
+        int targetLayerMask
+            = 1 << LayerMask.NameToLayer("Ground")
+            | 1 << LayerMask.NameToLayer("Enemy") | 1 << LayerMask.NameToLayer("Tower");
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 999, targetLayerMask))
         {
-            endPos = hit.point;
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")
+                || hit.collider.gameObject.layer == LayerMask.NameToLayer("Tower"))
+            {
+                endPos = hit.collider.transform.position;
+            }
+            else
+            {
+                endPos = hit.point;
+            }
         }
-
-        endPos.y = 0.01f;
 
         DrawArrow();
     }
@@ -38,8 +47,13 @@ public class ArrowDrawer : MonoBehaviour
     public void OnMouseUp()
     {
         arrowRenderer.enabled = false;
-        GameObject goalPoint = Instantiate(goalPointPrefab, endPos, Quaternion.identity);
 
+        if (destination != null)
+        {
+            Destroy(destination.gameObject);
+        }
+
+        GameObject goalPoint = Instantiate(goalPointPrefab, endPos, Quaternion.identity);
         destination = goalPoint.transform;
     }
 

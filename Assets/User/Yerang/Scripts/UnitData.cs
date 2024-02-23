@@ -14,4 +14,7 @@ public class UnitData : ScriptableObject
     public int attackCycle;
 
     public float moveSpeed;
+    public float attackRange;
+
+    public int price;
 }

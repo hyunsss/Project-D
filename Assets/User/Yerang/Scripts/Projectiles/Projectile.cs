@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
         //전체 길이중 현재 도달한 위치의 비율: 1 - (남은거리 / 전체거리)
         float t = 1f - (remainDistance / totalDistance);
 
-        float rendererPosY = Mathf.Sin(Mathf.Lerp(0, 180, t) * Mathf.Deg2Rad) * 1;
+        float rendererPosY = Mathf.Sin(Mathf.Lerp(0, 180, t) * Mathf.Deg2Rad) * 0.8f;
 
         Vector3 rendererHeight = new Vector3(0, rendererPosY, 0);
 

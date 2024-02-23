@@ -9,8 +9,6 @@ using UnityEngine.AI;
 //수동으로 이동 시키기
 public class UnitMove : MonoBehaviour
 {
-    public float moveSpeed;
-
     public enum State
     {
         Idle,
@@ -18,10 +16,12 @@ public class UnitMove : MonoBehaviour
     }
     public State state;
 
+    public float moveSpeed;
     public float detectingRange;
     private float attackRange;
 
     private NavMeshAgent nav;
+    private Animator animator;
 
     private Transform target;
     private Transform priorityTarget;
@@ -30,8 +30,10 @@ public class UnitMove : MonoBehaviour
 
     private void Awake()
     {
-        attackRange = GetComponent<UnitAction>().attackRange;
         nav = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
+
+        attackRange = GetComponent<UnitAction>().attackRange;
         arrowDrawer = GetComponent<ArrowDrawer>();
 
         state = State.Idle;
@@ -43,26 +45,19 @@ public class UnitMove : MonoBehaviour
         priorityTarget = arrowDrawer.destination;
 
 
-        if (priorityTarget != null) 
-        {
-            target = priorityTarget;
-        }
-        else //명령을 수행 중이지 않을 때에만 타겟팅
-        {
-            DetectEnemy();
-        }
+        DetectEnemy();
 
         switch (state)
         {
             case State.Idle:
-                if(target != null)
+                if (target != null)
                 {
                     state = State.Move;
                 }
                 break;
 
             case State.Move:
-                if(target == null)
+                if (target == null)
                 {
                     state = State.Idle;
                     break;
@@ -72,14 +67,17 @@ public class UnitMove : MonoBehaviour
             default:
                 break;
         }
+
+        animator.SetInteger("moveState", (int)state);
     }
 
     private void DetectEnemy()
     {
-        if (priorityTarget != null)
+        if (priorityTarget != null) //우선으로 타겟할 대상이 있으면 priorityTarget을 target으로 지정하고 빠져나감
         {
+            target = priorityTarget;
             return;
-        }
+        } 
 
         int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
         Collider[] detectedColliders = Physics.OverlapSphere(transform.position, detectingRange, enemyLayerMask);
@@ -97,7 +95,7 @@ public class UnitMove : MonoBehaviour
             }
         }
 
-        if (minDis > attackRange && minDis < 999)
+        if (minDis > attackRange)
         {
             target = nearTarget;
         }
@@ -126,26 +124,27 @@ public class UnitMove : MonoBehaviour
             state = State.Idle;
         }*/
         //타겟이 적일 경우 사정거리 안에 들어올 때 까지만 이동
-        if (target.gameObject.layer == LayerMask.NameToLayer("Enemy")) 
+        if (target.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            if(nav.stoppingDistance != attackRange - 0.1f)
+            if (nav.stoppingDistance != attackRange - 0.1f)
                 nav.stoppingDistance = attackRange - 0.1f;
         }
         //아닐 경우 끝까지 이동
         else
         {
-            if(nav.stoppingDistance != 0f)
+            if (nav.stoppingDistance != 0f)
                 nav.stoppingDistance = 0f;
         }
 
         nav.SetDestination(target.position);
 
-        if (nav.remainingDistance <= nav.stoppingDistance + 0.1f)
+        if (nav.velocity.sqrMagnitude >= 0.1f //길찾기 시작할때도 남은 거리가 0으로 뜨게되므로, 움직이는 상태인지 체크
+            && nav.remainingDistance <= nav.stoppingDistance + 0.1f)
         {
             target = null;
-            priorityTarget = null;
-            arrowDrawer.destination = null;
-            state = State.Idle;
+
+            if (priorityTarget != null)
+                Destroy(priorityTarget.gameObject);
         }
     }
 }
