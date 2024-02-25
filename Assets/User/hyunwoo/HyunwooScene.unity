@@ -45598,14 +45598,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AchievePopupObject: {fileID: 8372731682310763607, guid: e20a92163c67048898f644be056d52c0, type: 3}
   canvas: {fileID: 7656144136202379582}
-  achievementData_List: []
-  achievement_List:
-  - uid: 0
-    type: 0
-    achievementData: {fileID: 11400000, guid: 65ab361fffcd6413aa8b301753bef076, type: 2}
-  - uid: 0
-    type: 0
-    achievementData: {fileID: 11400000, guid: ee6d02b520911482c8dcba90728e74df, type: 2}
+  achievementData_List:
+  - {fileID: 11400000, guid: 65ab361fffcd6413aa8b301753bef076, type: 2}
+  - {fileID: 11400000, guid: ee6d02b520911482c8dcba90728e74df, type: 2}
+  achievement_List: []
 --- !u!224 &7369039750502303610
 RectTransform:
   m_ObjectHideFlags: 0
