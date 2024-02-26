@@ -6,7 +6,7 @@ public class MonsterTowerKeeper : Monster
 {
     protected override  void Start()
     {
-        state = State.chase;
+        state = State.towerReqair;
         aStar.speed = monsterData.MonsterSpeed;
         currentHp = monsterData.MonsterHp;
         StartCoroutine(ChangeState());

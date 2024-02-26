@@ -5,7 +5,10 @@ using UnityEngine;
 public class MonsterTower : MonoBehaviour
 {
     [SerializeField]
-    private float towerHp    =  100f;
+    private float towerMaxHp = 100f;
+    [SerializeField]
+    private float towerCurrnetHp;
+   
     private MonsterSpawner      monsterSpawner;
 
 
@@ -16,26 +19,27 @@ public class MonsterTower : MonoBehaviour
 
     private void Start()
     {
+        towerCurrnetHp = towerMaxHp;
         StartCoroutine(spawnMonster());
     }
     IEnumerator spawnMonster()
     {
-        while(towerHp > 0)
+        while(towerCurrnetHp > 0)
         {
             monsterSpawner.SpawnMonster();
-
+            
             yield return new WaitForSeconds(1f);
         }
     }
     private void SpawnTowerKeeper()
     {
-        monsterSpawner.SpawnTowerKeeper(gameObject);
+        monsterSpawner.SpawnTowerKeeper(gameObject); //TODO 타워 키퍼에게 타겟을 타워로 매개변수 보낸거 활용하기
     }
 
     public void HitDamage(float _damage)
     {
-        towerHp -= _damage;
-        if(towerHp <= 0) 
+        towerCurrnetHp -= _damage;
+        if(towerCurrnetHp <= 0) 
         {
             
         }

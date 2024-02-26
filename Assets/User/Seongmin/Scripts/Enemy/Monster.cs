@@ -53,7 +53,7 @@ public class Monster : MonoBehaviour
             }
             if (state == State.towerReqair)
             {
-                StartCoroutine(TowerRepair());
+              //  StartCoroutine(TowerRepair(()); //TODO 매개변수 넣기
             }
         }
         if (state == State.die)
@@ -79,9 +79,9 @@ public class Monster : MonoBehaviour
             }
             yield return new WaitForSeconds(0.7f);
     }
-    protected IEnumerator TowerRepair()
+    protected IEnumerator TowerRepair(GameObject _repairTower)
     {
-
+        // 수리할 타워 정하고 
         yield return new WaitForSeconds(1f);
     }
 

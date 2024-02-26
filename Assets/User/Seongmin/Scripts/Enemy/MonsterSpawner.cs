@@ -36,7 +36,7 @@ public class MonsterSpawner : MonoBehaviour
         currentMonsterPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
 
     }
-    public void SpawnTowerKeeper(GameObject _repairTarget)
+    public void SpawnTowerKeeper(GameObject _repairTarget)  //TODO 타워 키퍼에게 타겟을 타워로 매개변수 보낸거 활용하기
     {
         spawnDataRandomValue = Random.Range(0, spawnData);
         spawnPosX = Random.Range(-8, 9);
