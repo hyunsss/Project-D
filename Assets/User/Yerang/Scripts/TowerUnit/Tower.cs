@@ -4,32 +4,45 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    [SerializeField] private int areaWidth = 2;
+    [SerializeField] private int areaHeight = 2;
+
+    public int AreaWidth { get => areaWidth; }
+    public int AreaHeight { get => areaHeight; }
+
     public float maxHp;
     private float currentHp;
 
-    public float BuildingTime;
-    public float FixedHpPerSec;
+    private List<WorkerUnit> repairWorkers = new List<WorkerUnit>();
+    private Coroutine repairCoroutine;
 
-    private bool isCompleteBuilt;
-
-    private GameObject BeingBuiltPrefab;
-
-    public void Built()
+    private void Awake()
     {
-        Instantiate(BeingBuiltPrefab, transform);
+        currentHp = maxHp;
     }
+
+    protected virtual void Start() { }
 
     public void GetDamage(float damage)
     {
         currentHp -= damage;
     }
 
-    public IEnumerator Fixed()
+    public IEnumerator Repaired()
     {
         yield return new WaitForSeconds(1f);
 
-        //반복문
-        currentHp += FixedHpPerSec;
+        //반복
+        float repairedHpPerSec = 0;
+        foreach (WorkerUnit workerUnit in repairWorkers)
+        {
+            repairedHpPerSec += workerUnit.repairSpeed;
+        }
+        currentHp += repairedHpPerSec;
+    }
+    public void CollocateWorker(WorkerUnit worker)
+    {
+        repairWorkers.Add(worker);
     }
 
     public void Destroyed()

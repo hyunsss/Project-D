@@ -34,7 +34,7 @@ public class WorkerUnitMove : MonoBehaviour
     private void Update()
     {
         //Input
-        target = arrowDrawer.destination;
+        target = arrowDrawer.target;
 
 
         switch (state)
@@ -70,8 +70,8 @@ public class WorkerUnitMove : MonoBehaviour
         {
             target = null;
 
-            if (arrowDrawer.destination != null)
-                Destroy(arrowDrawer.destination.gameObject);
+            if (arrowDrawer.target != null)
+                Destroy(arrowDrawer.target.gameObject);
         }
     }
 }

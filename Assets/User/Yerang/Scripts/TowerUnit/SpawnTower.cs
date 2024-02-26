@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnTower : MonoBehaviour
+public class SpawnTower : Tower
 {
-    public int maxHp;
-    private int currentHp;
-
     public float iteration;
     public int spawnCount;
 
@@ -14,16 +11,13 @@ public class SpawnTower : MonoBehaviour
 
     private Vector3 spawnPoint;
 
-    private void Awake()
+    protected override void Start()
     {
-        currentHp = maxHp;
+        print("Start");
 
         spawnPoint = transform.localPosition + transform.localRotation 
             * Vector3.forward * 3.5f;
-    }
 
-    void Start()
-    {
         StartCoroutine(Spawn());
     }
 
