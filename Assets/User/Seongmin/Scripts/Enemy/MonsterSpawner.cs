@@ -36,4 +36,15 @@ public class MonsterSpawner : MonoBehaviour
         currentMonsterPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
 
     }
+    public void SpawnTowerKeeper(GameObject _repairTarget)
+    {
+        spawnDataRandomValue = Random.Range(0, spawnData);
+        spawnPosX = Random.Range(-8, 9);
+        spawnPosY = Random.Range(-8, 9);
+        Vector3 randPos = new Vector3(monsterSpawnPoint.transform.position.x + spawnPosX, monsterSpawnPoint.transform.position.y, monsterSpawnPoint.transform.position.z + spawnPosY);
+        currentMonsterPrefab = LeanPool.Spawn(monsterDatas[spawnDataRandomValue].MonsterPrefab,
+            randPos, Quaternion.identity).GetComponent<MonsterTowerKeeper>();
+        currentMonsterPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
+        
+    }
 }

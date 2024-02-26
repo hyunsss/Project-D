@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class Monster : MonoBehaviour
 {
     [SerializeField]
-    private MonsterData     monsterData;
+    protected MonsterData     monsterData;
     [HideInInspector]
     public MonsterData      MonsterData { set { monsterData = value; } }
     [HideInInspector]
@@ -21,33 +21,52 @@ public class Monster : MonoBehaviour
         chase,
         die,
         attack,
-        tower
+        towerReqair
     }
     public State state;
 
-    private void Awake()
+    protected void Awake()
     {
         aStar =  GetComponent<UnitAStar>();
         animator = GetComponent<Animator>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         state = State.chase;
         aStar.speed = monsterData.MonsterSpeed;
         currentHp = monsterData.MonsterHp;
-        StartCoroutine(TargetChase());
+        StartCoroutine(ChangeState());
     }
-    private void Update() {
+    protected void Update() {
         transform.LookAt(target);
 
         transform.Rotate(new Vector3(0, 0, transform.rotation.z));
     }
-
-    IEnumerator TargetChase()
+    protected IEnumerator ChangeState()
     {
-        while(state != State.die) 
+        while (state != State.die)
         {
+            if(state == State.chase)
+            {
+                StartCoroutine(TargetChase());
+            }
+            if (state == State.towerReqair)
+            {
+                StartCoroutine(TowerRepair());
+            }
+        }
+        if (state == State.die)
+        {
+
+            yield break;
+        }
+
+    }
+
+    protected IEnumerator TargetChase()
+    {
+   
             if(GameManager.Instance.tower_Player.Count > 0)
             {
                 SetTowerTarget();
@@ -59,10 +78,14 @@ public class Monster : MonoBehaviour
                 aStar.Chase(target);
             }
             yield return new WaitForSeconds(0.7f);
-        }
+    }
+    protected IEnumerator TowerRepair()
+    {
+
+        yield return new WaitForSeconds(1f);
     }
 
-    private void SetTowerTarget()
+    protected void SetTowerTarget()
     {
         float sortDistance = 99999f;
         foreach (Transform _target in GameManager.Instance.tower_Player)
@@ -75,7 +98,7 @@ public class Monster : MonoBehaviour
                 }
         }
     }
-    private void SetUnitTarget()
+    protected void SetUnitTarget()
     {
 
         float sortDistance = 99999f;
@@ -90,7 +113,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void HitDamage(float _damage)
+    protected void HitDamage(float _damage)
     {
        currentHp -= _damage;
         if (currentHp <= 0)
@@ -98,7 +121,7 @@ public class Monster : MonoBehaviour
             Die();
         }
     }
-    private void Die()
+    protected void Die()
     {
         state = State.die;
         animator.SetTrigger("isDie");

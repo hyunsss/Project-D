@@ -27,13 +27,17 @@ public class MonsterTower : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
+    private void SpawnTowerKeeper()
+    {
+        monsterSpawner.SpawnTowerKeeper(gameObject);
+    }
 
     public void HitDamage(float _damage)
     {
         towerHp -= _damage;
         if(towerHp <= 0) 
         {
-
+            
         }
     }
 }
