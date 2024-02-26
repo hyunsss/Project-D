@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 797514090191952316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Ankle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +32,37 @@ Transform:
   - {fileID: 3259808903895435663}
   m_Father: {fileID: 6738101182881996655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &715143906195735464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7778896525841442641}
+  m_Layer: 8
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7778896525841442641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715143906195735464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4570197347612569292}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &728444159498910261
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2361320084299123407}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Toes_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1199240231363930625}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Shoulder_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7111689714884461626}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:MiddleFinger1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1577913232067695151}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Scapula_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9161218667752590211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Neck_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6365041933080662771}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Knee_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3682996390660216547}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Elbow_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1826656469999244484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Chest_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834689208876958924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Root_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +364,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2765310623289207736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Hip_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8217636844001642259}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Ankle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4402600726086621534}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Scapula_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2986800419947971036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Wrist_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 730363288177573616}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:ToesEnd_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6236072493236992283}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:MiddleFinger4_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7270047903757551957}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Shoulder_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6786467398106802780}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:ToesEnd_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 858782434403804034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Wrist_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6936817506312740034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Spine1_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8680319309600908021}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Head_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,7 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681962798101982662}
   - component: {fileID: 717923918195378974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Pitboy_S
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -789,7 +820,10 @@ GameObject:
   - component: {fileID: 7609589856513601491}
   - component: {fileID: -7217128975790432210}
   - component: {fileID: 1995569378490859455}
-  m_Layer: 0
+  - component: {fileID: 3613329827596716032}
+  - component: {fileID: -5717736179415156762}
+  - component: {fileID: 6764308211517163961}
+  m_Layer: 8
   m_Name: 01_Pitboy_S
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,6 +845,7 @@ Transform:
   m_Children:
   - {fileID: 4681962798101982662}
   - {fileID: 3205279431178898435}
+  - {fileID: 7778896525841442641}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7609589856513601491
@@ -826,7 +861,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 0}
+  currentHp: 0
   aStar: {fileID: 0}
+  animator: {fileID: 0}
+  target: {fileID: 0}
   state: 0
 --- !u!114 &-7217128975790432210
 MonoBehaviour:
@@ -863,6 +901,69 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &3613329827596716032
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904802638445669043}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &-5717736179415156762
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904802638445669043}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 9999
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!114 &6764308211517163961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904802638445669043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd22b4e46acc2d4c8e99eaa3c7d3fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkCollider: {fileID: 7778896525841442641}
 --- !u!1 &7165660141031920848
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6738101182881996655}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Knee_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +1005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3259808903895435663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Toes_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,7 +1037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7645003694598844666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Elbow_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +1069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8920186293105808104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:MiddleFinger1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1000,7 +1101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2140357035440108590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:MiddleFinger4_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1031,7 +1132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3205279431178898435}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1063,7 +1164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4848163674873978874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:HeadEnd_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1842657245773744228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PitBoy_Small:Hip_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}

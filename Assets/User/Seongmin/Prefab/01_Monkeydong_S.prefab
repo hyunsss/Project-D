@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6628650317916922207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:MiddleFinger4_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3841617715231155167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Scapula_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1158275684824963101}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Hip_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5740540940537548835}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Shoulder_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5870121884877830751}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Wrist_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2759610696379448213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Root_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1147066674486143271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Head_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 764728994543167190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:MiddleFinger4_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5750671656812815016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Neck_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2824809514440022706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:MiddleFinger1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5810747317940755449}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Toes_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3355250007777159409}
   - component: {fileID: 7529342574059300456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Monkeydong_S
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3928183782359484400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:HeadEnd_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1146218948324454937}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Elbow_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,10 @@ GameObject:
   - component: {fileID: 8119306144535361179}
   - component: {fileID: -1823029079337274957}
   - component: {fileID: 6711743729851123785}
-  m_Layer: 0
+  - component: {fileID: 7752267327326619304}
+  - component: {fileID: -2432767150085969993}
+  - component: {fileID: 858326980742280573}
+  m_Layer: 8
   m_Name: 01_Monkeydong_S
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,6 +559,7 @@ Transform:
   m_Children:
   - {fileID: 3355250007777159409}
   - {fileID: 8324813811391488752}
+  - {fileID: 7745236635749761288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8119306144535361179
@@ -571,7 +575,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 0}
+  currentHp: 0
   aStar: {fileID: 0}
+  animator: {fileID: 0}
+  target: {fileID: 0}
   state: 0
 --- !u!114 &-1823029079337274957
 MonoBehaviour:
@@ -608,6 +615,69 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &7752267327326619304
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773305875034289141}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &-2432767150085969993
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773305875034289141}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 9999
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!114 &858326980742280573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773305875034289141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd22b4e46acc2d4c8e99eaa3c7d3fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkCollider: {fileID: 7745236635749761288}
 --- !u!1 &4944650161571186522
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4300335975407769594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:MiddleFinger1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8249299198022890958}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Ankle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +751,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 339691351965284491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Hip_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,6 +774,37 @@ Transform:
   - {fileID: 3633814422366125520}
   m_Father: {fileID: 2759610696379448213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6066333715881961469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7745236635749761288}
+  m_Layer: 8
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7745236635749761288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6066333715881961469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8624140474142807237}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6209739492680726695
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3633814422366125520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Knee_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3376509622261204208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Scapula_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,7 +878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8930820190653353102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Spine1_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +910,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1696865196427389627}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Ankle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8324813811391488752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 299080994117254233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Toes_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -905,7 +1006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2764015149108059210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Wrist_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +1038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3024928239916616295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:ToesEnd_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +1069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5736877673532782785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Elbow_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1000,7 +1101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3336733819050475265}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Chest_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1034,7 +1135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1206153667454336637}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Shoulder_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1066,7 +1167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3544226042561863366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:Knee_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3938236180955963278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small_monkey:Small_monkey:ToesEnd_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}

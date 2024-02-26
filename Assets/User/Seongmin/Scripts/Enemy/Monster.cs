@@ -1,23 +1,27 @@
+using Lean.Pool;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Monster : MonoBehaviour
 {
     [SerializeField]
-    private MonsterData monsterData;
-    public MonsterData  MonsterData { set { monsterData = value; } }
-
-    private float       currentHp;
-    public UnitAStar    aStar;
-    private Animator    animator;
-    Transform           target;
-
+    private MonsterData     monsterData;
+    [HideInInspector]
+    public MonsterData      MonsterData { set { monsterData = value; } }
+    [HideInInspector]
+    public float            currentHp;
+    public UnitAStar        aStar;
+    public Animator         animator;
+    public Transform        target;
     public enum State
     {
         chase,
-        die
+        die,
+        attack,
+        tower
     }
     public State state;
 
@@ -26,16 +30,18 @@ public class Monster : MonoBehaviour
         aStar =  GetComponent<UnitAStar>();
         animator = GetComponent<Animator>();
     }
+
     private void Start()
     {
         state = State.chase;
-        currentHp = monsterData.MonsterHp;
         aStar.speed = monsterData.MonsterSpeed;
-         StartCoroutine(TargetChase());
+        currentHp = monsterData.MonsterHp;
+        StartCoroutine(TargetChase());
     }
-    void  Update() {
+    private void Update() {
         transform.LookAt(target);
-        transform.Rotate(new Vector3(0, transform.rotation.y, transform.rotation.z));
+
+        transform.Rotate(new Vector3(0, 0, transform.rotation.z));
     }
 
     IEnumerator TargetChase()
@@ -55,12 +61,12 @@ public class Monster : MonoBehaviour
             yield return new WaitForSeconds(0.7f);
         }
     }
+
     private void SetTowerTarget()
     {
-        float sortDistance = 99999;
+        float sortDistance = 99999f;
         foreach (Transform _target in GameManager.Instance.tower_Player)
         {
-            print(_target.position);
             float targetDistance = Vector3.Distance(transform.position, _target.position);
                 if(targetDistance < sortDistance)
                 {
@@ -72,7 +78,7 @@ public class Monster : MonoBehaviour
     private void SetUnitTarget()
     {
 
-        float sortDistance = Mathf.Infinity;
+        float sortDistance = 99999f;
         foreach (Transform _target in GameManager.Instance.unit_Player)
         {
             float targetDistance = Vector3.Distance(transform.position, _target.position);
@@ -89,12 +95,14 @@ public class Monster : MonoBehaviour
        currentHp -= _damage;
         if (currentHp <= 0)
         {
-            state = State.die;
-            animator.SetTrigger("isDie");
+            Die();
         }
     }
     private void Die()
     {
-        gameObject.SetActive(false); // TODO 린풀로 변경
+        state = State.die;
+        animator.SetTrigger("isDie");
+        StopCoroutine(TargetChase());
+        LeanPool.Despawn(gameObject);
     }
 }

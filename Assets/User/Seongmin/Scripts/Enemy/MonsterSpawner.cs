@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using Lean.Pool;
 
 
-public class MosterSpawner : MonoBehaviour
+public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField]
     private List<MonsterData>       monsterDatas;
@@ -13,7 +15,10 @@ public class MosterSpawner : MonoBehaviour
 
     private int                     spawnData;
     private int                     spawnDataRandomValue;
-    
+    private int                     spawnPosX;
+    private int                     spawnPosY;
+
+    private Transform               spawnTransform;
     // private 
     private void Awake()
     {
@@ -23,8 +28,11 @@ public class MosterSpawner : MonoBehaviour
     public void SpawnMonster()
     {
         spawnDataRandomValue = Random.Range(0, spawnData);
-        currentMonsterPrefab = Instantiate(monsterDatas[spawnDataRandomValue].MonsterPrefab,
-            monsterSpawnPoint.transform).GetComponent<Monster>();
+        spawnPosX = Random.Range(-8, 9);
+        spawnPosY = Random.Range(-8, 9);
+        Vector3 randPos = new Vector3(monsterSpawnPoint.transform.position.x+ spawnPosX, monsterSpawnPoint.transform.position.y, monsterSpawnPoint.transform.position.z + spawnPosY);
+        currentMonsterPrefab = LeanPool.Spawn(monsterDatas[spawnDataRandomValue].MonsterPrefab,
+            randPos,Quaternion.identity).GetComponent<Monster>();
         currentMonsterPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
 
     }

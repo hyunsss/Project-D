@@ -110,7 +110,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 153
+      additiveReferencePoseFrame: 126
     - serializedVersion: 16
       name: AttackRight_Monkey_S
       takeName: AttackRight_Monkey_S
@@ -139,7 +139,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 189
     - serializedVersion: 16
       name: Death_Monkey_S
       takeName: Death_Monkey_S
