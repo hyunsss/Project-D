@@ -42,6 +42,7 @@ public class Tower : MonoBehaviour
     }
     public void CollocateWorker(WorkerUnit worker)
     {
+        print("¹èÄ¡µÊ");
         repairWorkers.Add(worker);
     }
 

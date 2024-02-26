@@ -15,7 +15,7 @@ public class WorkerUnitMove : MonoBehaviour
     public float moveSpeed;
 
     private NavMeshAgent nav;
-    private Animator animator;
+    //private Animator animator;
 
     private Transform target;
 
@@ -24,17 +24,22 @@ public class WorkerUnitMove : MonoBehaviour
     private void Awake()
     {
         nav = GetComponent<NavMeshAgent>();
-        animator = GetComponentInChildren<Animator>();
+        //animator = GetComponentInChildren<Animator>();
 
         arrowDrawer = GetComponent<ArrowDrawer>();
 
         state = State.Idle;
     }
 
+    private void Start()
+    {
+        nav.speed = moveSpeed;
+    }
+
     private void Update()
     {
         //Input
-        target = arrowDrawer.target;
+        target = arrowDrawer.Target;
 
 
         switch (state)
@@ -54,11 +59,12 @@ public class WorkerUnitMove : MonoBehaviour
                 }
                 MoveToTarget();
                 break;
+
             default:
                 break;
         }
 
-        animator.SetInteger("moveState", (int)state);
+        //animator.SetInteger("moveState", (int)state);
     }
 
     private void MoveToTarget()
@@ -70,8 +76,8 @@ public class WorkerUnitMove : MonoBehaviour
         {
             target = null;
 
-            if (arrowDrawer.target != null)
-                Destroy(arrowDrawer.target.gameObject);
+            arrowDrawer.ResetTarget();
+            print("µµÂø");
         }
     }
 }

@@ -22,9 +22,9 @@ public class WorkerUnit : MonoBehaviour
         target.CollocateWorker(this);
     }
 
-    public void Repair()
+    public void Repair(Tower target)
     {
-
+        target.CollocateWorker(this);
     }
 
     public void Mine()

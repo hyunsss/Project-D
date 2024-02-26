@@ -17,14 +17,15 @@ public class ArrowDrawer : MonoBehaviour
     protected Vector3 startPos;
     protected Vector3 endPos;
 
-    public Transform target = null;
+    protected Transform target = null;
+    public Transform Target {  get { return target; } }
 
     private void Awake()
     {
         targetLayerMask = 1 << LayerMask.NameToLayer("Ground");
     }
 
-    public void OnMouseDown()
+    protected void OnMouseDown()
     {
         arrowRenderer.enabled = true;
 
@@ -32,7 +33,7 @@ public class ArrowDrawer : MonoBehaviour
         startPos.y = 0.01f;
     }
 
-    public void OnMouseDrag()
+    protected void OnMouseDrag()
     {
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 999, targetLayerMask))
         {
@@ -43,20 +44,17 @@ public class ArrowDrawer : MonoBehaviour
         DrawArrow();
     }
 
-    public virtual void OnMouseUp()
+    protected void OnMouseUp()
     {
         arrowRenderer.enabled = false;
 
-        if (target != null)
-        {
-            Destroy(target.gameObject);
-        }
+        ResetTarget();
 
         target = 
             Instantiate(goalPointPrefab, endPos, Quaternion.identity).transform;
     }
 
-    private void DrawArrow()
+    protected void DrawArrow()
     {
         float arrowheadSize = 0.5f;
         float arrowheadRate = (float)(arrowheadSize / Vector3.Distance(startPos, endPos));
@@ -86,4 +84,11 @@ public class ArrowDrawer : MonoBehaviour
             new Keyframe(1, 0f)); //두께를 점점 줄여서 삼각형모양으로
     }
 
+    public void ResetTarget()
+    {
+        if (target != null)
+        {
+            Destroy(target.gameObject);
+        }
+    }
 }

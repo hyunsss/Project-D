@@ -38,6 +38,7 @@ public abstract class BattleUnit : MonoBehaviour
         if (target != null && attackCoroutine == null 
             && unitMove.state != BattleUnitMove.State.Move)
         {
+            transform.rotation = Quaternion.LookRotation(target.position - transform.position).normalized;
             Attack();
         }
         else if(attackCoroutine != null

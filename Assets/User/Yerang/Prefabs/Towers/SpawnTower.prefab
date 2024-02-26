@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58d10c48e81bed49958f1eb371a9bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areaWidth: 2
+  areaHeight: 2
   maxHp: 10
   iteration: 3
   spawnCount: 5

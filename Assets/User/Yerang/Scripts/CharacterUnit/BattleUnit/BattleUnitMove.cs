@@ -39,10 +39,15 @@ public class BattleUnitMove : MonoBehaviour
         state = State.Idle;
     }
 
+    private void Start()
+    {
+        nav.speed = moveSpeed;
+    }
+
     private void Update()
     {
         //Input
-        priorityTarget = arrowDrawer.target;
+        priorityTarget = arrowDrawer.Target;
 
 
         DetectEnemy();
@@ -64,6 +69,7 @@ public class BattleUnitMove : MonoBehaviour
                 }
                 MoveToTarget();
                 break;
+
             default:
                 break;
         }
@@ -133,8 +139,7 @@ public class BattleUnitMove : MonoBehaviour
         {
             target = null;
 
-            if(arrowDrawer.target != null)
-                Destroy(arrowDrawer.target.gameObject);
+            arrowDrawer.ResetTarget();
         }
     }
 }

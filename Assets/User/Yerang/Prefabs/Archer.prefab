@@ -2866,7 +2866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  moveSpeed: 3
+  moveSpeed: 5
   detectingRange: 10
 --- !u!114 &3459402059797243513
 MonoBehaviour:
@@ -2882,7 +2882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowRenderer: {fileID: 328889584515085405}
   goalPointPrefab: {fileID: 1027410451442093995, guid: b70f096e42f0f1f4fb8b9684b18f2053, type: 3}
-  destination: {fileID: 0}
+  target: {fileID: 0}
 --- !u!136 &8822003956358123991
 CapsuleCollider:
   m_ObjectHideFlags: 0
