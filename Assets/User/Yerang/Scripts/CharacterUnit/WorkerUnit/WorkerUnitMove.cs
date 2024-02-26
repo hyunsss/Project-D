@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class UnitMove : MonoBehaviour
+public class WorkerUnitMove : MonoBehaviour
 {
     public enum State
     {

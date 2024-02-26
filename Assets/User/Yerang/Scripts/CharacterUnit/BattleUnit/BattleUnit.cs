@@ -6,11 +6,11 @@ public abstract class BattleUnit : MonoBehaviour
 {
     public string unitName;
 
-    public int maxHp;
-    protected int currentHp;
-    public int dp;
+    public float maxHp;
+    protected float currentHp;
+    public float dp;
 
-    public int ap;
+    public float ap;
     public int attackCycle;
     public float attackRange;
 
@@ -51,7 +51,7 @@ public abstract class BattleUnit : MonoBehaviour
     public abstract void Attack();
     public abstract void EndAttack();
 
-    public void GetDamage(int damage)
+    public void GetDamage(float damage)
     {
         currentHp -= damage;
 

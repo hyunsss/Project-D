@@ -6,11 +6,11 @@ public class UnitData : ScriptableObject
 {
     public string unitName;
 
-    public int maxHp;
-    protected int currentHp;
-    public int dp;
+    public float maxHp;
+    protected float currentHp;
+    public float dp;
 
-    public int ap;
+    public float ap;
     public int attackCycle;
 
     public float moveSpeed;

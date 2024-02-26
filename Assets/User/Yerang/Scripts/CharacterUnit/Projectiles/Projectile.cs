@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private int damage;
+    private float damage;
     private Transform target;
 
     public float speed;
@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
         StartCoroutine(RemoveCoroutine());
     }
 
-    public void InitProjctile(int damage, Transform target)
+    public void InitProjctile(float damage, Transform target)
     {
         this.damage = damage;
         this.target = target;
