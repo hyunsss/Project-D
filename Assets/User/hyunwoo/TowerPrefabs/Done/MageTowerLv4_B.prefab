@@ -76,7 +76,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1442357279516786, guid: 433219726e7547347a881c4403f2e85c, type: 3}
       propertyPath: m_Name
-      value: TB_MageTower_Lvl4_B
+      value: Render
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549424220923650, guid: 433219726e7547347a881c4403f2e85c, type: 3}
+      propertyPath: m_Name
+      value: Crystal
       objectReference: {fileID: 0}
     - target: {fileID: 4017560684800392, guid: 433219726e7547347a881c4403f2e85c, type: 3}
       propertyPath: m_LocalScale.x

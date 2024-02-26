@@ -78,6 +78,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Render
       objectReference: {fileID: 0}
+    - target: {fileID: 1595137788046860, guid: 072a518fa5377c94cbd06bc88640407c, type: 3}
+      propertyPath: m_Name
+      value: Crystal
+      objectReference: {fileID: 0}
     - target: {fileID: 4230660994675174, guid: 072a518fa5377c94cbd06bc88640407c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10

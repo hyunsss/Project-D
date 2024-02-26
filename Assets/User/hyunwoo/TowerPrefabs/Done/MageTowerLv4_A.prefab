@@ -74,9 +74,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4026479220148220857}
     m_Modifications:
+    - target: {fileID: 1805978754261008, guid: 91f553b133e1af744880312b04950e23, type: 3}
+      propertyPath: m_Name
+      value: Crystal
+      objectReference: {fileID: 0}
     - target: {fileID: 1969260341544988, guid: 91f553b133e1af744880312b04950e23, type: 3}
       propertyPath: m_Name
-      value: TB_MageTower_Lvl4_A
+      value: Render
       objectReference: {fileID: 0}
     - target: {fileID: 4242357179888562, guid: 91f553b133e1af744880312b04950e23, type: 3}
       propertyPath: m_LocalScale.y

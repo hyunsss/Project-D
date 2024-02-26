@@ -466,6 +466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv4_B
       objectReference: {fileID: 0}
+    - target: {fileID: 3309127374340778792, guid: eb0ea2f066db33243809bdf24d4f553b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 24fe07fe4dec8d04894b9c970b5a9ad4, type: 2}
     - target: {fileID: 4026479220148220857, guid: eb0ea2f066db33243809bdf24d4f553b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -516,6 +520,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4026479220148220857, guid: eb0ea2f066db33243809bdf24d4f553b, type: 3}
   m_PrefabInstance: {fileID: 310522766}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &326771938 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3309127374340778792, guid: eb0ea2f066db33243809bdf24d4f553b, type: 3}
+  m_PrefabInstance: {fileID: 310522766}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &328281928
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +572,6 @@ Transform:
   - {fileID: 488857377}
   - {fileID: 515768635}
   - {fileID: 1796473329}
-  - {fileID: 1591497228}
   - {fileID: 310522767}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -807,6 +815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv1
       objectReference: {fileID: 0}
+    - target: {fileID: 3309127374340778792, guid: 7d1ef861c6adda544ba1cf235e584dae, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: e431bd1a55961d1499887c61561438f0, type: 2}
     - target: {fileID: 4026479220148220857, guid: 7d1ef861c6adda544ba1cf235e584dae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -80
@@ -847,6 +859,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8040810298649057530, guid: 7d1ef861c6adda544ba1cf235e584dae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040810298649057530, guid: 7d1ef861c6adda544ba1cf235e584dae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00001144409
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -869,6 +889,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv2
       objectReference: {fileID: 0}
+    - target: {fileID: 3309127374340778792, guid: d80fa41ed6d3589489052828478e0919, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: cd75b3460e636fb4189900aab4b9e4c0, type: 2}
     - target: {fileID: 4026479220148220857, guid: d80fa41ed6d3589489052828478e0919, type: 3}
       propertyPath: m_LocalPosition.x
       value: -60
@@ -1878,6 +1902,11 @@ MonoBehaviour:
   - {fileID: 1420795015}
   - {fileID: 1780620514}
   - {fileID: 1235903201}
+  - {fileID: 1144734722}
+  - {fileID: 998679935}
+  - {fileID: 1796473331}
+  - {fileID: 1591497230}
+  - {fileID: 326771938}
 --- !u!4 &872716030
 Transform:
   m_ObjectHideFlags: 0
@@ -1971,6 +2000,11 @@ Transform:
 Animator:
   m_CorrespondingSourceObject: {fileID: 4291089778127623240, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
   m_PrefabInstance: {fileID: 976871254}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &998679935 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3309127374340778792, guid: d80fa41ed6d3589489052828478e0919, type: 3}
+  m_PrefabInstance: {fileID: 515768634}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1084064246
 PrefabInstance:
@@ -2163,6 +2197,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8229717600546183413, guid: 78dbf45920a55a04dbb1279bba9776eb, type: 3}
   m_PrefabInstance: {fileID: 1124445698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1144734722 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3309127374340778792, guid: 7d1ef861c6adda544ba1cf235e584dae, type: 3}
+  m_PrefabInstance: {fileID: 488857376}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1235903201 stripped
 Animator:
@@ -3127,15 +3166,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 328281929}
+    m_TransformParent: {fileID: 1779936966}
     m_Modifications:
     - target: {fileID: 1634155484728276909, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
       propertyPath: m_Name
       value: MageTowerLv4_A
       objectReference: {fileID: 0}
+    - target: {fileID: 3309127374340778792, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 0c99cc50eafe0644b93026298c1818f1, type: 2}
+    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.3333333
+      objectReference: {fileID: 0}
     - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: 19.5
       objectReference: {fileID: 0}
     - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3143,7 +3190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.199997
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3181,6 +3228,11 @@ PrefabInstance:
 --- !u!4 &1591497228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
+  m_PrefabInstance: {fileID: 1591497227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1591497230 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3309127374340778792, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
   m_PrefabInstance: {fileID: 1591497227}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1775853453
@@ -3319,6 +3371,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4026479220148220857, guid: 5dc6e2acce7177a44a0c1e9fc4093e18, type: 3}
   m_PrefabInstance: {fileID: 1778619598}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1779936966 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6023892949046486648, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
+  m_PrefabInstance: {fileID: 1796473328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1780620514 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3309127374340778792, guid: 5dc6e2acce7177a44a0c1e9fc4093e18, type: 3}
@@ -3336,6 +3393,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv3
       objectReference: {fileID: 0}
+    - target: {fileID: 3309127374340778792, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: bab12e7fed8341d49a9cf5006982f4ed, type: 2}
     - target: {fileID: 4026479220148220857, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40
@@ -3378,12 +3439,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6023892949046486648, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1591497228}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
 --- !u!4 &1796473329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4026479220148220857, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
+  m_PrefabInstance: {fileID: 1796473328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1796473331 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3309127374340778792, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
   m_PrefabInstance: {fileID: 1796473328}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1818770189

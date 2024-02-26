@@ -9,6 +9,7 @@ public class TowerAnimationTest : MonoBehaviour
     public Button ActiveButton;
     public Button BrokenButton;
     public Button IdleButton;
+    public Button ShotButton;
 
     public List<Animator> animators = new List<Animator>();
 
@@ -16,6 +17,7 @@ public class TowerAnimationTest : MonoBehaviour
     void Start() {
         BrokenButton.onClick.AddListener(() => SetAnimValue(2));
         ActiveButton.onClick.AddListener(() => SetAnimValue(1));
+        ShotButton.onClick.AddListener(() => VFXManager.Instance.VFXPlay(transform, VFXManager.VFXDir.Explosion));
         IdleButton.onClick.AddListener(() => SetAnimValue(0));
     }
 
