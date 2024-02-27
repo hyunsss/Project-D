@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Level 1 Imp
   monsterHp: 20
-  monsterSpeed: 3
+  monsterSpeed: 5
   monsterDamage: 2
   monsterPrefab: {fileID: 743360832720684977, guid: d6286c676e2791943bc614cf548c4431, type: 3}

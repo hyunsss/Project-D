@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Level 1 Spike
   monsterHp: 15
-  monsterSpeed: 4
+  monsterSpeed: 6
   monsterDamage: 1
   monsterPrefab: {fileID: 489413896017454839, guid: 7c7340be0d90b884090b39101e0c67cb, type: 3}

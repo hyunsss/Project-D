@@ -66,7 +66,7 @@ public class Monster : MonoBehaviour
             if (target != null&& state != State.towerReqair)
             {
                 float checkAttack = Vector3.Distance(gameObject.transform.position, target.position);
-                state = checkAttack <= 10f ? state = State.attack : state = State.chase;
+                state = checkAttack <= 15f ? state = State.attack : state = State.chase;
             }
             // user Chase
             if (state == State.chase)

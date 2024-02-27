@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Level 1 Nosedman
   monsterHp: 20
-  monsterSpeed: 3
+  monsterSpeed: 7
   monsterDamage: 2
   monsterPrefab: {fileID: 1311097520911502825, guid: c49ab540d34b35d479eae669a5adfd74, type: 3}
