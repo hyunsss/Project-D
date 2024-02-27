@@ -17,11 +17,12 @@ public class ArrowDrawer : MonoBehaviour
     protected Vector3 startPos;
     protected Vector3 endPos;
 
-    protected Transform target = null;
-    public Transform Target {  get { return target; } }
+    private BattleUnitMove battleUnitMove;
 
     private void Awake()
     {
+        battleUnitMove = GetComponent<BattleUnitMove>();
+
         targetLayerMask = 1 << LayerMask.NameToLayer("Ground");
     }
 
@@ -48,10 +49,10 @@ public class ArrowDrawer : MonoBehaviour
     {
         arrowRenderer.enabled = false;
 
-        ResetTarget();
-
-        target = 
+        Transform target = 
             Instantiate(goalPointPrefab, endPos, Quaternion.identity).transform;
+
+        battleUnitMove.SetPriorityTarget(target);
     }
 
     protected void DrawArrow()
@@ -82,13 +83,5 @@ public class ArrowDrawer : MonoBehaviour
             // ============▷
             new Keyframe(1 - arrowheadRate, arrowheadWidth),
             new Keyframe(1, 0f)); //두께를 점점 줄여서 삼각형모양으로
-    }
-
-    public void ResetTarget()
-    {
-        if (target != null)
-        {
-            Destroy(target.gameObject);
-        }
     }
 }

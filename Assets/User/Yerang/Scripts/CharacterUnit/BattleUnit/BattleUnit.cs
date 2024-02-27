@@ -58,7 +58,6 @@ public abstract class BattleUnit : MonoBehaviour
 
         if (currentHp < 0)
         {
-            currentHp = 0;
             Die();
         }
     }

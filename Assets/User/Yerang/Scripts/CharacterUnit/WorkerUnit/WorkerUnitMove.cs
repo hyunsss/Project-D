@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WorkerUnitMove : MonoBehaviour
 {
@@ -17,16 +19,18 @@ public class WorkerUnitMove : MonoBehaviour
     private NavMeshAgent nav;
     //private Animator animator;
 
+    private GameObject prevTarget;
     private Transform target;
 
-    private ArrowDrawer arrowDrawer;
+    private WorkerUnit workerUnit; //음...
+
 
     private void Awake()
     {
         nav = GetComponent<NavMeshAgent>();
         //animator = GetComponentInChildren<Animator>();
 
-        arrowDrawer = GetComponent<ArrowDrawer>();
+        workerUnit = GetComponent<WorkerUnit>();
 
         state = State.Idle;
     }
@@ -38,10 +42,6 @@ public class WorkerUnitMove : MonoBehaviour
 
     private void Update()
     {
-        //Input
-        target = arrowDrawer.Target;
-
-
         switch (state)
         {
             case State.Idle:
@@ -67,17 +67,68 @@ public class WorkerUnitMove : MonoBehaviour
         //animator.SetInteger("moveState", (int)state);
     }
 
+    public void SetTarget(Transform target)
+    {
+        if (target != null)
+        {
+            ResetTarget();
+        }
+
+        this.target = target;
+    }
+
+    private void ResetTarget()
+    {
+        if (target != null)
+        {
+            if (target.gameObject.layer == LayerMask.NameToLayer("GoalPoint"))
+                Destroy(target.gameObject);
+            else
+                target = null;
+        }
+    }
+
     private void MoveToTarget()
     {
-        nav.SetDestination(target.position);
+        if (target.gameObject.layer == LayerMask.NameToLayer("GoalPoint"))
+        {
+            nav.stoppingDistance = 0f;
+            nav.SetDestination(target.position);
 
+        }
+        else //타겟이 골 포인트가 아닐경우 타겟의 인접점까지 이동
+        {
+            Collider targetCollider = target.GetComponent<Collider>();
+            //접점
+            Vector3 tangentPoint = targetCollider.ClosestPoint(transform.position);
+
+            nav.stoppingDistance = 1.0f;
+            nav.SetDestination(tangentPoint);
+        }
+        
         if (nav.velocity.sqrMagnitude >= 0.1f //길찾기 시작할때도 남은 거리가 0으로 뜨게되므로, 움직이는 상태인지 체크
             && nav.remainingDistance <= nav.stoppingDistance + 0.1f)
         {
-            target = null;
+            if (target.gameObject.layer != LayerMask.NameToLayer("GoalPoint"))
+                ArrivalAction();
 
-            arrowDrawer.ResetTarget();
-            print("도착");
+            ResetTarget();
+        }
+    }
+
+    private void ArrivalAction()
+    {
+        if (target.TryGetComponent<TowerBeingBuilt>(out TowerBeingBuilt towerBeingBuilt))
+        {
+            workerUnit.Build(towerBeingBuilt);
+        }
+        else if (target.TryGetComponent<Tower>(out Tower tower))
+        {
+            workerUnit.Repair(tower);
+        }
+        else if(target.TryGetComponent<Field>(out Field field))
+        {
+            workerUnit.Mine(field);
         }
     }
 }

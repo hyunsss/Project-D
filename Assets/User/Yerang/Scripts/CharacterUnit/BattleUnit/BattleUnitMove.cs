@@ -26,15 +26,12 @@ public class BattleUnitMove : MonoBehaviour
     private Transform target;
     private Transform priorityTarget;
 
-    private ArrowDrawer arrowDrawer;
-
     private void Awake()
     {
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
 
         attackRange = GetComponent<BattleUnit>().attackRange;
-        arrowDrawer = GetComponent<ArrowDrawer>();
 
         state = State.Idle;
     }
@@ -46,10 +43,6 @@ public class BattleUnitMove : MonoBehaviour
 
     private void Update()
     {
-        //Input
-        priorityTarget = arrowDrawer.Target;
-
-
         DetectEnemy();
 
         switch (state)
@@ -117,6 +110,29 @@ public class BattleUnitMove : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectingRange);
     }
 
+    public void SetPriorityTarget(Transform target) //ArrowDrawer로 설정
+    {
+        if (priorityTarget != null)
+        {
+            ResetTarget();
+        }
+
+        this.priorityTarget = target;
+    }
+
+    private void ResetTarget()
+    {
+        if (priorityTarget != null)
+        {
+            Destroy(priorityTarget.gameObject);
+        }
+
+        if (target != null)
+        {
+            target = null;
+        }
+    }
+
     private void MoveToTarget()
     {
         //타겟이 적일 경우 사정거리 안에 들어올 때 까지만 이동
@@ -137,9 +153,7 @@ public class BattleUnitMove : MonoBehaviour
         if (nav.velocity.sqrMagnitude >= 0.1f //길찾기 시작할때도 남은 거리가 0으로 뜨게되므로, 움직이는 상태인지 체크
             && nav.remainingDistance <= nav.stoppingDistance + 0.1f)
         {
-            target = null;
-
-            arrowDrawer.ResetTarget();
+            ResetTarget();
         }
     }
 }

@@ -36,6 +36,12 @@ public class TowerBeingBuilt : MonoBehaviour
 
     public void CollocateWorker(WorkerUnit worker)
     {
+        print("°Ç¼³ ¹èÄ¡µÊ");
         workers.Add(worker);
+    }
+
+    public void DecollocateWorker(WorkerUnit worker)
+    {
+        workers.Remove(worker);
     }
 }

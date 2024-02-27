@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] private int areaWidth = 2;
-    [SerializeField] private int areaHeight = 2;
+    [SerializeField] protected int areaWidth = 2;
+    [SerializeField] protected int areaHeight = 2;
 
     public int AreaWidth { get => areaWidth; }
     public int AreaHeight { get => areaHeight; }
 
-    public float maxHp;
-    private float currentHp;
+    public int level;
 
-    private List<WorkerUnit> repairWorkers = new List<WorkerUnit>();
-    private Coroutine repairCoroutine;
+    public float maxHp;
+    protected float currentHp;
+
+    protected List<WorkerUnit> repairWorkers = new List<WorkerUnit>();
+    protected Coroutine repairCoroutine = null;
 
     private void Awake()
     {
@@ -26,6 +28,11 @@ public class Tower : MonoBehaviour
     public void GetDamage(float damage)
     {
         currentHp -= damage;
+
+        if(currentHp <= 0)
+        {
+            Destroyed();
+        }
     }
 
     public IEnumerator Repaired()
@@ -40,10 +47,26 @@ public class Tower : MonoBehaviour
         }
         currentHp += repairedHpPerSec;
     }
+
     public void CollocateWorker(WorkerUnit worker)
     {
-        print("¹èÄ¡µÊ");
+        print("¼ö¸® ¹èÄ¡µÊ");
         repairWorkers.Add(worker);
+
+        if(repairCoroutine == null)
+        {
+            repairCoroutine = StartCoroutine(Repaired());
+        }
+    }
+
+    public void DecollocateWorker(WorkerUnit worker)
+    {
+        repairWorkers.Remove(worker);
+
+        if(repairWorkers.Count == 0)
+        {
+            StopCoroutine(repairCoroutine);
+        }
     }
 
     public void Destroyed()

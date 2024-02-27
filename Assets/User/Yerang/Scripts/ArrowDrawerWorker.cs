@@ -6,23 +6,29 @@ using UnityEngine.UIElements;
 
 public class ArrowDrawerWorker : ArrowDrawer
 {
+    private WorkerUnitMove workerUnitMove;
+
     private void Awake()
     {
+        workerUnitMove = GetComponent<WorkerUnitMove>();
+
         targetLayerMask = 1 << LayerMask.NameToLayer("Ground")
-            | 1 << LayerMask.NameToLayer("Tower");
+            | 1 << LayerMask.NameToLayer("Tower")
+            | 1 << LayerMask.NameToLayer("TowerBeingBuilt")
+            | 1 << LayerMask.NameToLayer("Field");
     }
 
     public new void OnMouseDrag()
     {
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 999, targetLayerMask))
         {
-            if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Tower"))
+            if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
-                endPos = hit.transform.position;
+                endPos = hit.point;
             }
             else
             {
-                endPos = hit.point;
+                endPos = hit.transform.position;
             }
             endPos.y = 0.1f;
         }
@@ -34,27 +40,16 @@ public class ArrowDrawerWorker : ArrowDrawer
     {
         arrowRenderer.enabled = false;
 
-        ResetTarget();
-
-        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Tower"))
+        Transform target;
+        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            target = hit.transform;
+            target =
+                Instantiate(goalPointPrefab, endPos, Quaternion.identity).transform;
         }
         else
         {
-            target =
-            Instantiate(goalPointPrefab, endPos, Quaternion.identity).transform;
+            target = hit.transform;
         }
-    }
-
-    public new void ResetTarget()
-    {
-        if (target != null)
-        {
-            if (target.gameObject.layer == LayerMask.NameToLayer("Tower"))
-                target = null;
-            else
-                Destroy(target.gameObject);
-        }
+        workerUnitMove.SetTarget(target);
     }
 }
