@@ -34,17 +34,24 @@ public class MonsterSpawner : MonoBehaviour
         currentMonsterPrefab = LeanPool.Spawn(monsterDatas[spawnDataRandomValue].MonsterPrefab,
             randPos,Quaternion.identity).GetComponent<Monster>();
         currentMonsterPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
+        currentMonsterPrefab.state = Monster.State.chase;
 
     }
-    public void SpawnTowerKeeper(GameObject _repairTarget)  //TODO 타워 키퍼에게 타겟을 타워로 매개변수 보낸거 활용하기
+    public void SpawnTowerKeeper(MonsterTower _tower) 
     {
         spawnDataRandomValue = Random.Range(0, spawnData);
         spawnPosX = Random.Range(-8, 9);
         spawnPosY = Random.Range(-8, 9);
-        Vector3 randPos = new Vector3(monsterSpawnPoint.transform.position.x + spawnPosX, monsterSpawnPoint.transform.position.y, monsterSpawnPoint.transform.position.z + spawnPosY);
-        currentMonsterPrefab = LeanPool.Spawn(monsterDatas[spawnDataRandomValue].MonsterPrefab,
-            randPos, Quaternion.identity).GetComponent<MonsterTowerKeeper>();
-        currentMonsterPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
-        
+
+        Vector3 randPos = new Vector3(monsterSpawnPoint.transform.position.x + spawnPosX, 
+            monsterSpawnPoint.transform.position.y, 
+            monsterSpawnPoint.transform.position.z + spawnPosY);
+
+        var currentKeeperPrefab = LeanPool.Spawn(monsterDatas[spawnDataRandomValue].MonsterPrefab,
+            randPos, Quaternion.identity).GetComponent<Monster>();
+
+        currentKeeperPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
+        currentKeeperPrefab.SetTowerObject(_tower);
+        currentKeeperPrefab.state = Monster.State.towerReqair;
     }
 }

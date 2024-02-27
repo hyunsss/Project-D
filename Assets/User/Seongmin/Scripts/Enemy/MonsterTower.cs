@@ -6,9 +6,13 @@ public class MonsterTower : MonoBehaviour
 {
     [SerializeField]
     private float towerMaxHp = 100f;
+    public float   TowerMaxHp { get { return towerMaxHp; } set { towerMaxHp = value; } }
     [SerializeField]
-    private float towerCurrnetHp;
-   
+    private float towerCurrentHp;
+    public float TowerCurrnetHp { get { return towerCurrentHp; } set { towerCurrentHp = value; } }
+    [SerializeField]
+    private int keeperMaxCount = 10;
+    private int keeperSpawnCount = 0;
     private MonsterSpawner      monsterSpawner;
 
 
@@ -19,29 +23,36 @@ public class MonsterTower : MonoBehaviour
 
     private void Start()
     {
-        towerCurrnetHp = towerMaxHp;
+        towerCurrentHp = 30f;
         StartCoroutine(spawnMonster());
     }
     IEnumerator spawnMonster()
     {
-        while(towerCurrnetHp > 0)
+        
+        while(towerCurrentHp > 0)
         {
+
             monsterSpawner.SpawnMonster();
-            
+            if(towerCurrentHp < towerMaxHp / 2 && keeperSpawnCount <= keeperMaxCount)
+            {
+                keeperSpawnCount++;
+                print("Keeper가 소환 되었습니다 ! ");
+                monsterSpawner.SpawnTowerKeeper(this);
+            }
             yield return new WaitForSeconds(1f);
         }
+        yield break;
     }
-    private void SpawnTowerKeeper()
-    {
-        monsterSpawner.SpawnTowerKeeper(gameObject); //TODO 타워 키퍼에게 타겟을 타워로 매개변수 보낸거 활용하기
-    }
-
     public void HitDamage(float _damage)
     {
-        towerCurrnetHp -= _damage;
-        if(towerCurrnetHp <= 0) 
+        towerCurrentHp -= _damage;
+        if(towerCurrentHp <= 0) 
         {
             
         }
+    }
+    public void RepairingTower(float _heal)
+    {
+        towerCurrentHp += _heal;
     }
 }

@@ -1,4 +1,5 @@
 using Lean.Pool;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,11 +17,13 @@ public class Monster : MonoBehaviour
     public UnitAStar        aStar;
     public Animator         animator;
     public Transform        target;
+
+    private float           repairing = 5f;
+    private MonsterTower    tower = null;
     public enum State
     {
         chase,
         die,
-        attack,
         towerReqair
     }
     public State state;
@@ -29,17 +32,26 @@ public class Monster : MonoBehaviour
     {
         aStar =  GetComponent<UnitAStar>();
         animator = GetComponent<Animator>();
+        tower = GetComponent<MonsterTower>();
     }
 
-    protected virtual void Start()
+    protected void Start()
     {
-        state = State.chase;
+        
         aStar.speed = monsterData.MonsterSpeed;
         currentHp = monsterData.MonsterHp;
         StartCoroutine(ChangeState());
     }
     protected void Update() {
-        transform.LookAt(target);
+        if(state == State.towerReqair )
+        {
+            transform.LookAt(tower.transform);
+        }
+        else
+        {
+            transform.LookAt(target);
+        }
+       
 
         transform.Rotate(new Vector3(0, 0, transform.rotation.z));
     }
@@ -47,14 +59,30 @@ public class Monster : MonoBehaviour
     {
         while (state != State.die)
         {
-            if(state == State.chase)
+            // user Case
+            if (state == State.chase)
             {
-                StartCoroutine(TargetChase());
+               TargetChase();
+             yield return new WaitForSeconds(0.7f);
             }
-            if (state == State.towerReqair)
+            // Monster Tower Repairing
+            if (state == State.towerReqair && tower != null) 
             {
-              //  StartCoroutine(TowerRepair(()); //TODO 매개변수 넣기
+                if(tower.TowerCurrnetHp < tower.TowerMaxHp)
+                {
+                    tower.RepairingTower(repairing);
+                    animator.SetTrigger("isRepair");
+                }
+                // State Change
+                else
+                {
+                    state = State.chase;  
+                }
+                yield return new WaitForSeconds(1f);
             }
+
+
+            yield return new WaitForSeconds(0.7f);
         }
         if (state == State.die)
         {
@@ -64,9 +92,8 @@ public class Monster : MonoBehaviour
 
     }
 
-    protected IEnumerator TargetChase()
+    protected void TargetChase()
     {
-   
             if(GameManager.Instance.tower_Player.Count > 0)
             {
                 SetTowerTarget();
@@ -77,15 +104,13 @@ public class Monster : MonoBehaviour
                 SetUnitTarget();
                 aStar.Chase(target);
             }
-            yield return new WaitForSeconds(0.7f);
     }
-    protected IEnumerator TowerRepair(GameObject _repairTower)
+    public void SetTowerObject(MonsterTower _tower) //MonsterTower
     {
-        // 수리할 타워 정하고 
-        yield return new WaitForSeconds(1f);
+        tower = _tower;
+        state = State.towerReqair;
     }
-
-    protected void SetTowerTarget()
+    protected void SetTowerTarget() //UserTower
     {
         float sortDistance = 99999f;
         foreach (Transform _target in GameManager.Instance.tower_Player)
@@ -98,7 +123,7 @@ public class Monster : MonoBehaviour
                 }
         }
     }
-    protected void SetUnitTarget()
+    protected void SetUnitTarget() //UserUnit
     {
 
         float sortDistance = 99999f;
@@ -125,7 +150,6 @@ public class Monster : MonoBehaviour
     {
         state = State.die;
         animator.SetTrigger("isDie");
-        StopCoroutine(TargetChase());
         LeanPool.Despawn(gameObject);
     }
 }
