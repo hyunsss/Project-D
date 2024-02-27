@@ -536,7 +536,6 @@ GameObject:
   - component: {fileID: 6711743729851123785}
   - component: {fileID: 7752267327326619304}
   - component: {fileID: -2432767150085969993}
-  - component: {fileID: 858326980742280573}
   m_Layer: 8
   m_Name: 01_Monkeydong_S
   m_TagString: Untagged
@@ -665,20 +664,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &858326980742280573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4773305875034289141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd22b4e46acc2d4c8e99eaa3c7d3fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders: []
-  checkCollider: {fileID: 6066333715881961469}
 --- !u!1 &4944650161571186522
 GameObject:
   m_ObjectHideFlags: 0

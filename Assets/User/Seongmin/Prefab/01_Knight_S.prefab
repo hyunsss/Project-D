@@ -692,7 +692,6 @@ GameObject:
   - component: {fileID: -2896644685924337729}
   - component: {fileID: 6691293432818445765}
   - component: {fileID: 4377082805392364572}
-  - component: {fileID: -432075621946565294}
   m_Layer: 8
   m_Name: 01_Knight_S
   m_TagString: Untagged
@@ -821,20 +820,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &-432075621946565294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6125368571652672990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd22b4e46acc2d4c8e99eaa3c7d3fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders: []
-  checkCollider: {fileID: 3264773430230062655}
 --- !u!1 &6344710769516042549
 GameObject:
   m_ObjectHideFlags: 0

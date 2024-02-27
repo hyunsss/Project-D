@@ -2,6 +2,7 @@ using Lean.Pool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -17,6 +18,7 @@ public class Monster : MonoBehaviour
     public UnitAStar        aStar;
     public Animator         animator;
     public Transform        target;
+    
 
     private float           repairing = 5f;
     private MonsterTower    tower = null;
@@ -24,7 +26,8 @@ public class Monster : MonoBehaviour
     {
         chase,
         die,
-        towerReqair
+        towerReqair,
+        attack
     }
     public State state;
 
@@ -45,6 +48,7 @@ public class Monster : MonoBehaviour
     protected void Update() {
         if(state == State.towerReqair )
         {
+
             transform.LookAt(tower.transform);
         }
         else
@@ -59,14 +63,21 @@ public class Monster : MonoBehaviour
     {
         while (state != State.die)
         {
+            if (target != null)
+            {
+                float checkAttack = Vector3.Distance(gameObject.transform.position, target.position);
+                state = checkAttack <= 10f ? state = State.attack : state = State.chase;
+            }
             // user Case
             if (state == State.chase)
             {
-               TargetChase();
-             yield return new WaitForSeconds(0.7f);
+               
+         
+                    TargetChase();
+                
             }
             // Monster Tower Repairing
-            if (state == State.towerReqair && tower != null) 
+            else if (state == State.towerReqair && tower != null) 
             {
                 if(tower.TowerCurrnetHp < tower.TowerMaxHp)
                 {
@@ -78,10 +89,14 @@ public class Monster : MonoBehaviour
                 {
                     state = State.chase;  
                 }
-                yield return new WaitForSeconds(1f);
             }
-
-
+            // Mpnster Attack
+            else if(state == State.attack)
+            {
+               
+                animator.SetTrigger("isAttack");
+                Debug.Log("Àß ¸ÂÀ½");
+            }
             yield return new WaitForSeconds(0.7f);
         }
         if (state == State.die)
@@ -105,11 +120,7 @@ public class Monster : MonoBehaviour
                 aStar.Chase(target);
             }
     }
-    public void SetTowerObject(MonsterTower _tower) //MonsterTower
-    {
-        tower = _tower;
-        state = State.towerReqair;
-    }
+
     protected void SetTowerTarget() //UserTower
     {
         float sortDistance = 99999f;
@@ -138,6 +149,11 @@ public class Monster : MonoBehaviour
         }
     }
 
+    public void SetTowerObject(MonsterTower _tower) //MonsterTower
+    {
+        tower = _tower;
+        state = State.towerReqair;
+    }
     protected void HitDamage(float _damage)
     {
        currentHp -= _damage;

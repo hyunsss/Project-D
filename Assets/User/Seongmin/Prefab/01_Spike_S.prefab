@@ -172,7 +172,6 @@ GameObject:
   - component: {fileID: -5887579739370032611}
   - component: {fileID: -4772480317747283926}
   - component: {fileID: 789937962558587369}
-  - component: {fileID: -5794831451807851860}
   m_Layer: 8
   m_Name: 01_Spike_S
   m_TagString: Untagged
@@ -301,20 +300,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &-5794831451807851860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 489413896017454839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd22b4e46acc2d4c8e99eaa3c7d3fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders: []
-  checkCollider: {fileID: 73628003078678232}
 --- !u!1 &669041745200331455
 GameObject:
   m_ObjectHideFlags: 0
