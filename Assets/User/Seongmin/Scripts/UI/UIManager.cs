@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    UI_Boss_Text uiBossText;
+    private void Awake()
     {
-        
-    }
+        uiBossText = GetComponent<UI_Boss_Text>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

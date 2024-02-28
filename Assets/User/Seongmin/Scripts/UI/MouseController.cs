@@ -33,21 +33,12 @@ public class MouseController : MonoBehaviour
                     print("몬스터가 선택 해제 되었습니다.");
                     DeSelected();
                 }
-
             }
-
         }
         if(target != null)
         {
             Selected_image.transform.position = target.transform.position+Vector3.up*10f;
-
-            //unitCam.transform.position = new Vector3(0, 2f, 3f);
-            //unitCam.transform.Rotate(new Vector3(30f, 180f, 0));
-            //unitCam.position = new Vector3(target.transform.position.x,target.transform.position.y + 2f, target.transform.position.z+3f);
-            //unitCam.rotation =  Quaternion.Euler( - 20f,180f ,0);
         }   
-       
-        gameObject.SetActive(true);
     }
 
     private void ClickSelected(GameObject _target)
