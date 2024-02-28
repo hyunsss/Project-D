@@ -18,21 +18,44 @@ public class WorkerUnit : MonoBehaviour
     public float repairSpeed;
     public float mineSpeed;
 
-    public void Build(TowerBeingBuilt target)
+    private Installation installation;
+
+    private void Update()
     {
-        state = State.Build;
-        target.CollocateWorker(this);
+
     }
 
-    public void Repair(Tower target)
+    public void Collocate(Installation target)
     {
-        state = State.Repair;
+        installation = target;
         target.CollocateWorker(this);
+
+        switch (installation.type)
+        {
+            case Installation.Type.Tower:
+                state = State.Repair;
+                break;
+
+            case Installation.Type.TowerBeingBuilt:
+                state = State.Build;
+                break;
+
+            case Installation.Type.Field:
+                state = State.Mine;
+                break;
+            default:
+                break;
+        }
     }
 
-    public void Mine(Field target)
+    public void Decollocate()
     {
-        state = State.Mine;
-        target.CollocateWorker(this);
+        if(installation != null)
+        {
+            installation.DecollocateWorker(this);
+            installation = null;
+        }
+
+        state = State.Idle;
     }
 }

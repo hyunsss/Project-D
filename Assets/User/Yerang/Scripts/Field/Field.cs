@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Field : MonoBehaviour
+public class Field : Installation
 {
-    private List<WorkerUnit> workers = new List<WorkerUnit>();
     private Coroutine MineCoroutine;
 
     Coroutine minedCoroutine = null;
+
+    private void Awake()
+    {
+        type = Type.Field;
+    }
 
     public IEnumerator MinedCoroutine()
     {
@@ -22,10 +26,11 @@ public class Field : MonoBehaviour
         //
     }
 
-    public void CollocateWorker(WorkerUnit worker)
+    public override void CollocateWorker(WorkerUnit worker)
     {
+        base.CollocateWorker(worker);
+
         print("¹ç ¹èÄ¡µÊ");
-        workers.Add(worker);
 
         if (minedCoroutine == null)
         {
@@ -33,9 +38,11 @@ public class Field : MonoBehaviour
         }
     }
 
-    public void DecollocateWorker(WorkerUnit worker)
+    public override void DecollocateWorker(WorkerUnit worker)
     {
-        workers.Remove(worker);
+        base.DecollocateWorker(worker);
+
+        print("¹ç ¹èÄ¡ ÇØÁ¦µÊ");
 
         if (workers.Count == 0)
         {

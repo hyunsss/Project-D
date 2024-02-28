@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerBeingBuilt : MonoBehaviour
+public class TowerBeingBuilt : Installation
 {
     public Tower tower;
 
@@ -10,8 +10,10 @@ public class TowerBeingBuilt : MonoBehaviour
     public float completeTime;
     private float currentTime;
 
-    [SerializeField]
-    private List<WorkerUnit> workers = new List<WorkerUnit>();
+    private void Awake()
+    {
+        type = Type.TowerBeingBuilt;
+    }
 
     private void Start()
     {
@@ -29,19 +31,22 @@ public class TowerBeingBuilt : MonoBehaviour
 
         if (currentTime >= completeTime)
         {
-            Instantiate(tower);
+            Instantiate(tower, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
 
-    public void CollocateWorker(WorkerUnit worker)
+    public override void CollocateWorker(WorkerUnit worker)
     {
+        base.CollocateWorker(worker);
+
         print("건설 배치됨");
-        workers.Add(worker);
     }
 
-    public void DecollocateWorker(WorkerUnit worker)
+    public override void DecollocateWorker(WorkerUnit worker)
     {
-        workers.Remove(worker);
+        base.DecollocateWorker(worker);
+
+        print("건설 배치 해제됨");
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Tower : Installation
 {
     [SerializeField] protected int areaWidth = 2;
     [SerializeField] protected int areaHeight = 2;
@@ -15,12 +15,12 @@ public class Tower : MonoBehaviour
     public float maxHp;
     protected float currentHp;
 
-    protected List<WorkerUnit> repairWorkers = new List<WorkerUnit>();
     protected Coroutine repairCoroutine = null;
 
     private void Awake()
     {
         currentHp = maxHp;
+        type = Type.Tower;
     }
 
     protected virtual void Start() { }
@@ -41,17 +41,18 @@ public class Tower : MonoBehaviour
 
         //반복
         float repairedHpPerSec = 0;
-        foreach (WorkerUnit workerUnit in repairWorkers)
+        foreach (WorkerUnit workerUnit in workers)
         {
             repairedHpPerSec += workerUnit.repairSpeed;
         }
         currentHp += repairedHpPerSec;
     }
 
-    public void CollocateWorker(WorkerUnit worker)
+    public override void CollocateWorker(WorkerUnit worker)
     {
+        base.CollocateWorker(worker);
+
         print("수리 배치됨");
-        repairWorkers.Add(worker);
 
         if(repairCoroutine == null)
         {
@@ -59,11 +60,13 @@ public class Tower : MonoBehaviour
         }
     }
 
-    public void DecollocateWorker(WorkerUnit worker)
+    public override void DecollocateWorker(WorkerUnit worker)
     {
-        repairWorkers.Remove(worker);
+        base.DecollocateWorker(worker);
 
-        if(repairWorkers.Count == 0)
+        print("수리 배치 해제됨");
+
+        if(workers.Count == 0)
         {
             StopCoroutine(repairCoroutine);
         }

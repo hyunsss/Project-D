@@ -9,6 +9,7 @@ public class SpawnTower : Tower
     public GameObject characterPrefab;
 
     private Vector3 spawnPoint;
+    private int spawnCount;
 
     protected override void Start()
     {
@@ -18,7 +19,7 @@ public class SpawnTower : Tower
 
     public void Spawn()
     {
-        StartCoroutine(SpawnCoroutine(5));
+        StartCoroutine(SpawnCoroutine(spawnCount));
     }
 
     private IEnumerator SpawnCoroutine(int spawnCount)

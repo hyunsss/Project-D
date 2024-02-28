@@ -6,10 +6,12 @@ using UnityEngine.UIElements;
 
 public class ArrowDrawerWorker : ArrowDrawer
 {
+    private WorkerUnit workerUnit;
     private WorkerUnitMove workerUnitMove;
 
     private void Awake()
     {
+        workerUnit = GetComponent<WorkerUnit>();
         workerUnitMove = GetComponent<WorkerUnitMove>();
 
         targetLayerMask = 1 << LayerMask.NameToLayer("Ground")
@@ -36,9 +38,21 @@ public class ArrowDrawerWorker : ArrowDrawer
         DrawArrow();
     }
 
+    
+
     public new void OnMouseUp()
     {
         arrowRenderer.enabled = false;
+
+        if(hit.transform == null)
+        {
+            return;
+        }
+
+        if(workerUnit.state != WorkerUnit.State.Idle)
+        {
+            workerUnit.Decollocate();
+        }
 
         Transform target;
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))

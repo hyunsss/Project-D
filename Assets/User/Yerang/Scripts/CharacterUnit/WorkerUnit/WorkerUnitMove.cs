@@ -110,25 +110,9 @@ public class WorkerUnitMove : MonoBehaviour
             && nav.remainingDistance <= nav.stoppingDistance + 0.1f)
         {
             if (target.gameObject.layer != LayerMask.NameToLayer("GoalPoint"))
-                ArrivalAction();
+                workerUnit.Collocate(target.GetComponent<Installation>());
 
             ResetTarget();
-        }
-    }
-
-    private void ArrivalAction()
-    {
-        if (target.TryGetComponent<TowerBeingBuilt>(out TowerBeingBuilt towerBeingBuilt))
-        {
-            workerUnit.Build(towerBeingBuilt);
-        }
-        else if (target.TryGetComponent<Tower>(out Tower tower))
-        {
-            workerUnit.Repair(tower);
-        }
-        else if(target.TryGetComponent<Field>(out Field field))
-        {
-            workerUnit.Mine(field);
         }
     }
 }
