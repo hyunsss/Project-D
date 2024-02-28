@@ -10,6 +10,8 @@ public class SpawnTower : Tower
 
     private Vector3 spawnPoint;
 
+    private bool isSpawning = false;
+
     protected override void Start()
     {
         spawnPoint = transform.localPosition + transform.localRotation 
@@ -23,7 +25,10 @@ public class SpawnTower : Tower
 
     private IEnumerator SpawnCoroutine(int spawnCount)
     {
-        print("스폰");
+        while (isSpawning) yield return null; //스폰중인 상태면 대기
+
+        isSpawning = true;
+        print($"Spawn 코루틴 진입: {spawnCount}");
         for (int i = 0; i < spawnCount; i++)
         {
             yield return new WaitForSeconds(iteration);
@@ -32,6 +37,7 @@ public class SpawnTower : Tower
                 Instantiate(characterPrefab, spawnPoint, transform.rotation,
                 transform.GetChild(0)); //0: SpawnCharacters
         }
+        isSpawning = false;
         yield break;
     }
 }

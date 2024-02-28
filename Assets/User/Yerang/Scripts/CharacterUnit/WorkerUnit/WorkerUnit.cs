@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //일꾼 유닛: 건설, 수리, 자원캐기
-public class WorkerUnit : MonoBehaviour
+public class WorkerUnit : Unit
 {
     public enum State
     {
@@ -18,7 +18,7 @@ public class WorkerUnit : MonoBehaviour
     public float repairSpeed;
     public float mineSpeed;
 
-    private Installation installation;
+    private Installation belongInstallation;
 
     private void Update()
     {
@@ -27,10 +27,10 @@ public class WorkerUnit : MonoBehaviour
 
     public void Collocate(Installation target)
     {
-        installation = target;
+        belongInstallation = target;
         target.CollocateWorker(this);
 
-        switch (installation.type)
+        switch (belongInstallation.type)
         {
             case Installation.Type.Tower:
                 state = State.Repair;
@@ -50,10 +50,10 @@ public class WorkerUnit : MonoBehaviour
 
     public void Decollocate()
     {
-        if(installation != null)
+        if(belongInstallation != null)
         {
-            installation.DecollocateWorker(this);
-            installation = null;
+            belongInstallation.DecollocateWorker(this);
+            belongInstallation = null;
         }
 
         state = State.Idle;

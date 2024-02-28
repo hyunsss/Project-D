@@ -1,15 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//2022.3.19
-public abstract class BattleUnit : MonoBehaviour
+
+public abstract class BattleUnit : Unit
 {
-    public string unitName;
-
-    public float maxHp;
-    protected float currentHp;
-    public float dp;
-
     public float ap;
     public int attackCycle;
     public float attackRange;
@@ -51,21 +45,6 @@ public abstract class BattleUnit : MonoBehaviour
 
     public abstract void Attack();
     public abstract void EndAttack();
-
-    public void GetDamage(float damage)
-    {
-        currentHp -= damage;
-
-        if (currentHp < 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
 
     public void SetPriorityTarget(Transform target)
     {
