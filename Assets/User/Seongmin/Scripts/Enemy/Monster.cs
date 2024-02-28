@@ -57,7 +57,7 @@ public class Monster : MonoBehaviour
         }
 
         float checkMove = Vector3.Distance(transform.position, moveCheck);
-        if(checkMove > 0.2f)
+        if(checkMove > 0.08f)
         {
             animator.SetTrigger("isRun");
         }
@@ -72,7 +72,7 @@ public class Monster : MonoBehaviour
             if (target != null&& state != State.towerReqair)
             {
                 float checkAttack = Vector3.Distance(gameObject.transform.position, target.position);
-                state = checkAttack <= 15f ? state = State.attack : state = State.chase;
+                state = checkAttack <= 18f ? state = State.attack : state = State.chase;
             }
             // user Chase
             if (state == State.chase)
