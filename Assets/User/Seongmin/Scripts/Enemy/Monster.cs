@@ -10,18 +10,18 @@ using UnityEngine.UIElements;
 public class Monster : MonoBehaviour
 {
     [SerializeField]
-    protected MonsterData     monsterData;
+    protected MonsterData       monsterData;
     [HideInInspector]
-    public MonsterData      MonsterData { set { monsterData = value; } }
+    public MonsterData          MonsterData { set { monsterData = value; } }
     [HideInInspector]
-    public float            currentHp;
-    public UnitAStar        aStar;
-    public Animator         animator;
-    public Transform        target;
-    
+    public float                currentHp;
+    public UnitAStar            aStar;
+    public Animator             animator;
+    public Transform            target;
 
-    private float           repairing = 5f;
-    private MonsterTower    tower = null;
+    private Vector3             moveCheck;
+    private float               repairing = 5f;
+    private MonsterTower        tower = null;
     public enum State
     {
         chase,
@@ -40,7 +40,7 @@ public class Monster : MonoBehaviour
 
     protected void Start()
     {
-        
+        moveCheck = transform.position;
         aStar.speed = monsterData.MonsterSpeed;
         currentHp = monsterData.MonsterHp;
         StartCoroutine(ChangeState());
@@ -55,8 +55,14 @@ public class Monster : MonoBehaviour
         {
             transform.LookAt(target);
         }
-       
 
+        float checkMove = Vector3.Distance(transform.position, moveCheck);
+        if(checkMove > 0.2f)
+        {
+            animator.SetTrigger("isRun");
+        }
+        moveCheck = transform.position;
+        
         transform.Rotate(new Vector3(0, 0, transform.rotation.z));
     }
     protected IEnumerator ChangeState()
@@ -71,15 +77,11 @@ public class Monster : MonoBehaviour
             // user Chase
             if (state == State.chase)
             {
-               
-         
                     TargetChase();
-                
             }
             // Mpnster Attack
             else if (state == State.attack)
             {
-
                 animator.SetTrigger("isAttack");
                 Debug.Log("Àß ¸ÂÀ½");
             }
@@ -98,11 +100,15 @@ public class Monster : MonoBehaviour
                 }
             }
            
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(1.5f);
         }
         if (state == State.die)
         {
 
+            yield break;
+        }
+        else
+        {
             yield break;
         }
 

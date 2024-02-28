@@ -6,8 +6,8 @@ using UnityEditor.Rendering;
 
 public class UI_Enemy_Index : MonoBehaviour
 {
-    public List<TextMeshProUGUI> enemyIndex ;
-    float speed =30f;
+    public List<TextMeshProUGUI>        enemyIndex ;
+    float                               speed =50f;
 
     private void Awake()
     {
@@ -20,6 +20,10 @@ public class UI_Enemy_Index : MonoBehaviour
 
             Vector3 newPos = enemy.rectTransform.position + Vector3.right * speed * Time.deltaTime;
             enemy.rectTransform.position = newPos;
+            if(enemy.rectTransform.position.x > 2200f)
+            {
+                enemy.rectTransform.position = new Vector3(enemy.rectTransform.position.x - 2200f, enemy.rectTransform.position.y, enemy.rectTransform.position.z);
+            }
         }
     }
 }

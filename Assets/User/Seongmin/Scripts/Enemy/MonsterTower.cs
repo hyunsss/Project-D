@@ -5,14 +5,14 @@ using UnityEngine;
 public class MonsterTower : MonoBehaviour
 {
     [SerializeField]
-    private float towerMaxHp = 100f;
-    public float   TowerMaxHp { get { return towerMaxHp; } set { towerMaxHp = value; } }
+    private float               towerMaxHp = 100f;
+    public float                TowerMaxHp { get { return towerMaxHp; } set { towerMaxHp = value; } }
     [SerializeField]
-    private float towerCurrentHp;
-    public float TowerCurrnetHp { get { return towerCurrentHp; } set { towerCurrentHp = value; } }
+    private float               towerCurrentHp;
+    public float                TowerCurrnetHp { get { return towerCurrentHp; } set { towerCurrentHp = value; } }
     [SerializeField]
-    private int keeperMaxCount = 10;
-    private int keeperSpawnCount = 0;
+    private int                 keeperMaxCount = 10;
+    private int                 keeperSpawnCount = 0;
     private MonsterSpawner      monsterSpawner;
 
 
@@ -39,7 +39,7 @@ public class MonsterTower : MonoBehaviour
                 print("Keeper가 소환 되었습니다 ! ");
                 monsterSpawner.SpawnTowerKeeper(this);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
         yield break;
     }
