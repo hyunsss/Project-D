@@ -24,6 +24,6 @@ public class Unit : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 }

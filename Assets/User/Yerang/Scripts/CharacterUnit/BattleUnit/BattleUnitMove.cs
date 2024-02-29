@@ -124,7 +124,9 @@ public class BattleUnitMove : MonoBehaviour
     {
         if (priorityTarget != null)
         {
-            Destroy(priorityTarget.gameObject);
+            Lean.Pool.LeanPool.Despawn(priorityTarget.gameObject);
+            priorityTarget = null;
+            target = null;
         }
 
         if (target != null)

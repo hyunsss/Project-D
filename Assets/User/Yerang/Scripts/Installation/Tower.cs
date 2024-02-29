@@ -17,13 +17,11 @@ public class Tower : Installation
 
     protected Coroutine repairCoroutine = null;
 
-    private void Awake()
+    protected virtual void OnEnable()
     {
         currentHp = maxHp;
         type = Type.Tower;
     }
-
-    protected virtual void Start() { }
 
     public void GetDamage(float damage)
     {
@@ -74,7 +72,6 @@ public class Tower : Installation
 
     public void Destroyed()
     {
-        //To-Do: LeanPool
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 }

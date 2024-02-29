@@ -16,9 +16,10 @@ public abstract class BattleUnit : Unit
 
     [SerializeField]
     protected Transform shotPoint;
-    protected Coroutine attackCoroutine = null;
 
-    private void Awake()
+    protected bool isAttack = false;
+
+    private void OnEnable()
     {
         unitMove = GetComponent<BattleUnitMove>();
         animator = GetComponentInChildren<Animator>();
@@ -29,15 +30,16 @@ public abstract class BattleUnit : Unit
     {
         SetTarget();
 
-        if (target != null && attackCoroutine == null 
+        if (target != null && !isAttack 
             && unitMove.state != BattleUnitMove.State.Move)
         {
-            transform.rotation = Quaternion.LookRotation(target.position - transform.position).normalized;
+            isAttack = true;
             Attack();
         }
-        else if(attackCoroutine != null
+        else if(isAttack
             && ((target == null) || (unitMove.state == BattleUnitMove.State.Move)))
         {
+            isAttack = false;
             EndAttack();
         }
     }
@@ -54,7 +56,14 @@ public abstract class BattleUnit : Unit
     Collider[] attackColliders;
     private void SetTarget()
     {
-        if (priorityTarget != null) //우선으로 타겟할 대상이 있으면 priorityTarget을 target으로 지정하고 빠져나감
+        //타겟이 비활성화 상태?
+        if (target != null && !target.gameObject.activeSelf)
+        {
+            target = null;
+        }
+
+        //우선으로 타겟할 대상이 있으면 priorityTarget을 target으로 지정하고 빠져나감
+        if (priorityTarget != null) 
         {
             target = priorityTarget;
             return;

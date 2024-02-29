@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -15,11 +16,13 @@ public class Projectile : MonoBehaviour
 
     public Transform rendererTransform;
 
-    private void Awake()
+    private void OnEnable()
     {
         startPosition = transform.position;
         StartCoroutine(RemoveCoroutine());
     }
+
+    
 
     public void InitProjctile(float damage, Transform target)
     {
@@ -34,9 +37,15 @@ public class Projectile : MonoBehaviour
 
     private void OnMove()
     {
-        if (target == null)
+        //타겟이 비활성화 상태?
+        if(target != null && !target.gameObject.activeSelf)
         {
-            Destroy(gameObject);
+            target = null;
+        }
+
+        if (target == null) //타겟이 없어지면 삭제
+        {
+            Lean.Pool.LeanPool.Despawn(this);
             return;
         }
 
@@ -63,18 +72,19 @@ public class Projectile : MonoBehaviour
         lastFramePosTemp = rendererTransform.position;
     }
 
-    IEnumerator RemoveCoroutine()
+    IEnumerator RemoveCoroutine() //생명주기가 다하면 삭제
     {
         yield return new WaitForSeconds(lifetime);
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(this);
+        yield break;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) //적에 닿으면 삭제
+    { //TODO: TestEnemy -> Enemy
         if (other.gameObject.TryGetComponent<TestEnemy>(out TestEnemy testEnemy))
         {
             testEnemy.GetDamage(damage);
-            Destroy(gameObject);
+            Lean.Pool.LeanPool.Despawn(this);
         }
     }
 }

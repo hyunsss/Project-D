@@ -82,7 +82,11 @@ public class WorkerUnitMove : MonoBehaviour
         if (target != null)
         {
             if (target.gameObject.layer == LayerMask.NameToLayer("GoalPoint"))
-                Destroy(target.gameObject);
+            {
+                Lean.Pool.LeanPool.Despawn(target.gameObject);
+                target = null;
+            }
+
             else
                 target = null;
         }

@@ -12,8 +12,10 @@ public class SpawnTower : Tower
 
     private bool isSpawning = false;
 
-    protected override void Start()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+        //타워보다 살짝 앞쪽을 스폰 위치로
         spawnPoint = transform.localPosition + transform.localRotation 
             * Vector3.forward * 3.5f;
     }
@@ -23,18 +25,18 @@ public class SpawnTower : Tower
         StartCoroutine(SpawnCoroutine(spawnCount));
     }
 
-    private IEnumerator SpawnCoroutine(int spawnCount)
+    private IEnumerator SpawnCoroutine(int spawnCount) //TODO: 순서 꼬이는 문제 있음
     {
         while (isSpawning) yield return null; //스폰중인 상태면 대기
 
         isSpawning = true;
-        print($"Spawn 코루틴 진입: {spawnCount}");
+        //print($"Spawn 코루틴 진입: {spawnCount}");
         for (int i = 0; i < spawnCount; i++)
         {
             yield return new WaitForSeconds(iteration);
 
             GameObject spawnedCharacter =
-                Instantiate(characterPrefab, spawnPoint, transform.rotation,
+                Lean.Pool.LeanPool.Spawn(characterPrefab, spawnPoint, transform.rotation,
                 transform.GetChild(0)); //0: SpawnCharacters
         }
         isSpawning = false;

@@ -50,7 +50,7 @@ public class ArrowDrawer : MonoBehaviour
         arrowRenderer.enabled = false;
 
         Transform target = 
-            Instantiate(goalPointPrefab, endPos, Quaternion.identity).transform;
+            Lean.Pool.LeanPool.Spawn(goalPointPrefab, endPos, Quaternion.identity).transform;
 
         battleUnitMove.SetPriorityTarget(target);
     }

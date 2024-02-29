@@ -58,7 +58,7 @@ public class ArrowDrawerWorker : ArrowDrawer
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             target =
-                Instantiate(goalPointPrefab, endPos, Quaternion.identity).transform;
+                Lean.Pool.LeanPool.Spawn(goalPointPrefab, endPos, Quaternion.identity).transform;
         }
         else
         {
