@@ -36,6 +36,9 @@ public class ArrowDrawer : MonoBehaviour
 
     protected void OnMouseDrag()
     {
+        startPos = transform.position;
+        startPos.y = 0.01f;
+
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 999, targetLayerMask))
         {
             endPos = hit.point;

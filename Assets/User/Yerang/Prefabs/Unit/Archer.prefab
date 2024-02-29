@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 4330402939125366606}
   - component: {fileID: 328889584515085405}
   m_Layer: 5
-  m_Name: ArrowRenderer
+  m_Name: LineRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2821,8 +2821,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7371667728712835575}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.76, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2830,7 +2830,7 @@ Transform:
   - {fileID: 8879362839320278913}
   - {fileID: 4330402939125366606}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1276659914396318901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,6 +2846,7 @@ MonoBehaviour:
   unitName: 
   maxHp: 5
   dp: 0
+  price: 0
   ap: 1
   attackCycle: 1
   attackRange: 5
@@ -2882,7 +2883,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowRenderer: {fileID: 328889584515085405}
   goalPointPrefab: {fileID: 1027410451442093995, guid: b70f096e42f0f1f4fb8b9684b18f2053, type: 3}
-  target: {fileID: 0}
 --- !u!136 &8822003956358123991
 CapsuleCollider:
   m_ObjectHideFlags: 0

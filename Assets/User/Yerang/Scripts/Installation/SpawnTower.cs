@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: 매니저 만들어서 스폰 관리
 public class SpawnTower : Tower
 {
     public float iteration;
@@ -11,6 +12,8 @@ public class SpawnTower : Tower
     private Vector3 spawnPoint;
 
     private bool isSpawning = false;
+
+    public Transform spawnParent;
 
     protected override void OnEnable()
     {
@@ -37,7 +40,7 @@ public class SpawnTower : Tower
 
             GameObject spawnedCharacter =
                 Lean.Pool.LeanPool.Spawn(characterPrefab, spawnPoint, transform.rotation,
-                transform.GetChild(0)); //0: SpawnCharacters
+                spawnParent); //0: SpawnCharacters
         }
         isSpawning = false;
         yield break;
