@@ -15,9 +15,9 @@ public class TowerBeingBuilt : Installation
         type = Type.TowerBeingBuilt;
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        currentTime = Time.time;
+        currentTime = 0f;
     }
 
     private void Update()
@@ -31,8 +31,8 @@ public class TowerBeingBuilt : Installation
 
         if (currentTime >= completeTime)
         {
-            Instantiate(tower, transform.position, transform.rotation);
-            Destroy(gameObject);
+            Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation);
+            Lean.Pool.LeanPool.Despawn(gameObject);
         }
     }
 
