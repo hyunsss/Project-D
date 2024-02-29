@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters;
 using Lean.Pool;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class TowerAttack : MonoBehaviour
 {
     public GameObject towerBullet;
     public Transform shotPoint;
