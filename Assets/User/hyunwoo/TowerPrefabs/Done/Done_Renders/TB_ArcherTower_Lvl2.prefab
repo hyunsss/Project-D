@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4883521328124810}
   - component: {fileID: 33396508346842494}
   - component: {fileID: 23761655817698686}
+  - component: {fileID: 8741180372589373305}
   m_Layer: 0
   m_Name: TB_ArcherTower_Lvl2
   m_TagString: Untagged
@@ -83,3 +84,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8741180372589373305
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539728516898772}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 994adfa9dfe55f249a376f7cd9cdaa6c, type: 3}

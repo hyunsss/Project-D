@@ -15,9 +15,9 @@ public class SpawnTower : Tower
     protected override void OnEnable()
     {
         base.OnEnable();
-        //Å¸¿öº¸´Ù »ìÂ¦ ¾ÕÂÊÀ» ½ºÆù À§Ä¡·Î
+        //Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½
         spawnPoint = transform.localPosition + transform.localRotation 
-            * Vector3.forward * 3.5f;
+            * Vector3.left * 1f;
     }
 
     public void Spawn(int spawnCount)
@@ -25,12 +25,12 @@ public class SpawnTower : Tower
         StartCoroutine(SpawnCoroutine(spawnCount));
     }
 
-    private IEnumerator SpawnCoroutine(int spawnCount) //TODO: ¼ø¼­ ²¿ÀÌ´Â ¹®Á¦ ÀÖÀ½
+    private IEnumerator SpawnCoroutine(int spawnCount) //TODO: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
-        while (isSpawning) yield return null; //½ºÆùÁßÀÎ »óÅÂ¸é ´ë±â
+        while (isSpawning) yield return null; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½
 
         isSpawning = true;
-        //print($"Spawn ÄÚ·çÆ¾ ÁøÀÔ: {spawnCount}");
+        //print($"Spawn ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½: {spawnCount}");
         for (int i = 0; i < spawnCount; i++)
         {
             yield return new WaitForSeconds(iteration);

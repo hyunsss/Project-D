@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv4_A
       objectReference: {fileID: 0}
+    - target: {fileID: 1941981909132195777, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: m_Center.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941981909132195777, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: m_Center.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941981909132195777, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: m_Extents.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941981909132195777, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: m_Extents.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -78,9 +94,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crystal
       objectReference: {fileID: 0}
+    - target: {fileID: 1805978754261008, guid: 91f553b133e1af744880312b04950e23, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1969260341544988, guid: 91f553b133e1af744880312b04950e23, type: 3}
       propertyPath: m_Name
       value: Render
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969260341544988, guid: 91f553b133e1af744880312b04950e23, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4242357179888562, guid: 91f553b133e1af744880312b04950e23, type: 3}
       propertyPath: m_LocalScale.y

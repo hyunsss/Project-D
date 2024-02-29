@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv2
       objectReference: {fileID: 0}
+    - target: {fileID: 1941981909132195777, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: m_Center.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941981909132195777, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: m_Center.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941981909132195777, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: m_Extents.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941981909132195777, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: m_Extents.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -30,15 +46,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -51,6 +67,18 @@ PrefabInstance:
     - target: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291089778127623240, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: cd75b3460e636fb4189900aab4b9e4c0, type: 2}
+    - target: {fileID: 5401957103385552279, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: areaWidth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401957103385552279, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: areaHeight
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -78,9 +106,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Render
       objectReference: {fileID: 0}
+    - target: {fileID: 1064594759508384, guid: a4ae62ffee8bed243a32ae5123b8674b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1288453322137492, guid: a4ae62ffee8bed243a32ae5123b8674b, type: 3}
       propertyPath: m_Name
       value: Crystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288453322137492, guid: a4ae62ffee8bed243a32ae5123b8674b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4309869630053334, guid: a4ae62ffee8bed243a32ae5123b8674b, type: 3}
       propertyPath: m_LocalPosition.x

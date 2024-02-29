@@ -21,7 +21,7 @@ public class Cell : MonoBehaviour
 
     private void Awake() {
         meshRenderer = GetComponent<MeshRenderer>();
-        Layermasks = 1 << 30 | 1 << 31;
+        Layermasks = 1 << 7 | 1 << 31;
     }
 
     private void Update() {

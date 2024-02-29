@@ -252,10 +252,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanonTowerLv2
       objectReference: {fileID: 0}
-    - target: {fileID: 3309127374340778792, guid: 0ba053090c5540545b54dbf5ef61f683, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: fb1fb5abba788f94395e3df02769dfd9, type: 2}
     - target: {fileID: 4026479220148220857, guid: 0ba053090c5540545b54dbf5ef61f683, type: 3}
       propertyPath: m_LocalPosition.x
       value: -59.699997
@@ -296,14 +292,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4903985162936521276, guid: 0ba053090c5540545b54dbf5ef61f683, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.000001907349
-      objectReference: {fileID: 0}
-    - target: {fileID: 4903985162936521276, guid: 0ba053090c5540545b54dbf5ef61f683, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.000001430512
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -326,10 +314,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanonTowerLv3
       objectReference: {fileID: 0}
-    - target: {fileID: 3309127374340778792, guid: 6388b2b405ce3264f8e3db2c8532e71d, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 42b8cecd697328043ab3d91cb85c8c37, type: 2}
     - target: {fileID: 4026479220148220857, guid: 6388b2b405ce3264f8e3db2c8532e71d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -39.699997
@@ -756,10 +740,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv4_B
       objectReference: {fileID: 0}
-    - target: {fileID: 3309127374340778792, guid: eb0ea2f066db33243809bdf24d4f553b, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 24fe07fe4dec8d04894b9c970b5a9ad4, type: 2}
     - target: {fileID: 4026479220148220857, guid: eb0ea2f066db33243809bdf24d4f553b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1137,10 +1117,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv1
       objectReference: {fileID: 0}
-    - target: {fileID: 3309127374340778792, guid: 7d1ef861c6adda544ba1cf235e584dae, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: e431bd1a55961d1499887c61561438f0, type: 2}
     - target: {fileID: 4026479220148220857, guid: 7d1ef861c6adda544ba1cf235e584dae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -80
@@ -1181,14 +1157,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8040810298649057530, guid: 7d1ef861c6adda544ba1cf235e584dae, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8040810298649057530, guid: 7d1ef861c6adda544ba1cf235e584dae, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.00001144409
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1211,10 +1179,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv2
       objectReference: {fileID: 0}
-    - target: {fileID: 3309127374340778792, guid: d80fa41ed6d3589489052828478e0919, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: cd75b3460e636fb4189900aab4b9e4c0, type: 2}
     - target: {fileID: 4026479220148220857, guid: d80fa41ed6d3589489052828478e0919, type: 3}
       propertyPath: m_LocalPosition.x
       value: -60
@@ -1535,10 +1499,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanonTowerLv4_B
       objectReference: {fileID: 0}
-    - target: {fileID: 3309127374340778792, guid: 18b19371b8ce2604a83e13fda9daf843, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 13199d80d2f1dcf4e8ff52d9d6258e91, type: 2}
     - target: {fileID: 4026479220148220857, guid: 18b19371b8ce2604a83e13fda9daf843, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.30000305
@@ -1578,14 +1538,6 @@ PrefabInstance:
     - target: {fileID: 4026479220148220857, guid: 18b19371b8ce2604a83e13fda9daf843, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6171864721572259511, guid: 18b19371b8ce2604a83e13fda9daf843, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.084202e-19
-      objectReference: {fileID: 0}
-    - target: {fileID: 6171864721572259511, guid: 18b19371b8ce2604a83e13fda9daf843, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.000006437302
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2391,14 +2343,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanonTowerLv1
       objectReference: {fileID: 0}
-    - target: {fileID: 1780414277596091658, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.084202e-19
-      objectReference: {fileID: 0}
-    - target: {fileID: 1780414277596091658, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.000007152557
-      objectReference: {fileID: 0}
     - target: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -79.7
@@ -2439,10 +2383,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4291089778127623240, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 8e80a26453930cb4da60dfce98dcc740, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3880,80 +3820,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1834186530798884296, guid: 33fe171ac46354642bdc5563ef45a308, type: 3}
   m_PrefabInstance: {fileID: 1588790534}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1591497227
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1779936966}
-    m_Modifications:
-    - target: {fileID: 1634155484728276909, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_Name
-      value: MageTowerLv4_A
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309127374340778792, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 0c99cc50eafe0644b93026298c1818f1, type: 2}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
---- !u!4 &1591497228 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4026479220148220857, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-  m_PrefabInstance: {fileID: 1591497227}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1591497230 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 3309127374340778792, guid: 0a1d6dd8242aee04aae7e18481e0e3c9, type: 3}
-  m_PrefabInstance: {fileID: 1591497227}
+  m_CorrespondingSourceObject: {fileID: 5860894133764523193, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
+  m_PrefabInstance: {fileID: 1796473328}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1775853453
 PrefabInstance:
@@ -4029,10 +3899,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanonTowerLv4_A
       objectReference: {fileID: 0}
-    - target: {fileID: 3309127374340778792, guid: 5dc6e2acce7177a44a0c1e9fc4093e18, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: c11dcf723bacd5a4cb3e02b5b41c2665, type: 2}
     - target: {fileID: 4026479220148220857, guid: 5dc6e2acce7177a44a0c1e9fc4093e18, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.699997
@@ -4073,14 +3939,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4060740030021311067, guid: 5dc6e2acce7177a44a0c1e9fc4093e18, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.000001907349
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060740030021311067, guid: 5dc6e2acce7177a44a0c1e9fc4093e18, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.00001144409
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4090,11 +3948,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4026479220148220857, guid: 5dc6e2acce7177a44a0c1e9fc4093e18, type: 3}
   m_PrefabInstance: {fileID: 1778619598}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1779936966 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6023892949046486648, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
-  m_PrefabInstance: {fileID: 1796473328}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1780620514 stripped
 Animator:
@@ -4113,10 +3966,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTowerLv3
       objectReference: {fileID: 0}
-    - target: {fileID: 3309127374340778792, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: bab12e7fed8341d49a9cf5006982f4ed, type: 2}
     - target: {fileID: 4026479220148220857, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40
@@ -4159,10 +4008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6023892949046486648, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1591497228}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7de45b0f8899f17458761d047988afc4, type: 3}
 --- !u!4 &1796473329 stripped

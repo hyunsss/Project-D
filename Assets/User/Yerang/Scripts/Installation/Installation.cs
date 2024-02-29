@@ -10,6 +10,13 @@ public class Installation : MonoBehaviour
         TowerBeingBuilt,
         Field
     }
+    
+    [SerializeField] protected int areaWidth;
+    [SerializeField] protected int areaHeight;
+
+    public int AreaWidth { get => areaWidth; }
+    public int AreaHeight { get => areaHeight; }
+
     public Type type;
 
     [SerializeField]

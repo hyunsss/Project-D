@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4636309902149930}
   - component: {fileID: 33657934121018790}
   - component: {fileID: 23215396982161218}
+  - component: {fileID: -8057097976261987779}
   m_Layer: 0
   m_Name: TB_MageTower_Lvl3
   m_TagString: Untagged
@@ -167,3 +168,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-8057097976261987779
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980452956039334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 8a5afb059ccf78d4599033a4c1421d72, type: 3}

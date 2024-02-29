@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2414368380169227481}
   - component: {fileID: 4291089778127623240}
-  - component: {fileID: -3271073167719727814}
-  m_Layer: 30
+  - component: {fileID: 5401957103385552279}
+  - component: {fileID: 1941981909132195777}
+  m_Layer: 7
   m_Name: CanonTowerLv1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +47,7 @@ Animator:
   m_GameObject: {fileID: 57646822650087629}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 8e80a26453930cb4da60dfce98dcc740, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -57,7 +58,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-3271073167719727814
+--- !u!114 &5401957103385552279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,11 +67,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 57646822650087629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11cc1bc1df9e24cd780cb677e264a2ec, type: 3}
+  m_Script: {fileID: 11500000, guid: dd76e5d89016ed548bef36ca1bb1be2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   areaWidth: 1
   areaHeight: 1
+  type: 0
+  workers: []
+  level: 0
+  maxHp: 10
+--- !u!208 &1941981909132195777
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57646822650087629}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.5, y: 0.5, z: 3.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 5, y: 0, z: 5}
+  m_TimeToStationary: 0.5
 --- !u!1 &1860189411359534342
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +103,7 @@ GameObject:
   - component: {fileID: 5041858961173928216}
   - component: {fileID: 4065552055816342299}
   - component: {fileID: 8211537190562235950}
-  m_Layer: 30
+  m_Layer: 7
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6021198742879939797}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Interaction Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +216,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1300612421433520, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
       propertyPath: m_Layer
-      value: 30
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1473710097402076, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
       propertyPath: m_Name
@@ -203,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1473710097402076, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
       propertyPath: m_Layer
-      value: 30
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1473710097402076, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
       propertyPath: m_IsActive
@@ -264,6 +285,14 @@ PrefabInstance:
     - target: {fileID: 4065689770633286, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446964066770698, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.084202e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446964066770698, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000007152557
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4922524591324604}
   - component: {fileID: 33415606085533818}
   - component: {fileID: 23764249759415092}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TB_CanonTower_Lvl4_A_Cons
   m_TagString: Untagged
   m_Icon: {fileID: 0}

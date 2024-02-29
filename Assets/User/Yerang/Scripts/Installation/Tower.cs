@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Tower : Installation
 {
-    [SerializeField] protected int areaWidth = 2;
-    [SerializeField] protected int areaHeight = 2;
-
-    public int AreaWidth { get => areaWidth; }
-    public int AreaHeight { get => areaHeight; }
+    
 
     public int level;
 
@@ -37,7 +33,7 @@ public class Tower : Installation
     {
         yield return new WaitForSeconds(1f);
 
-        //¹Ýº¹
+        //ï¿½Ýºï¿½
         float repairedHpPerSec = 0;
         foreach (WorkerUnit workerUnit in workers)
         {
@@ -50,7 +46,7 @@ public class Tower : Installation
     {
         base.CollocateWorker(worker);
 
-        print("¼ö¸® ¹èÄ¡µÊ");
+        print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½");
 
         if(repairCoroutine == null)
         {
@@ -62,7 +58,7 @@ public class Tower : Installation
     {
         base.DecollocateWorker(worker);
 
-        print("¼ö¸® ¹èÄ¡ ÇØÁ¦µÊ");
+        print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
         if(workers.Count == 0)
         {

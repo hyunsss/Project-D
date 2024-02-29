@@ -114,6 +114,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3244701404757506772, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}
+      propertyPath: tower
+      value: 
+      objectReference: {fileID: 4112233950045544491, guid: 16a724bf99d910746ad81f5abc66ce98, type: 3}
+    - target: {fileID: 3244701404757506772, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}
+      propertyPath: areaWidth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244701404757506772, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}
+      propertyPath: areaHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400612828212984091, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}
+      propertyPath: m_Center.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400612828212984091, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}
+      propertyPath: m_Center.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400612828212984091, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}
+      propertyPath: m_Extents.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400612828212984091, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}
+      propertyPath: m_Extents.z
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4417062068344500246, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}

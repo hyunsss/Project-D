@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2414368380169227481}
-  - component: {fileID: 609192580397318657}
-  m_Layer: 30
+  - component: {fileID: 3244701404757506772}
+  - component: {fileID: 8400612828212984091}
+  m_Layer: 7
   m_Name: Be_CanonTowerLv1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +35,7 @@ Transform:
   - {fileID: 5041858961173928216}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &609192580397318657
+--- !u!114 &3244701404757506772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,11 +44,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 57646822650087629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11cc1bc1df9e24cd780cb677e264a2ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 380a5d03133ddcf4184542ef5c64b415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   areaWidth: 1
   areaHeight: 1
+  type: 1
+  workers: []
+  tower: {fileID: 5401957103385552279, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+  builtSpeed: 1
+  completeTime: 20
+--- !u!208 &8400612828212984091
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57646822650087629}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.5, y: 0.5, z: 3.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 5, y: 0, z: 5}
+  m_TimeToStationary: 0.5
 --- !u!1 &1860189411359534342
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +81,7 @@ GameObject:
   - component: {fileID: 5041858961173928216}
   - component: {fileID: 4065552055816342299}
   - component: {fileID: 8211537190562235950}
-  m_Layer: 30
+  m_Layer: 7
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,6 +164,10 @@ PrefabInstance:
     - target: {fileID: 1044276382066968, guid: 28968bca16b6f42419c34ae94cbf24df, type: 3}
       propertyPath: m_Name
       value: Render
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044276382066968, guid: 28968bca16b6f42419c34ae94cbf24df, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4440792961774516, guid: 28968bca16b6f42419c34ae94cbf24df, type: 3}
       propertyPath: m_LocalPosition.x

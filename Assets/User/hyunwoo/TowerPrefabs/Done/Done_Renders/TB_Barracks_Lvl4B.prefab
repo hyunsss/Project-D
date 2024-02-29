@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4118896704551522}
   - component: {fileID: 33346430432779328}
   - component: {fileID: 23335464091067498}
+  - component: {fileID: -2817879327211100900}
   m_Layer: 0
   m_Name: TB_Barracks_Lvl4B
   m_TagString: Untagged
@@ -168,6 +169,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-2817879327211100900
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917308456298122}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: f304df788ea6f954cb9b3fb25aea93b4, type: 3}
 --- !u!1 &1966687998346704
 GameObject:
   m_ObjectHideFlags: 0

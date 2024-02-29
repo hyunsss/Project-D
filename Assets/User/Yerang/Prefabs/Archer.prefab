@@ -2823,8 +2823,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.76, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5023514503515266543}
   - {fileID: 8879362839320278913}
@@ -2846,6 +2846,7 @@ MonoBehaviour:
   unitName: 
   maxHp: 5
   dp: 0
+  price: 0
   ap: 1
   attackCycle: 1
   attackRange: 5
@@ -2882,7 +2883,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowRenderer: {fileID: 328889584515085405}
   goalPointPrefab: {fileID: 1027410451442093995, guid: b70f096e42f0f1f4fb8b9684b18f2053, type: 3}
-  target: {fileID: 0}
 --- !u!136 &8822003956358123991
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2915,7 +2915,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7371667728712835575}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
