@@ -22,6 +22,9 @@ public class ArrowDrawerWorker : ArrowDrawer
 
     public new void OnMouseDrag()
     {
+        startPos = transform.position;
+        startPos.y = 0.01f;
+
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 999, targetLayerMask))
         {
             if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
