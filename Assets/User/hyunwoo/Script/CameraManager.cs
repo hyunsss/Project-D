@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-
     [SerializeField] private float panSpeed;
     [SerializeField] private float zoomSpeed;
     [SerializeField] private float zoomInMax;
     [SerializeField] private float zoomOutMax;
-
 
     private CinemachineInputProvider inputProvider;
     private CinemachineVirtualCamera virtualCamera;

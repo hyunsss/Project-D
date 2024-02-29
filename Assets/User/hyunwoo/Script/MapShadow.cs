@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Unittest : MonoBehaviour {
+
+}
+
+
 public class MapShadow : MonoBehaviour
 {
-    public List<Unit> units = new List<Unit>();
+    public List<Unittest> units = new List<Unittest>();
 
     // Update is called once per frame
     void Update()
     {
         //모든 유닛 정보를 가지고 있는 리스트를 순회합니다
-        foreach (Unit unit in units)
+        foreach (Unittest unit in units)
         {
             Vector3 direction = (unit.transform.position - Camera.main.transform.position).normalized;
                 Debug.DrawLine(Camera.main.transform.position, unit.transform.position, Color.red);
