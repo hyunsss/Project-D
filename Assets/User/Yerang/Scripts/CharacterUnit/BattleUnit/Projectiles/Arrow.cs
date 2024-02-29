@@ -8,11 +8,19 @@ public class Arrow : Projectile
     protected Vector3 startPosition; //화살이 발사된 위치, 포물선을 그릴 때 시작 위치 기준 멀어진 만큼으로 계산 하기 위해
     protected Vector3 lastFramePosTemp; //직전 프레임에 화살이 있던 위치
 
-    public Transform rendererTransform;
+    private Transform rendererTransform;
+    private TrailRenderer trailRenderer;
+
+    private void Awake()
+    {
+        rendererTransform = transform.GetChild(0); //0: 렌더러
+        trailRenderer = rendererTransform.GetComponent<TrailRenderer>();
+    }
 
     protected override void OnEnable()
     {
         base.OnEnable();
+        trailRenderer.Clear();
         startPosition = transform.position;
     }
 
@@ -36,7 +44,7 @@ public class Arrow : Projectile
         rendererTransform.localPosition = rendererHeight;
 
         //이전 프레임에 있던 위치(rendererTransform.forward)로 꼬리가 향하도록
-        rendererTransform.forward = (lastFramePosTemp - rendererTransform.position).normalized;
+        rendererTransform.forward = -(lastFramePosTemp - rendererTransform.position).normalized;
 
         lastFramePosTemp = rendererTransform.position;
     }

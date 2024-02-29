@@ -47,9 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a408e4f07ea9154ea1d4b09dd4e0f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 14
   lifetime: 3
-  rendererTransform: {fileID: 131097663484789101}
 --- !u!65 &7127128497800634778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69,7 +68,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.1, z: 0.7}
+  m_Size: {x: 0.1, y: 0.1, z: 0.6}
   m_Center: {x: 0, y: 0, z: -0.05}
 --- !u!54 &4678865342739316660
 Rigidbody:

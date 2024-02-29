@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcherUnit : BattleUnit
+public class WarriorUnit : BattleUnit
 {
     [SerializeField]
     private Projectile attackPrefab;
-    protected Coroutine attackCoroutine = null;
+    protected Coroutine attackCoroutine = null;    
 
     public override void Attack()
     {
-        if(attackCoroutine == null)
+        if (attackCoroutine == null)
         {
             attackCoroutine = StartCoroutine(AttackCoroutine());
         }
@@ -18,7 +18,7 @@ public class ArcherUnit : BattleUnit
 
     public override void EndAttack()
     {
-        if(attackCoroutine != null)
+        if (attackCoroutine != null)
         {
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
@@ -32,7 +32,7 @@ public class ArcherUnit : BattleUnit
             //타겟을 바라보도록
             transform.rotation = Quaternion.LookRotation(target.position - transform.position).normalized;
 
-            var attack = Lean.Pool.LeanPool.Spawn(attackPrefab, 
+            var attack = Lean.Pool.LeanPool.Spawn(attackPrefab,
                 shotPoint.position, shotPoint.rotation, transform.GetChild(0)); //0: ShotPoint
             attack.InitProjctile(ap, target);
 

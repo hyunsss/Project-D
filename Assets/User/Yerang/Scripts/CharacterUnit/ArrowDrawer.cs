@@ -19,7 +19,7 @@ public class ArrowDrawer : MonoBehaviour
 
     private BattleUnitMove battleUnitMove;
 
-    private void Awake()
+    protected void Awake()
     {
         battleUnitMove = GetComponent<BattleUnitMove>();
 

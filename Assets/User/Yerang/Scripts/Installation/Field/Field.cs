@@ -18,12 +18,12 @@ public class Field : Installation
         yield return new WaitForSeconds(1f);
 
         //반복
+        //재화 증가
         float minedResourcePerSec = 0;
         foreach (WorkerUnit workerUnit in workers)
         {
             minedResourcePerSec += workerUnit.mineSpeed;
         }
-        //
     }
 
     public override void CollocateWorker(WorkerUnit worker)

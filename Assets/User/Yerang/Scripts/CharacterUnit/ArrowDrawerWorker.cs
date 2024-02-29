@@ -9,18 +9,16 @@ public class ArrowDrawerWorker : ArrowDrawer
     private WorkerUnit workerUnit;
     private WorkerUnitMove workerUnitMove;
 
-    private void Awake()
+    protected new void Awake()
     {
         workerUnit = GetComponent<WorkerUnit>();
         workerUnitMove = GetComponent<WorkerUnitMove>();
 
         targetLayerMask = 1 << LayerMask.NameToLayer("Ground")
-            | 1 << LayerMask.NameToLayer("Tower")
-            | 1 << LayerMask.NameToLayer("TowerBeingBuilt")
-            | 1 << LayerMask.NameToLayer("Field");
+            | 1 << LayerMask.NameToLayer("Installation");
     }
 
-    public new void OnMouseDrag()
+    protected new void OnMouseDrag()
     {
         startPos = transform.position;
         startPos.y = 0.01f;
@@ -41,9 +39,8 @@ public class ArrowDrawerWorker : ArrowDrawer
         DrawArrow();
     }
 
-    
 
-    public new void OnMouseUp()
+    protected new void OnMouseUp()
     {
         arrowRenderer.enabled = false;
 

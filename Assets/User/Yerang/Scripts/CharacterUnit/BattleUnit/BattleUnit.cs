@@ -14,15 +14,19 @@ public abstract class BattleUnit : Unit
     private BattleUnitMove unitMove;
     protected Animator animator;
 
-    [SerializeField]
     protected Transform shotPoint;
 
     protected bool isAttack = false;
 
-    private void OnEnable()
+    private void Awake()
     {
+        shotPoint = transform.GetChild(0); //0: ShotPoint
         unitMove = GetComponent<BattleUnitMove>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    private void OnEnable()
+    {
         currentHp = maxHp;
     }
 

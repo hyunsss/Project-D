@@ -1548,7 +1548,7 @@ Transform:
   m_GameObject: {fileID: 5914417980845074355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.05, z: 0.15}
+  m_LocalPosition: {x: 0, y: 1.05, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2294,7 +2294,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5023514503515266543}
@@ -2320,10 +2320,9 @@ MonoBehaviour:
   price: 0
   ap: 1
   attackCycle: 1
-  attackRange: 5
+  attackRange: 10
   priorityTarget: {fileID: 0}
   target: {fileID: 0}
-  shotPoint: {fileID: 5023514503515266543}
   attackPrefab: {fileID: 7363179599112665145, guid: 29283ab4830f81b40b0ce6eb85a43e34, type: 3}
 --- !u!114 &1205554508244180974
 MonoBehaviour:
@@ -2338,8 +2337,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  moveSpeed: 5
-  detectingRange: 10
+  moveSpeed: 10
+  detectingRange: 20
 --- !u!114 &3459402059797243513
 MonoBehaviour:
   m_ObjectHideFlags: 0
