@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Tower : Installation
 {
-    
-
     public int level;
 
     public float maxHp;

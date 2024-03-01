@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class TurretTower : Tower
 {
+    public float ap;
     public abstract void Attack();
 }
