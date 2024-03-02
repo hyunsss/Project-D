@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BattleUnit : Unit
 {
     public float ap;
-    public int attackCycle;
+    public float attackCycle;
     public float attackRange;
 
     public Transform priorityTarget;
