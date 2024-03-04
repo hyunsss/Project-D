@@ -23,6 +23,7 @@ public class Monster : MonoBehaviour
     private float               repairing = 5f;
     private MonsterTower        tower = null;
     private MonsterHPBar        monsterHPBar;
+    private bool                moveSupport = false;
 
     public enum State
     {
@@ -65,8 +66,13 @@ public class Monster : MonoBehaviour
             animator.SetTrigger("isIdle");
         }
         moveCheck = transform.position;
-        
         transform.Rotate(new Vector3(0, 0, transform.rotation.z));
+        
+        if(moveSupport)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            transform.position += direction * monsterData.MonsterSpeed * Time.deltaTime;
+        }
     }
     protected IEnumerator ChangeState()
     {
@@ -129,6 +135,17 @@ public class Monster : MonoBehaviour
                 SetUnitTarget();
                 aStar.Chase(target);
             }
+        float checkMove = Vector3.Distance(gameObject.transform.position, target.transform.position);
+        if (25f > checkMove && checkMove > 10f)
+        {
+            transform.LookAt(target);
+            moveSupport = true;
+        }
+        else
+        {
+            moveSupport = false;
+        }
+
     }
 
     protected void SetTowerTarget() //UserTower
