@@ -12942,11 +12942,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 294ef2ad272717941abe3c6f03586ad4, type: 3}
---- !u!4 &382781621 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1833615656165259291, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
-  m_PrefabInstance: {fileID: 2084334975}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383192412 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2922866397370101520, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
@@ -19849,11 +19844,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567877887}
   m_CullTransparentMesh: 1
---- !u!4 &568456300 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3064598096499719681, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
-  m_PrefabInstance: {fileID: 2084334975}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &568824176 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8190311336889303394, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
@@ -35434,6 +35424,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 294ef2ad272717941abe3c6f03586ad4, type: 3}
+--- !u!4 &1013417543 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1834186530798884296, guid: 40474832cfd7bbb4a9c7ca710a514da8, type: 3}
+  m_PrefabInstance: {fileID: 769700755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1013861072 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9148196511516630921, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
@@ -58854,12 +58849,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'VFX1
-
-'
+  m_text: "\uD6A8\uACFC 1"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f952047aee42e494f9530fa3331e4c33, type: 2}
+  m_sharedMaterial: {fileID: -543642437651723995, guid: f952047aee42e494f9530fa3331e4c33, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -61347,9 +61340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower_Player:
-  - {fileID: 382781621}
-  unit_Player:
-  - {fileID: 568456300}
+  - {fileID: 1013417543}
+  unit_Player: []
 --- !u!4 &1711006799
 Transform:
   m_ObjectHideFlags: 0
@@ -105541,6 +105533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4141006532837331599}
   - component: {fileID: 6640006486684429581}
+  - component: {fileID: 6640006486684429582}
   m_Layer: 0
   m_Name: MonsterSpawnManager
   m_TagString: Untagged
@@ -106080,6 +106073,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f928c89c65658d046af7315989c8a001, type: 2}
   monsterSpawnPoint: {fileID: 1778881902707016195}
   currentMonsterPrefab: {fileID: 0}
+--- !u!114 &6640006486684429582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2982848996997314576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 298e63fa3f4afab46be61e164c427fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerMaxHp: 100
+  towerCurrentHp: 0
+  keeperMaxCount: 10
 --- !u!114 &6731529360780284115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106686,10 +106694,10 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 1185528210}
   - {fileID: 705507995}
+  - {fileID: 1831708577}
   - {fileID: 1711006799}
   - {fileID: 44821911}
   - {fileID: 2084334975}
   - {fileID: 8834090992717083805}
   - {fileID: 3752602068847464828}
-  - {fileID: 1831708577}
   - {fileID: 769700755}

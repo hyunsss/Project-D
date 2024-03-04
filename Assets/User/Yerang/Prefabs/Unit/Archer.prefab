@@ -2850,7 +2850,7 @@ MonoBehaviour:
   price: 0
   ap: 1
   attackCycle: 1
-  attackRange: 5
+  attackRange: 40
   priorityTarget: {fileID: 0}
   target: {fileID: 0}
   shotPoint: {fileID: 5023514503515266543}

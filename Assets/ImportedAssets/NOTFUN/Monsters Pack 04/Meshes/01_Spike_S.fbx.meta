@@ -83,18 +83,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: AttackLeft_Spike_S
-      takeName: AttackLeft_Spike_S
+      name: Idle_Spike_S (1)
+      takeName: Idle_Spike_S
       internalID: -5158140335520115830
-      firstFrame: 153
-      lastFrame: 188
+      firstFrame: 0
+      lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -110,7 +110,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 153
+      additiveReferencePoseFrame: 33
     - serializedVersion: 16
       name: AttackRight_Spike_S
       takeName: AttackRight_Spike_S
@@ -517,7 +517,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
