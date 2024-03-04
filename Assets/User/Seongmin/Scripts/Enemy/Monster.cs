@@ -116,12 +116,12 @@ public class Monster : MonoBehaviour
 
     protected void TargetChase()
     {
-            if(GameManager.Instance.tower_Player.Count > 0)
+            if(GameDB.Instance.tower_Player.Count > 0)
             {
                 SetTowerTarget();
                 aStar.Chase(target);
             }
-            else if(GameManager.Instance.unit_Player.Count > 0)
+            else if(GameDB.Instance.unit_Player.Count > 0)
             {
                 SetUnitTarget();
                 aStar.Chase(target);
@@ -131,7 +131,7 @@ public class Monster : MonoBehaviour
     protected void SetTowerTarget() //UserTower
     {
         float sortDistance = 99999f;
-        foreach (Transform _target in GameManager.Instance.tower_Player)
+        foreach (Transform _target in GameDB.Instance.tower_Player)
         {
             float targetDistance = Vector3.Distance(transform.position, _target.position);
                 if(targetDistance < sortDistance)
@@ -145,7 +145,7 @@ public class Monster : MonoBehaviour
     {
 
         float sortDistance = 99999f;
-        foreach (Transform _target in GameManager.Instance.unit_Player)
+        foreach (Transform _target in GameDB.Instance.unit_Player)
         {
             float targetDistance = Vector3.Distance(transform.position, _target.position);
             if (targetDistance < sortDistance)
@@ -173,6 +173,7 @@ public class Monster : MonoBehaviour
     {
         state = State.die;
         animator.SetTrigger("isDie");
+        GameDB.Instance.monsterCount--;
         LeanPool.Despawn(gameObject);
     }
 }

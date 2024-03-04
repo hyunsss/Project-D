@@ -24,14 +24,6 @@ public class GameManager : MonoBehaviour
         else { Destroy(gameObject); }
 
         DontDestroyOnLoad(gameObject);
-
-    }
-    private void Start()
-    {
-        print(tower_Player[0]);
     }
 
-    public List<Transform> tower_Player = new List<Transform>();
-    public List<Transform> unit_Player  = new List<Transform>();      
-    
 }
