@@ -7,9 +7,8 @@ using Unity.UI;
 
 public class MonsterHPBar : MonoBehaviour
 {
-    public Image hpBar;
-
-    Transform cam;
+    public Image            hpBar;
+    Transform               cam;
     private void Awake()
     {
 

@@ -6,6 +6,7 @@ using Lean.Pool;
 
 public class MonsterSpawner : MonoBehaviour
 {
+    [Header("Monster_Datas")]
     [SerializeField]
     private List<MonsterData>       monsterDatas;
 
@@ -14,7 +15,6 @@ public class MonsterSpawner : MonoBehaviour
     private List<MonsterData>       bossDatas;
     [SerializeField]
     private GameObject              monsterSpawnPoint;
-    [SerializeField]
     private Monster                 currentMonsterPrefab;
 
     private int                     spawnData;
@@ -61,9 +61,9 @@ public class MonsterSpawner : MonoBehaviour
         currentKeeperPrefab.transform.SetParent(monsterSpawnPoint.transform);
     }
 
-    public void SpawnBossMosnter() //TODO
+    public void SpawnBossMosnter()
     {
-        spawnDataRandomValue = Random.Range(0, spawnData);
+        spawnDataRandomValue = Random.Range(0, bossDatas.Count);
         spawnPosX = Random.Range(-8, 9);
         spawnPosY = Random.Range(-8, 9);
 
@@ -77,5 +77,6 @@ public class MonsterSpawner : MonoBehaviour
         currentBossPrefab.MonsterData = bossDatas[spawnDataRandomValue];
 
         currentBossPrefab.transform.SetParent(monsterSpawnPoint.transform);
+        currentBossPrefab.state = Monster.State.chase;
     }
 }

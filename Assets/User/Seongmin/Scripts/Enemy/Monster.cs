@@ -45,8 +45,11 @@ public class Monster : MonoBehaviour
     protected void Start()
     {
         moveCheck = transform.position;
-        aStar.speed = monsterData.MonsterSpeed;
-        currentHp = monsterData.MonsterHp;
+
+        aStar.speed = MonsterData.MonsterSpeed;
+        currentHp = MonsterData.MonsterHp;
+
+
         StartCoroutine(ChangeState());
     }
     protected void Update() {
@@ -136,6 +139,8 @@ public class Monster : MonoBehaviour
                 aStar.Chase(target);
             }
         float checkMove = Vector3.Distance(gameObject.transform.position, target.transform.position);
+
+      
         if (25f > checkMove && checkMove > 10f)
         {
             transform.LookAt(target);

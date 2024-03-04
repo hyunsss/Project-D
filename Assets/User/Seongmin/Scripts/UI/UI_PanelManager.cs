@@ -6,20 +6,19 @@ using TMPro;
 
 public class UI_PanelManager : MonoBehaviour
 {
-    public RectTransform buildTowerPanel;
-    public float speed = 50f;
+    public RectTransform        buildTowerPanel;
+    public float                speed = 50f;
     [SerializeField] 
-    private GameObject currentPanel;
+    private GameObject          currentPanel;
     [Header("Panels")]
-    public GameObject towerPanel;
-    public GameObject unitPanel;
-    public GameObject levelUPPanel;
+    public GameObject           towerPanel;
+    public GameObject           unitPanel;
+    public GameObject           levelUPPanel;
     [Header("Texts")]
-    public TextMeshProUGUI monsterText;
-    public TextMeshProUGUI unitText;
-    public TextMeshProUGUI towerText;
-    
-    private bool isOpen = false;
+    public TextMeshProUGUI      monsterText;
+    public TextMeshProUGUI      unitText;
+    public TextMeshProUGUI      towerText;
+   
     private void Awake()
     {
         currentPanel.gameObject.SetActive(false);

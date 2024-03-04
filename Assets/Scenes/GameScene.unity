@@ -108506,13 +108506,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5ccc260b262ab844afaa867907d13bb, type: 2}
   - {fileID: 11400000, guid: f928c89c65658d046af7315989c8a001, type: 2}
   bossDatas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 1179a8c5219f65249aab5b2a409b1957, type: 2}
+  - {fileID: 11400000, guid: 82e11aa0ee320724db9d9adb71fa4d42, type: 2}
+  - {fileID: 11400000, guid: ce391a8335ed424489b330e807bd5fd8, type: 2}
   monsterSpawnPoint: {fileID: 1778881902707016195}
   currentMonsterPrefab: {fileID: 0}
 --- !u!1001 &7138525841159796096

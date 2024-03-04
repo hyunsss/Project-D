@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BOSS_Wedger_Big
+  m_Controller: {fileID: 9100000, guid: cf1f0b8944adb5a448b6e5c0d55d4f54, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -7929530181185912256, guid: e3620e67e281b2b4da5f073e53c55d0d, type: 3}
+    m_OverrideClip: {fileID: 1192892724743338441, guid: 3d227175a957b3042af2d99f7eff621c, type: 3}
+  - m_OriginalClip: {fileID: 2540381671888450782, guid: e3620e67e281b2b4da5f073e53c55d0d, type: 3}
+    m_OverrideClip: {fileID: 7211444432644367780, guid: 3d227175a957b3042af2d99f7eff621c, type: 3}
+  - m_OriginalClip: {fileID: -5301457455950006620, guid: e3620e67e281b2b4da5f073e53c55d0d, type: 3}
+    m_OverrideClip: {fileID: -6835135832906191090, guid: 3d227175a957b3042af2d99f7eff621c, type: 3}
+  - m_OriginalClip: {fileID: -5420190152393595828, guid: e3620e67e281b2b4da5f073e53c55d0d, type: 3}
+    m_OverrideClip: {fileID: 2311096603410701958, guid: 3d227175a957b3042af2d99f7eff621c, type: 3}
+  - m_OriginalClip: {fileID: -1557210927454955969, guid: e3620e67e281b2b4da5f073e53c55d0d, type: 3}
+    m_OverrideClip: {fileID: 4266010851718726467, guid: 3d227175a957b3042af2d99f7eff621c, type: 3}
+  - m_OriginalClip: {fileID: -3433791852483102282, guid: e3620e67e281b2b4da5f073e53c55d0d, type: 3}
+    m_OverrideClip: {fileID: -791894264585695420, guid: 3d227175a957b3042af2d99f7eff621c, type: 3}

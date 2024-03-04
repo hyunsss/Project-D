@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef7769a442c2b64f9f9cb8d0c71711e, type: 3}
-  m_Name: Boss_
+  m_Name: BOSS_Catcher_Big
   m_EditorClassIdentifier: 
-  monsterName: 
-  monsterHp: 0
-  monsterSpeed: 0
-  monsterDamage: 0
-  monsterPrefab: {fileID: 0}
+  monsterName: BOSS_Catcher_Big
+  monsterHp: 150
+  monsterSpeed: 1
+  monsterDamage: 10
+  monsterPrefab: {fileID: 4541496759540571392, guid: f027b522799935843a4d129ff549c431, type: 3}

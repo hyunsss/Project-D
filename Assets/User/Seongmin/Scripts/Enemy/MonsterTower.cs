@@ -34,6 +34,7 @@ public class MonsterTower : MonoBehaviour
         {
             GameDB.Instance.monsterCount++;
             monsterSpawner.SpawnMonster();
+            monsterSpawner.SpawnBossMosnter();
             if(towerCurrentHp < towerMaxHp / 2 && keeperSpawnCount <= keeperMaxCount)
             {
                 GameDB.Instance.monsterCount++;
