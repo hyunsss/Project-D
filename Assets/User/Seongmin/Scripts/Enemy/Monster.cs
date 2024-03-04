@@ -12,7 +12,7 @@ public class Monster : MonoBehaviour
     [SerializeField]
     protected MonsterData       monsterData;
     [HideInInspector]
-    public MonsterData          MonsterData { set { monsterData = value; } }
+    public MonsterData          MonsterData { get { return monsterData; }  set { monsterData = value; } }
     [HideInInspector]
     public float                currentHp;
     public UnitAStar            aStar;
@@ -57,9 +57,9 @@ public class Monster : MonoBehaviour
         }
 
         float checkMove = Vector3.Distance(transform.position, moveCheck);
-        if(checkMove > 0.08f)
+        if(checkMove < 0.05f)
         {
-            animator.SetTrigger("isRun");
+            animator.SetTrigger("isIdle");
         }
         moveCheck = transform.position;
         
@@ -72,7 +72,7 @@ public class Monster : MonoBehaviour
             if (target != null&& state != State.towerReqair)
             {
                 float checkAttack = Vector3.Distance(gameObject.transform.position, target.position);
-                state = checkAttack <= 18f ? state = State.attack : state = State.chase;
+                state = checkAttack <= 12f ? state = State.attack : state = State.chase;
             }
             // user Chase
             if (state == State.chase)
@@ -100,7 +100,7 @@ public class Monster : MonoBehaviour
                 }
             }
            
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(0.7f);
         }
         if (state == State.die)
         {

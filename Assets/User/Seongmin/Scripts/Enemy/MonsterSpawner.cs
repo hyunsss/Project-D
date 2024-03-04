@@ -8,17 +8,20 @@ public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField]
     private List<MonsterData>       monsterDatas;
+
+    [Header("BOSS_Datas")]
+    [SerializeField]
+    private List<MonsterData>       bossDatas;
     [SerializeField]
     private GameObject              monsterSpawnPoint;
     [SerializeField]
     private Monster                 currentMonsterPrefab;
 
+    public Transform                parentTransform;
     private int                     spawnData;
     private int                     spawnDataRandomValue;
     private int                     spawnPosX;
     private int                     spawnPosY;
-
-    private Transform               spawnTransform;
     // private 
     private void Awake()
     {
@@ -32,9 +35,11 @@ public class MonsterSpawner : MonoBehaviour
         spawnPosY = Random.Range(-8, 9);
         Vector3 randPos = new Vector3(monsterSpawnPoint.transform.position.x+ spawnPosX, monsterSpawnPoint.transform.position.y, monsterSpawnPoint.transform.position.z + spawnPosY);
         currentMonsterPrefab = LeanPool.Spawn(monsterDatas[spawnDataRandomValue].MonsterPrefab,
-            randPos,Quaternion.identity).GetComponent<Monster>();
+            randPos,Quaternion.identity, gameObject.transform).GetComponent<Monster>();
         currentMonsterPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
         currentMonsterPrefab.state = Monster.State.chase;
+
+        currentMonsterPrefab.transform.SetParent(gameObject.transform);
 
     }
     public void SpawnTowerKeeper(MonsterTower _tower) 
@@ -48,10 +53,30 @@ public class MonsterSpawner : MonoBehaviour
             monsterSpawnPoint.transform.position.z + spawnPosY);
 
         var currentKeeperPrefab = LeanPool.Spawn(monsterDatas[spawnDataRandomValue].MonsterPrefab,
-            randPos, Quaternion.identity).GetComponent<Monster>();
+            randPos, Quaternion.identity, gameObject.transform).GetComponent<Monster>();
 
         currentKeeperPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
         currentKeeperPrefab.SetTowerObject(_tower);
         currentKeeperPrefab.state = Monster.State.towerReqair;
+
+        currentKeeperPrefab.transform.SetParent(gameObject.transform);
+    }
+
+    public void SpawnBossMosnter() //TODO
+    {
+        spawnDataRandomValue = Random.Range(0, spawnData);
+        spawnPosX = Random.Range(-8, 9);
+        spawnPosY = Random.Range(-8, 9);
+
+        Vector3 randPos = new Vector3(monsterSpawnPoint.transform.position.x + spawnPosX,
+            monsterSpawnPoint.transform.position.y,
+            monsterSpawnPoint.transform.position.z + spawnPosY);
+
+        var currentBossPrefab = LeanPool.Spawn(bossDatas[spawnDataRandomValue].MonsterPrefab,
+            randPos, Quaternion.identity, gameObject.transform).GetComponent<Monster>();
+
+        currentBossPrefab.MonsterData = bossDatas[spawnDataRandomValue];
+
+        currentBossPrefab.transform.SetParent(gameObject.transform);
     }
 }
