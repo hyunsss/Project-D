@@ -52,7 +52,7 @@ public abstract class BattleUnit : Unit
     public abstract void Attack();
     public abstract void EndAttack();
 
-    public void SetPriorityTarget(Transform target)
+    public void SetPriorityTarget(UnityEngine.Transform target)
     {
         priorityTarget = target;
     }
@@ -77,7 +77,7 @@ public abstract class BattleUnit : Unit
         attackColliders = Physics.OverlapSphere(transform.position, attackRange, enemyLayerMask);
 
         float minDis = 999;
-        Transform nearTarget = null;
+        UnityEngine.Transform nearTarget = null;
 
         foreach (Collider collider in attackColliders)
         {

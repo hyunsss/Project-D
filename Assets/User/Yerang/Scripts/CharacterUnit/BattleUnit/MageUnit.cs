@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MageUnit : BattleUnit
@@ -7,6 +6,9 @@ public class MageUnit : BattleUnit
     [SerializeField]
     private Projectile attackPrefab;
     protected Coroutine attackCoroutine = null;
+
+    [SerializeField]
+    private Transform projectileParent;
 
     public override void Attack()
     {
@@ -35,7 +37,7 @@ public class MageUnit : BattleUnit
             animator.SetTrigger("attack");
 
             var attack = Lean.Pool.LeanPool.Spawn(attackPrefab,
-                shotPoint.position, shotPoint.rotation, transform.GetChild(0)); //0: ShotPoint
+                shotPoint.position, shotPoint.rotation, projectileParent);
             attack.InitProjctile(ap, target);
             yield return new WaitForSeconds(attackCycle);
         }

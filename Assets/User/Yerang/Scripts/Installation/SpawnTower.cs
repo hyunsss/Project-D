@@ -15,14 +15,15 @@ public class SpawnTower : Tower
     [SerializeField]
     private Transform spawnParent; //TODO: spawnParent 매니저에서 참조하도록
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         spawnPoint = transform.GetChild(0); //0: SpawnPoint
     }
 
-    protected override void OnEnable()
+    public override void SetInfo()
     {
-        base.OnEnable();
+
     }
 
     public void Spawn(int spawnCount)

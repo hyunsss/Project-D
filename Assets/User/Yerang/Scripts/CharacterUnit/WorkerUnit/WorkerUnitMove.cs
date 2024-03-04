@@ -20,7 +20,7 @@ public class WorkerUnitMove : MonoBehaviour
     //private Animator animator;
 
     private GameObject prevTarget;
-    private Transform target;
+    private UnityEngine.Transform target;
 
     private WorkerUnit workerUnit; //À½...
 
@@ -67,7 +67,7 @@ public class WorkerUnitMove : MonoBehaviour
         //animator.SetInteger("moveState", (int)state);
     }
 
-    public void SetTarget(Transform target)
+    public void SetTarget(UnityEngine.Transform target)
     {
         if (target != null)
         {

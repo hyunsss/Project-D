@@ -7,7 +7,7 @@ using UnityEngine.VFX;
 public class VFXManager : MonoBehaviour
 {
     public static VFXManager Instance;
-    public Transform shotpoint;
+    public UnityEngine.Transform shotpoint;
     public enum VFXDir { Explosion }
     
     public List<GameObject> visualEffects = new List<GameObject>();
@@ -16,7 +16,7 @@ public class VFXManager : MonoBehaviour
         Instance = this;
     }
 
-    public void VFXPlay(Transform trans, VFXDir key) {
+    public void VFXPlay(UnityEngine.Transform trans, VFXDir key) {
 
         GameObject effectObject = visualEffects[(int)key];
 

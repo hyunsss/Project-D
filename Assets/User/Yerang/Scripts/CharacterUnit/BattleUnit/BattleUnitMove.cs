@@ -23,8 +23,8 @@ public class BattleUnitMove : MonoBehaviour
     private NavMeshAgent nav;
     private Animator animator;
 
-    private Transform target;
-    private Transform priorityTarget;
+    private UnityEngine.Transform target;
+    private UnityEngine.Transform priorityTarget;
 
     private void Awake()
     {
@@ -82,7 +82,7 @@ public class BattleUnitMove : MonoBehaviour
         Collider[] detectedColliders = Physics.OverlapSphere(transform.position, detectingRange, enemyLayerMask);
 
         float minDis = 999;
-        Transform nearTarget = null;
+        UnityEngine.Transform nearTarget = null;
 
         foreach (Collider collider in detectedColliders)
         {
@@ -110,7 +110,7 @@ public class BattleUnitMove : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectingRange);
     }
 
-    public void SetPriorityTarget(Transform target) //ArrowDrawer로 설정
+    public void SetPriorityTarget(UnityEngine.Transform target) //ArrowDrawer로 설정
     {
         if (priorityTarget != null)
         {

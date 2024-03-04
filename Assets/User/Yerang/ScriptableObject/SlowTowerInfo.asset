@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c74b43aebd568b4c8ce07eadae0a8bd, type: 3}
+  m_Name: SlowTowerInfo
+  m_EditorClassIdentifier: 
+  maxlevel: 1
+  levelStat:
+  - maxHp: 10
+    damage: 0
+    attackCycle: 0
+    attackRange: 10
+  towerRenderers:
+  - {fileID: 1367997974350908, guid: be0b768028397264d9c378dbd4f93277, type: 3}
+  - {fileID: 1064594759508384, guid: e58080f49911f2b4daa4c5be922b82a4, type: 3}
+  - {fileID: 1980452956039334, guid: 9151417fa9caea340b9ae1e93c58a4b4, type: 3}
+  - {fileID: 1969260341544988, guid: fa67eafe5fc7dcf4da784d12781f2ef2, type: 3}
+  - {fileID: 1442357279516786, guid: baa2e7526837952458e15f750e0d00ae, type: 3}

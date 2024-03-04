@@ -13,7 +13,7 @@ namespace LayerLab.FantasyRPG
         private bool isReady = false;
         [SerializeField] private List<GameObject> panels = new List<GameObject>();
         private TextMeshProUGUI textTitle;
-        [SerializeField] private Transform panelTransform;
+        [SerializeField] private UnityEngine.Transform panelTransform;
         [SerializeField] private Button buttonPrev;
         [SerializeField] private Button buttonNext;
 
@@ -23,7 +23,7 @@ namespace LayerLab.FantasyRPG
             buttonPrev.onClick.AddListener(Click_Prev);
             buttonNext.onClick.AddListener(Click_Next);
 
-            foreach (Transform t in panelTransform)
+            foreach (UnityEngine.Transform t in panelTransform)
             {
                 panels.Add(t.gameObject);
                 t.gameObject.SetActive(false);

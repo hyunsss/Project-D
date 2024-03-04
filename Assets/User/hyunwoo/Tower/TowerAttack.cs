@@ -7,7 +7,7 @@ using UnityEngine;
 public class TowerAttack : MonoBehaviour
 {
     public GameObject towerBullet;
-    public Transform shotPoint;
+    public UnityEngine.Transform shotPoint;
 
     
     private int attackDamage;
@@ -22,7 +22,7 @@ public class TowerAttack : MonoBehaviour
     public float ShotDelay { get => shotDelay; set => shotDelay = value;}
 
     Coroutine towerCoroutine;
-    private Transform target;
+    private UnityEngine.Transform target;
 
     bool isShooting = false;
 
@@ -31,7 +31,7 @@ public class TowerAttack : MonoBehaviour
         if (target == null)
         {
             Collider[] monsters = Physics.OverlapSphere(transform.position, shotRange, 1); // <-- Todo : 몬스터 레이어 마스크로 수정
-            Transform temp_target = null;
+            UnityEngine.Transform temp_target = null;
             float temp_Distance = 999f;
             foreach (var enemy in monsters)
             {

@@ -1,21 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : Installation
+public abstract class Tower : Installation
 {
     public int level;
 
-    public float maxHp;
+    protected float maxHp;
     protected float currentHp;
+    public float CurrentHp {  get { return currentHp; } }
+
+    protected bool isCanUpgrade;
+    public bool IsCanUpgrade { get { return isCanUpgrade; } }
+
+    protected GameObject RendererObj;
 
     protected Coroutine repairCoroutine = null;
 
-    protected virtual void OnEnable()
+    protected virtual void Awake()
     {
-        currentHp = maxHp;
         type = Type.Tower;
     }
+
+    protected virtual void OnEnable()
+    {
+        level = 1;
+        currentHp = maxHp;
+        isCanUpgrade = true;
+        SetInfo();
+    }
+
+    public abstract void SetInfo();
 
     public void GetDamage(float damage)
     {

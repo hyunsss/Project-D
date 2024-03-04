@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
 
     private CinemachineInputProvider inputProvider;
     private CinemachineVirtualCamera virtualCamera;
-    private Transform cameraTransform;
+    private UnityEngine.Transform cameraTransform;
     
     private void Awake() {
         inputProvider = GetComponent<CinemachineInputProvider>();

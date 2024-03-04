@@ -4,12 +4,12 @@ using System.Collections;
 public class UnitAStar : MonoBehaviour
 {
 
-    public Transform target;
+    public UnityEngine.Transform target;
     public float speed = 20;
     Vector3[] path;
     int targetIndex;
 
-    public void Chase(Transform _target)
+    public void Chase(UnityEngine.Transform _target)
     {
 
         target = _target;

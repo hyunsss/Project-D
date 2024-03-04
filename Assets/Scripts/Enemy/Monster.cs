@@ -12,7 +12,7 @@ public class Monster : MonoBehaviour
     private float       currentHp;
     public UnitAStar    aStar;
     private Animator    animator;
-    Transform           target;
+    UnityEngine.Transform           target;
 
     public enum State
     {
@@ -58,7 +58,7 @@ public class Monster : MonoBehaviour
     private void SetTowerTarget()
     {
         float sortDistance = 99999;
-        foreach (Transform _target in GameManager.Instance.tower_Player)
+        foreach (UnityEngine.Transform _target in GameManager.Instance.tower_Player)
         {
             print(_target.position);
             float targetDistance = Vector3.Distance(transform.position, _target.position);
@@ -73,7 +73,7 @@ public class Monster : MonoBehaviour
     {
 
         float sortDistance = Mathf.Infinity;
-        foreach (Transform _target in GameManager.Instance.unit_Player)
+        foreach (UnityEngine.Transform _target in GameManager.Instance.unit_Player)
         {
             float targetDistance = Vector3.Distance(transform.position, _target.position);
             if (targetDistance < sortDistance)

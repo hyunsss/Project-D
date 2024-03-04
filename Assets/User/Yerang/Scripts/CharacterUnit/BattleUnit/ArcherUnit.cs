@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ArcherUnit : BattleUnit
@@ -7,6 +6,9 @@ public class ArcherUnit : BattleUnit
     [SerializeField]
     private Projectile attackPrefab;
     protected Coroutine attackCoroutine = null;
+
+    [SerializeField]
+    private Transform projectileParent;
 
     public override void Attack()
     {
@@ -33,7 +35,7 @@ public class ArcherUnit : BattleUnit
             transform.rotation = Quaternion.LookRotation(target.position - transform.position).normalized;
 
             var attack = Lean.Pool.LeanPool.Spawn(attackPrefab, 
-                shotPoint.position, shotPoint.rotation, transform.GetChild(0)); //0: ShotPoint
+                shotPoint.position, shotPoint.rotation, projectileParent);
             attack.InitProjctile(ap, target);
 
             animator.SetTrigger("attack");
