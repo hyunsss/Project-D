@@ -30,7 +30,7 @@ public class SpawnTower : Tower
 
     private IEnumerator SpawnCoroutine(int spawnCount) //TODO: ���� ���̴� ���� ����
     {
-        while (isSpawning) yield return null; //�������� ���¸� ���
+        while (isSpawning) yield return null; //�������� ���¸� ���?
 
         isSpawning = true;
         //print($"Spawn �ڷ�ƾ ����: {spawnCount}");
