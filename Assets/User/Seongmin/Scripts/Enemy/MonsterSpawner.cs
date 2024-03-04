@@ -17,7 +17,6 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField]
     private Monster                 currentMonsterPrefab;
 
-    public Transform                parentTransform;
     private int                     spawnData;
     private int                     spawnDataRandomValue;
     private int                     spawnPosX;
@@ -39,7 +38,7 @@ public class MonsterSpawner : MonoBehaviour
         currentMonsterPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
         currentMonsterPrefab.state = Monster.State.chase;
 
-        currentMonsterPrefab.transform.SetParent(gameObject.transform);
+        currentMonsterPrefab.transform.SetParent(monsterSpawnPoint.transform);
 
     }
     public void SpawnTowerKeeper(MonsterTower _tower) 
@@ -59,7 +58,7 @@ public class MonsterSpawner : MonoBehaviour
         currentKeeperPrefab.SetTowerObject(_tower);
         currentKeeperPrefab.state = Monster.State.towerReqair;
 
-        currentKeeperPrefab.transform.SetParent(gameObject.transform);
+        currentKeeperPrefab.transform.SetParent(monsterSpawnPoint.transform);
     }
 
     public void SpawnBossMosnter() //TODO
@@ -77,6 +76,6 @@ public class MonsterSpawner : MonoBehaviour
 
         currentBossPrefab.MonsterData = bossDatas[spawnDataRandomValue];
 
-        currentBossPrefab.transform.SetParent(gameObject.transform);
+        currentBossPrefab.transform.SetParent(monsterSpawnPoint.transform);
     }
 }
