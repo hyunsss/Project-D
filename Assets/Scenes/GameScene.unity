@@ -13805,6 +13805,7 @@ MeshCollider:
   m_Mesh: {fileID: 4300000, guid: 294ef2ad272717941abe3c6f03586ad4, type: 3}
 --- !u!1 &386178780 stripped
 GameObject:
+  m_CorrespondingSourceObject: {fileID: 3066099880197357563, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
   m_PrefabInstance: {fileID: 2084334975}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &386178783
