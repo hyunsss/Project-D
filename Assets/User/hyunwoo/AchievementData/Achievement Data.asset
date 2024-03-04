@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1bfa99d54c714228902d217f16384fd, type: 3}
   m_Name: Achievement Data
   m_EditorClassIdentifier: 
-  uid: 3123213
+  uid: 0
   achievementType: 0
   Achievement_name: 'Success Killing 5 Monsters!!! '
   desc: 
   isLocked: 1
   count: 5
-  targetCount: 0
+  targetCount: 5

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 7908f1a2bde075d478e43a6e8b8277be
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -40,7 +40,7 @@ ModelImporter:
       name: PlayerFemale_Weapon
     second: {fileID: 2100000, guid: 93c3b44b69fa040468855e80d871f268, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -49,6 +49,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -66,7 +67,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -74,26 +75,35 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -104,7 +114,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human:
@@ -604,20 +613,17 @@ ModelImporter:
     - name: Bip001 Skirt0102
       parentName: Bip001 Skirt01
       position: {x: -0.09645103, y: -0.000076751705, z: 0}
-      rotation: {x: -0.000000007450581, y: -0.000000022351744, z: -1.6653347e-16,
-        w: 1}
+      rotation: {x: -0.000000007450581, y: -0.000000022351744, z: -1.6653347e-16, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Skirt0103
       parentName: Bip001 Skirt0102
       position: {x: -0.09645111, y: -0.000076904296, z: -0.000000019073486}
-      rotation: {x: -0.000000007450581, y: -0.000000022351744, z: -1.6653347e-16,
-        w: 1}
+      rotation: {x: -0.000000007450581, y: -0.000000022351744, z: -1.6653347e-16, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Skirt0104
       parentName: Bip001 Skirt0103
       position: {x: -0.09645099, y: -0.000076751705, z: 0}
-      rotation: {x: -0.000000007450581, y: -0.000000022351744, z: -1.6653347e-16,
-        w: 1}
+      rotation: {x: -0.000000007450581, y: -0.000000022351744, z: -1.6653347e-16, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Skirt01Opp
       parentName: Bip001 Pelvis
@@ -647,20 +653,17 @@ ModelImporter:
     - name: Bip001 Skirt0202
       parentName: Bip001 Skirt02
       position: {x: -0.09645103, y: -0.000076751705, z: -0.0000000047683715}
-      rotation: {x: 0.0000000051222737, y: 0.0000000018626448, z: -0.000000014901159,
-        w: 1}
+      rotation: {x: 0.0000000051222737, y: 0.0000000018626448, z: -0.000000014901159, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Skirt0203
       parentName: Bip001 Skirt0202
       position: {x: -0.09645103, y: -0.000076828, z: -0.000000019073486}
-      rotation: {x: 0.0000000051222737, y: 0.0000000018626448, z: -0.000000014901159,
-        w: 1}
+      rotation: {x: 0.0000000051222737, y: 0.0000000018626448, z: -0.000000014901159, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Skirt0204
       parentName: Bip001 Skirt0203
       position: {x: -0.09645103, y: -0.000076828, z: 0.000000019073486}
-      rotation: {x: 0.0000000051222737, y: 0.0000000018626448, z: -0.000000014901159,
-        w: 1}
+      rotation: {x: 0.0000000051222737, y: 0.0000000018626448, z: -0.000000014901159, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Skirt02Opp
       parentName: Bip001 Pelvis
@@ -670,20 +673,17 @@ ModelImporter:
     - name: Bip001 Skirt02Opp02
       parentName: Bip001 Skirt02Opp
       position: {x: -0.09645103, y: -0.000076828, z: 0.000000011920928}
-      rotation: {x: 0.0000000027939677, y: 0.0000000037252903, z: -1.0408341e-17,
-        w: 1}
+      rotation: {x: 0.0000000027939677, y: 0.0000000037252903, z: -1.0408341e-17, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Skirt02Opp03
       parentName: Bip001 Skirt02Opp02
       position: {x: -0.09645103, y: -0.000076751705, z: -0.0000000166893}
-      rotation: {x: 0.0000000027939677, y: 0.0000000037252903, z: -1.0408341e-17,
-        w: 1}
+      rotation: {x: 0.0000000027939677, y: 0.0000000037252903, z: -1.0408341e-17, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Skirt02Opp04
       parentName: Bip001 Skirt02Opp03
       position: {x: -0.09645103, y: -0.000076828, z: 0.000000021457671}
-      rotation: {x: 0.0000000027939677, y: 0.0000000037252903, z: -1.0408341e-17,
-        w: 1}
+      rotation: {x: 0.0000000027939677, y: 0.0000000037252903, z: -1.0408341e-17, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Spine
       parentName: Bip001 Pelvis
@@ -1013,8 +1013,13 @@ ModelImporter:
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
