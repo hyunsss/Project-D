@@ -74,11 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8400612828212984091, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}
       propertyPath: m_Extents.x
-      value: 8
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8400612828212984091, guid: c4fcebfe0152bb144a6bdc0542001c9b, type: 3}
       propertyPath: m_Extents.z
-      value: 10
+      value: 5.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
