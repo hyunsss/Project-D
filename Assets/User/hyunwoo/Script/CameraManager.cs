@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-
     [SerializeField] private float panSpeed;
     [SerializeField] private float zoomSpeed;
     [SerializeField] private float zoomInMax;
     [SerializeField] private float zoomOutMax;
-
 
     private CinemachineInputProvider inputProvider;
     private CinemachineVirtualCamera virtualCamera;
@@ -43,14 +41,14 @@ public class CameraManager : MonoBehaviour
 
     public Vector2 PanDirection(float x, float y) {
         Vector2 direction = Vector2.zero;
-        if(y >= Screen.height * 0.90f) {
+        if(y >= Screen.height * 0.95f) {
             direction.y += 1;
-        } else if(y <= Screen.height * 0.1f) {
+        } else if(y <= Screen.height * 0.05f) {
             direction.y -= 1;
         }
-        if(x >= Screen.width * 0.90f) {
+        if(x >= Screen.width * 0.95f) {
             direction.x += 1;
-        } else if(x <= Screen.width * 0.1f) {
+        } else if(x <= Screen.width * 0.05f) {
             direction.x -= 1;
         }
 

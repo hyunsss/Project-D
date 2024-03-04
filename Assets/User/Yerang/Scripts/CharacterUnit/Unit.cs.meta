@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/User/Yerang/Scripts/CharacterUnit/Unit.cs.meta
+guid: 3bc63b0ea7b2e441889ee5c6e92ccf93
+========
+guid: 77a701f199acccc47922ae74820ec01f
+>>>>>>>> Hyunwoo:Assets/User/hyunwoo/DespawnEffect.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

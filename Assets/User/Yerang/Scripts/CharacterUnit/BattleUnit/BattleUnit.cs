@@ -1,16 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//2022.3.19
-public abstract class BattleUnit : MonoBehaviour
+
+public abstract class BattleUnit : Unit
 {
-    public string unitName;
-
-    public int maxHp;
-    protected int currentHp;
-    public int dp;
-
-    public int ap;
+    public float ap;
     public int attackCycle;
     public float attackRange;
 
@@ -22,9 +16,10 @@ public abstract class BattleUnit : MonoBehaviour
 
     [SerializeField]
     protected Transform shotPoint;
-    protected Coroutine attackCoroutine = null;
 
-    private void Awake()
+    protected bool isAttack = false;
+
+    private void OnEnable()
     {
         unitMove = GetComponent<BattleUnitMove>();
         animator = GetComponentInChildren<Animator>();
@@ -35,14 +30,16 @@ public abstract class BattleUnit : MonoBehaviour
     {
         SetTarget();
 
-        if (target != null && attackCoroutine == null 
+        if (target != null && !isAttack 
             && unitMove.state != BattleUnitMove.State.Move)
         {
+            isAttack = true;
             Attack();
         }
-        else if(attackCoroutine != null
+        else if(isAttack
             && ((target == null) || (unitMove.state == BattleUnitMove.State.Move)))
         {
+            isAttack = false;
             EndAttack();
         }
     }
@@ -50,22 +47,6 @@ public abstract class BattleUnit : MonoBehaviour
 
     public abstract void Attack();
     public abstract void EndAttack();
-
-    public void GetDamage(int damage)
-    {
-        currentHp -= damage;
-
-        if (currentHp < 0)
-        {
-            currentHp = 0;
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
 
     public void SetPriorityTarget(Transform target)
     {
@@ -75,7 +56,14 @@ public abstract class BattleUnit : MonoBehaviour
     Collider[] attackColliders;
     private void SetTarget()
     {
-        if (priorityTarget != null) //우선으로 타겟할 대상이 있으면 priorityTarget을 target으로 지정하고 빠져나감
+        //타겟이 비활성화 상태?
+        if (target != null && !target.gameObject.activeSelf)
+        {
+            target = null;
+        }
+
+        //우선으로 타겟할 대상이 있으면 priorityTarget을 target으로 지정하고 빠져나감
+        if (priorityTarget != null) 
         {
             target = priorityTarget;
             return;

@@ -13,9 +13,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Tower
+  - Installation
   - Enemy
-  - 
+  - GoalPoint
   - 
   - 
   - 
@@ -36,7 +36,7 @@ TagManager:
   - 
   - 
   - Shadow
-  - Build
+  - 
   - Map
   m_SortingLayers:
   - name: Default

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Cell : MonoBehaviour
@@ -20,7 +21,7 @@ public class Cell : MonoBehaviour
 
     private void Awake() {
         meshRenderer = GetComponent<MeshRenderer>();
-        Layermasks = 1 << 30 | 1 << 31;
+        Layermasks = 1 << 7 | 1 << 31;
     }
 
     private void Update() {
@@ -48,4 +49,5 @@ public class Cell : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, boxsize * 2);
         Gizmos.color = Color.yellow;
     }
+        
 }

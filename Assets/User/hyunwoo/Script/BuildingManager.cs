@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 public class BuildingManager : MonoBehaviour
 {
-    public List<TestBuilding> buildList = new List<TestBuilding>();
+    public List<Installation> buildList = new List<Installation>();
 
-    [HideInInspector]public TestBuilding targetBuilding;
+    [HideInInspector]public Installation targetBuilding;
 
     public static BuildingManager Instance;
     private GridXY grid;
@@ -94,7 +94,7 @@ public class BuildingManager : MonoBehaviour
     /// <param name="build"></param>
     /// <param name="posx"></param>
     /// <param name="posy"></param>
-    private void CreateBuildArea(TestBuilding build, int posx, int posy)
+    private void CreateBuildArea(Installation build, int posx, int posy)
     {
         if (cells.Count != build.AreaWidth * build.AreaHeight)
         {
@@ -165,7 +165,7 @@ public class BuildingManager : MonoBehaviour
         //Remove
     }
 
-    private void SetTargetBuild(TestBuilding building)
+    private void SetTargetBuild(Installation building)
     {
         targetBuilding = building;
     }

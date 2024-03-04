@@ -19,7 +19,7 @@ public class GridXY : MonoBehaviour
     public float CellSize => cellSize;
     public Node[,] GridArray => nodeArray;
     public List<Node> path;
-    int checkableLayer = 1 << 31;
+    int checkableLayer = 1 << 7 | 1 << 31;
 
     public int MaxSize { get => width * height; }
 
