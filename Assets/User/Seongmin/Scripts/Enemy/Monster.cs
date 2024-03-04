@@ -22,6 +22,8 @@ public class Monster : MonoBehaviour
     private Vector3             moveCheck;
     private float               repairing = 5f;
     private MonsterTower        tower = null;
+    private MonsterHPBar        monsterHPBar;
+
     public enum State
     {
         chase,
@@ -36,6 +38,7 @@ public class Monster : MonoBehaviour
         aStar =  GetComponent<UnitAStar>();
         animator = GetComponent<Animator>();
         tower = GetComponent<MonsterTower>();
+        monsterHPBar = GetComponentInChildren<MonsterHPBar>();
     }
 
     protected void Start()
@@ -57,7 +60,7 @@ public class Monster : MonoBehaviour
         }
 
         float checkMove = Vector3.Distance(transform.position, moveCheck);
-        if(checkMove < 0.05f)
+        if(checkMove < 0.02f)
         {
             animator.SetTrigger("isIdle");
         }
@@ -164,6 +167,7 @@ public class Monster : MonoBehaviour
     protected void HitDamage(float _damage)
     {
        currentHp -= _damage;
+        monsterHPBar.HPUpdate(currentHp, monsterData.MonsterHp);
         if (currentHp <= 0)
         {
             Die();
