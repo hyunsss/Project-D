@@ -12,12 +12,13 @@ public class UI_PanelManager : MonoBehaviour
     public RectTransform        buildTowerPanel;
     public float                speed = 50f;
     [SerializeField] 
-    private GameObject          ui_currentPanel = null;
+    private GameObject          ui_CurrentPanel = null;
     [Header("Panels")]
-    public GameObject           ui_towerPanel;
-    public GameObject           ui_unitPanel;
-    public GameObject           ui_levelUPPanel;
-    public UI_Boss_Text         ui_bossPanel;
+    public GameObject           ui_TowerPanel;
+    public GameObject           ui_BattleUnitPanel;
+    public GameObject           ui_WorkerUnitPanel;
+    public GameObject           ui_LevelUPPanel;
+    public UI_Boss_Text         ui_BossPanel;
     [Header("Texts")]
     public TextMeshProUGUI      monsterText;
     public TextMeshProUGUI      unitText;
@@ -38,10 +39,10 @@ public class UI_PanelManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         
-        ui_currentPanel.gameObject.SetActive(false);
-        ui_towerPanel.gameObject.SetActive(false);
-        ui_unitPanel.gameObject.SetActive(false);
-        ui_levelUPPanel.gameObject.SetActive(false);
+        ui_CurrentPanel.gameObject.SetActive(false);
+        ui_TowerPanel.gameObject.SetActive(false);
+        ui_BattleUnitPanel.gameObject.SetActive(false);
+        ui_LevelUPPanel.gameObject.SetActive(false);
 
     }
     void Update()
@@ -51,69 +52,48 @@ public class UI_PanelManager : MonoBehaviour
         monsterText.text = GameDB.Instance.monsterCount.ToString();
         scvText.text = GameDB.Instance.scv_Player.Count.ToString();
 
-       // if(buildTowerPanel.position.x > 730f )
-        //{
-       //    Vector3 newPos = buildTowerPanel.position + Vector3.left * speed *Time.deltaTime;
-       //    buildTowerPanel.position = newPos;
-     //  }
+
     }
     public void TowerPanel()
     {
-        if(ui_currentPanel == ui_towerPanel)
-        {
-            PanelReSet();
-        }
-        else 
-        {
-            ui_currentPanel = ui_towerPanel;
+            ui_CurrentPanel = ui_TowerPanel;
             OpenPanel();
-        }
-
     }
-    public void UnitPanel()
+    public void BattleUnitPanel()
     {
-        if(ui_currentPanel == ui_unitPanel)
-        {
-            PanelReSet();
-        }
-        else
-        {
-            ui_currentPanel = ui_unitPanel;
+            ui_CurrentPanel = ui_BattleUnitPanel;
             OpenPanel();
-        }
-        
+    }
+    public void WorkerUnitPanel()
+    {
+            ui_CurrentPanel = ui_WorkerUnitPanel;
+            OpenPanel();
     }
     public void LevelUPPanel()
     {
-        if(ui_currentPanel == ui_levelUPPanel)
-        {
-            PanelReSet();
-        }
-        else
-        {
-            ui_currentPanel = ui_levelUPPanel;
+
+            ui_CurrentPanel = ui_LevelUPPanel;
             OpenPanel();
-        }
     }
 
     private void OpenPanel()
     {
         PanelReSet();
 
-        ui_currentPanel.SetActive(true);
+        ui_CurrentPanel.SetActive(true);
 
     }
-    private void PanelReSet()
+    public void PanelReSet()
     {
-        ui_currentPanel.SetActive(false);
-        ui_towerPanel.SetActive(false);
-        ui_unitPanel.SetActive(false);
-        ui_levelUPPanel.SetActive(false);
+        ui_CurrentPanel.SetActive(false);
+        ui_TowerPanel.SetActive(false);
+        ui_BattleUnitPanel.SetActive(false);
+        ui_LevelUPPanel.SetActive(false);
         
     }
     public void BossPanelSet()
     {
-        ui_bossPanel.gameObject.SetActive(true);
+        ui_BossPanel.gameObject.SetActive(true);
         
     }
 }
