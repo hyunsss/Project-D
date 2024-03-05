@@ -26,10 +26,8 @@ public abstract class Tower : Installation
         level = 1;
         currentHp = maxHp;
         isCanUpgrade = true;
-        SetInfo();
     }
 
-    public abstract void SetInfo();
 
     public void GetDamage(float damage)
     {
@@ -39,18 +37,6 @@ public abstract class Tower : Installation
         {
             Destroyed();
         }
-    }
-
-    public IEnumerator Repaired()
-    {
-        yield return new WaitForSeconds(1f);
-
-        float repairedHpPerSec = 0;
-        foreach (WorkerUnit workerUnit in workers)
-        {
-            repairedHpPerSec += workerUnit.repairSpeed;
-        }
-        currentHp += repairedHpPerSec;
     }
 
     public override void CollocateWorker(WorkerUnit worker)
@@ -77,6 +63,18 @@ public abstract class Tower : Installation
             StopCoroutine(repairCoroutine);
             //힐 이펙트 끄기
         }
+    }
+
+    public IEnumerator Repaired()
+    {
+        yield return new WaitForSeconds(1f);
+
+        float repairedHpPerSec = 0;
+        foreach (WorkerUnit workerUnit in workers)
+        {
+            repairedHpPerSec += workerUnit.repairAmount;
+        }
+        currentHp += repairedHpPerSec;
     }
 
     public void Destroyed()

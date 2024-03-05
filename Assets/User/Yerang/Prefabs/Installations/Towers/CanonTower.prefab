@@ -55,7 +55,8 @@ MonoBehaviour:
   type: 0
   workers: []
   level: 0
-  turretTowerInfo: {fileID: 11400000, guid: 1f2b004917bb5484382df3fd242f20fb, type: 2}
+  towerInfo: {fileID: 11400000, guid: 1f2b004917bb5484382df3fd242f20fb, type: 2}
+  towerName: 
   attackPrefab: {fileID: -9031273999828306061, guid: f3d41a2636d414d40ae9641367e1ca3d, type: 3}
 --- !u!208 &3232926562826002547
 NavMeshObstacle:

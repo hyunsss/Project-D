@@ -5,7 +5,7 @@ using UnityEngine;
 public class WarriorUnit : BattleUnit
 {
     [SerializeField]
-    private Projectile attackPrefab;
+    private GameObject attackPrefab;
     protected Coroutine attackCoroutine = null;    
 
     public override void Attack()
@@ -32,13 +32,15 @@ public class WarriorUnit : BattleUnit
             //타겟을 바라보도록
             transform.rotation = Quaternion.LookRotation(target.position - transform.position).normalized;
 
+            //TODO: Visual Effect Manager?
             var attack = Lean.Pool.LeanPool.Spawn(attackPrefab,
                 shotPoint.position, shotPoint.rotation, transform.GetChild(0)); //0: ShotPoint
-            attack.InitProjctile(ap, target);
 
             animator.SetTrigger("attack");
 
             yield return new WaitForSeconds(attackCycle);
+
+            Destroy(attack.gameObject);
         }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TurretTowerInfo", menuName = "Scriptable Object Asset/TowerInfo/TurretTowerInfo")]
 public class TurretTowerInfo : ScriptableObject
 {
+    public string towerName;
     public int maxlevel;
 
     [Serializable]
@@ -16,8 +17,9 @@ public class TurretTowerInfo : ScriptableObject
         public float attackCycle;
         public float attackRange;
     }
-    [SerializeField]
     public Stat[] levelStat;
+
+    public Resource[] price;
 
     public GameObject[] rendererPrefabs;
 }

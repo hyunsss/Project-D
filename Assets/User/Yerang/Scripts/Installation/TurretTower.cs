@@ -1,20 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SpawnTowerInfo;
 
 public abstract class TurretTower : Tower
 {
-    [SerializeField]
-    protected TurretTowerInfo turretTowerInfo;
+    public TurretTowerInfo towerInfo;
 
     protected float ap;
-    public float Ap {  get { return ap; } }
-
     protected float attackCycle;
-    public float AttackCycle { get { return attackCycle; } }
-
     protected float attackRange;
-    public float AttackRange { get { return attackRange; } }
 
     protected Transform shotPoint;
 
@@ -33,27 +28,25 @@ public abstract class TurretTower : Tower
     protected override void OnEnable()
     {
         base.OnEnable();
+        SetInfo();
         detectedEnemies.Clear();
     }
 
-    public override void SetInfo()
+    public virtual void SetInfo()
     {
-        if(level >= turretTowerInfo.maxlevel)
-        {
-            isCanUpgrade = false;
-        }
-
-        this.maxHp = turretTowerInfo.levelStat[level - 1].maxHp;
-        this.ap = turretTowerInfo.levelStat[level - 1].maxHp;
-        this.attackCycle = turretTowerInfo.levelStat[level - 1].attackCycle;
-        this.attackRange = turretTowerInfo.levelStat[level - 1].attackRange;
-
-        Destroy(transform.GetChild(2).gameObject);
-        Instantiate(turretTowerInfo.rendererPrefabs[level - 1], transform);
-        transform.GetChild(2).TryGetComponent<Animator>(out animator); //2: Render
+        //Ω∫≈» º≥¡§
+        this.maxHp = towerInfo.levelStat[level - 1].maxHp;
+        this.ap = towerInfo.levelStat[level - 1].ap;
+        this.attackCycle = towerInfo.levelStat[level - 1].attackCycle;
+        this.attackRange = towerInfo.levelStat[level - 1].attackRange;
 
         currentHp = maxHp;
         detectingCollider.radius = attackRange;
+
+        //∑ª¥ı∑Ø º≥¡§
+        Destroy(transform.GetChild(2).gameObject);
+        Instantiate(towerInfo.rendererPrefabs[level - 1], transform);
+        transform.GetChild(2).TryGetComponent<Animator>(out animator); //2: Render
 
         StopAllCoroutines();
     }

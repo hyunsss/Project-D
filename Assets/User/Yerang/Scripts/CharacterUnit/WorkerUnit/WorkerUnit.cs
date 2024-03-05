@@ -15,8 +15,8 @@ public class WorkerUnit : Unit
     public State state;
 
     public float buildSpeed;
-    public float repairSpeed;
-    public float mineSpeed;
+    public float repairAmount;
+    public int mineAmount;
 
     private Installation belongInstallation;
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class TowerManager : MonoBehaviour
 {
@@ -11,13 +12,8 @@ public class TowerManager : MonoBehaviour
     private Transform towerParent;
     public Transform TowerParent { get { return towerParent; } }
 
-    /*[Serializable]
-    public struct TurretTowerSet
-    {
-        public TurretTower turretTower;
-        public TurretTowerInfo turretTowerInfo;
-    }
-    public TurretTowerSet[] turretTowerSets;
+    /*[SerializeField]
+    private TurretTowerInfo[] turretTowerInfos;
 
     private Dictionary<string, TurretTowerInfo> turretTowerDic = new Dictionary<string, TurretTowerInfo>();*/
 
@@ -40,24 +36,34 @@ public class TowerManager : MonoBehaviour
 
     /*private void SetDictionary()
     {
-        foreach (TurretTowerSet turretTowerSet in turretTowerSets)
+        foreach (TurretTowerInfo turretTowerInfo in turretTowerInfos)
         {
-            turretTowerDic.Add(turretTowerSet.turretTower.name, turretTowerSet.turretTowerInfo);
+            turretTowerDic.Add(turretTowerInfo.towerName, turretTowerInfo);
         }
     }*/
 
-    /*public void BuildTower()
+    public void BuildTower(TowerBeingBuilt tower)
     {
-    }*/
+        
+    }
 
     public void UpgradeTower(TurretTower turretTower)
     {
-        //재화사용
-
-        if (turretTower.IsCanUpgrade)
+        if (turretTower.level >= turretTower.towerInfo.maxlevel)
         {
-            turretTower.level++;
-            turretTower.SetInfo();
+            //최대레벨이면 업그레이드 실패
+            return;
         }
+
+        //재화 사용
+        if (!TestGameManager.Instance.UseReSource(turretTower.towerInfo.price[turretTower.level]))
+        {
+            //재화가 부족하면 업그레이드 실패
+            return;
+        }
+
+        //타워 레벨업
+        turretTower.level++;
+        turretTower.SetInfo();
     }
 }

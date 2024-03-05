@@ -54,6 +54,7 @@ public class AcherTower : TurretTower
     {
         if(detectedEnemies.Count <= 0) //감지된 적이 없으면 빠져나감
         {
+            EndAttack();
             return;
         }
 

@@ -18,6 +18,9 @@ MonoBehaviour:
     ap: 1
     attackCycle: 3
     attackRange: 10
+  price:
+  - mineral: 0
+    gas: 0
   rendererPrefabs:
   - {fileID: 1376233406905130, guid: 4964fa1aa5596094186c4ec7b5c53c9e, type: 3}
   - {fileID: 1539728516898772, guid: 7c88f68ba23dd1f49bedeb3b992140cf, type: 3}

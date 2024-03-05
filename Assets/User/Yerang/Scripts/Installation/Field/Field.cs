@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Field : Installation
 {
-    private Coroutine MineCoroutine;
+    [Serializable]
+    private enum ResourceType { Mineral, Gas }
+    [SerializeField]
+    private ResourceType resourceType;
 
-    Coroutine minedCoroutine = null;
+    private Coroutine minedCoroutine = null;
 
     private void Awake()
     {
@@ -15,14 +19,25 @@ public class Field : Installation
 
     public IEnumerator MinedCoroutine()
     {
-        yield return new WaitForSeconds(1f);
-
-        //반복
-        //재화 증가
-        float minedResourcePerSec = 0;
-        foreach (WorkerUnit workerUnit in workers)
+        while (true)
         {
-            minedResourcePerSec += workerUnit.mineSpeed;
+            yield return new WaitForSeconds(1f);
+
+            //재화 증가
+            int minedResourcePerSec = 0; //초당 얻는 자원수
+            foreach (WorkerUnit workerUnit in workers)
+            {
+                minedResourcePerSec += workerUnit.mineAmount;
+            }
+
+            if (resourceType == ResourceType.Mineral)
+            {
+                TestGameManager.Instance.GainMineral(minedResourcePerSec);
+            }
+            else if (resourceType == ResourceType.Gas)
+            {
+                TestGameManager.Instance.GainGas(minedResourcePerSec);
+            }
         }
     }
 

@@ -19,7 +19,7 @@ public class SpawnTower : Tower
         spawnPoint = transform.GetChild(0); //0: SpawnPoint
     }
 
-    public override void SetInfo()
+    public void SetInfo()
     {
 
     }

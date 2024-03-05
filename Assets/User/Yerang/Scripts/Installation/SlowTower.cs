@@ -15,15 +15,18 @@ public class SlowTower : TurretTower
 
     public override void SetInfo()
     {
-        if (level >= turretTowerInfo.maxlevel)
-        {
-            isCanUpgrade = false;
-        }
-
-        this.maxHp = turretTowerInfo.levelStat[level - 1].maxHp;
-        this.attackRange = turretTowerInfo.levelStat[level - 1].attackRange;
+        //Ω∫≈» º≥¡§
+        this.maxHp = towerInfo.levelStat[level - 1].maxHp;
+        this.attackRange = towerInfo.levelStat[level - 1].attackRange;
 
         currentHp = maxHp;
+        detectingCollider.radius = attackRange;
+
+        //∑ª¥ı∑Ø º≥¡§
+        Destroy(transform.GetChild(2).gameObject);
+        Instantiate(towerInfo.rendererPrefabs[level - 1], transform);
+        transform.GetChild(2).TryGetComponent<Animator>(out animator); //2: Render
+
         detectingArea.transform.localScale = new Vector3(attackRange * 2, 0.1f, attackRange * 2);
     }
 

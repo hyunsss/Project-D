@@ -191,7 +191,8 @@ MonoBehaviour:
   type: 0
   workers: []
   level: 0
-  turretTowerInfo: {fileID: 11400000, guid: cc11834c4afd32b49844647d925ca1a9, type: 2}
+  towerInfo: {fileID: 11400000, guid: cc11834c4afd32b49844647d925ca1a9, type: 2}
+  towerName: 
   slowPer: 0
   detectingArea: {fileID: 1542021513864428286}
 --- !u!208 &5593290167964435238
