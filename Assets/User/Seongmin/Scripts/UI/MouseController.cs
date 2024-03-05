@@ -26,6 +26,8 @@ public class MouseController : MonoBehaviour
                     var selectedUnit = hit.collider.GetComponent<Monster>();
                     target = selectedUnit.gameObject;
                     ClickSelected(target);
+                    UI_PanelManager.Instance.MonsterINFOPanel();
+                    UI_PanelManager.Instance.monsterInfo.SetINFO(selectedUnit);
                 }
                 // Player Unit selected
                 else if( hit.collider.GetComponent<BattleUnit>())
@@ -42,9 +44,16 @@ public class MouseController : MonoBehaviour
                     ClickSelected(target);
                     UI_PanelManager.Instance.WorkerUnitPanel();
                 }
+                else if (hit.collider.GetComponent<TowerAttack>())
+                {
+                    var selectedUnit = hit.collider.GetComponent<TowerAttack>();
+                    target = selectedUnit.gameObject;
+                    ClickSelected(target);
+                    UI_PanelManager.Instance.TowerPanel();
+                }
                 else
                 {
-                    print("몬스터가 선택 해제 되었습니다.");
+
                     DeSelected();
                     target = null;
                     ClickSelected(target);
@@ -57,7 +66,6 @@ public class MouseController : MonoBehaviour
             Selected_image.transform.position = target.transform.position+Vector3.up*10f;
         }   
     }
-
     private void ClickSelected(GameObject _target)
     {
         if (_target == null)

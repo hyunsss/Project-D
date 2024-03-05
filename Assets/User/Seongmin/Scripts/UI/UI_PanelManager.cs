@@ -8,24 +8,24 @@ public class UI_PanelManager : MonoBehaviour
 {
     public static UI_PanelManager Instance;
 
-    
-    public RectTransform        buildTowerPanel;
-    public float                speed = 50f;
+   
     [SerializeField] 
-    private GameObject          ui_CurrentPanel = null;
+    private GameObject          ui_CurrentPanel;
     [Header("Panels")]
     public GameObject           ui_TowerPanel;
     public GameObject           ui_BattleUnitPanel;
     public GameObject           ui_WorkerUnitPanel;
     public GameObject           ui_LevelUPPanel;
-    public UI_Boss_Text         ui_BossPanel;
+    public GameObject           ui_MonsterINFO;
+    [Header("ChildScripts")]
+    public UI_Boss_Text         bossPanel;
+    public UI_Monster_INFO      monsterInfo;
     [Header("Texts")]
     public TextMeshProUGUI      monsterText;
     public TextMeshProUGUI      unitText;
     public TextMeshProUGUI      towerText;
     public TextMeshProUGUI      scvText;
 
-    private bool                isOpened = false;
    
     private void Awake()
     {
@@ -39,10 +39,13 @@ public class UI_PanelManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         
-        ui_CurrentPanel.gameObject.SetActive(false);
         ui_TowerPanel.gameObject.SetActive(false);
         ui_BattleUnitPanel.gameObject.SetActive(false);
         ui_LevelUPPanel.gameObject.SetActive(false);
+
+        bossPanel.gameObject.SetActive(false);
+        monsterInfo.gameObject.SetActive(false);
+
 
     }
     void Update()
@@ -75,6 +78,11 @@ public class UI_PanelManager : MonoBehaviour
             ui_CurrentPanel = ui_LevelUPPanel;
             OpenPanel();
     }
+    public void MonsterINFOPanel()
+    {
+            ui_CurrentPanel = ui_MonsterINFO;
+            OpenPanel();
+    }
 
     private void OpenPanel()
     {
@@ -89,11 +97,12 @@ public class UI_PanelManager : MonoBehaviour
         ui_TowerPanel.SetActive(false);
         ui_BattleUnitPanel.SetActive(false);
         ui_LevelUPPanel.SetActive(false);
-        
+        ui_WorkerUnitPanel.SetActive(false);
+        ui_MonsterINFO.SetActive(false);
     }
     public void BossPanelSet()
     {
-        ui_BossPanel.gameObject.SetActive(true);
+        bossPanel.gameObject.SetActive(true);
         
     }
 }
