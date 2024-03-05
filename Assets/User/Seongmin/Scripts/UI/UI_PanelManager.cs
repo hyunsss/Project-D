@@ -25,7 +25,9 @@ public class UI_PanelManager : MonoBehaviour
     public TextMeshProUGUI      unitText;
     public TextMeshProUGUI      towerText;
     public TextMeshProUGUI      scvText;
+    public TextMeshProUGUI      playTimeText;
 
+    private float               startTime;
    
     private void Awake()
     {
@@ -48,15 +50,21 @@ public class UI_PanelManager : MonoBehaviour
 
 
     }
+    private void Start()
+    {
+        startTime = Time.time;
+    }
     void Update()
     {
+        float playTime = Time.time - startTime;
+        playTimeText.text = playTime.ToString("F0");
         towerText.text = GameDB.Instance.tower_Player.Count.ToString();
         unitText.text = GameDB.Instance.unit_Player.Count.ToString();
         monsterText.text = GameDB.Instance.monsterCount.ToString();
         scvText.text = GameDB.Instance.scv_Player.Count.ToString();
 
-
     }
+
     public void TowerPanel()
     {
             ui_CurrentPanel = ui_TowerPanel;
