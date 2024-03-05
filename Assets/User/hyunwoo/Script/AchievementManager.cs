@@ -9,16 +9,6 @@ public enum AchievementType { KillCount, PlayTime, DeathCount, BuildCount, }
 
 public class AchievementManager : MonoBehaviour
 {
-    #region 
-    public Button savebutton;
-    public Button loadbutton;
-
-    public void SetButton() {
-        savebutton.onClick.AddListener(() => SaveAchievements(achievement_List));
-        loadbutton.onClick.AddListener(LoadAchievements);
-    }
-    #endregion
-
     public GameObject AchievePopupObject;
     public Canvas canvas;
     public static AchievementManager Instance;
@@ -41,7 +31,6 @@ public class AchievementManager : MonoBehaviour
     private void Start()
     {
         InitAchieve();
-        SetButton();
     }
 
     private void InitAchieve()

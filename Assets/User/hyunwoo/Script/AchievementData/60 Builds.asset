@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1bfa99d54c714228902d217f16384fd, type: 3}
-  m_Name: 50 Kills
+  m_Name: 60 Builds
   m_EditorClassIdentifier: 
-  uid: 1003
-  achievementType: 0
-  Achievement_name: "\uB204\uC801 \uBAAC\uC2A4\uD130 \uD0AC\uC218 50\uB9C8\uB9AC!!"
-  desc: 
+  uid: 103
+  rate: 4
+  achievementType: 3
+  Achievement_name: "\uC720\uB2DB \uC0DD\uC0B0 60\uBA85!"
+  desc: "\uC791\uC740 \uB9C8\uC744\uC774 \uC0DD\uAE34 \uAC83 \uAC19\uAD70\uC694"
   isLocked: 1
-  count: 50
+  count: 60
   targetCount: 0

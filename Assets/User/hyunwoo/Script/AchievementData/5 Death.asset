@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1bfa99d54c714228902d217f16384fd, type: 3}
-  m_Name: PlayTime 10m
+  m_Name: 5 Death
   m_EditorClassIdentifier: 
-  uid: 10003
-  achievementType: 1
-  Achievement_name: "\uD50C\uB808\uC774\uD0C0\uC784 : 10\uBD84"
-  desc: 
+  uid: 2
+  rate: 1
+  achievementType: 2
+  Achievement_name: "\uB204\uC801 5\uD328\uBC30..."
+  desc: "5\uBC88\uC774\uB098 \uD328\uBC30\uD558\uC168\uAD70\uC694.."
   isLocked: 1
-  count: 600
+  count: 5
   targetCount: 0

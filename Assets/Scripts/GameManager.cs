@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,7 +29,15 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        print(tower_Player[0]);
+        
+    }
+
+    public void SceneChange(int index) {
+        SceneManager.LoadScene(index);
+    }
+
+    public void ExitGame() {
+        Application.Quit();
     }
 
     public List<Transform> tower_Player = new List<Transform>();

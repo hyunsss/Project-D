@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1bfa99d54c714228902d217f16384fd, type: 3}
-  m_Name: 30 Builds
+  m_Name: PlayTime 1m
   m_EditorClassIdentifier: 
-  uid: 102
-  achievementType: 3
-  Achievement_name: "\uC720\uB2DB \uB204\uC801 \uC0DD\uC0B0 30\uB9C8\uB9AC!"
-  desc: 
+  uid: 10002
+  rate: 3
+  achievementType: 1
+  Achievement_name: "\uD50C\uB808\uC774\uD0C0\uC784 : 1\uBD84"
+  desc: "\uD50C\uB808\uC774\uD0C0\uC784 1\uBD84\uC744 \uB118\uACBC\uC2B5\uB2C8\uB2E4!"
   isLocked: 1
-  count: 30
+  count: 60
   targetCount: 0

@@ -106048,8 +106048,20 @@ MonoBehaviour:
   AchievePopupObject: {fileID: 8372731682310763607, guid: e20a92163c67048898f644be056d52c0, type: 3}
   canvas: {fileID: 44821914}
   achievementData_List:
+  - {fileID: 11400000, guid: 5f2776097c3af4f68bb50eca7fad55ca, type: 2}
+  - {fileID: 11400000, guid: acd98d8df46334b38be0f5bd48ab81c9, type: 2}
   - {fileID: 11400000, guid: 65ab361fffcd6413aa8b301753bef076, type: 2}
+  - {fileID: 11400000, guid: fad955c06277841569936b350377dab1, type: 2}
   - {fileID: 11400000, guid: ee6d02b520911482c8dcba90728e74df, type: 2}
+  - {fileID: 11400000, guid: 8e35f97a961664b03a8d974f22f89f4c, type: 2}
+  - {fileID: 11400000, guid: 1511cf6a41cf5412e86bb6c9bdd2e6b8, type: 2}
+  - {fileID: 11400000, guid: d451f4cdebb0b4f2591bfa2c61d55529, type: 2}
+  - {fileID: 11400000, guid: bc46fda2bb21344d3a4d0a86550a5e31, type: 2}
+  - {fileID: 11400000, guid: 776b48477f0084b00951b498734c132a, type: 2}
+  - {fileID: 11400000, guid: 4ec3b4299edf746ac8fb2e213d94869c, type: 2}
+  - {fileID: 11400000, guid: a781a2196aa7545cc9137592fadb7c46, type: 2}
+  - {fileID: 11400000, guid: 87bcede9f5b474a749bdc923d3317cc3, type: 2}
+  - {fileID: 11400000, guid: d0fa9b6c8ec60431586435c8027e73a0, type: 2}
   achievement_List: []
 --- !u!114 &6640006486684429581
 MonoBehaviour:

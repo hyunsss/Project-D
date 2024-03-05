@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1bfa99d54c714228902d217f16384fd, type: 3}
-  m_Name: PlayTime 1h
+  m_Name: 10 Kills
   m_EditorClassIdentifier: 
-  uid: 10001
-  achievementType: 1
-  Achievement_name: "\uD50C\uB808\uC774\uD0C0\uC784 : 60\uBD84"
-  desc: 
+  uid: 1001
+  rate: 2
+  achievementType: 0
+  Achievement_name: "\uB204\uC801 \uBAAC\uC2A4\uD130 \uD0AC\uC218 10\uB9C8\uB9AC!!"
+  desc: "\uBAAC\uC2A4\uD130\uB97C 10\uB9C8\uB9AC \uC7A1\uC558\uC2B5\uB2C8\uB2E4!!!"
   isLocked: 1
-  count: 3600
-  targetCount: 0
+  count: 10
+  targetCount: 5

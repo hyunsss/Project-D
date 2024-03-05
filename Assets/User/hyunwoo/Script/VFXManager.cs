@@ -45,7 +45,6 @@ public class VFXManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetVFXButtons();
     }
 
     public void VFXPlay(Transform trans, VFXDir key) {
