@@ -21,5 +21,6 @@ public class GameDB : MonoBehaviour
     }
     public List<Transform>      tower_Player = new List<Transform>();
     public List<Transform>      unit_Player = new List<Transform>();
+    public List<Transform>      scv_Player = new List<Transform>();
     public int                  monsterCount = 0;
 }

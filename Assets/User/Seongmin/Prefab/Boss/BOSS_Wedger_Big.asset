@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: BOSS_Wedger_Big
   monsterHp: 150
-  monsterSpeed: 1
+  monsterSpeed: 3
   monsterDamage: 10
   monsterPrefab: {fileID: 6192503344737586238, guid: 2e6313deb4cb0ca4ca85e5ae48578a07, type: 3}

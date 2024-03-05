@@ -12,7 +12,7 @@ public class UI_PanelManager : MonoBehaviour
     public RectTransform        buildTowerPanel;
     public float                speed = 50f;
     [SerializeField] 
-    private GameObject          ui_currentPanel;
+    private GameObject          ui_currentPanel = null;
     [Header("Panels")]
     public GameObject           ui_towerPanel;
     public GameObject           ui_unitPanel;
@@ -22,6 +22,9 @@ public class UI_PanelManager : MonoBehaviour
     public TextMeshProUGUI      monsterText;
     public TextMeshProUGUI      unitText;
     public TextMeshProUGUI      towerText;
+    public TextMeshProUGUI      scvText;
+
+    private bool                isOpened = false;
    
     private void Awake()
     {
@@ -46,6 +49,7 @@ public class UI_PanelManager : MonoBehaviour
         towerText.text = GameDB.Instance.tower_Player.Count.ToString();
         unitText.text = GameDB.Instance.unit_Player.Count.ToString();
         monsterText.text = GameDB.Instance.monsterCount.ToString();
+        scvText.text = GameDB.Instance.scv_Player.Count.ToString();
 
        // if(buildTowerPanel.position.x > 730f )
         //{
@@ -55,25 +59,48 @@ public class UI_PanelManager : MonoBehaviour
     }
     public void TowerPanel()
     {
-        ui_currentPanel = ui_towerPanel;
-        OpenPanel();
+        if(ui_currentPanel == ui_towerPanel)
+        {
+            PanelReSet();
+        }
+        else 
+        {
+            ui_currentPanel = ui_towerPanel;
+            OpenPanel();
+        }
+
     }
     public void UnitPanel()
     {
-        ui_currentPanel = ui_unitPanel;
-        OpenPanel();
+        if(ui_currentPanel == ui_unitPanel)
+        {
+            PanelReSet();
+        }
+        else
+        {
+            ui_currentPanel = ui_unitPanel;
+            OpenPanel();
+        }
+        
     }
     public void LevelUPPanel()
     {
-        ui_currentPanel = ui_levelUPPanel;
-        OpenPanel();
+        if(ui_currentPanel == ui_levelUPPanel)
+        {
+            PanelReSet();
+        }
+        else
+        {
+            ui_currentPanel = ui_levelUPPanel;
+            OpenPanel();
+        }
     }
 
     private void OpenPanel()
     {
         PanelReSet();
+
         ui_currentPanel.SetActive(true);
-          
 
     }
     private void PanelReSet()
@@ -82,9 +109,11 @@ public class UI_PanelManager : MonoBehaviour
         ui_towerPanel.SetActive(false);
         ui_unitPanel.SetActive(false);
         ui_levelUPPanel.SetActive(false);
+        
     }
     public void BossPanelSet()
     {
         ui_bossPanel.gameObject.SetActive(true);
+        
     }
 }
