@@ -6,14 +6,18 @@ using TMPro;
 
 public class UI_PanelManager : MonoBehaviour
 {
+    public static UI_PanelManager Instance;
+
+    
     public RectTransform        buildTowerPanel;
     public float                speed = 50f;
     [SerializeField] 
-    private GameObject          currentPanel;
+    private GameObject          ui_currentPanel;
     [Header("Panels")]
-    public GameObject           towerPanel;
-    public GameObject           unitPanel;
-    public GameObject           levelUPPanel;
+    public GameObject           ui_towerPanel;
+    public GameObject           ui_unitPanel;
+    public GameObject           ui_levelUPPanel;
+    public UI_Boss_Text         ui_bossPanel;
     [Header("Texts")]
     public TextMeshProUGUI      monsterText;
     public TextMeshProUGUI      unitText;
@@ -21,10 +25,20 @@ public class UI_PanelManager : MonoBehaviour
    
     private void Awake()
     {
-        currentPanel.gameObject.SetActive(false);
-        towerPanel.gameObject.SetActive(false);
-        unitPanel.gameObject.SetActive(false);
-        levelUPPanel.gameObject.SetActive(false);
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+        
+        ui_currentPanel.gameObject.SetActive(false);
+        ui_towerPanel.gameObject.SetActive(false);
+        ui_unitPanel.gameObject.SetActive(false);
+        ui_levelUPPanel.gameObject.SetActive(false);
 
     }
     void Update()
@@ -41,32 +55,36 @@ public class UI_PanelManager : MonoBehaviour
     }
     public void TowerPanel()
     {
-        currentPanel = towerPanel;
+        ui_currentPanel = ui_towerPanel;
         OpenPanel();
     }
     public void UnitPanel()
     {
-        currentPanel = unitPanel;
+        ui_currentPanel = ui_unitPanel;
         OpenPanel();
     }
     public void LevelUPPanel()
     {
-        currentPanel = levelUPPanel;
+        ui_currentPanel = ui_levelUPPanel;
         OpenPanel();
     }
 
     private void OpenPanel()
     {
         PanelReSet();
-        currentPanel.SetActive(true);
+        ui_currentPanel.SetActive(true);
           
 
     }
     private void PanelReSet()
     {
-        currentPanel.SetActive(false);
-        towerPanel.SetActive(false);
-        unitPanel.SetActive(false);
-        levelUPPanel.SetActive(false);
+        ui_currentPanel.SetActive(false);
+        ui_towerPanel.SetActive(false);
+        ui_unitPanel.SetActive(false);
+        ui_levelUPPanel.SetActive(false);
+    }
+    public void BossPanelSet()
+    {
+        ui_bossPanel.gameObject.SetActive(true);
     }
 }

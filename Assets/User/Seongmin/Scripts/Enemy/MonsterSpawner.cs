@@ -78,5 +78,9 @@ public class MonsterSpawner : MonoBehaviour
 
         currentBossPrefab.transform.SetParent(monsterSpawnPoint.transform);
         currentBossPrefab.state = Monster.State.chase;
+
+        // BossPanel setting
+        UI_PanelManager.Instance.BossPanelSet();
+       
     }
 }

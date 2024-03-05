@@ -34,12 +34,11 @@ public class MonsterTower : MonoBehaviour
         {
             GameDB.Instance.monsterCount++;
             monsterSpawner.SpawnMonster();
-            monsterSpawner.SpawnBossMosnter();
+            
             if(towerCurrentHp < towerMaxHp / 2 && keeperSpawnCount <= keeperMaxCount)
             {
                 GameDB.Instance.monsterCount++;
                 keeperSpawnCount++;
-                print("Keeper가 소환 되었습니다 ! ");
                 monsterSpawner.SpawnTowerKeeper(this);
             }
             yield return new WaitForSeconds(2f);
@@ -57,5 +56,9 @@ public class MonsterTower : MonoBehaviour
     public void RepairingTower(float _heal)
     {
         towerCurrentHp += _heal;
+    }
+    public void TestBossSpawn()
+    {
+        monsterSpawner.SpawnBossMosnter();
     }
 }

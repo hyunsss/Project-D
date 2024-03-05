@@ -19,7 +19,7 @@ public class GameDB : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-    public List<Transform> tower_Player = new List<Transform>();
-    public List<Transform> unit_Player = new List<Transform>();
-    public int monsterCount = 0;
+    public List<Transform>      tower_Player = new List<Transform>();
+    public List<Transform>      unit_Player = new List<Transform>();
+    public int                  monsterCount = 0;
 }
