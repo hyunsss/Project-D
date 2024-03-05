@@ -12,8 +12,6 @@ public class SpawnTower : Tower
     private bool isSpawning = false;
 
     private Transform spawnPoint;
-    [SerializeField]
-    private Transform spawnParent; //TODO: spawnParent 매니저에서 참조하도록
 
     protected override void Awake()
     {
@@ -43,7 +41,7 @@ public class SpawnTower : Tower
 
             GameObject spawnedCharacter =
                 Lean.Pool.LeanPool.Spawn(characterPrefab, spawnPoint.position, transform.rotation,
-                spawnParent);
+                UnitManager.Instance.UnitParent);
         }
         isSpawning = false;
         yield break;

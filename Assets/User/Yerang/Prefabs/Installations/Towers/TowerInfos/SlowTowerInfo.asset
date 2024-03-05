@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c74b43aebd568b4c8ce07eadae0a8bd, type: 3}
   m_Name: SlowTowerInfo
   m_EditorClassIdentifier: 
-  maxlevel: 1
+  maxlevel: 4
   levelStat:
   - maxHp: 10
-    damage: 0
+    ap: 0
     attackCycle: 0
     attackRange: 10
-  towerRenderers:
-  - {fileID: 1367997974350908, guid: be0b768028397264d9c378dbd4f93277, type: 3}
-  - {fileID: 1064594759508384, guid: e58080f49911f2b4daa4c5be922b82a4, type: 3}
-  - {fileID: 1980452956039334, guid: 9151417fa9caea340b9ae1e93c58a4b4, type: 3}
-  - {fileID: 1969260341544988, guid: fa67eafe5fc7dcf4da784d12781f2ef2, type: 3}
-  - {fileID: 1442357279516786, guid: baa2e7526837952458e15f750e0d00ae, type: 3}
+  rendererPrefabs:
+  - {fileID: 5827747551993080529, guid: b59b49e95af124f4e983dd11cf79929f, type: 3}
+  - {fileID: 1255775222848740681, guid: 23ffa7ef0ae177e45b84db3e9671830c, type: 3}
+  - {fileID: 1953927851091699725, guid: 71e5c208b283c0d40a10d8058b824b0a, type: 3}
+  - {fileID: 956146673518805446, guid: b63ea623eef5c004190599a36131ced3, type: 3}
+  - {fileID: 4000182755488916476, guid: 44d74ca818f076849bc19d0bb039a053, type: 3}

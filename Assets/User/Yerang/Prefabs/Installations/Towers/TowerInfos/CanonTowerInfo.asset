@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c74b43aebd568b4c8ce07eadae0a8bd, type: 3}
+  m_Name: CanonTowerInfo
+  m_EditorClassIdentifier: 
+  maxlevel: 4
+  levelStat:
+  - maxHp: 10
+    ap: 1
+    attackCycle: 3
+    attackRange: 10
+  rendererPrefabs:
+  - {fileID: 5109520016762078461, guid: cce1d493918ae5b4c9d6b1864959529e, type: 3}
+  - {fileID: 1830982163091832963, guid: ccf2ca1209376f74d9fffcf84eabbcfd, type: 3}
+  - {fileID: 6225285279770325973, guid: 26dc041969e3cd5468f3c00911869a5c, type: 3}
+  - {fileID: 4215464048715054316, guid: 0e2911cb9e9564146b196805c2aaf11f, type: 3}
+  - {fileID: 5843196000354408496, guid: de9d1caef80f72348a69492160f93bb4, type: 3}

@@ -12,7 +12,7 @@ public class TurretTowerInfo : ScriptableObject
     public struct Stat
     {
         public float maxHp;
-        public float damage;
+        public float ap;
         public float attackCycle;
         public float attackRange;
     }

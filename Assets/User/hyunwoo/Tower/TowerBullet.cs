@@ -66,5 +66,4 @@ public class TowerBullet : MonoBehaviour
     protected virtual void DestroyObject() {
         LeanPool.Despawn(gameObject);
     }
-
 }

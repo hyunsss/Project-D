@@ -47,7 +47,7 @@ public class SlowTower : TurretTower
         enemy.speed = enemy.speed / (1 - slowPer / 100);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private new void OnTriggerEnter(Collider other)
     { //TODO: TestEnemy -> Enemy
         if(TryGetComponent<TestEnemy>(out TestEnemy enemy))
         {
@@ -55,7 +55,7 @@ public class SlowTower : TurretTower
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private new void OnTriggerExit(Collider other)
     {
         if (TryGetComponent<TestEnemy>(out TestEnemy enemy))
         {

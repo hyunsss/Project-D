@@ -31,7 +31,7 @@ public class TowerBeingBuilt : Installation
 
         if (currentTime >= completeTime)
         {
-            Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation);
+            Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, TowerManager.Instance.TowerParent);
             Lean.Pool.LeanPool.Despawn(gameObject);
         }
     }

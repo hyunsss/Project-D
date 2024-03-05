@@ -7,9 +7,6 @@ public class MageUnit : BattleUnit
     private Projectile attackPrefab;
     protected Coroutine attackCoroutine = null;
 
-    [SerializeField]
-    private Transform projectileParent;
-
     public override void Attack()
     {
         if (attackCoroutine == null)
@@ -37,7 +34,7 @@ public class MageUnit : BattleUnit
             animator.SetTrigger("attack");
 
             var attack = Lean.Pool.LeanPool.Spawn(attackPrefab,
-                shotPoint.position, shotPoint.rotation, projectileParent);
+                shotPoint.position, shotPoint.rotation, ProjectileManager.Instance.ProjectileParent);
             attack.InitProjctile(ap, target);
             yield return new WaitForSeconds(attackCycle);
         }

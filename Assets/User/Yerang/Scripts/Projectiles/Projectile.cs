@@ -3,18 +3,12 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    protected float damage;
     protected Transform target;
 
+    protected float damage;
     public float speed;
-    public float lifetime;
 
-    protected virtual void OnEnable()
-    {
-        StartCoroutine(RemoveCoroutine());
-    }
-
-    public void InitProjctile(float damage, Transform target)
+    public virtual void InitProjctile(float damage, Transform target)
     {
         this.damage = damage;
         this.target = target;
@@ -38,20 +32,4 @@ public abstract class Projectile : MonoBehaviour
     }
 
     protected abstract void OnMove();
-
-    protected IEnumerator RemoveCoroutine() //생명주기가 다하면 삭제
-    {
-        yield return new WaitForSeconds(lifetime);
-        Lean.Pool.LeanPool.Despawn(this);
-        yield break;
-    }
-
-    protected void OnTriggerEnter(Collider other) //적에 닿으면 삭제
-    { //TODO: TestEnemy -> Enemy
-        if (other.gameObject.TryGetComponent<TestEnemy>(out TestEnemy testEnemy))
-        {
-            testEnemy.GetDamage(damage);
-            Lean.Pool.LeanPool.Despawn(this);
-        }
-    }
 }

@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class AcherTower : TurretTower
 {
-    [SerializeField]
-    private Projectile attackPrefab;
-
     private List<TestEnemy> targets = new List<TestEnemy>();
 
+    [SerializeField]
+    private Projectile attackPrefab;
     protected Coroutine attackCoroutine = null;
 
     private void Update()
@@ -42,7 +41,7 @@ public class AcherTower : TurretTower
             foreach (var target in targets)
             {
                 var attack = Lean.Pool.LeanPool.Spawn(attackPrefab,
-                    shotPoint.position, shotPoint.rotation, shotPoint);
+                    shotPoint.position, shotPoint.rotation, ProjectileManager.Instance.ProjectileParent);
                 attack.InitProjctile(ap, target.transform);
             }
 
@@ -84,22 +83,6 @@ public class AcherTower : TurretTower
         else
         {
             EndAttack();
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    { //TODO: TestEnemy -> Enemy
-        if (other.TryGetComponent<TestEnemy>(out TestEnemy enemy))
-        {
-            detectedEnemies.Add(enemy);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent<TestEnemy>(out TestEnemy enemy))
-        {
-            detectedEnemies.Remove(enemy);
         }
     }
 }
