@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class ArrowDrawer : MonoBehaviour
 {
@@ -17,13 +15,14 @@ public class ArrowDrawer : MonoBehaviour
     protected Vector3 startPos;
     protected Vector3 endPos;
 
-    private BattleUnitMove battleUnitMove;
+    private UnitMove unitMove;
 
     protected void Awake()
     {
-        battleUnitMove = GetComponent<BattleUnitMove>();
+        unitMove = GetComponent<UnitMove>();
 
-        targetLayerMask = 1 << LayerMask.NameToLayer("Ground");
+        targetLayerMask = 1 << LayerMask.NameToLayer("Ground")
+            | 1 << LayerMask.NameToLayer("Installation");
     }
 
     protected void OnMouseDown()
@@ -41,7 +40,14 @@ public class ArrowDrawer : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 999, targetLayerMask))
         {
-            endPos = hit.point;
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                endPos = hit.point;
+            }
+            else
+            {
+                endPos = hit.transform.position;
+            }
             endPos.y = 0.1f;
         }
 
@@ -52,10 +58,23 @@ public class ArrowDrawer : MonoBehaviour
     {
         arrowRenderer.enabled = false;
 
-        UnityEngine.Transform target =
-            Lean.Pool.LeanPool.Spawn(goalPointPrefab, endPos, Quaternion.identity).transform;
+        if (hit.transform == null)
+        {
+            return;
+        }
 
-        battleUnitMove.SetPriorityTarget(target);
+        Transform target;
+        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            target =
+                Lean.Pool.LeanPool.Spawn(goalPointPrefab, endPos, Quaternion.identity).transform;
+        }
+        else
+        {
+            target = hit.transform;
+        }
+
+        unitMove.SetPriorityTarget(target);
     }
 
     protected void DrawArrow()
@@ -63,13 +82,13 @@ public class ArrowDrawer : MonoBehaviour
         float arrowheadSize = 0.5f;
         float arrowheadRate = (float)(arrowheadSize / Vector3.Distance(startPos, endPos));
 
-        // â†“           â†“
-        // ============â–·
+        // ¡é           ¡é
+        // ============¢¹
         arrowRenderer.SetPosition(0, startPos);
         arrowRenderer.SetPosition(1, Vector3.Lerp(startPos, endPos, 0.999f - arrowheadRate));
 
-        //             â†“â†“
-        // ============â–·
+        //             ¡é¡é
+        // ============¢¹
         arrowRenderer.SetPosition(2, Vector3.Lerp(startPos, endPos, 1f - arrowheadRate));
         arrowRenderer.SetPosition(3, endPos);
 
@@ -78,13 +97,13 @@ public class ArrowDrawer : MonoBehaviour
         float arrowheadWidth = 0.5f;
 
         arrowRenderer.widthCurve = new AnimationCurve(
-            // â†“           â†“
-            // ============â–·
+            // ¡é           ¡é
+            // ============¢¹
             new Keyframe(0, arrowWidth),
             new Keyframe(0.999f - arrowheadRate, arrowWidth),
-            //             â†“â†“
-            // ============â–·
+            //             ¡é¡é
+            // ============¢¹
             new Keyframe(1 - arrowheadRate, arrowheadWidth),
-            new Keyframe(1, 0f)); //ë‘ê»˜ë¥¼ ì ì  ì¤„ì—¬ì„œ ì‚¼ê°í˜•ëª¨ì–‘ìœ¼ë¡œ
+            new Keyframe(1, 0f)); //µÎ²²¸¦ Á¡Á¡ ÁÙ¿©¼­ »ï°¢Çü¸ð¾çÀ¸·Î
     }
 }

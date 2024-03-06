@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 13099788744a82045bf0365d295fdde2, type: 3}
   m_Name: SpawnTowerInfo
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnTowerInfo/TurretTowerInfo
+  m_EditorClassIdentifier: 
   maxlevel: 0
+  maxHp: []
   price: []
   rendererPrefabs:
   - {fileID: 1337083809761150, guid: 9656a02aa4854a74ea27dcaec01e29a8, type: 3}

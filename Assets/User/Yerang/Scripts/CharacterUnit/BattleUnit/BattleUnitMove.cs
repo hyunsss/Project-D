@@ -1,73 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 
 //알아서 가까운 타겟 찾아 이동
 //수동으로 이동 시키기
-public class BattleUnitMove : MonoBehaviour
+public class BattleUnitMove : UnitMove
 {
-    public enum State
-    {
-        Idle,
-        Move
-    }
-    public State state;
-
-    public float moveSpeed;
     public float detectingRange;
     private float attackRange;
 
-    private NavMeshAgent nav;
-    private Animator animator;
+    private Transform target;
 
-    private UnityEngine.Transform target;
-    private UnityEngine.Transform priorityTarget;
-
-    private void Awake()
+    protected override void Awake()
     {
-        nav = GetComponent<NavMeshAgent>();
-        animator = GetComponentInChildren<Animator>();
+        base.Awake();
 
         attackRange = GetComponent<BattleUnit>().attackRange;
-
-        state = State.Idle;
     }
 
-    private void Start()
-    {
-        nav.speed = moveSpeed;
-    }
-
-    private void Update()
+    protected override void Update()
     {
         DetectEnemy();
 
-        switch (state)
-        {
-            case State.Idle:
-                if (target != null)
-                {
-                    state = State.Move;
-                }
-                break;
-
-            case State.Move:
-                if (target == null)
-                {
-                    state = State.Idle;
-                    break;
-                }
-                MoveToTarget();
-                break;
-
-            default:
-                break;
-        }
-
-        animator.SetInteger("moveState", (int)state);
+        base.Update();
     }
 
     private void DetectEnemy()
@@ -82,7 +35,7 @@ public class BattleUnitMove : MonoBehaviour
         Collider[] detectedColliders = Physics.OverlapSphere(transform.position, detectingRange, enemyLayerMask);
 
         float minDis = 999;
-        UnityEngine.Transform nearTarget = null;
+        Transform nearTarget = null;
 
         foreach (Collider collider in detectedColliders)
         {
@@ -110,7 +63,7 @@ public class BattleUnitMove : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectingRange);
     }
 
-    public void SetPriorityTarget(UnityEngine.Transform target) //ArrowDrawer로 설정
+    public override void SetPriorityTarget(Transform target) //ArrowDrawer로 설정
     {
         if (priorityTarget != null)
         {
@@ -120,13 +73,18 @@ public class BattleUnitMove : MonoBehaviour
         this.priorityTarget = target;
     }
 
-    private void ResetTarget()
+    protected override void ResetTarget()
     {
         if (priorityTarget != null)
         {
-            Lean.Pool.LeanPool.Despawn(priorityTarget.gameObject);
-            priorityTarget = null;
-            target = null;
+            if (priorityTarget.gameObject.layer == LayerMask.NameToLayer("GoalPoint"))
+            {
+                Lean.Pool.LeanPool.Despawn(priorityTarget.gameObject);
+                priorityTarget = null;
+            }
+
+            else
+                priorityTarget = null;
         }
 
         if (target != null)
@@ -135,13 +93,22 @@ public class BattleUnitMove : MonoBehaviour
         }
     }
 
-    private void MoveToTarget()
+    protected override void MoveToTarget()
     {
         //타겟이 적일 경우 사정거리 안에 들어올 때 까지만 이동
         if (target.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             if (nav.stoppingDistance != attackRange - 0.1f)
                 nav.stoppingDistance = attackRange - 0.1f;
+        }
+        else if (priorityTarget.gameObject.layer == LayerMask.NameToLayer("Installation"))
+        { //타겟이 건물인 경우 타겟의 인접점까지 이동
+            Collider targetCollider = priorityTarget.GetComponent<Collider>();
+            //접점
+            Vector3 tangentPoint = targetCollider.ClosestPoint(transform.position);
+
+            nav.stoppingDistance = 1.0f;
+            nav.SetDestination(tangentPoint);
         }
         //아닐 경우 끝까지 이동
         else
