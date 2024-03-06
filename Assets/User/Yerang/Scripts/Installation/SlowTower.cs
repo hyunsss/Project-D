@@ -23,11 +23,13 @@ public class SlowTower : TurretTower
         detectingCollider.radius = attackRange;
 
         //·»´õ·¯ ¼³Á¤
-        Destroy(transform.GetChild(2).gameObject);
+        Destroy(transform.GetChild(3).gameObject); //3: Render
         Instantiate(towerInfo.rendererPrefabs[level - 1], transform);
-        transform.GetChild(2).TryGetComponent<Animator>(out animator); //2: Render
+        transform.GetChild(3).TryGetComponent<Animator>(out animator);
 
         detectingArea.transform.localScale = new Vector3(attackRange * 2, 0.1f, attackRange * 2);
+
+        hpBar.SetHpBar(currentHp, maxHp);
     }
 
     public override void Attack()

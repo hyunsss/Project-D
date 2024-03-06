@@ -18,16 +18,12 @@ public abstract class BattleUnit : Unit
 
     protected bool isAttack = false;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         shotPoint = transform.GetChild(0); //0: ShotPoint
         unitMove = GetComponent<BattleUnitMove>();
         animator = GetComponentInChildren<Animator>();
-    }
-
-    private void OnEnable()
-    {
-        currentHp = maxHp;
     }
 
     private void Update()
