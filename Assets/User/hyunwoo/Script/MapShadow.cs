@@ -29,7 +29,7 @@ public class MapShadow : MonoBehaviour
     /// 파라미터를 기준으로 원형의 피직스오버랩을 하여 모든 콜라이더를 추출해내고 콜라이더들을 순회하며 해당 material의 alpha값을 변경합니다.
     /// </summary>
     /// <param name="center_trans">레이에 맞은 콜라이더의 트랜스폼 파라미터를 할당 받습니다.</param>
-    private void UnitLight(Transform center_trans) {
+    private void UnitLight(UnityEngine.Transform center_trans) {
         Collider[] shadow_colls = Physics.OverlapSphere(center_trans.position, 30f, 1 << 29);
 
         for(int i = 0; i < shadow_colls.Length; i++) {

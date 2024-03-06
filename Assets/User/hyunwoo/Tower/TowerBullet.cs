@@ -7,7 +7,7 @@ public class TowerBullet : MonoBehaviour
 {
     //public TowerType towerType;
 
-    [HideInInspector] public Transform target;
+    [HideInInspector] public UnityEngine.Transform target;
     [HideInInspector] public float Speed;
     [HideInInspector] public int Damage;
     [HideInInspector] public Vector3 startPosition;
@@ -15,7 +15,7 @@ public class TowerBullet : MonoBehaviour
     public float maxheight;
 
     public float hitDistance = 0.2f;
-    public Transform rendererTransform;
+    public UnityEngine.Transform rendererTransform;
     private Vector3 lastFramePosTemp;
 
     private TrailRenderer trail;
@@ -66,5 +66,4 @@ public class TowerBullet : MonoBehaviour
     protected virtual void DestroyObject() {
         LeanPool.Despawn(gameObject);
     }
-
 }

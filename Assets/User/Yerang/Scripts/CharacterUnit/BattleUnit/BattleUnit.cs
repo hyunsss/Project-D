@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BattleUnit : Unit
 {
     public float ap;
-    public int attackCycle;
+    public float attackCycle;
     public float attackRange;
 
     public Transform priorityTarget;
@@ -14,15 +14,19 @@ public abstract class BattleUnit : Unit
     private BattleUnitMove unitMove;
     protected Animator animator;
 
-    [SerializeField]
     protected Transform shotPoint;
 
     protected bool isAttack = false;
 
-    private void OnEnable()
+    private void Awake()
     {
+        shotPoint = transform.GetChild(0); //0: ShotPoint
         unitMove = GetComponent<BattleUnitMove>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    private void OnEnable()
+    {
         currentHp = maxHp;
     }
 
@@ -48,7 +52,7 @@ public abstract class BattleUnit : Unit
     public abstract void Attack();
     public abstract void EndAttack();
 
-    public void SetPriorityTarget(Transform target)
+    public void SetPriorityTarget(UnityEngine.Transform target)
     {
         priorityTarget = target;
     }
@@ -73,7 +77,7 @@ public abstract class BattleUnit : Unit
         attackColliders = Physics.OverlapSphere(transform.position, attackRange, enemyLayerMask);
 
         float minDis = 999;
-        Transform nearTarget = null;
+        UnityEngine.Transform nearTarget = null;
 
         foreach (Collider collider in attackColliders)
         {

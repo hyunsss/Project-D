@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MageUnit : BattleUnit
@@ -35,7 +34,7 @@ public class MageUnit : BattleUnit
             animator.SetTrigger("attack");
 
             var attack = Lean.Pool.LeanPool.Spawn(attackPrefab,
-                shotPoint.position, shotPoint.rotation, transform.GetChild(0)); //0: ShotPoint
+                shotPoint.position, shotPoint.rotation, ProjectileManager.Instance.ProjectileParent);
             attack.InitProjctile(ap, target);
             yield return new WaitForSeconds(attackCycle);
         }
