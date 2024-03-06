@@ -12,6 +12,32 @@ public class WorkerUnitMove : UnitMove
         workerUnit = GetComponent<WorkerUnit>();
     }
 
+    protected void Update()
+    {
+        switch (state)
+        {
+            case State.Idle:
+                if (priorityTarget != null)
+                {
+                    state = State.Move;
+                }
+                break;
+
+            case State.Move:
+                if (priorityTarget == null)
+                {
+                    state = State.Idle;
+                    break;
+                }
+                MoveToTarget();
+                break;
+
+            default:
+                break;
+        }
+
+        animator.SetInteger("moveState", (int)state);
+    }
 
     public override void SetPriorityTarget(Transform target)
     {

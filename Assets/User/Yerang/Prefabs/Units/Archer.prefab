@@ -1467,7 +1467,7 @@ GameObject:
   - component: {fileID: 4330402939125366606}
   - component: {fileID: 328889584515085405}
   m_Layer: 5
-  m_Name: ArrowRenderer
+  m_Name: LineRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

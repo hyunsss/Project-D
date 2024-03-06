@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 8564982871639511893}
   - component: {fileID: 4429716511692242604}
   m_Layer: 7
-  m_Name: Field
+  m_Name: MineralField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,6 +432,7 @@ MonoBehaviour:
   type: 2
   workers: []
   resourceType: 0
+  amountPerSec: 0
 --- !u!1 &1651435356212779886
 GameObject:
   m_ObjectHideFlags: 0

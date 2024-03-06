@@ -6,30 +6,28 @@ public abstract class Tower : Installation
     public int level;
 
     protected float maxHp;
+    public float MaxHp { get { return maxHp; } }
+
     protected float currentHp;
     public float CurrentHp {  get { return currentHp; } }
 
-    protected bool isCanUpgrade;
-    public bool IsCanUpgrade { get { return isCanUpgrade; } }
-
     protected Coroutine repairCoroutine = null;
 
+    protected Canvas canvas;
     protected HpBar hpBar;
 
 
     protected virtual void Awake()
     {
         type = Type.Tower;
-        Canvas canvas = GetComponentInChildren<Canvas>();
-        hpBar = GetComponentInChildren<Canvas>().GetComponentInChildren<HpBar>();
-        canvas.gameObject.SetActive(false);
+        canvas = GetComponentInChildren<Canvas>();
+        hpBar = canvas.GetComponentInChildren<HpBar>();
     }
 
     protected virtual void OnEnable()
     {
         level = 1;
-        currentHp = maxHp;
-        isCanUpgrade = true;
+        canvas.gameObject.SetActive(false);
     }
 
     public abstract void SetInfo();
@@ -86,6 +84,7 @@ public abstract class Tower : Installation
 
     public void Destroyed()
     {
+        //부서지는 애니메이션
         Lean.Pool.LeanPool.Despawn(gameObject);
     }
 }

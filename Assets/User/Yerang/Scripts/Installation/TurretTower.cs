@@ -21,8 +21,8 @@ public abstract class TurretTower : Tower
     protected override void Awake()
     {
         base.Awake();
-        detectingCollider = transform.GetChild(0).GetComponent<SphereCollider>(); //0: DetectingArea
-        shotPoint = transform.GetChild(1); //1: ShotPoint
+        detectingCollider = transform.Find("DetectingArea").GetComponent<SphereCollider>();
+        shotPoint = transform.Find("ShotPoint");
     }
 
     protected override void OnEnable()
@@ -43,14 +43,20 @@ public abstract class TurretTower : Tower
         currentHp = maxHp;
         detectingCollider.radius = attackRange;
 
-        //·»´õ·¯ ¼³Á¤
-        Destroy(transform.GetChild(3).gameObject); //3: Render
-        Instantiate(towerInfo.rendererPrefabs[level - 1], transform);
-        transform.GetChild(3).TryGetComponent<Animator>(out animator);
+        SetRender();
 
         StopAllCoroutines();
 
         hpBar.SetHpBar(currentHp, maxHp);
+    }
+
+    protected void SetRender()
+    {
+        //·»´õ·¯ ¼³Á¤
+        Transform renderParent = transform.Find("Render");
+        Destroy(renderParent.GetChild(0).gameObject); //3: Render
+        Instantiate(towerInfo.rendererPrefabs[level - 1], renderParent);
+        renderParent.GetChild(0).TryGetComponent<Animator>(out animator);
     }
 
     public abstract void Attack();

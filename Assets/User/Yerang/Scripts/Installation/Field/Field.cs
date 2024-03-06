@@ -10,6 +10,9 @@ public class Field : Installation
     [SerializeField]
     private ResourceType resourceType;
 
+    [SerializeField]
+    private int amountPerSec; //초당 얻는 자원의 양
+
     private Coroutine minedCoroutine = null;
 
     private void Awake()
@@ -23,20 +26,15 @@ public class Field : Installation
         {
             yield return new WaitForSeconds(1f);
 
-            //재화 증가
-            int minedResourcePerSec = 0; //초당 얻는 자원수
-            foreach (WorkerUnit workerUnit in workers)
-            {
-                minedResourcePerSec += workerUnit.mineAmount;
-            }
+            int allAmountPerSec = workers.Count * amountPerSec; //일꾼 수 만큼 자원 획득
 
             if (resourceType == ResourceType.Mineral)
             {
-                TestGameManager.Instance.GainMineral(minedResourcePerSec);
+                TestGameManager.Instance.GainMineral(allAmountPerSec);
             }
             else if (resourceType == ResourceType.Gas)
             {
-                TestGameManager.Instance.GainGas(minedResourcePerSec);
+                TestGameManager.Instance.GainGas(allAmountPerSec);
             }
         }
     }

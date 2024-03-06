@@ -42,7 +42,7 @@ public class TowerManager : MonoBehaviour
         }
     }*/
 
-    public void BuildTower(TowerBeingBuilt tower)
+    public void BuildTower()
     {
         
     }

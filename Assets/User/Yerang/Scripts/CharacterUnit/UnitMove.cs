@@ -38,33 +38,6 @@ public abstract class UnitMove : MonoBehaviour
         nav.speed = moveSpeed;
     }
 
-    protected virtual void Update()
-    {
-        switch (state)
-        {
-            case State.Idle:
-                if (priorityTarget != null)
-                {
-                    state = State.Move;
-                }
-                break;
-
-            case State.Move:
-                if (priorityTarget == null)
-                {
-                    state = State.Idle;
-                    break;
-                }
-                MoveToTarget();
-                break;
-
-            default:
-                break;
-        }
-
-        animator.SetInteger("moveState", (int)state);
-    }
-
     public abstract void SetPriorityTarget(Transform target);
 
     protected abstract void ResetTarget();

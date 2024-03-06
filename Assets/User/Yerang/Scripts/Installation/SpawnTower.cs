@@ -19,7 +19,7 @@ public class SpawnTower : Tower
     protected override void Awake()
     {
         base.Awake();
-        spawnPoint = transform.GetChild(0); //0: SpawnPoint
+        spawnPoint = transform.Find("SpawnPoint");
     }
 
     public override void SetInfo()
