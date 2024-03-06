@@ -29,7 +29,7 @@ public class MouseController : MonoBehaviour
                     UI_PanelManager.Instance.MonsterINFOPanel();
                     UI_PanelManager.Instance.monsterInfo.SetINFO(selectedUnit);
                 }
-                // Player Unit selected
+                // ----Player Unit selected-----
                 else if( hit.collider.GetComponent<BattleUnit>())
                 {
                     var selectedUnit = hit.collider.GetComponent<BattleUnit>();
