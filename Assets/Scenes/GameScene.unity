@@ -53190,6 +53190,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839929557fc6f1a4ea02a600fd310c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vfxpoint: {fileID: 0}
+  vfx1: {fileID: 0}
+  vfx2: {fileID: 0}
+  vfx3: {fileID: 0}
+  vfx4: {fileID: 0}
+  vfx5: {fileID: 0}
+  vfx6: {fileID: 0}
   shotpoint: {fileID: 0}
   visualEffects:
   - {fileID: 867963589950988388, guid: e36250fde1c6643a98700f60b2e2e37b, type: 3}
@@ -68225,6 +68232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac7105a36efd314395be2b0cfb01fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tower_Player: []
+  unit_Player: []
 --- !u!4 &1711006799
 Transform:
   m_ObjectHideFlags: 0
