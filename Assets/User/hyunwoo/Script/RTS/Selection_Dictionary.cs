@@ -5,29 +5,28 @@ using UnityEngine;
 
 public class Selection_Dictionary : MonoBehaviour
 {
-    public Dictionary<int, Unit> selectedTable = new Dictionary<int, Unit>();
-
+    
     public void addSelected(GameObject go) {
         int id = go.GetInstanceID();
 
-        if(!(selectedTable.ContainsKey(id)) && go.TryGetComponent(out Unit unit)) {
-            selectedTable.Add(id, unit);
+        if(!(GameDB.Instance.selectedTable.ContainsKey(id)) && go.TryGetComponent(out Unit unit)) {
+            GameDB.Instance.selectedTable.Add(id, unit);
             go.gameObject.AddComponent<Selection_Component>();
             Debug.Log("Added " + id + " to selected dict");
         }
     }
 
     public void Deselect(int id) {
-        selectedTable.Remove(id);
+        GameDB.Instance.selectedTable.Remove(id);
     }
 
 
     public void DeselectAll() {
-        foreach(KeyValuePair<int, Unit> pair in selectedTable) {
+        foreach(KeyValuePair<int, Unit> pair in GameDB.Instance.selectedTable) {
             if(pair.Value != null) {
-                Destroy(selectedTable[pair.Key].GetComponent<Selection_Component>());
+                Destroy(GameDB.Instance.selectedTable[pair.Key].GetComponent<Selection_Component>());
             }
         }
-        selectedTable.Clear();
+        GameDB.Instance.selectedTable.Clear();
     }
 }
