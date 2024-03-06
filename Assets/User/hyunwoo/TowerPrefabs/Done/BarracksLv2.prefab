@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5109966162445387614, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
+      propertyPath: areaWidth
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5401957103385552279, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
     m_RemovedGameObjects:
@@ -159,38 +163,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
       insertIndex: 0
       addedObject: {fileID: 50145379654655272}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 57646822650087629, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4576172756218260472}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
 --- !u!4 &1834186530798884296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2414368380169227481, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
   m_PrefabInstance: {fileID: 4104426129052326161}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4051292067262091740 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 57646822650087629, guid: 70a242889a345464f8a82972d0e9ec3f, type: 3}
-  m_PrefabInstance: {fileID: 4104426129052326161}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4576172756218260472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4051292067262091740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d58d10c48e81bed49958f1eb371a9bc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  areaWidth: 2
-  areaHeight: 2
-  type: 0
-  workers: []
-  level: 0
-  maxHp: 10
-  iteration: 3
-  characterPrefab: {fileID: 7371667728712835575, guid: d795299dfcbe6c5449185bbcbf046988, type: 3}
