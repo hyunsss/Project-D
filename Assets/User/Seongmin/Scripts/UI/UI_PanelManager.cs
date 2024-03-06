@@ -12,14 +12,18 @@ public class UI_PanelManager : MonoBehaviour
     [SerializeField] 
     private GameObject          ui_CurrentPanel;
     [Header("Panels")]
-    public GameObject           ui_TowerPanel;
-    public GameObject           ui_BattleUnitPanel;
-    public GameObject           ui_WorkerUnitPanel;
+    public GameObject           ui_TowerBuildPanel;
     public GameObject           ui_LevelUPPanel;
+
+    public GameObject           ui_WorkerUnitPanel;
     public GameObject           ui_MonsterINFO;
-    [Header("ChildScripts")]
+    public GameObject           ui_PlayerTowerInfo;
+    public GameObject           ui_BattleUnitINFO;
+  
+    [Header("Event")]
     public UI_Boss_Text         bossPanel;
-    public UI_Monster_INFO      monsterInfo;
+    public UI_GameObject_INFO   gameObjectINFO;  
+    public GameObject           dontBuildMessage;
     [Header("Texts")]
     public TextMeshProUGUI      monsterText;
     public TextMeshProUGUI      unitText;
@@ -41,12 +45,12 @@ public class UI_PanelManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         
-        ui_TowerPanel.gameObject.SetActive(false);
-        ui_BattleUnitPanel.gameObject.SetActive(false);
+        ui_TowerBuildPanel.gameObject.SetActive(false);
+        ui_BattleUnitINFO.gameObject.SetActive(false);
         ui_LevelUPPanel.gameObject.SetActive(false);
 
         bossPanel.gameObject.SetActive(false);
-        monsterInfo.gameObject.SetActive(false);
+        gameObjectINFO.gameObject.SetActive(false);
 
 
     }
@@ -65,32 +69,42 @@ public class UI_PanelManager : MonoBehaviour
 
     }
 
-    public void TowerPanel()
+    public void TowerBuildPanel_OPEN()
     {
-            ui_CurrentPanel = ui_TowerPanel;
-            OpenPanel();
+        ui_CurrentPanel = ui_TowerBuildPanel;
+        OpenPanel();
     }
-    public void BattleUnitPanel()
+    public void MonsterINFOPanel_OPEN()
     {
-            ui_CurrentPanel = ui_BattleUnitPanel;
-            OpenPanel();
+        ui_CurrentPanel = ui_MonsterINFO;
+        gameObjectINFO = ui_MonsterINFO.GetComponent<UI_GameObject_INFO>();
+        OpenPanel();
     }
-    public void WorkerUnitPanel()
+    public void BattleUnitPanel_OPEN()
     {
-            ui_CurrentPanel = ui_WorkerUnitPanel;
-            OpenPanel();
+        ui_CurrentPanel = ui_BattleUnitINFO;
+        gameObjectINFO = ui_BattleUnitINFO.GetComponent<UI_GameObject_INFO>();
+        OpenPanel();
     }
-    public void LevelUPPanel()
+    public void PlayerTowerINFO_OPEN()
+    {
+        ui_CurrentPanel = ui_PlayerTowerInfo;
+        gameObjectINFO = ui_PlayerTowerInfo.GetComponent<UI_GameObject_INFO>();
+        OpenPanel();
+    }
+    public void WorkerUnitPanel_OPEN()
+    {
+        ui_CurrentPanel = ui_WorkerUnitPanel;
+        OpenPanel();
+    }
+    public void LevelUPPanel_OPEN()
     {
 
-            ui_CurrentPanel = ui_LevelUPPanel;
-            OpenPanel();
+        ui_CurrentPanel = ui_LevelUPPanel;
+        OpenPanel();
     }
-    public void MonsterINFOPanel()
-    {
-            ui_CurrentPanel = ui_MonsterINFO;
-            OpenPanel();
-    }
+
+
 
     private void OpenPanel()
     {
@@ -102,15 +116,27 @@ public class UI_PanelManager : MonoBehaviour
     public void PanelReSet()
     {
         ui_CurrentPanel.SetActive(false);
-        ui_TowerPanel.SetActive(false);
-        ui_BattleUnitPanel.SetActive(false);
+        ui_TowerBuildPanel.SetActive(false);
+        ui_BattleUnitINFO.SetActive(false);
         ui_LevelUPPanel.SetActive(false);
         ui_WorkerUnitPanel.SetActive(false);
         ui_MonsterINFO.SetActive(false);
+        ui_PlayerTowerInfo.SetActive(false);
     }
+    //----------------EVENT-----------------
     public void BossPanelSet()
     {
         bossPanel.gameObject.SetActive(true);
         
+    }
+    public void DontBuildMessage()
+    {
+        StartCoroutine(DontBuildMessageCoroutine());
+    }
+    IEnumerator DontBuildMessageCoroutine()
+    {
+        dontBuildMessage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        dontBuildMessage.gameObject.SetActive(false);
     }
 }

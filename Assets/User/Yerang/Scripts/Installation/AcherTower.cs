@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AcherTower : TurretTower
 {
-    private List<TestEnemy> targets = new List<TestEnemy>();
+    private List<Monster> targets = new List<Monster>();
 
     [SerializeField]
     private Projectile attackPrefab;

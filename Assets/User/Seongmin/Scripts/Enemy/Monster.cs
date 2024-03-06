@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class Monster : MonoBehaviour
 {
     [SerializeField]
-    protected MonsterData       monsterData;
+    private MonsterData       monsterData;
     [HideInInspector]
     public MonsterData          MonsterData { get { return monsterData; }  set { monsterData = value; } }
     [HideInInspector]

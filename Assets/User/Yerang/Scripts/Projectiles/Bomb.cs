@@ -82,8 +82,9 @@ public class Bomb : Projectile
             for (int i = 0; i < colliders.Length; i++) //TODO: TestEnemy -> Enemy
             {
                 //Debug.Log(colliders[i]);
+                // 변경완료(성민)
                 if (colliders[i] == null) continue;
-                colliders[i].gameObject.GetComponent<TestEnemy>().SendMessage("GetDamage", damage, SendMessageOptions.DontRequireReceiver);
+                colliders[i].gameObject.GetComponent<Monster>().SendMessage("HitDamage", damage, SendMessageOptions.DontRequireReceiver);
             }
         }
 

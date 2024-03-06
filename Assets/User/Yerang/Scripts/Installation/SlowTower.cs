@@ -40,19 +40,19 @@ public class SlowTower : TurretTower
         detectingArea.SetActive(false);
     }
 
-    private void Stun(TestEnemy enemy)
+    private void Stun(Monster enemy)
     {
-        enemy.speed = enemy.speed * (1 - slowPer / 100);
+        enemy.MonsterData.MonsterSpeed = enemy.MonsterData.MonsterSpeed * (1 - slowPer / 100);
     }
 
-    private void Destun(TestEnemy enemy)
+    private void Destun(Monster enemy)
     {
-        enemy.speed = enemy.speed / (1 - slowPer / 100);
+        enemy.MonsterData.MonsterSpeed = enemy.MonsterData.MonsterSpeed / (1 - slowPer / 100);
     }
 
     private new void OnTriggerEnter(Collider other)
     { //TODO: TestEnemy -> Enemy
-        if(TryGetComponent<TestEnemy>(out TestEnemy enemy))
+        if(TryGetComponent<Monster>(out Monster enemy))
         {
             Stun(enemy);
         }
@@ -60,7 +60,7 @@ public class SlowTower : TurretTower
 
     private new void OnTriggerExit(Collider other)
     {
-        if (TryGetComponent<TestEnemy>(out TestEnemy enemy))
+        if (TryGetComponent<Monster>(out Monster enemy))
         {
             Destun(enemy);
         }

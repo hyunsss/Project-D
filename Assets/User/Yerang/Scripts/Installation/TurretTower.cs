@@ -14,7 +14,7 @@ public abstract class TurretTower : Tower
     protected Transform shotPoint;
 
     protected SphereCollider detectingCollider;
-    protected List<TestEnemy> detectedEnemies = new List<TestEnemy>();
+    protected List<Monster> detectedEnemies = new List<Monster>();
 
     protected Animator animator;
 
@@ -58,7 +58,7 @@ public abstract class TurretTower : Tower
     //Àû °¨Áö
     protected void OnTriggerEnter(Collider other)
     { //TODO: TestEnemy -> Enemy
-        if (other.TryGetComponent<TestEnemy>(out TestEnemy enemy))
+        if (other.TryGetComponent<Monster>(out Monster enemy))
         {
             detectedEnemies.Add(enemy);
         }
@@ -66,7 +66,7 @@ public abstract class TurretTower : Tower
 
     protected void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<TestEnemy>(out TestEnemy enemy))
+        if (other.TryGetComponent<Monster>(out Monster enemy))
         {
             detectedEnemies.Remove(enemy);
         }

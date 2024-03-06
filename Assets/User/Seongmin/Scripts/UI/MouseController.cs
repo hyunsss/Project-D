@@ -26,8 +26,8 @@ public class MouseController : MonoBehaviour
                     var selectedUnit = hit.collider.GetComponent<Monster>();
                     target = selectedUnit.gameObject;
                     ClickSelected(target);
-                    UI_PanelManager.Instance.MonsterINFOPanel();
-                    UI_PanelManager.Instance.monsterInfo.SetINFO(selectedUnit);
+                    UI_PanelManager.Instance.MonsterINFOPanel_OPEN();
+                    UI_PanelManager.Instance.gameObjectINFO.MonsterSetINFO(selectedUnit);
                 }
                 // ----Player Unit selected-----
                 else if( hit.collider.GetComponent<BattleUnit>())
@@ -35,28 +35,29 @@ public class MouseController : MonoBehaviour
                     var selectedUnit = hit.collider.GetComponent<BattleUnit>();
                     target = selectedUnit.gameObject;
                     ClickSelected(target);
-                    UI_PanelManager.Instance.BattleUnitPanel();
+                    UI_PanelManager.Instance.BattleUnitPanel_OPEN();
+                    UI_PanelManager.Instance.gameObjectINFO.BattleUnitSetINFO(selectedUnit);
                 }
                 else if(hit.collider.GetComponent<WorkerUnitMove>())
                 {
                     var selectedUnit = hit.collider.GetComponent<WorkerUnitMove>();
                     target = selectedUnit.gameObject;
                     ClickSelected(target);
-                    UI_PanelManager.Instance.WorkerUnitPanel();
+
+                    UI_PanelManager.Instance.WorkerUnitPanel_OPEN();
                 }
-                else if (hit.collider.GetComponent<TowerAttack>())
+                else if (hit.collider.GetComponent<TurretTower>())
                 {
-                    var selectedUnit = hit.collider.GetComponent<TowerAttack>();
+                    var selectedUnit = hit.collider.GetComponent<TurretTower>();
                     target = selectedUnit.gameObject;
                     ClickSelected(target);
-                    UI_PanelManager.Instance.TowerPanel();
+                    UI_PanelManager.Instance.TowerBuildPanel_OPEN();
                 }
                 else
                 {
-
                     DeSelected();
                     target = null;
-                    ClickSelected(target);
+                    unitCam.transform.position = Vector3.zero;
                     UI_PanelManager.Instance.PanelReSet();
                 }
             }

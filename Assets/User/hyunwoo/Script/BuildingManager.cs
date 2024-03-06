@@ -137,7 +137,7 @@ public class BuildingManager : MonoBehaviour
         {
             if (cell.meshRenderer.material.color == Color.red)
             {
-                Debug.Log("이곳에는 지을 수 없습니다");
+                UI_PanelManager.Instance.DontBuildMessage();
                 return;
             }
         }
