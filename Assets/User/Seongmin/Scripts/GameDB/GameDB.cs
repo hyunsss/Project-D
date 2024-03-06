@@ -7,6 +7,8 @@ public class GameDB : MonoBehaviour
    
     public static GameDB Instance;
 
+    public Dictionary<int, Unit> selectedTable = new Dictionary<int, Unit>();
+
     private void Awake()
     {
         if(Instance == null)
