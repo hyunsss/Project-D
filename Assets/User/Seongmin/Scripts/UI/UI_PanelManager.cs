@@ -95,6 +95,7 @@ public class UI_PanelManager : MonoBehaviour
     public void WorkerUnitPanel_OPEN()
     {
         ui_CurrentPanel = ui_WorkerUnitPanel;
+        gameObjectINFO = ui_WorkerUnitPanel.GetComponent<UI_GameObject_INFO>();
         OpenPanel();
     }
     public void LevelUPPanel_OPEN()

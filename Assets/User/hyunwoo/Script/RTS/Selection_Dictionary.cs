@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Selection_Dictionary : MonoBehaviour
 {
-    
+    public UI_UnitList unitListData;
     public void addSelected(GameObject go) {
         int id = go.GetInstanceID();
 
