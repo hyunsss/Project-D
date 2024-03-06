@@ -12,7 +12,7 @@ public class Monster : MonoBehaviour
     [SerializeField]
     protected MonsterData       monsterData;
     [HideInInspector]
-    public MonsterData          MonsterData { set { monsterData = value; } }
+    public MonsterData          MonsterData { get { return monsterData; }  set { monsterData = value; } }
     [HideInInspector]
     public float                currentHp;
     public UnitAStar            aStar;
@@ -22,6 +22,9 @@ public class Monster : MonoBehaviour
     private Vector3             moveCheck;
     private float               repairing = 5f;
     private MonsterTower        tower = null;
+    private MonsterHPBar        monsterHPBar;
+    private bool                moveSupport = false;
+
     public enum State
     {
         chase,
@@ -36,13 +39,17 @@ public class Monster : MonoBehaviour
         aStar =  GetComponent<UnitAStar>();
         animator = GetComponent<Animator>();
         tower = GetComponent<MonsterTower>();
+        monsterHPBar = GetComponentInChildren<MonsterHPBar>();
     }
 
     protected void Start()
     {
         moveCheck = transform.position;
-        aStar.speed = monsterData.MonsterSpeed;
-        currentHp = monsterData.MonsterHp;
+
+        aStar.speed = MonsterData.MonsterSpeed;
+        currentHp = MonsterData.MonsterHp;
+
+
         StartCoroutine(ChangeState());
     }
     protected void Update() {
@@ -57,13 +64,18 @@ public class Monster : MonoBehaviour
         }
 
         float checkMove = Vector3.Distance(transform.position, moveCheck);
-        if(checkMove > 0.08f)
+        if(checkMove < 0.01f)
         {
-            animator.SetTrigger("isRun");
+            animator.SetTrigger("isIdle");
         }
         moveCheck = transform.position;
-        
         transform.Rotate(new Vector3(0, 0, transform.rotation.z));
+        
+        if(moveSupport)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            transform.position += direction * monsterData.MonsterSpeed * Time.deltaTime;
+        }
     }
     protected IEnumerator ChangeState()
     {
@@ -72,7 +84,7 @@ public class Monster : MonoBehaviour
             if (target != null&& state != State.towerReqair)
             {
                 float checkAttack = Vector3.Distance(gameObject.transform.position, target.position);
-                state = checkAttack <= 18f ? state = State.attack : state = State.chase;
+                state = checkAttack <= 10f ? state = State.attack : state = State.chase;
             }
             // user Chase
             if (state == State.chase)
@@ -100,7 +112,7 @@ public class Monster : MonoBehaviour
                 }
             }
            
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(0.7f);
         }
         if (state == State.die)
         {
@@ -116,22 +128,35 @@ public class Monster : MonoBehaviour
 
     protected void TargetChase()
     {
-            if(GameManager.Instance.tower_Player.Count > 0)
+            if(GameDB.Instance.tower_Player.Count > 0)
             {
                 SetTowerTarget();
                 aStar.Chase(target);
             }
-            else if(GameManager.Instance.unit_Player.Count > 0)
+            else if(GameDB.Instance.unit_Player.Count > 0)
             {
                 SetUnitTarget();
                 aStar.Chase(target);
             }
+        float checkMove = Vector3.Distance(gameObject.transform.position, target.transform.position);
+
+      
+        if (25f > checkMove && checkMove > 10f)
+        {
+            transform.LookAt(target);
+            moveSupport = true;
+        }
+        else
+        {
+            moveSupport = false;
+        }
+
     }
 
     protected void SetTowerTarget() //UserTower
     {
         float sortDistance = 99999f;
-        foreach (Transform _target in GameManager.Instance.tower_Player)
+        foreach (Transform _target in GameDB.Instance.tower_Player)
         {
             float targetDistance = Vector3.Distance(transform.position, _target.position);
                 if(targetDistance < sortDistance)
@@ -145,7 +170,7 @@ public class Monster : MonoBehaviour
     {
 
         float sortDistance = 99999f;
-        foreach (Transform _target in GameManager.Instance.unit_Player)
+        foreach (Transform _target in GameDB.Instance.unit_Player)
         {
             float targetDistance = Vector3.Distance(transform.position, _target.position);
             if (targetDistance < sortDistance)
@@ -161,9 +186,10 @@ public class Monster : MonoBehaviour
         tower = _tower;
         state = State.towerReqair;
     }
-    protected void HitDamage(float _damage)
+    public void HitDamage(float _damage)
     {
        currentHp -= _damage;
+        monsterHPBar.HPUpdate(currentHp, monsterData.MonsterHp);
         if (currentHp <= 0)
         {
             Die();
@@ -173,6 +199,7 @@ public class Monster : MonoBehaviour
     {
         state = State.die;
         animator.SetTrigger("isDie");
+        GameDB.Instance.monsterCount--;
         LeanPool.Despawn(gameObject);
     }
 }

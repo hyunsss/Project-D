@@ -7,11 +7,18 @@ using UnityEditor.Rendering;
 public class UI_Boss_Text : MonoBehaviour
 {
     public List<TextMeshProUGUI>        enemyIndex ;
-    float                               speed =50f;
+    float                               speed   =50f;
 
-    private void Awake()
+    private void OnEnable()
     {
+        StartCoroutine(BossMessage());
+    }
+
+    IEnumerator BossMessage()
+    {
+        yield return new WaitForSeconds(5f);
         
+        gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -22,8 +29,10 @@ public class UI_Boss_Text : MonoBehaviour
             enemy.rectTransform.position = newPos;
             if(enemy.rectTransform.position.x > 2000f)
             {
-                enemy.rectTransform.position = new Vector3(enemy.rectTransform.position.x - 2300f, enemy.rectTransform.position.y, enemy.rectTransform.position.z);
+                enemy.rectTransform.position = new Vector3(enemy.rectTransform.position.x - 2300f, 
+                    enemy.rectTransform.position.y, enemy.rectTransform.position.z);
             }
         }
     }
+
 }

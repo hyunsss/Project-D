@@ -25,13 +25,39 @@ public class MouseController : MonoBehaviour
                 {
                     var selectedUnit = hit.collider.GetComponent<Monster>();
                     target = selectedUnit.gameObject;
-                    print("몬스터가 선택 되었습니다.");
                     ClickSelected(target);
+                    UI_PanelManager.Instance.MonsterINFOPanel();
+                    UI_PanelManager.Instance.monsterInfo.SetINFO(selectedUnit);
                 }
-                else 
+                // ----Player Unit selected-----
+                else if( hit.collider.GetComponent<BattleUnit>())
                 {
-                    print("몬스터가 선택 해제 되었습니다.");
+                    var selectedUnit = hit.collider.GetComponent<BattleUnit>();
+                    target = selectedUnit.gameObject;
+                    ClickSelected(target);
+                    UI_PanelManager.Instance.BattleUnitPanel();
+                }
+                else if(hit.collider.GetComponent<WorkerUnitMove>())
+                {
+                    var selectedUnit = hit.collider.GetComponent<WorkerUnitMove>();
+                    target = selectedUnit.gameObject;
+                    ClickSelected(target);
+                    UI_PanelManager.Instance.WorkerUnitPanel();
+                }
+                else if (hit.collider.GetComponent<TowerAttack>())
+                {
+                    var selectedUnit = hit.collider.GetComponent<TowerAttack>();
+                    target = selectedUnit.gameObject;
+                    ClickSelected(target);
+                    UI_PanelManager.Instance.TowerPanel();
+                }
+                else
+                {
+
                     DeSelected();
+                    target = null;
+                    ClickSelected(target);
+                    UI_PanelManager.Instance.PanelReSet();
                 }
             }
         }
@@ -40,15 +66,21 @@ public class MouseController : MonoBehaviour
             Selected_image.transform.position = target.transform.position+Vector3.up*10f;
         }   
     }
-
     private void ClickSelected(GameObject _target)
     {
-        unitCam.transform.SetParent(_target.transform);
-        unitCam.transform.parent = _target.transform;
-        unitCam.localPosition = new Vector3(0, 3f, 2.5f);
-        unitCam.localRotation = Quaternion.Euler(35f, 180f, 0);
-        unitCam.transform.localScale = new Vector3(1,1,1);  
-        Selected_image.SetActive(true);
+        if (_target == null)
+        {
+            unitCam.transform.position= Vector3.zero;
+        }
+        else
+        {
+            unitCam.transform.SetParent(_target.transform);
+            unitCam.transform.parent = _target.transform;
+            unitCam.localPosition = new Vector3(0, 3f, 2.5f);
+            unitCam.localRotation = Quaternion.Euler(35f, 180f, 0);
+            unitCam.transform.localScale = new Vector3(1, 1, 1);
+            Selected_image.SetActive(true);
+        }
     }
 
     private void DeSelected()

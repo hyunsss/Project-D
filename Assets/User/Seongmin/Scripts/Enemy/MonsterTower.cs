@@ -13,6 +13,7 @@ public class MonsterTower : MonoBehaviour
     [SerializeField]
     private int                 keeperMaxCount = 10;
     private int                 keeperSpawnCount = 0;
+    public int                  monsterCount = 0;
     private MonsterSpawner      monsterSpawner;
 
 
@@ -31,12 +32,13 @@ public class MonsterTower : MonoBehaviour
         
         while(towerCurrentHp > 0)
         {
-
+            GameDB.Instance.monsterCount++;
             monsterSpawner.SpawnMonster();
+            
             if(towerCurrentHp < towerMaxHp / 2 && keeperSpawnCount <= keeperMaxCount)
             {
+                GameDB.Instance.monsterCount++;
                 keeperSpawnCount++;
-                print("Keeper가 소환 되었습니다 ! ");
                 monsterSpawner.SpawnTowerKeeper(this);
             }
             yield return new WaitForSeconds(2f);
@@ -54,5 +56,9 @@ public class MonsterTower : MonoBehaviour
     public void RepairingTower(float _heal)
     {
         towerCurrentHp += _heal;
+    }
+    public void TestBossSpawn()
+    {
+        monsterSpawner.SpawnBossMosnter();
     }
 }

@@ -48,10 +48,10 @@ public abstract class Projectile : MonoBehaviour
     }
 
     protected void OnTriggerEnter(Collider other) //적에 닿으면 삭제
-    { //TODO: TestEnemy -> Enemy
-        if (other.gameObject.TryGetComponent<TestEnemy>(out TestEnemy testEnemy))
+    { // Enemy
+        if (other.gameObject.TryGetComponent<Monster>(out Monster monster))
         {
-            testEnemy.GetDamage(damage);
+            monster.HitDamage(damage);
             Lean.Pool.LeanPool.Despawn(this);
         }
     }
