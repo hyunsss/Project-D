@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,13 @@ public class SpawnTowerInfo : ScriptableObject
 {
     public int maxlevel;
 
-    public float[] maxHp;
+    [Serializable]
+    public struct Stat
+    {
+        public float maxHp;
+        public float iteration;
+    }
+    public Stat[] levelStat;
 
     public Resource[] price;
 

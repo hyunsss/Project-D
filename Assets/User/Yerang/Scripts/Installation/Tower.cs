@@ -12,13 +12,17 @@ public abstract class Tower : Installation
     protected bool isCanUpgrade;
     public bool IsCanUpgrade { get { return isCanUpgrade; } }
 
-    protected GameObject RendererObj;
-
     protected Coroutine repairCoroutine = null;
+
+    protected HpBar hpBar;
+
 
     protected virtual void Awake()
     {
         type = Type.Tower;
+        Canvas canvas = GetComponentInChildren<Canvas>();
+        hpBar = GetComponentInChildren<Canvas>().GetComponentInChildren<HpBar>();
+        canvas.gameObject.SetActive(false);
     }
 
     protected virtual void OnEnable()
@@ -28,6 +32,7 @@ public abstract class Tower : Installation
         isCanUpgrade = true;
     }
 
+    public abstract void SetInfo();
 
     public void GetDamage(float damage)
     {
@@ -37,6 +42,8 @@ public abstract class Tower : Installation
         {
             Destroyed();
         }
+
+        hpBar.SetHpBar(currentHp, maxHp);
     }
 
     public override void CollocateWorker(WorkerUnit worker)

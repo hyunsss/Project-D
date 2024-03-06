@@ -66,4 +66,24 @@ public class TowerManager : MonoBehaviour
         turretTower.level++;
         turretTower.SetInfo();
     }
+
+    public void UpgradeTower(SpawnTower spawnTower)
+    {
+        if (spawnTower.level >= spawnTower.towerInfo.maxlevel)
+        {
+            //최대레벨이면 업그레이드 실패
+            return;
+        }
+
+        //재화 사용
+        if (!TestGameManager.Instance.UseReSource(spawnTower.towerInfo.price[spawnTower.level]))
+        {
+            //재화가 부족하면 업그레이드 실패
+            return;
+        }
+
+        //타워 레벨업
+        spawnTower.level++;
+        spawnTower.SetInfo();
+    }
 }

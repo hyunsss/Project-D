@@ -45,7 +45,7 @@ public class ArrowDrawer : MonoBehaviour
                 endPos = hit.point;
             }
             else
-            {
+            { //Find("ancher").position
                 endPos = hit.transform.position;
             }
             endPos.y = 0.1f;

@@ -5,6 +5,8 @@ using UnityEngine;
 //TODO: 매니저 만들어서 스폰 관리
 public class SpawnTower : Tower
 {
+    public SpawnTowerInfo towerInfo;
+
     public float iteration;
 
     //public GameObject[] characterPrefabs;
@@ -20,9 +22,21 @@ public class SpawnTower : Tower
         spawnPoint = transform.GetChild(0); //0: SpawnPoint
     }
 
-    public void SetInfo()
+    public override void SetInfo()
     {
+        //스탯 설정
+        this.maxHp = towerInfo.levelStat[level - 1].maxHp;
+        this.iteration = towerInfo.levelStat[level - 1].iteration;
 
+        currentHp = maxHp;
+
+        //렌더러 설정
+        Destroy(transform.GetChild(3).gameObject); //3: Render
+        Instantiate(towerInfo.rendererPrefabs[level - 1], transform);
+
+        StopAllCoroutines();
+
+        hpBar.SetHpBar(currentHp, maxHp);
     }
 
     public void Spawn(int spawnCount)

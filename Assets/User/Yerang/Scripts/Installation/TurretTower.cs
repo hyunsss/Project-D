@@ -32,7 +32,7 @@ public abstract class TurretTower : Tower
         detectedEnemies.Clear();
     }
 
-    public virtual void SetInfo()
+    public override void SetInfo()
     {
         //Ω∫≈» º≥¡§
         this.maxHp = towerInfo.levelStat[level - 1].maxHp;
@@ -44,11 +44,13 @@ public abstract class TurretTower : Tower
         detectingCollider.radius = attackRange;
 
         //∑ª¥ı∑Ø º≥¡§
-        Destroy(transform.GetChild(2).gameObject);
+        Destroy(transform.GetChild(3).gameObject); //3: Render
         Instantiate(towerInfo.rendererPrefabs[level - 1], transform);
-        transform.GetChild(2).TryGetComponent<Animator>(out animator); //2: Render
+        transform.GetChild(3).TryGetComponent<Animator>(out animator);
 
         StopAllCoroutines();
+
+        hpBar.SetHpBar(currentHp, maxHp);
     }
 
     public abstract void Attack();
