@@ -7,6 +7,7 @@ public class SpawnTower : Tower
 {
     public float iteration;
 
+    //public GameObject[] characterPrefabs;
     public GameObject characterPrefab;
 
     private bool isSpawning = false;
