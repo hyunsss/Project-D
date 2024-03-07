@@ -25,6 +25,7 @@ public class UI_PanelManager : MonoBehaviour
     public UI_GameObject_INFO   gameObjectINFO;
     public UI_UnitList          unitListPanel;
     public GameObject           dontBuildMessage;
+    public MouseController      mouseController;
     [Header("Texts")]
     public TextMeshProUGUI      monsterText;
     public TextMeshProUGUI      unitText;

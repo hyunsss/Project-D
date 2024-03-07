@@ -23,11 +23,13 @@ public class UI_Slot : MonoBehaviour
         {
             UI_PanelManager.Instance.BattleUnitPanel_OPEN();
             UI_PanelManager.Instance.gameObjectINFO.BattleUnitSetINFO(_battleUnit);
+            UI_PanelManager.Instance.mouseController.ClickSelected(slotUnitData.gameObject);
         }
         if (slotUnitData.TryGetComponent(out WorkerUnit _workerUnit))
         {
             UI_PanelManager.Instance.WorkerUnitPanel_OPEN();
             UI_PanelManager.Instance.gameObjectINFO.WorkerUnitSetINFO(_workerUnit);
+            UI_PanelManager.Instance.mouseController.ClickSelected(slotUnitData.gameObject);
         }
     }
 }
