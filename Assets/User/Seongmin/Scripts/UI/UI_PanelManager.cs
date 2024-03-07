@@ -138,11 +138,12 @@ public class UI_PanelManager : MonoBehaviour
     }
     public void ALLUnitSelect()
     {
-        foreach(var unit in GameDB.Instance.unit_Player)
+        GameDB.Instance.unitlist.Clear();
+        foreach (var unit in GameDB.Instance.unit_Player)
         {
-            if (unit.TryGetComponent(out Unit _unit))
+            if (unit.gameObject.TryGetComponent(out Unit _unit))
             {
-                GameDB.Instance.unitlist.Clear();
+                
                 GameDB.Instance.unitlist.Add(_unit);
             }
         }
