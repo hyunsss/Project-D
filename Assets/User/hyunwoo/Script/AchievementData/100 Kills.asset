@@ -19,4 +19,4 @@ MonoBehaviour:
   desc: "\uB204\uC801 100\uD0AC!?!??"
   isLocked: 1
   count: 100
-  targetCount: 0
+  targetCount: 100

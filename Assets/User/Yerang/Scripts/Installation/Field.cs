@@ -1,20 +1,45 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class Field : Installation
 {
+    public FieldInfo fieldInfo;
+
     [Serializable]
     private enum ResourceType { Mineral, Gas }
     [SerializeField]
     private ResourceType resourceType;
 
+    public int level;
+
+    [SerializeField]
+    private int amountPerSec; //초당 얻는 자원의 양;
+
     private Coroutine minedCoroutine = null;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         type = Type.Field;
+    }
+
+    private void OnEnable()
+    {
+        canvas.gameObject.SetActive(false);
+    }
+
+    public void SetField()
+    {
+        //스탯 설정
+        this.maxHp = fieldInfo.levelStat[level - 1].maxHp;
+        this.amountPerSec = fieldInfo.levelStat[level - 1].amountPerSec;
+
+        currentHp = maxHp;
+        hpBar.SetHpBar(currentHp, maxHp);
+
+        StopAllCoroutines();
     }
 
     public IEnumerator MinedCoroutine()
@@ -23,20 +48,15 @@ public class Field : Installation
         {
             yield return new WaitForSeconds(1f);
 
-            //재화 증가
-            int minedResourcePerSec = 0; //초당 얻는 자원수
-            foreach (WorkerUnit workerUnit in workers)
-            {
-                minedResourcePerSec += workerUnit.mineAmount;
-            }
+            int allAmountPerSec = workers.Count * amountPerSec; //일꾼 수 만큼 자원 획득
 
             if (resourceType == ResourceType.Mineral)
             {
-                TestGameManager.Instance.GainMineral(minedResourcePerSec);
+                TestGameManager.Instance.GainMineral(allAmountPerSec);
             }
             else if (resourceType == ResourceType.Gas)
             {
-                TestGameManager.Instance.GainGas(minedResourcePerSec);
+                TestGameManager.Instance.GainGas(allAmountPerSec);
             }
         }
     }

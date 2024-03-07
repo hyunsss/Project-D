@@ -10,14 +10,18 @@ public class TowerBeingBuilt : Installation
     public float completeTime;
     private float currentTime;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         type = Type.TowerBeingBuilt;
+        maxHp = tower.MaxHp; //업그레이드해서 체력이 올라간 상태면? -> 부실 때 다 초기화해주기
     }
 
     private void OnEnable()
     {
         currentTime = 0f;
+        currentHp = maxHp;
+        canvas.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -31,9 +35,18 @@ public class TowerBeingBuilt : Installation
 
         if (currentTime >= completeTime)
         {
-            Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, TowerManager.Instance.TowerParent);
-            Lean.Pool.LeanPool.Despawn(gameObject);
+            CompleteBuild();
         }
+    }
+
+    public void CompleteBuild()
+    {
+        Tower completeTower = 
+            Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, InstallationManager.Instance.InstallationParent);
+        
+        completeTower.SetHp(currentHp);
+
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 
     public override void CollocateWorker(WorkerUnit worker)
