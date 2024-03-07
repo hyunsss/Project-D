@@ -18,19 +18,14 @@ public class WorkerUnit : Unit
     public float repairAmount;
     public int mineAmount;
 
-    private Installation belongInstallation;
-
-    private void Update()
-    {
-
-    }
+    private Installation collocatedInstallation;
 
     public void Collocate(Installation target)
     {
-        belongInstallation = target;
+        collocatedInstallation = target;
         target.CollocateWorker(this);
 
-        switch (belongInstallation.type)
+        switch (collocatedInstallation.type)
         {
             case Installation.Type.Tower:
                 state = State.Repair;
@@ -50,10 +45,10 @@ public class WorkerUnit : Unit
 
     public void Decollocate()
     {
-        if(belongInstallation != null)
+        if(collocatedInstallation != null)
         {
-            belongInstallation.DecollocateWorker(this);
-            belongInstallation = null;
+            collocatedInstallation.DecollocateWorker(this);
+            collocatedInstallation = null;
         }
 
         state = State.Idle;

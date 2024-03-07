@@ -13,21 +13,22 @@ public class SlowTower : TurretTower
         Attack();
     }
 
-    public override void SetInfo()
+    public override void SetTower()
     {
         //Ω∫≈» º≥¡§
         this.maxHp = towerInfo.levelStat[level - 1].maxHp;
         this.attackRange = towerInfo.levelStat[level - 1].attackRange;
 
         currentHp = maxHp;
+        hpBar.SetHpBar(currentHp, maxHp);
+
         detectingCollider.radius = attackRange;
+        detectingArea.transform.localScale = new Vector3(attackRange * 2, 0.1f, attackRange * 2);
 
         //∑ª¥ı∑Ø º≥¡§
-        Destroy(transform.GetChild(2).gameObject);
-        Instantiate(towerInfo.rendererPrefabs[level - 1], transform);
-        transform.GetChild(2).TryGetComponent<Animator>(out animator); //2: Render
+        SetRender();
 
-        detectingArea.transform.localScale = new Vector3(attackRange * 2, 0.1f, attackRange * 2);
+        StopAllCoroutines();
     }
 
     public override void Attack()
@@ -40,19 +41,19 @@ public class SlowTower : TurretTower
         detectingArea.SetActive(false);
     }
 
-    private void Stun(TestEnemy enemy)
+    private void Stun(Monster enemy)
     {
-        enemy.speed = enemy.speed * (1 - slowPer / 100);
+        enemy.MonsterData.MonsterSpeed = enemy.MonsterData.MonsterSpeed * (1 - slowPer / 100);
     }
 
-    private void Destun(TestEnemy enemy)
+    private void Destun(Monster enemy)
     {
-        enemy.speed = enemy.speed / (1 - slowPer / 100);
+        enemy.MonsterData.MonsterSpeed = enemy.MonsterData.MonsterSpeed / (1 - slowPer / 100);
     }
 
     private new void OnTriggerEnter(Collider other)
     { //TODO: TestEnemy -> Enemy
-        if(TryGetComponent<TestEnemy>(out TestEnemy enemy))
+        if(TryGetComponent<Monster>(out Monster enemy))
         {
             Stun(enemy);
         }
@@ -60,7 +61,7 @@ public class SlowTower : TurretTower
 
     private new void OnTriggerExit(Collider other)
     {
-        if (TryGetComponent<TestEnemy>(out TestEnemy enemy))
+        if (TryGetComponent<Monster>(out Monster enemy))
         {
             Destun(enemy);
         }

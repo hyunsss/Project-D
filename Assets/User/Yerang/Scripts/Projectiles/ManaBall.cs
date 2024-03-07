@@ -11,7 +11,8 @@ public class ManaBall : Projectile
 
         if (Vector3.Distance(transform.position, target.position) <= 0.1)
         {
-            target.GetComponent<TestEnemy>().GetDamage(damage); //TODO: TestEnemy -> Enemy
+            if (target.TryGetComponent<Monster>(out Monster monster)) //TODO: TestEnemy -> Enemy
+                monster.HitDamage(damage);
             Lean.Pool.LeanPool.Despawn(this);
         }
     }

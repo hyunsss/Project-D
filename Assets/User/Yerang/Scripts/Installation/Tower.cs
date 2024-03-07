@@ -5,39 +5,28 @@ public abstract class Tower : Installation
 {
     public int level;
 
-    protected float maxHp;
-    protected float currentHp;
-    public float CurrentHp {  get { return currentHp; } }
-
-    protected bool isCanUpgrade;
-    public bool IsCanUpgrade { get { return isCanUpgrade; } }
-
-    protected GameObject RendererObj;
-
     protected Coroutine repairCoroutine = null;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         type = Type.Tower;
     }
 
     protected virtual void OnEnable()
     {
         level = 1;
-        currentHp = maxHp;
-        isCanUpgrade = true;
+        SetTower();
+        canvas.gameObject.SetActive(false);
     }
 
-
-    public void GetDamage(float damage)
+    public void SetHp(float hp)
     {
-        currentHp -= damage;
-
-        if(currentHp <= 0)
-        {
-            Destroyed();
-        }
+        currentHp = hp;
+        //hpBar.SetHpBar(currentHp, maxHp);
     }
+
+    public abstract void SetTower();
 
     public override void CollocateWorker(WorkerUnit worker)
     {
@@ -75,10 +64,5 @@ public abstract class Tower : Installation
             repairedHpPerSec += workerUnit.repairAmount;
         }
         currentHp += repairedHpPerSec;
-    }
-
-    public void Destroyed()
-    {
-        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 }

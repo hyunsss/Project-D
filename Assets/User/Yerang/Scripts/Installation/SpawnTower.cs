@@ -5,10 +5,11 @@ using UnityEngine;
 //TODO: 매니저 만들어서 스폰 관리
 public class SpawnTower : Tower
 {
+    public SpawnTowerInfo towerInfo;
+
     public float iteration;
 
     //public GameObject[] characterPrefabs;
-    public GameObject characterPrefab;
 
     private bool isSpawning = false;
 
@@ -17,20 +18,37 @@ public class SpawnTower : Tower
     protected override void Awake()
     {
         base.Awake();
-        spawnPoint = transform.GetChild(0); //0: SpawnPoint
+        spawnPoint = transform.Find("SpawnPoint");
     }
 
-    public void SetInfo()
+    public override void SetTower()
     {
+        //스탯 설정
+        this.maxHp = towerInfo.levelStat[level - 1].maxHp;
+        this.iteration = towerInfo.levelStat[level - 1].iteration;
 
+        currentHp = maxHp;
+        hpBar.SetHpBar(currentHp, maxHp);
+
+        //렌더러 설정
+        SetRender();
+
+        StopAllCoroutines();
     }
 
-    public void Spawn(int spawnCount)
+    protected void SetRender()
     {
-        StartCoroutine(SpawnCoroutine(spawnCount));
+        Transform renderParent = transform.Find("Render");
+        Destroy(renderParent.GetChild(0).gameObject);
+        Instantiate(towerInfo.rendererPrefabs[level - 1], renderParent);
     }
 
-    private IEnumerator SpawnCoroutine(int spawnCount) //TODO: 순서 꼬이는 문제 있음
+    public void Spawn(int spawnCount, GameObject characterPrefab)
+    {
+        StartCoroutine(SpawnCoroutine(spawnCount, characterPrefab));
+    }
+
+    private IEnumerator SpawnCoroutine(int spawnCount, GameObject characterPrefab) //TODO: 순서 꼬이는 문제 있음
     {
         while (isSpawning) yield return null; //스폰중인 상태면 대기
 

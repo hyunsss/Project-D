@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CanonTower : TurretTower
 {
-    private TestEnemy target;
+    private Monster target;
 
     [SerializeField]
     private Projectile attackPrefab;

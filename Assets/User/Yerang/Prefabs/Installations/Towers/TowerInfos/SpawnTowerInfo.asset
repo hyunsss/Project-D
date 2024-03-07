@@ -12,11 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13099788744a82045bf0365d295fdde2, type: 3}
   m_Name: SpawnTowerInfo
   m_EditorClassIdentifier: 
-  maxlevel: 0
-  maxHp: []
-  price: []
+  maxlevel: 4
+  levelStat:
+  - maxHp: 10
+    iteration: 5
+  - maxHp: 20
+    iteration: 4
+  - maxHp: 30
+    iteration: 3
+  - maxHp: 40
+    iteration: 2
+  price:
+  - mineral: 0
+    gas: 0
+  - mineral: 10
+    gas: 5
+  - mineral: 20
+    gas: 10
+  - mineral: 30
+    gas: 20
   rendererPrefabs:
-  - {fileID: 1337083809761150, guid: 9656a02aa4854a74ea27dcaec01e29a8, type: 3}
-  - {fileID: 1136921692887686, guid: 994117272d195fe47a637ed58e447344, type: 3}
-  - {fileID: 1651372624995450, guid: 410e465b38b9f014f9be5894bd1b3a45, type: 3}
-  - {fileID: 1917308456298122, guid: a58630313e0f32e4f9b876dbc6d37657, type: 3}
+  - {fileID: 1337083809761150, guid: 13bd3ef044da10e4fb7a6a3a587c072b, type: 3}
+  - {fileID: 1136921692887686, guid: 0b73ec62e208e044e902eb50056b96be, type: 3}
+  - {fileID: 1651372624995450, guid: c9ea9c97388d1c64d830aa9d710e34e3, type: 3}
+  - {fileID: 1917308456298122, guid: fe6da2d3cc54a924e86c74704dd0eeed, type: 3}

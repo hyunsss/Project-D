@@ -16,11 +16,33 @@ public class BattleUnitMove : UnitMove
         attackRange = GetComponent<BattleUnit>().attackRange;
     }
 
-    protected override void Update()
+    protected void Update()
     {
         DetectEnemy();
 
-        base.Update();
+        switch (state)
+        {
+            case State.Idle:
+                if (priorityTarget != null || target != null)
+                {
+                    state = State.Move;
+                }
+                break;
+
+            case State.Move:
+                if (priorityTarget == null && target == null)
+                {
+                    state = State.Idle;
+                    break;
+                }
+                MoveToTarget();
+                break;
+
+            default:
+                break;
+        }
+
+        animator.SetInteger("moveState", (int)state);
     }
 
     private void DetectEnemy()
@@ -98,11 +120,12 @@ public class BattleUnitMove : UnitMove
         //타겟이 적일 경우 사정거리 안에 들어올 때 까지만 이동
         if (target.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            if (nav.stoppingDistance != attackRange - 0.1f)
-                nav.stoppingDistance = attackRange - 0.1f;
+            nav.stoppingDistance = attackRange - 0.1f;
+            nav.SetDestination(target.position);
         }
+        //타겟이 건물인 경우 타겟의 인접점까지 이동
         else if (priorityTarget.gameObject.layer == LayerMask.NameToLayer("Installation"))
-        { //타겟이 건물인 경우 타겟의 인접점까지 이동
+        { 
             Collider targetCollider = priorityTarget.GetComponent<Collider>();
             //접점
             Vector3 tangentPoint = targetCollider.ClosestPoint(transform.position);
@@ -113,18 +136,14 @@ public class BattleUnitMove : UnitMove
         //아닐 경우 끝까지 이동
         else
         {
-            if (nav.stoppingDistance != 0f)
-                nav.stoppingDistance = 0f;
+            nav.stoppingDistance = 0f;
+            nav.SetDestination(target.position);
         }
-
-        nav.SetDestination(target.position);
 
         if (nav.velocity.sqrMagnitude >= 0.1f //길찾기 시작할때도 남은 거리가 0으로 뜨게되므로, 움직이는 상태인지 체크
             && nav.remainingDistance <= nav.stoppingDistance + 0.1f)
         {
             ResetTarget();
         }
-
-        //TODO: 장애물에 막혀 이동이 불가한 상태가 지속될 경우?
     }
 }

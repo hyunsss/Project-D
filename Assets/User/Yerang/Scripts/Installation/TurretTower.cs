@@ -14,25 +14,24 @@ public abstract class TurretTower : Tower
     protected Transform shotPoint;
 
     protected SphereCollider detectingCollider;
-    protected List<TestEnemy> detectedEnemies = new List<TestEnemy>();
+    protected List<Monster> detectedEnemies = new List<Monster>();
 
     protected Animator animator;
 
     protected override void Awake()
     {
         base.Awake();
-        detectingCollider = transform.GetChild(0).GetComponent<SphereCollider>(); //0: DetectingArea
-        shotPoint = transform.GetChild(1); //1: ShotPoint
+        detectingCollider = transform.Find("DetectingArea").GetComponent<SphereCollider>();
+        shotPoint = transform.Find("ShotPoint");
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        SetInfo();
         detectedEnemies.Clear();
     }
 
-    public virtual void SetInfo()
+    public override void SetTower()
     {
         //스탯 설정
         this.maxHp = towerInfo.levelStat[level - 1].maxHp;
@@ -41,14 +40,22 @@ public abstract class TurretTower : Tower
         this.attackRange = towerInfo.levelStat[level - 1].attackRange;
 
         currentHp = maxHp;
+        hpBar.SetHpBar(currentHp, maxHp);
+
         detectingCollider.radius = attackRange;
 
         //렌더러 설정
-        Destroy(transform.GetChild(2).gameObject);
-        Instantiate(towerInfo.rendererPrefabs[level - 1], transform);
-        transform.GetChild(2).TryGetComponent<Animator>(out animator); //2: Render
+        SetRender();
 
         StopAllCoroutines();
+    }
+
+    protected void SetRender()
+    {
+        Transform renderParent = transform.Find("Render");
+        Destroy(renderParent.GetChild(0).gameObject);
+        Instantiate(towerInfo.rendererPrefabs[level - 1], renderParent);
+        renderParent.GetChild(0).TryGetComponent<Animator>(out animator);
     }
 
     public abstract void Attack();
@@ -58,7 +65,7 @@ public abstract class TurretTower : Tower
     //적 감지
     protected void OnTriggerEnter(Collider other)
     { //TODO: TestEnemy -> Enemy
-        if (other.TryGetComponent<TestEnemy>(out TestEnemy enemy))
+        if (other.TryGetComponent<Monster>(out Monster enemy))
         {
             detectedEnemies.Add(enemy);
         }
@@ -66,7 +73,7 @@ public abstract class TurretTower : Tower
 
     protected void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<TestEnemy>(out TestEnemy enemy))
+        if (other.TryGetComponent<Monster>(out Monster enemy))
         {
             detectedEnemies.Remove(enemy);
         }

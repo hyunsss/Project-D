@@ -46,7 +46,9 @@ public class ArrowDrawer : MonoBehaviour
             }
             else
             {
-                endPos = hit.transform.position;
+                endPos = hit.collider.bounds.center;
+                //endPos = hit.collider.ClosestPoint(startPos);
+                //endPos = hit.transform.position;
             }
             endPos.y = 0.1f;
         }

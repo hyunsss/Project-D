@@ -50,7 +50,8 @@ public class Arrow : Projectile
 
         if (remainDistance <= 0.1) //타겟과의 남은 거리가 0.1이하이면 데미지를 주고 삭제
         {
-            target.GetComponent<TestEnemy>().GetDamage(damage); //TODO: TestEnemy -> Enemy
+            if(target.TryGetComponent<Monster>(out Monster monster)) //TODO: TestEnemy -> Enemy
+                monster.HitDamage(damage);
             Lean.Pool.LeanPool.Despawn(this);
         }
     }
