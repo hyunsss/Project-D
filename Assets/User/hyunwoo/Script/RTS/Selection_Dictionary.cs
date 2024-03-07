@@ -30,5 +30,6 @@ public class Selection_Dictionary : MonoBehaviour
             }
         }
         GameDB.Instance.selectedTable.Clear();
+        GameDB.Instance.unitlist.Clear();
     }
 }

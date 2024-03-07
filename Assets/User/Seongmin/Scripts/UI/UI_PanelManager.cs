@@ -86,7 +86,7 @@ public class UI_PanelManager : MonoBehaviour
         gameObjectINFO = ui_BattleUnitINFO.GetComponent<UI_GameObject_INFO>();
         OpenPanel();
     }
-    public void PlayerTowerINFO_OPEN()
+    public void PlayerTowerPanel_OPEN()
     {
         ui_CurrentPanel = ui_PlayerTowerInfo;
         gameObjectINFO = ui_PlayerTowerInfo.GetComponent<UI_GameObject_INFO>();

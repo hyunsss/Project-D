@@ -5,6 +5,7 @@ using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UI.CanvasScaler;
 
 public class UI_UnitList : MonoBehaviour
 {
@@ -18,8 +19,9 @@ public class UI_UnitList : MonoBehaviour
     private int slotCount = 0;
     public void UnitListDraw()
     {
-
-        foreach(var unit in GameDB.Instance.unitlist)
+        SlotReset();
+        slotCount = 0;
+        foreach (var unit in GameDB.Instance.unitlist)
         {
             Sprite currentSprite = null;
 
@@ -36,13 +38,14 @@ public class UI_UnitList : MonoBehaviour
                 currentSprite = listImage[2];
             }
 
+
             if (currentSprite != null && slotCount < slotList.Count)
             {
                 slotList[slotCount].gameObject.SetActive(true);
                 slotList[slotCount].sprite = currentSprite;
                 slotCount++;
             }
-            else if(slotCount>=slotList.Count)
+            else
             {
                 break;
             }
@@ -50,9 +53,28 @@ public class UI_UnitList : MonoBehaviour
             
         }
     }
-
-    private void UnitDataSetting()
+    //TODO
+   /* private void UnitDataSetting()
     {
+        //--------------- Check WorkUnit OR BattleUnit -----------
 
+        if (unit.TryGetComponent(out BattleUnit _battleUnit))
+        {
+            UI_PanelManager.Instance.BattleUnitPanel_OPEN();
+            UI_PanelManager.Instance.gameObjectINFO.BattleUnitSetINFO(_battleUnit);
+        }
+        if (unit.TryGetComponent(out WorkerUnit _workerUnit))
+        {
+            UI_PanelManager.Instance.WorkerUnitPanel_OPEN();
+            UI_PanelManager.Instance.gameObjectINFO.WorkerUnitSetINFO(_workerUnit);
+        }
+    }*/
+    private void SlotReset()
+    {
+        foreach(var slot in slotList)
+        {
+            slot.sprite = null;
+            slot.gameObject.SetActive(false);
+        }
     }
 }
