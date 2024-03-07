@@ -236,6 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee6f3d748f63f4f8b873faaefedbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpBar: {fileID: 6616344678001902726}
+  fillImage: {fileID: 68660117122407154}
 --- !u!1 &1729229814815763073
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,12 +327,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaWidth: 2
   areaHeight: 2
+  maxHp: 0
+  canvas: {fileID: 4927755450021171389}
+  hpBar: {fileID: 4646485917455266871}
   type: 0
   workers: []
   level: 0
-  towerInfo: {fileID: 0}
+  towerInfo: {fileID: 11400000, guid: 833e441dd7d0e2046b42c92f2f985dfd, type: 2}
   iteration: 3
-  characterPrefab: {fileID: 7371667728712835575, guid: d795299dfcbe6c5449185bbcbf046988, type: 3}
 --- !u!114 &9146945704498219944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 4927755450021171389}
 --- !u!208 &1248721064408951551
 NavMeshObstacle:
   m_ObjectHideFlags: 0

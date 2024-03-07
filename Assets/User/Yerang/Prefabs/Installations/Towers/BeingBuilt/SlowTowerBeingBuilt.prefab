@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee6f3d748f63f4f8b873faaefedbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpBar: {fileID: 7069722513343921468}
+  fillImage: {fileID: 2352562431806363373}
 --- !u!1 &356530122597561896
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +550,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaWidth: 1
   areaHeight: 1
+  maxHp: 10
+  canvas: {fileID: 2821464923713486880}
+  hpBar: {fileID: 3397074446898594977}
   type: 1
   workers: []
   tower: {fileID: 9002817283901398845, guid: d3a1132edb340d443aed763a06b481a5, type: 3}
@@ -565,6 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 2821464923713486880}
 --- !u!208 &4177062247646521319
 NavMeshObstacle:
   m_ObjectHideFlags: 0

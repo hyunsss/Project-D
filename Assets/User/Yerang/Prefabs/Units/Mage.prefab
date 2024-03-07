@@ -1756,6 +1756,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee6f3d748f63f4f8b873faaefedbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpBar: {fileID: 6656057736260543184}
+  fillImage: {fileID: 2421909230964228118}
 --- !u!1 &5288028195867718612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2712,8 @@ MonoBehaviour:
   maxHp: 5
   dp: 0
   price: 0
+  canvas: {fileID: 388745914887529458}
+  hpBar: {fileID: 2231682262362357181}
   ap: 1
   attackCycle: 1
   attackRange: 10
@@ -2757,6 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 388745914887529458}
 --- !u!136 &8822003956358123991
 CapsuleCollider:
   m_ObjectHideFlags: 0

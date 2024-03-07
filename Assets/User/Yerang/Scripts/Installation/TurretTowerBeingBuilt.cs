@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
-public class TowerBeingBuilt : Installation
+public class TurretTowerBeingBuilt : Installation
 {
-    public Tower tower;
+    public TurretTower tower;
 
     public float builtSpeed;
     public float completeTime;
@@ -14,13 +15,14 @@ public class TowerBeingBuilt : Installation
     {
         base.Awake();
         type = Type.TowerBeingBuilt;
-        maxHp = tower.MaxHp; //업그레이드해서 체력이 올라간 상태면? -> 부실 때 다 초기화해주기
+        maxHp = tower.towerInfo.levelStat[0].maxHp;
     }
 
     private void OnEnable()
     {
         currentTime = 0f;
         currentHp = maxHp;
+        hpBar.SetHpBar(currentHp, maxHp);
         canvas.gameObject.SetActive(false);
     }
 
@@ -46,7 +48,8 @@ public class TowerBeingBuilt : Installation
         
         completeTower.SetHp(currentHp);
 
-        Lean.Pool.LeanPool.Despawn(gameObject);
+        //Lean.Pool.LeanPool.Despawn(gameObject);
+        Destroy(gameObject);
     }
 
     public override void CollocateWorker(WorkerUnit worker)

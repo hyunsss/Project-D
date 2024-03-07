@@ -345,6 +345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee6f3d748f63f4f8b873faaefedbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpBar: {fileID: 258945899}
+  fillImage: {fileID: 665859724}
 --- !u!114 &258945899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3590,9 +3592,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: 
-  maxHp: 0
+  maxHp: 10
   dp: 0
   price: 0
+  canvas: {fileID: 692932718}
+  hpBar: {fileID: 258945898}
   state: 0
   buildSpeed: 1
   repairAmount: 0
@@ -3955,6 +3959,10 @@ PrefabInstance:
       propertyPath: m_Extents.z
       value: 6.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5295199609403126050, guid: 57943d965c924e84693c1d9f589480b6, type: 3}
+      propertyPath: tower
+      value: 
+      objectReference: {fileID: 1092345454388106063, guid: 0f07fec05385c4d498420c2ef2d5ac71, type: 3}
     - target: {fileID: 8034853005740469754, guid: 57943d965c924e84693c1d9f589480b6, type: 3}
       propertyPath: m_Name
       value: SpawnTowerBeingBuilt
@@ -4094,6 +4102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 692932718}
 --- !u!1001 &7307215524410399860
 PrefabInstance:
   m_ObjectHideFlags: 0

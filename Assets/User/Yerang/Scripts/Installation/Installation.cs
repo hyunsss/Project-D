@@ -10,21 +10,22 @@ public class Installation : MonoBehaviour
     public int AreaWidth { get => areaWidth; }
     public int AreaHeight { get => areaHeight; }
 
-
-    protected float maxHp;
-    public float MaxHp { get { return maxHp; } }
+    public float maxHp;
 
     protected float currentHp;
     public float CurrentHp { get { return currentHp; } }
 
+    [SerializeField]
     protected Canvas canvas;
+    [SerializeField]
     protected HpBar hpBar;
 
     public enum Type
     {
         Tower,
         TowerBeingBuilt,
-        Field
+        Field,
+        Wall
     }
     public Type type;
 
@@ -34,7 +35,7 @@ public class Installation : MonoBehaviour
 
     protected virtual void Awake()
     {
-        canvas = GetComponentInChildren<Canvas>();
+        //canvas = GetComponentInChildren<Canvas>();
         hpBar = canvas.GetComponentInChildren<HpBar>();
     }
 

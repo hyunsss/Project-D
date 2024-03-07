@@ -1,43 +1,34 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Tower : Installation
+public class BlockWall : Installation
 {
-    public int level;
-
     protected Coroutine repairCoroutine = null;
 
     protected override void Awake()
     {
         base.Awake();
-        type = Type.Tower;
+        type = Type.Wall;
     }
 
     protected virtual void OnEnable()
     {
-        level = 1;
-        SetTower();
+        currentHp = maxHp;
         canvas.gameObject.SetActive(false);
     }
 
-    public void SetHp(float hp)
-    {
-        currentHp = hp;
-        //hpBar.SetHpBar(currentHp, maxHp);
-    }
-
-    public abstract void SetTower();
 
     public override void CollocateWorker(WorkerUnit worker)
     {
         base.CollocateWorker(worker);
 
-        print("ìˆ˜ë¦¬ ë°°ì¹˜ë¨");
+        print("¼ö¸® ¹èÄ¡µÊ");
 
-        if(repairCoroutine == null)
+        if (repairCoroutine == null)
         {
             repairCoroutine = StartCoroutine(Repaired());
-            //í ì´í™íŠ¸
+            //Èú ÀÌÆåÆ®
         }
     }
 
@@ -45,12 +36,12 @@ public abstract class Tower : Installation
     {
         base.DecollocateWorker(worker);
 
-        print("ìˆ˜ë¦¬ ë°°ì¹˜ í•´ì œë¨");
+        print("¼ö¸® ¹èÄ¡ ÇØÁ¦µÊ");
 
-        if(workers.Count == 0)
+        if (workers.Count == 0)
         {
             StopCoroutine(repairCoroutine);
-            //í ì´í™íŠ¸ ë„ê¸°
+            //Èú ÀÌÆåÆ® ²ô±â
         }
     }
 
