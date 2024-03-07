@@ -54,11 +54,12 @@ public class MouseController : MonoBehaviour
                     UI_PanelManager.Instance.TowerBuildPanel_OPEN();
                 }
                 else
-                {
+                { 
                     DeSelected();
                     target = null;
                     unitCam.transform.position = Vector3.zero;
                     UI_PanelManager.Instance.PanelReSet();
+                    UI_PanelManager.Instance.unitListPanel.SlotReset();
                 }
             }
         }

@@ -11,7 +11,7 @@ public class UI_UnitList : MonoBehaviour
 {
     [Header("SlotList")]
     [SerializeField]
-    private List<Image> slotList = new List<Image>();
+    private List<Button> slotList = new List<Button>();
     [Header("Images")]
     [SerializeField]
     private List<Sprite> listImage = new List<Sprite>();
@@ -24,25 +24,33 @@ public class UI_UnitList : MonoBehaviour
         foreach (var unit in GameDB.Instance.unitlist)
         {
             Sprite currentSprite = null;
+            Unit currentUnit = null;
 
             if (unit.TryGetComponent(out ArcherUnit _archerUnit))
             {
                 currentSprite = listImage[0];
+                currentUnit = _archerUnit;
             }
             else if(unit.TryGetComponent(out MageUnit _mageUnit))
             {
                 currentSprite = listImage[1];
+                currentUnit = _mageUnit;
             }
             else if(unit.TryGetComponent(out WarriorUnit _warriorUnit))
             {
                 currentSprite = listImage[2];
+                currentUnit = _warriorUnit;
             }
 
 
             if (currentSprite != null && slotCount < slotList.Count)
             {
                 slotList[slotCount].gameObject.SetActive(true);
-                slotList[slotCount].sprite = currentSprite;
+                slotList[slotCount].transform.Find("Image").GetComponent<Image>().sprite = currentSprite;
+                if (slotList[slotCount].gameObject.TryGetComponent(out UI_Slot _slotData))
+                {
+                    _slotData.slotUnitData = currentUnit;
+                }
                 slotCount++;
             }
             else
@@ -53,27 +61,12 @@ public class UI_UnitList : MonoBehaviour
             
         }
     }
-    //TODO
-   /* private void UnitDataSetting()
-    {
-        //--------------- Check WorkUnit OR BattleUnit -----------
 
-        if (unit.TryGetComponent(out BattleUnit _battleUnit))
-        {
-            UI_PanelManager.Instance.BattleUnitPanel_OPEN();
-            UI_PanelManager.Instance.gameObjectINFO.BattleUnitSetINFO(_battleUnit);
-        }
-        if (unit.TryGetComponent(out WorkerUnit _workerUnit))
-        {
-            UI_PanelManager.Instance.WorkerUnitPanel_OPEN();
-            UI_PanelManager.Instance.gameObjectINFO.WorkerUnitSetINFO(_workerUnit);
-        }
-    }*/
-    private void SlotReset()
+    public void SlotReset()
     {
         foreach(var slot in slotList)
         {
-            slot.sprite = null;
+            slotList[slotCount].transform.Find("Image").GetComponent<Image>().sprite = null;
             slot.gameObject.SetActive(false);
         }
     }

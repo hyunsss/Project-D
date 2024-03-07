@@ -22,7 +22,8 @@ public class UI_PanelManager : MonoBehaviour
   
     [Header("Event")]
     public UI_Boss_Text         bossPanel;
-    public UI_GameObject_INFO   gameObjectINFO;  
+    public UI_GameObject_INFO   gameObjectINFO;
+    public UI_UnitList          unitListPanel;
     public GameObject           dontBuildMessage;
     [Header("Texts")]
     public TextMeshProUGUI      monsterText;
