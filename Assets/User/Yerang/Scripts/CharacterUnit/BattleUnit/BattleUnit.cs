@@ -21,7 +21,7 @@ public abstract class BattleUnit : Unit
     protected override void Awake()
     {
         base.Awake();
-        shotPoint = transform.GetChild(0); //0: ShotPoint
+        shotPoint = transform.Find("ShotPoint");
         unitMove = GetComponent<BattleUnitMove>();
         animator = GetComponentInChildren<Animator>();
     }

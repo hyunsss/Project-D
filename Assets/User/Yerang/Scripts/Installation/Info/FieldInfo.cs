@@ -13,7 +13,7 @@ public class FieldInfo : ScriptableObject
     public struct Stat
     {
         public float maxHp;
-        public float amountPerSec;
+        public int amountPerSec;
     }
     public Stat[] levelStat;
 

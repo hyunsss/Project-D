@@ -1,34 +1,45 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static Cinemachine.DocumentationSortingAttribute;
 
 public class Field : Installation
 {
+    public FieldInfo fieldInfo;
+
     [Serializable]
     private enum ResourceType { Mineral, Gas }
     [SerializeField]
     private ResourceType resourceType;
 
-    [SerializeField]
-    private int amountPerSec; //초당 얻는 자원의 양
+    public int level;
 
-    protected Canvas canvas;
-    protected HpBar hpBar;
+    [SerializeField]
+    private int amountPerSec; //초당 얻는 자원의 양;
 
     private Coroutine minedCoroutine = null;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         type = Type.Field;
-        canvas = GetComponentInChildren<Canvas>();
-        hpBar = canvas.GetComponentInChildren<HpBar>();
     }
 
     private void OnEnable()
     {
         canvas.gameObject.SetActive(false);
+    }
+
+    public void SetField()
+    {
+        //스탯 설정
+        this.maxHp = fieldInfo.levelStat[level - 1].maxHp;
+        this.amountPerSec = fieldInfo.levelStat[level - 1].amountPerSec;
+
+        currentHp = maxHp;
+        hpBar.SetHpBar(currentHp, maxHp);
+
+        StopAllCoroutines();
     }
 
     public IEnumerator MinedCoroutine()

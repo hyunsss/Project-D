@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Cinemachine.DocumentationSortingAttribute;
 
-public class TowerManager : MonoBehaviour
+public class InstallationManager : MonoBehaviour
 {
-    private static TowerManager instance;
-    public static TowerManager Instance { get { return instance; } }
+    private static InstallationManager instance;
+    public static InstallationManager Instance { get { return instance; } }
 
-    private Transform towerParent;
-    public Transform TowerParent { get { return towerParent; } }
+    private Transform installationParent;
+    public Transform InstallationParent { get { return installationParent; } }
 
     /*[SerializeField]
     private TurretTowerInfo[] turretTowerInfos;
@@ -29,7 +29,7 @@ public class TowerManager : MonoBehaviour
             return;
         }
 
-        towerParent = transform;
+        installationParent = transform;
 
         //SetDictionary();
     }
@@ -85,5 +85,25 @@ public class TowerManager : MonoBehaviour
         //타워 레벨업
         spawnTower.level++;
         spawnTower.SetTower();
+    }
+
+    public void UpgradeField(Field field)
+    {
+        if (field.level >= field.fieldInfo.maxlevel)
+        {
+            //최대레벨이면 업그레이드 실패
+            return;
+        }
+
+        //재화 사용
+        if (!TestGameManager.Instance.UseReSource(field.fieldInfo.price[field.level]))
+        {
+            //재화가 부족하면 업그레이드 실패
+            return;
+        }
+
+        //타워 레벨업
+        field.level++;
+        field.SetField();
     }
 }

@@ -14,11 +14,6 @@ public class PopupUI : MonoBehaviour
         canvas = GetComponentInChildren<Canvas>();
     }
 
-    protected void OnEnable()
-    {
-        //canvas.gameObject.SetActive(false);
-    }
-
     private void Update()
     {
         if(canvas != null && canvas.gameObject.activeSelf)

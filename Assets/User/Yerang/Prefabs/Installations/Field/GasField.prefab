@@ -388,7 +388,9 @@ MonoBehaviour:
   areaHeight: 3
   type: 2
   workers: []
+  fieldInfo: {fileID: 11400000, guid: 76978030b3ec99846b5f7952b1cb94e0, type: 2}
   resourceType: 1
+  level: 0
   amountPerSec: 1
 --- !u!114 &2649889190966339755
 MonoBehaviour:

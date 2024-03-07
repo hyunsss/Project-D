@@ -5,23 +5,12 @@ public abstract class Tower : Installation
 {
     public int level;
 
-    protected float maxHp;
-    public float MaxHp { get { return maxHp; } }
-
-    protected float currentHp;
-    public float CurrentHp {  get { return currentHp; } }
-
     protected Coroutine repairCoroutine = null;
 
-    protected Canvas canvas;
-    protected HpBar hpBar;
-
-
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         type = Type.Tower;
-        canvas = GetComponentInChildren<Canvas>();
-        hpBar = canvas.GetComponentInChildren<HpBar>();
     }
 
     protected virtual void OnEnable()
@@ -38,18 +27,6 @@ public abstract class Tower : Installation
     }
 
     public abstract void SetTower();
-
-    public void GetDamage(float damage)
-    {
-        currentHp -= damage;
-
-        if(currentHp <= 0)
-        {
-            Destroyed();
-        }
-
-        hpBar.SetHpBar(currentHp, maxHp);
-    }
 
     public override void CollocateWorker(WorkerUnit worker)
     {
@@ -87,11 +64,5 @@ public abstract class Tower : Installation
             repairedHpPerSec += workerUnit.repairAmount;
         }
         currentHp += repairedHpPerSec;
-    }
-
-    public void Destroyed()
-    {
-        //부서지는 애니메이션
-        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 }
