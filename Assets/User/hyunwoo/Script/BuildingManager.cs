@@ -76,7 +76,7 @@ public class BuildingManager : MonoBehaviour
 
             }
 
-            if (Input.GetMouseButtonDown(0) && isInstallPossible == true)
+            if (Input.GetMouseButtonDown(0) && isInstallPossible == true && EventSystem.current.IsPointerOverGameObject() == false)
             {
                 SearchBuilding(targetBuilding.gameObject, InstallPosition);
             }
