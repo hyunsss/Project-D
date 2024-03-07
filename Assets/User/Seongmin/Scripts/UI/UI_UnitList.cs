@@ -15,29 +15,38 @@ public class UI_UnitList : MonoBehaviour
     [SerializeField]
     private List<Sprite> listImage = new List<Sprite>();
 
-
+    private int slotCount = 0;
     public void UnitListDraw()
     {
-        int slotCount = 0;
-        Sprite currentSprite = null;
-        foreach(var unit in GameDB.Instance.selectedTable.Values)
+
+        foreach(var unit in GameDB.Instance.unitlist)
         {
-            //if()
-            if (TryGetComponent(out ArcherUnit _archerUnit))
+            Sprite currentSprite = null;
+
+            if (unit.TryGetComponent(out ArcherUnit _archerUnit))
             {
                 currentSprite = listImage[0];
             }
-            else if(TryGetComponent(out MageUnit _mageUnit))
+            else if(unit.TryGetComponent(out MageUnit _mageUnit))
             {
                 currentSprite = listImage[1];
             }
-            else if(TryGetComponent(out WarriorUnit _warriorUnit))
+            else if(unit.TryGetComponent(out WarriorUnit _warriorUnit))
             {
                 currentSprite = listImage[2];
             }
-            slotList[slotCount].gameObject.SetActive(true);
-            slotList[slotCount].sprite = currentSprite;
-            slotCount++;
+
+            if (currentSprite != null && slotCount < slotList.Count)
+            {
+                slotList[slotCount].gameObject.SetActive(true);
+                slotList[slotCount].sprite = currentSprite;
+                slotCount++;
+            }
+            else if(slotCount>=slotList.Count)
+            {
+                break;
+            }
+            
             
         }
     }

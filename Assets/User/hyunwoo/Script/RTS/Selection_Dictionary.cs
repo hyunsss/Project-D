@@ -10,6 +10,7 @@ public class Selection_Dictionary : MonoBehaviour
         int id = go.GetInstanceID();
         if(!(GameDB.Instance.selectedTable.ContainsKey(id)) && go.TryGetComponent(out Unit unit)) {
             GameDB.Instance.selectedTable.Add(id, unit);
+            GameDB.Instance.unitlist.Add(unit);
             go.gameObject.AddComponent<Selection_Component>();
             Debug.Log("Added " + id + " to selected dict");
 
