@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour
 
     public float maxHp;
     protected float currentHp;
+    
     public float dp;
 
     public float price;

@@ -7,17 +7,17 @@ public class MonsterData : ScriptableObject
 {
     [SerializeField]
     private string monsterName;
-    public string MonsterName { get { return monsterName; } }
+    public string MonsterName { get { return monsterName; } set { monsterName = value;} }
     [SerializeField]
     private float monsterHp;
-    public float MonsterHp { get {  return monsterHp; } }
+    public float MonsterHp { get { return monsterHp; } set { monsterHp = value;} }
     [SerializeField]
     private float monsterSpeed;
-    public float MonsterSpeed { get {  return monsterSpeed; } }
+    public float MonsterSpeed { get {  return monsterSpeed; } set { monsterSpeed = value; } }
     [SerializeField]
     private float monsterDamage;
-    public float MonsterDamage { get {  return monsterDamage; } }
+    public float MonsterDamage { get {  return monsterDamage; } set { monsterDamage = value; } }
     [SerializeField]
     private GameObject monsterPrefab;
-    public GameObject MonsterPrefab { get {  return monsterPrefab; } }
+    public GameObject MonsterPrefab { get {  return monsterPrefab; } set { monsterPrefab = value; } }
 }
