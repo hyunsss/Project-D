@@ -310,6 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee6f3d748f63f4f8b873faaefedbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpBar: {fileID: 2101039867685760385}
+  fillImage: {fileID: 9215373894349980817}
 --- !u!1 &3311041756282793265
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 7072368431256836084}
 --- !u!65 &8721687065262091553
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 8446327866057720093}
 --- !u!65 &439958033573879897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1380,6 +1381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee6f3d748f63f4f8b873faaefedbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpBar: {fileID: 6232287209963302159}
+  fillImage: {fileID: 8910765270298001815}
 --- !u!1 &6397627058109763200
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class BuildingManager : MonoBehaviour
 {
+    public enum BuildKey { Archer, Canon, Slow, SpawnUnit, Mineral, Gas, Wall, None }
     public List<Installation> buildList = new List<Installation>();
 
     [HideInInspector]public Installation targetBuilding;
@@ -20,6 +21,16 @@ public class BuildingManager : MonoBehaviour
     private bool isInstallPossible;
 
     private Vector3 InstallPosition;
+
+    public void SetTarget(BuildKey key) {
+        
+        if(key == BuildKey.None) {
+            targetBuilding = null; 
+            return;
+        }
+
+        targetBuilding = buildList[(int)key];
+    }
 
     private List<Cell> cells = new List<Cell>();
     Vector3 TempPos;
@@ -52,7 +63,6 @@ public class BuildingManager : MonoBehaviour
     void Start()
     {
         grid = MapManager.Instance.grid;
-        InitButtons();
     }
 
     // Update is called once per frame
@@ -166,21 +176,4 @@ public class BuildingManager : MonoBehaviour
         //Remove
     }
 
-    private void SetTargetBuild(Installation building)
-    {
-        targetBuilding = building;
-    }
-
-    #region Test BuildButton ----
-    public UnityEngine.UI.Button CancelButton;
-    public UnityEngine.UI.Button SingleCanon;
-    public UnityEngine.UI.Button MageCanon;
-
-    private void InitButtons()
-    {
-        CancelButton.onClick.AddListener(() => SetTargetBuild(null));
-        SingleCanon.onClick.AddListener(() => SetTargetBuild(buildList[0]));
-        MageCanon.onClick.AddListener(() => SetTargetBuild(buildList[1]));
-    }
-    #endregion
 }

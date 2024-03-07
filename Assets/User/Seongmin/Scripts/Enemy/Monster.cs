@@ -95,7 +95,7 @@ public class Monster : MonoBehaviour
             else if (state == State.attack)
             {
                 animator.SetTrigger("isAttack");
-                Debug.Log("Àß ¸ÂÀ½");
+                Debug.Log("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
             }
             // Monster Tower Repairing
             else if (state == State.towerReqair && tower != null) 

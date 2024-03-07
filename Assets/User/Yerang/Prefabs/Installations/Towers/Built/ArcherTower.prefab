@@ -422,6 +422,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee6f3d748f63f4f8b873faaefedbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpBar: {fileID: 7457078410465782999}
+  fillImage: {fileID: 5589902366509634888}
 --- !u!1 &7365528311637549848
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 2422235603402114404}
 --- !u!208 &3737981949516795963
 NavMeshObstacle:
   m_ObjectHideFlags: 0
