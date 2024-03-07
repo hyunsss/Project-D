@@ -73,7 +73,7 @@ public class Bomb : Projectile
     {
         isAttack = true;
 
-        ExplosionParticle.Play(); //TODO: 매니저로 부르기
+        ExplosionParticle.Play(); //TODO: Visual Effect Manager
 
         int layerMask = LayerMask.GetMask("Enemy");
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRange, layerMask);
@@ -81,10 +81,8 @@ public class Bomb : Projectile
         {
             for (int i = 0; i < colliders.Length; i++) //TODO: TestEnemy -> Enemy
             {
-                //Debug.Log(colliders[i]);
-                // 변경완료(성민)
-                if (colliders[i] == null) continue;
-                colliders[i].gameObject.GetComponent<Monster>().SendMessage("HitDamage", damage, SendMessageOptions.DontRequireReceiver);
+                if(colliders[i].gameObject.TryGetComponent<Monster>(out Monster monster))
+                    monster.SendMessage("HitDamage", damage, SendMessageOptions.DontRequireReceiver);
             }
         }
 

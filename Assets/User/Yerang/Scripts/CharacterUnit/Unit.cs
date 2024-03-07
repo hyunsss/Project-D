@@ -16,14 +16,15 @@ public class Unit : MonoBehaviour
 
     public float price;
 
-    //public event EventHandler GetDamageEvent;
+    [SerializeField]
     private Canvas canvas;
+    [SerializeField]
     private HpBar hpBar;
 
     protected virtual void Awake()
     {
-        canvas = GetComponentInChildren<Canvas>();
-        hpBar = GetComponentInChildren<Canvas>().GetComponentInChildren<HpBar>();
+        //canvas = GetComponentInChildren<Canvas>();
+        //hpBar = canvas.GetComponentInChildren<HpBar>();
     }
 
     protected void OnEnable()

@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class PopupUI : MonoBehaviour
 {
-    public Canvas canvas;
+    [SerializeField]
+    private Canvas canvas;
 
     private bool isCanvasFixed = false;
+
+    private void Awake()
+    {
+        //canvas = GetComponentInChildren<Canvas>();
+    }
 
     private void Update()
     {

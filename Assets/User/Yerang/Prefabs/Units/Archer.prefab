@@ -3167,6 +3167,8 @@ MonoBehaviour:
   maxHp: 5
   dp: 0
   price: 0
+  canvas: {fileID: 442855681682844533}
+  hpBar: {fileID: 4549662975209740914}
   ap: 1
   attackCycle: 1
   attackRange: 10

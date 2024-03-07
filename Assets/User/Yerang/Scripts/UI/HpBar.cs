@@ -8,8 +8,16 @@ public class HpBar : MonoBehaviour
     private float maxHp;
     private float currenHp;
 
-    public Slider hpBar;
-    public Image fillImage;
+    [SerializeField]
+    private Slider hpBar;
+    [SerializeField]
+    private Image fillImage;
+
+    private void Awake()
+    {
+        //hpBar = GetComponent<Slider>();
+        fillImage = hpBar.transform.GetChild(1).GetChild(0).GetComponent<Image>();
+    }
 
     public void SetHpBar(float currentHp, float maxHp)
     {

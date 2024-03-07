@@ -3203,12 +3203,14 @@ MonoBehaviour:
   maxHp: 5
   dp: 0
   price: 0
+  canvas: {fileID: 5782444124753475393}
+  hpBar: {fileID: 8414998796586167891}
   ap: 1
-  attackCycle: 1
+  attackCycle: 0.5
   attackRange: 10
   priorityTarget: {fileID: 0}
   target: {fileID: 0}
-  attackPrefab: {fileID: 4051108423454532921, guid: f96605a73ef0e46baaf1716105874681, type: 3}
+  attackPrefab: {fileID: 4375538726795826354, guid: 6ab99eccc3f017e439975b74b472f778, type: 3}
 --- !u!114 &1205554508244180974
 MonoBehaviour:
   m_ObjectHideFlags: 0

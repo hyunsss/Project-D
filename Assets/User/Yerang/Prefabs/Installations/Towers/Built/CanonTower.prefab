@@ -398,6 +398,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaWidth: 1
   areaHeight: 1
+  maxHp: 0
+  canvas: {fileID: 7378165567939026846}
+  hpBar: {fileID: 2252744084898107542}
   type: 0
   workers: []
   level: 0

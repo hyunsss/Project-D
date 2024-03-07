@@ -327,12 +327,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaWidth: 2
   areaHeight: 2
+  maxHp: 0
+  canvas: {fileID: 4927755450021171389}
+  hpBar: {fileID: 4646485917455266871}
   type: 0
   workers: []
   level: 0
   towerInfo: {fileID: 11400000, guid: 833e441dd7d0e2046b42c92f2f985dfd, type: 2}
   iteration: 3
-  characterPrefab: {fileID: 7371667728712835575, guid: d795299dfcbe6c5449185bbcbf046988, type: 3}
 --- !u!114 &9146945704498219944
 MonoBehaviour:
   m_ObjectHideFlags: 0

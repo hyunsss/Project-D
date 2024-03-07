@@ -539,7 +539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2298765470836410583}
-  - component: {fileID: 5476629378201685280}
+  - component: {fileID: 5295199609403126050}
   - component: {fileID: 556701543511443658}
   - component: {fileID: 8721687065262091553}
   - component: {fileID: 7964657467279777735}
@@ -568,7 +568,7 @@ Transform:
   - {fileID: 5023156815372456177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5476629378201685280
+--- !u!114 &5295199609403126050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -577,14 +577,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8034853005740469754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380a5d03133ddcf4184542ef5c64b415, type: 3}
+  m_Script: {fileID: 11500000, guid: 213cd794f52f85f42ab2c506e9329fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   areaWidth: 2
   areaHeight: 2
+  maxHp: 10
+  canvas: {fileID: 7072368431256836084}
+  hpBar: {fileID: 4853053693242010943}
   type: 1
   workers: []
-  tower: {fileID: 1092345454388106063, guid: 0f07fec05385c4d498420c2ef2d5ac71, type: 3}
+  tower: {fileID: 0}
   builtSpeed: 1
   completeTime: 30
 --- !u!114 &556701543511443658

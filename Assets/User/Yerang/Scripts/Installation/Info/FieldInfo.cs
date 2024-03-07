@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FieldInfo", menuName = "Scriptable Object Asset/TowerInfo/FieldInfo")]
-
+[CreateAssetMenu(fileName = "FieldInfo", menuName = "Scriptable Object Asset/InstallationInfo/FieldInfo")]
 public class FieldInfo : ScriptableObject
 {
     public int maxlevel;
+
+    public Resource[] price;
 
     [Serializable]
     public struct Stat
@@ -16,6 +17,4 @@ public class FieldInfo : ScriptableObject
         public int amountPerSec;
     }
     public Stat[] levelStat;
-
-    public Resource[] price;
 }

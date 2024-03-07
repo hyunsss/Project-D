@@ -10,7 +10,6 @@ public class SpawnTower : Tower
     public float iteration;
 
     //public GameObject[] characterPrefabs;
-    public GameObject characterPrefab;
 
     private bool isSpawning = false;
 
@@ -44,12 +43,12 @@ public class SpawnTower : Tower
         Instantiate(towerInfo.rendererPrefabs[level - 1], renderParent);
     }
 
-    public void Spawn(int spawnCount)
+    public void Spawn(int spawnCount, GameObject characterPrefab)
     {
-        StartCoroutine(SpawnCoroutine(spawnCount));
+        StartCoroutine(SpawnCoroutine(spawnCount, characterPrefab));
     }
 
-    private IEnumerator SpawnCoroutine(int spawnCount) //TODO: 순서 꼬이는 문제 있음
+    private IEnumerator SpawnCoroutine(int spawnCount, GameObject characterPrefab) //TODO: 순서 꼬이는 문제 있음
     {
         while (isSpawning) yield return null; //스폰중인 상태면 대기
 
