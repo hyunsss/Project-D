@@ -20,11 +20,6 @@ public class WorkerUnit : Unit
 
     private Installation belongInstallation;
 
-    private void Update()
-    {
-
-    }
-
     public void Collocate(Installation target)
     {
         belongInstallation = target;

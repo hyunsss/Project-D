@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class Field : Installation
 {
@@ -13,11 +14,21 @@ public class Field : Installation
     [SerializeField]
     private int amountPerSec; //초당 얻는 자원의 양
 
+    protected Canvas canvas;
+    protected HpBar hpBar;
+
     private Coroutine minedCoroutine = null;
 
     private void Awake()
     {
         type = Type.Field;
+        canvas = GetComponentInChildren<Canvas>();
+        hpBar = canvas.GetComponentInChildren<HpBar>();
+    }
+
+    private void OnEnable()
+    {
+        canvas.gameObject.SetActive(false);
     }
 
     public IEnumerator MinedCoroutine()
