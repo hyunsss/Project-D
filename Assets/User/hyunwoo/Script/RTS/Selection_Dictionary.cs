@@ -8,11 +8,12 @@ public class Selection_Dictionary : MonoBehaviour
     public UI_UnitList unitListData;
     public void addSelected(GameObject go) {
         int id = go.GetInstanceID();
-
         if(!(GameDB.Instance.selectedTable.ContainsKey(id)) && go.TryGetComponent(out Unit unit)) {
             GameDB.Instance.selectedTable.Add(id, unit);
             go.gameObject.AddComponent<Selection_Component>();
             Debug.Log("Added " + id + " to selected dict");
+
+            unitListData.UnitListDraw();
         }
     }
 
