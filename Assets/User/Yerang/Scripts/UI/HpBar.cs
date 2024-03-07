@@ -16,7 +16,7 @@ public class HpBar : MonoBehaviour
     private void Awake()
     {
         //hpBar = GetComponent<Slider>();
-        fillImage = hpBar.transform.GetChild(1).GetChild(0).GetComponent<Image>();
+        //fillImage = hpBar.transform.GetChild(1).GetChild(0).GetComponent<Image>();
     }
 
     public void SetHpBar(float currentHp, float maxHp)
