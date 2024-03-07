@@ -16,19 +16,20 @@ public class Unit : MonoBehaviour
     public float price;
 
     //public event EventHandler GetDamageEvent;
+    private Canvas canvas;
     private HpBar hpBar;
 
     protected virtual void Awake()
     {
-        Canvas canvas = GetComponentInChildren<Canvas>();
+        canvas = GetComponentInChildren<Canvas>();
         hpBar = GetComponentInChildren<Canvas>().GetComponentInChildren<HpBar>();
-        canvas.gameObject.SetActive(false);
     }
 
     protected void OnEnable()
     {
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
+        canvas.gameObject.SetActive(false);
     }
 
     public void GetDamage(float damage)
