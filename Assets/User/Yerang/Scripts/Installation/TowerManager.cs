@@ -64,7 +64,7 @@ public class TowerManager : MonoBehaviour
 
         //타워 레벨업
         turretTower.level++;
-        turretTower.SetInfo();
+        turretTower.SetTower();
     }
 
     public void UpgradeTower(SpawnTower spawnTower)
@@ -84,6 +84,6 @@ public class TowerManager : MonoBehaviour
 
         //타워 레벨업
         spawnTower.level++;
-        spawnTower.SetInfo();
+        spawnTower.SetTower();
     }
 }

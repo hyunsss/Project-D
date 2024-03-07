@@ -27,10 +27,17 @@ public abstract class Tower : Installation
     protected virtual void OnEnable()
     {
         level = 1;
+        SetTower();
         canvas.gameObject.SetActive(false);
     }
 
-    public abstract void SetInfo();
+    public void SetHp(float hp)
+    {
+        currentHp = hp;
+        hpBar.SetHpBar(currentHp, maxHp);
+    }
+
+    public abstract void SetTower();
 
     public void GetDamage(float damage)
     {

@@ -22,21 +22,26 @@ public class SpawnTower : Tower
         spawnPoint = transform.Find("SpawnPoint");
     }
 
-    public override void SetInfo()
+    public override void SetTower()
     {
         //Ω∫≈» º≥¡§
         this.maxHp = towerInfo.levelStat[level - 1].maxHp;
         this.iteration = towerInfo.levelStat[level - 1].iteration;
 
         currentHp = maxHp;
+        hpBar.SetHpBar(currentHp, maxHp);
 
         //∑ª¥ı∑Ø º≥¡§
-        Destroy(transform.GetChild(3).gameObject); //3: Render
-        Instantiate(towerInfo.rendererPrefabs[level - 1], transform);
+        SetRender();
 
         StopAllCoroutines();
+    }
 
-        hpBar.SetHpBar(currentHp, maxHp);
+    protected void SetRender()
+    {
+        Transform renderParent = transform.Find("Render");
+        Destroy(renderParent.GetChild(0).gameObject);
+        Instantiate(towerInfo.rendererPrefabs[level - 1], renderParent);
     }
 
     public void Spawn(int spawnCount)

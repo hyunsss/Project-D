@@ -344,12 +344,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8346511205983709726}
-  - component: {fileID: 439958033573879897}
-  - component: {fileID: 8564982871639511893}
   - component: {fileID: 4429716511692242604}
   - component: {fileID: 2649889190966339755}
+  - component: {fileID: 439958033573879897}
+  - component: {fileID: 8564982871639511893}
   m_Layer: 7
-  m_Name: MineralField
+  m_Name: GasField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,6 +372,36 @@ Transform:
   - {fileID: 6707442712126521547}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4429716511692242604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106333569750416863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951d390a46af49d469a6959a25230a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaWidth: 3
+  areaHeight: 3
+  type: 2
+  workers: []
+  resourceType: 1
+  amountPerSec: 1
+--- !u!114 &2649889190966339755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106333569750416863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &439958033573879897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -409,36 +439,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 15.1, y: 1, z: 15.1}
   m_TimeToStationary: 0.5
---- !u!114 &4429716511692242604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106333569750416863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 951d390a46af49d469a6959a25230a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  areaWidth: 0
-  areaHeight: 0
-  type: 2
-  workers: []
-  resourceType: 0
-  amountPerSec: 0
---- !u!114 &2649889190966339755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106333569750416863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1651435356212779886
 GameObject:
   m_ObjectHideFlags: 0

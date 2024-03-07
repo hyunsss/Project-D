@@ -13,20 +13,22 @@ public class SlowTower : TurretTower
         Attack();
     }
 
-    public override void SetInfo()
+    public override void SetTower()
     {
         //Ω∫≈» º≥¡§
         this.maxHp = towerInfo.levelStat[level - 1].maxHp;
         this.attackRange = towerInfo.levelStat[level - 1].attackRange;
 
         currentHp = maxHp;
+        hpBar.SetHpBar(currentHp, maxHp);
+
         detectingCollider.radius = attackRange;
-
-        SetRender();
-
         detectingArea.transform.localScale = new Vector3(attackRange * 2, 0.1f, attackRange * 2);
 
-        hpBar.SetHpBar(currentHp, maxHp);
+        //∑ª¥ı∑Ø º≥¡§
+        SetRender();
+
+        StopAllCoroutines();
     }
 
     public override void Attack()
