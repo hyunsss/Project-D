@@ -145,7 +145,5 @@ public class BattleUnitMove : UnitMove
         {
             ResetTarget();
         }
-
-        //TODO: 장애물에 막혀 이동이 불가한 상태가 지속될 경우?
     }
 }

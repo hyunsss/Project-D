@@ -543,23 +543,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6423661244489104998, guid: fdea7a1295630f74fa42a4d70af1bd07, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6423661244489104998, guid: fdea7a1295630f74fa42a4d70af1bd07, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973676068747821627, guid: fdea7a1295630f74fa42a4d70af1bd07, type: 3}
+      propertyPath: attackCycle
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6973676068747821627, guid: fdea7a1295630f74fa42a4d70af1bd07, type: 3}
       propertyPath: attackRange
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6973676068747821627, guid: fdea7a1295630f74fa42a4d70af1bd07, type: 3}
+      propertyPath: attackPrefab
+      value: 
+      objectReference: {fileID: 4375538726795826354, guid: 6ab99eccc3f017e439975b74b472f778, type: 3}
     - target: {fileID: 7371667728712835575, guid: fdea7a1295630f74fa42a4d70af1bd07, type: 3}
       propertyPath: m_Name
       value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 7371667728712835575, guid: fdea7a1295630f74fa42a4d70af1bd07, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
