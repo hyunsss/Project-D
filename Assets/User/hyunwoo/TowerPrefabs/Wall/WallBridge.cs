@@ -6,8 +6,8 @@ using UnityEngine;
 public class WallBridge : MonoBehaviour
 {
 
-    public Wall mainBodyWall;
-    public Wall targetWall;
+    [HideInInspector] public Wall mainBodyWall;
+    [HideInInspector] public Wall targetWall;
 
     bool isEnable;
     private void OnEnable() {
