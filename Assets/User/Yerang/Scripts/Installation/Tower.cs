@@ -17,6 +17,7 @@ public abstract class Tower : Installation
     {
         level = 1;
         SetTower();
+        GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
     }
 

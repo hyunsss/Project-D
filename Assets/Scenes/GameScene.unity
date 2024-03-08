@@ -41682,7 +41682,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 422, y: 140, z: 187}
+  m_LocalPosition: {x: 422, y: 80, z: 187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51303,6 +51303,7 @@ GameObject:
   - component: {fileID: 1185528209}
   - component: {fileID: 1185528208}
   - component: {fileID: 1185528213}
+  - component: {fileID: 1185528215}
   - component: {fileID: 1185528212}
   - component: {fileID: 1185528211}
   - component: {fileID: 1185528214}
@@ -51427,6 +51428,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1185528215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185528207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb253fa32b3940b0bd90180974178e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalPointPrefab: {fileID: 1027410451442093995, guid: b70f096e42f0f1f4fb8b9684b18f2053, type: 3}
 --- !u!1 &1186487623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4736079028367508651, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
@@ -80890,7 +80904,7 @@ Transform:
   m_GameObject: {fileID: 1831708573}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 422, y: 140, z: 187}
+  m_LocalPosition: {x: 422, y: 80, z: 187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -122167,7 +122181,7 @@ MonoBehaviour:
   - {fileID: 13910860137282469, guid: 4e5a1950153de004a9641ed7b2973724, type: 3}
   - {fileID: 2487168026709114977, guid: 90439b1397aa6604f9c6ab1c1bb4e169, type: 3}
   - {fileID: 1373717705413152994, guid: 1a1359e6a5b231a45a1fbb927a46de6b, type: 3}
-  - {fileID: 5476629378201685280, guid: 57943d965c924e84693c1d9f589480b6, type: 3}
+  - {fileID: 5295199609403126050, guid: 57943d965c924e84693c1d9f589480b6, type: 3}
   - {fileID: 4429716511692242604, guid: b7e919fb06a880249af4696305b9538a, type: 3}
   - {fileID: 4429716511692242604, guid: 7249d2428a1cd5b469dbd73dc4bdfef6, type: 3}
   - {fileID: 5109966162445387614, guid: 8d36caf0d1bdc445caebd61d56159484, type: 3}

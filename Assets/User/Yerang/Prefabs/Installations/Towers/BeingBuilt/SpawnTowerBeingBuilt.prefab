@@ -587,9 +587,9 @@ MonoBehaviour:
   hpBar: {fileID: 4853053693242010943}
   type: 1
   workers: []
-  tower: {fileID: 0}
+  tower: {fileID: 1092345454388106063, guid: 0f07fec05385c4d498420c2ef2d5ac71, type: 3}
   builtSpeed: 1
-  completeTime: 30
+  completeTime: 3
 --- !u!114 &556701543511443658
 MonoBehaviour:
   m_ObjectHideFlags: 0
