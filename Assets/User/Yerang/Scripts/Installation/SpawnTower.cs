@@ -57,6 +57,7 @@ public class SpawnTower : Tower
     public void SelectUnit(int i)
     {
         selectedUnit = spawnableUnits[i].unitPrefab;
+        IsCanSpawn();
     }
 
     public bool IsCanSpawn()
@@ -64,10 +65,12 @@ public class SpawnTower : Tower
         //재화가 부족하면
         if (!GameDB.Instance.IsEnoughResource(spawnableUnits[spawnCount].requiredResource)) 
         {
+
             return false;
         }
         else
         {
+            Spawn();
             return true;
         }
     }
