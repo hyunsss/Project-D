@@ -8,6 +8,8 @@ public abstract class TurretTower : Tower
     public TurretTowerInfo towerInfo;
 
     protected float ap;
+
+    public float AP {  get { return ap; } }
     protected float attackCycle;
     protected float attackRange;
 

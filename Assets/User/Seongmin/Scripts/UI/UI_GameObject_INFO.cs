@@ -21,19 +21,24 @@ public class UI_GameObject_INFO : MonoBehaviour
     public void BattleUnitSetINFO(BattleUnit _battleUnit)
     {
         damage.text         = _battleUnit.ap.ToString();
-        HP.text             = _battleUnit.maxHp.ToString();
+        HP.text             = _battleUnit.CurrentHP.ToString();
         speed_OR_price.text = _battleUnit.price.ToString();
         objectName.text     = _battleUnit.name.ToString();
     }
 
     public void PlayerTowerSetINFO(TurretTower _turretTower)
     {   //TOOD
-        //damage.text               = _turretTower.towerInfo.ToString();
+        damage.text                 = _turretTower.AP.ToString();
         HP.text                     = _turretTower.CurrentHp.ToString();
         speed_OR_price.text         = _turretTower.towerInfo.price.ToString();
+        objectName.text             = _turretTower.name.ToString();
     }
     public void WorkerUnitSetINFO(WorkerUnit _workerUnit)
     {
-       //TODO
+        //TODO
+        damage.text             = 0.ToString();
+        HP.text                 = _workerUnit.CurrentHP.ToString();
+        speed_OR_price.text     = _workerUnit.price.ToString();
+        objectName.text         = _workerUnit.name.ToString();
     }
 }
