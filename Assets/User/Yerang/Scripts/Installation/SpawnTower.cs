@@ -59,10 +59,10 @@ public class SpawnTower : Tower
         selectedUnit = spawnableUnits[i].unitPrefab;
     }
 
-    public void SetSpawnCount(int count)
+    /*public void SetSpawnCount(int count)
     {
         spawnCount = count;
-    }
+    }*/
 
     public bool IsCanSpawn()
     {
