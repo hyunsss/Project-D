@@ -10,6 +10,7 @@ public struct Resource
     public int gas;
 }
 
+
 public class GameDB : MonoBehaviour
 {
    

@@ -39,11 +39,11 @@ public class UI_LevelUPButtonController : MonoBehaviour
     }
     private void TowerDamageUp()
     {
-        foreach (var tower in GameDB.Instance.tower_Player)
+        foreach (var tower in GameDB.Instance.)
         {
             if (tower.gameObject.TryGetComponent<TowerAttack>(out TowerAttack _tower))
             {
-                _tower.Damage += DamgelevelUP;
+                _tower.Damage += DamgelevelUP;tower_Player
             }
         }
     }
