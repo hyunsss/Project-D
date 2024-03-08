@@ -68,6 +68,7 @@ public class GameDB : MonoBehaviour
         if (requiredResource.mineral > ownResource.mineral //재화가 부족하면
             || requiredResource.gas > ownResource.gas)
         {
+            //TODO UI 띄우기
             return false;
         }
 
