@@ -230,6 +230,7 @@ public class Monster : MonoBehaviour
             if (target.TryGetComponent<Installation>(out Installation tower))
             {
                 tower.GetDamage(monsterData.MonsterDamage);
+                //print("АјАн");
             }
             if(target.TryGetComponent<Unit>(out Unit unit))
             {

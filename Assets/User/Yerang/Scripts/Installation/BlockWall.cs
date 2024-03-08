@@ -16,6 +16,7 @@ public class BlockWall : Installation
     {
         currentHp = maxHp;
         canvas.gameObject.SetActive(false);
+        GameDB.Instance.tower_Player.Add(transform);
     }
 
 
