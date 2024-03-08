@@ -12,10 +12,14 @@ public class InstallationManager : MonoBehaviour
     private Transform installationParent;
     public Transform InstallationParent { get { return installationParent; } }
 
-    /*[SerializeField]
-    private TurretTowerInfo[] turretTowerInfos;
+    //[SerializeField]
+    //private TurretTowerInfo[] turretTowerInfos;
+    //private SpawnTowerInfo[] spawnTowerInfos;
+    //private FieldInfo[] fieldInfos;
 
-    private Dictionary<string, TurretTowerInfo> turretTowerDic = new Dictionary<string, TurretTowerInfo>();*/
+    //private Dictionary<string, TurretTowerInfo> turretTowerDic = new Dictionary<string, TurretTowerInfo>();
+    //private Dictionary<string, SpawnTowerInfo> spawnTowerDic = new Dictionary<string, SpawnTowerInfo>();
+    //private Dictionary<string, FieldInfo> fieldDic = new Dictionary<string, FieldInfo>();
 
     private void Awake()
     {
@@ -40,11 +44,21 @@ public class InstallationManager : MonoBehaviour
         {
             turretTowerDic.Add(turretTowerInfo.towerName, turretTowerInfo);
         }
+
+        foreach (SpawnTowerInfo spawnTowerInfo in spawnTowerInfos)
+        {
+            spawnTowerDic.Add(spawnTowerInfo.towerName, spawnTowerInfo);
+        }
+
+        foreach (FieldInfo fieldInfo in fieldInfos)
+        {
+            fieldDic.Add(fieldInfo.fieldName, fieldInfo);
+        }
     }*/
 
     public void BuildTower()
     {
-        
+        //SetTower
     }
 
     public void UpgradeTower(TurretTower turretTower)

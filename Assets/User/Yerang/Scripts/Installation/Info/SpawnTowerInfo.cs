@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SpawnTowerInfo", menuName = "Scriptable Object Asset/InstallationInfo/SpawnTowerInfo")]
 public class SpawnTowerInfo : ScriptableObject
 {
+    public string towerName;
     public int maxlevel;
 
     public Resource[] price;
