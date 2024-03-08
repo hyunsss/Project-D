@@ -19,9 +19,17 @@ public class WorkerUnit : Unit
     public int mineAmount;
 
     private Installation collocatedInstallation;
+    private Animator animator;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        animator = GetComponentInChildren<Animator>();
+    }
 
     public void Collocate(Installation target)
     {
+        //animator.SetBool("work", true);
         collocatedInstallation = target;
         target.CollocateWorker(this);
 
@@ -45,7 +53,8 @@ public class WorkerUnit : Unit
 
     public void Decollocate()
     {
-        if(collocatedInstallation != null)
+        //animator.SetBool("work", false);
+        if (collocatedInstallation != null)
         {
             collocatedInstallation.DecollocateWorker(this);
             collocatedInstallation = null;
