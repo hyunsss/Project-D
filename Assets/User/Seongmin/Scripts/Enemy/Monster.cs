@@ -25,7 +25,6 @@ public class Monster : MonoBehaviour
     private float               repairing = 5f;
     private MonsterTower        tower = null;
     private MonsterHPBar        monsterHPBar;
-    private bool                moveSupport = false;
 
     public enum State
     {
