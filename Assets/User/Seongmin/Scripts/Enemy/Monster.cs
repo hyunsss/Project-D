@@ -161,11 +161,12 @@ public class Monster : MonoBehaviour
                 if(targetDistance < sortDistance)
                 {
                     sortDistance = targetDistance;
-                target =  _target;
+               
+                    target =  _target;
                
             }
         }
-        nav.SetDestination(target.position + (Vector3.right * 10) + (Vector3.forward * 10) + (Vector3.up * 4));
+        nav.SetDestination(target.position + (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
     }
     protected void SetUnitTarget() //UserUnit
     {
