@@ -14,12 +14,15 @@ public class UI_PanelManager : MonoBehaviour
     [Header("Panels")]
     public GameObject           ui_TowerBuildPanel;
     public GameObject           ui_LevelUPPanel;
-
     public GameObject           ui_WorkerUnitPanel;
+    public GameObject           ui_SpawnTowerPanel;
+
+    //------------------INFO Panel-------------
     public GameObject           ui_MonsterINFO;
     public GameObject           ui_PlayerTowerInfo;
     public GameObject           ui_BattleUnitINFO;
-  
+
+
     [Header("Event")]
     public UI_Boss_Text         bossPanel;
     public UI_GameObject_INFO   gameObjectINFO;

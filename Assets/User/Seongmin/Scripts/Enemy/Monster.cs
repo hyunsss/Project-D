@@ -82,17 +82,21 @@ public class Monster : MonoBehaviour
             }
        */ 
     }
+    private void OnTriggerEnter(Collider _collider)
+    {
+        if(_collider.TryGetComponent<Installation>(out Installation tower))
+        {
+            state = State.attack;
+        }
+        if(_collider.TryGetComponent<Unit>(out Unit unit))
+        {
+            state  = State.attack;
+        }
+    }
     protected IEnumerator ChangeState()
     {
         while (state != State.die)
         {
-            // State Setting
-            if (target!=null && state != State.towerReqair)
-            {
-                float checkAttack = Vector3.Distance(gameObject.transform.position, target.position);
-                state = checkAttack <= 10f ? state = State.attack : state = State.chase;
-            }
-
             // user Chase
             if (state == State.chase)
             {
@@ -101,8 +105,16 @@ public class Monster : MonoBehaviour
             // Monster Attack
             else if (state == State.attack)
             {
+                if(target == null)
+                {
+                    state = State.chase;
+                    nav.updatePosition = true;
+                    break;
+                }
                 animator.SetTrigger("isAttack");
-                Debug.Log("잘 맞음"); 
+                Debug.Log("잘 맞음");
+                nav.updateRotation = false;
+                Attack();
             }
             // Monster Tower Repairing
             else if (state == State.towerReqair && tower != null) 
@@ -163,10 +175,9 @@ public class Monster : MonoBehaviour
                     sortDistance = targetDistance;
                
                     target =  _target;
-               
             }
         }
-        nav.SetDestination(target.position + (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
+        nav.SetDestination(target.position+ (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
     }
     protected void SetUnitTarget() //UserUnit
     {
@@ -198,6 +209,22 @@ public class Monster : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Attack()
+    {
+        if(target != null)
+        {
+            if (target.TryGetComponent<Installation>(out Installation tower))
+            {
+                tower.GetDamage(monsterData.MonsterDamage);
+            }
+            if(target.TryGetComponent<Unit>(out Unit unit))
+            {
+                unit.GetDamage(monsterData.MonsterDamage);
+            }
+        }
+
     }
     protected void Die()
     {
