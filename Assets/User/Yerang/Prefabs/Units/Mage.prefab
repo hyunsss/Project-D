@@ -2716,7 +2716,7 @@ MonoBehaviour:
   hpBar: {fileID: 2231682262362357181}
   ap: 1
   attackCycle: 1
-  attackRange: 10
+  attackRange: 15
   priorityTarget: {fileID: 0}
   target: {fileID: 0}
   attackPrefab: {fileID: 7363179599112665145, guid: 29283ab4830f81b40b0ce6eb85a43e34, type: 3}

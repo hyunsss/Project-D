@@ -14,23 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: AcherTower
   maxlevel: 4
-  levelStat:
-  - maxHp: 10
-    ap: 1
-    attackCycle: 3
-    attackRange: 10
-  - maxHp: 20
-    ap: 2
-    attackCycle: 3
-    attackRange: 10
-  - maxHp: 30
-    ap: 3
-    attackCycle: 3
-    attackRange: 10
-  - maxHp: 40
-    ap: 4
-    attackCycle: 3
-    attackRange: 10
   price:
   - mineral: 0
     gas: 0
@@ -40,6 +23,23 @@ MonoBehaviour:
     gas: 10
   - mineral: 30
     gas: 20
+  levelStat:
+  - maxHp: 10
+    ap: 1
+    attackCycle: 3
+    attackRange: 50
+  - maxHp: 20
+    ap: 2
+    attackCycle: 3
+    attackRange: 50
+  - maxHp: 30
+    ap: 3
+    attackCycle: 3
+    attackRange: 50
+  - maxHp: 40
+    ap: 4
+    attackCycle: 3
+    attackRange: 50
   rendererPrefabs:
   - {fileID: 1376233406905130, guid: 4964fa1aa5596094186c4ec7b5c53c9e, type: 3}
   - {fileID: 1539728516898772, guid: 7c88f68ba23dd1f49bedeb3b992140cf, type: 3}
