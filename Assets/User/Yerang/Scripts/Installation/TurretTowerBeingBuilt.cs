@@ -53,8 +53,7 @@ public class TurretTowerBeingBuilt : Installation
         
         completeTower.SetHp(currentHp);
 
-        //Lean.Pool.LeanPool.Despawn(gameObject);
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(this);
     }
 
     public override void CollocateWorker(WorkerUnit worker)

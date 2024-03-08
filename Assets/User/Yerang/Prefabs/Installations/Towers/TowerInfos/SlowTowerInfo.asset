@@ -14,23 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: SlowTower
   maxlevel: 4
-  levelStat:
-  - maxHp: 10
-    ap: 0
-    attackCycle: 0
-    attackRange: 10
-  - maxHp: 20
-    ap: 0
-    attackCycle: 0
-    attackRange: 15
-  - maxHp: 30
-    ap: 0
-    attackCycle: 0
-    attackRange: 20
-  - maxHp: 40
-    ap: 0
-    attackCycle: 0
-    attackRange: 25
   price:
   - mineral: 0
     gas: 0
@@ -40,6 +23,23 @@ MonoBehaviour:
     gas: 10
   - mineral: 30
     gas: 20
+  levelStat:
+  - maxHp: 10
+    ap: 0
+    attackCycle: 0
+    attackRange: 50
+  - maxHp: 20
+    ap: 0
+    attackCycle: 0
+    attackRange: 55
+  - maxHp: 30
+    ap: 0
+    attackCycle: 0
+    attackRange: 60
+  - maxHp: 40
+    ap: 0
+    attackCycle: 0
+    attackRange: 70
   rendererPrefabs:
   - {fileID: 5827747551993080529, guid: b59b49e95af124f4e983dd11cf79929f, type: 3}
   - {fileID: 1255775222848740681, guid: 23ffa7ef0ae177e45b84db3e9671830c, type: 3}

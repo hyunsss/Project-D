@@ -41,7 +41,6 @@ public class Installation : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        //print("µ¥¹ÌÁö ¹ÞÀ½");
         currentHp -= damage;
 
         if (currentHp <= 0)
@@ -54,7 +53,8 @@ public class Installation : MonoBehaviour
 
     public void Destroyed()
     {
-        //ºÎ¼­Áö´Â ¾Ö´Ï¸ÞÀÌ¼Ç
+        Debug.Log(gameObject.GetInstanceID());
+        //ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
         GameDB.Instance.tower_Player.Remove(transform);
         Lean.Pool.LeanPool.Despawn(gameObject);
     }

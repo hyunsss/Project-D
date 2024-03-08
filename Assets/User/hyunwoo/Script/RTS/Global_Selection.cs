@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Global_Selection : MonoBehaviour
 {
@@ -45,13 +46,13 @@ public class Global_Selection : MonoBehaviour
         }
 
         //3. when mouse button comes up
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject() == false)
         {
             if (dragSelect == false) //single select
             {
                 Ray ray = Camera.main.ScreenPointToRay(p1);
 
-                if (Physics.Raycast(ray, out hit, 50000.0f))
+                if (Physics.Raycast(ray, out hit, 50000.0f, 1 << 10))
                 {
                     if (Input.GetKey(KeyCode.LeftShift)) //inclusive select
                     {
@@ -72,6 +73,7 @@ public class Global_Selection : MonoBehaviour
                     else
                     {
                         selected_table.DeselectAll();
+                        Debug.Log("mouse click (0)");
                     }
                 }
             }
@@ -159,11 +161,6 @@ public class Global_Selection : MonoBehaviour
         for (int j = 4; j < 8; j++)
         {
             verts[j] = corners[j - 4] + vecs[j - 4];
-        }
-
-        foreach (var item in corners)
-        {
-            Debug.Log(item);
         }
 
         Mesh selectionMesh = new Mesh();

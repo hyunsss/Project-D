@@ -123,7 +123,7 @@ public class Monster : MonoBehaviour
                 else
                 {
                     animator.SetTrigger("isAttack");
-                    Debug.Log("Àß ¸ÂÀ½");
+                    Debug.Log("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                     nav.updateRotation = false;
                     Attack();
                 }
@@ -227,10 +227,10 @@ public class Monster : MonoBehaviour
     {
         if(target != null)
         {
-            if (target.TryGetComponent<Installation>(out Installation tower))
+            if (target.TryGetComponent(out Installation tower))
             {
                 tower.GetDamage(monsterData.MonsterDamage);
-                //print("°ø°Ý");
+                //print("ï¿½ï¿½ï¿½ï¿½");
             }
             if(target.TryGetComponent<Unit>(out Unit unit))
             {
