@@ -202,10 +202,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4084829079666559732}
   - component: {fileID: 8982115447421531248}
-  - component: {fileID: -5120729042167425086}
   - component: {fileID: -7892309371829863165}
   - component: {fileID: -5495664808682029610}
   - component: {fileID: 7970353253688467524}
+  - component: {fileID: 7231176422285982932}
   m_Layer: 8
   m_Name: BOSS_Wedger_Big
   m_TagString: Untagged
@@ -244,24 +244,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterData: {fileID: 0}
   currentHp: 0
-  aStar: {fileID: 0}
   animator: {fileID: 0}
   target: {fileID: 0}
   state: 0
---- !u!114 &-5120729042167425086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6192503344737586238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f899fb9e7ed176740ac0d1e9c03ce3a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 20
 --- !u!95 &-7892309371829863165
 Animator:
   serializedVersion: 5
@@ -315,7 +300,7 @@ Rigidbody:
   m_GameObject: {fileID: 6192503344737586238}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 9999
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -329,10 +314,32 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!195 &7231176422285982932
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192503344737586238}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 3
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6685066547780747320
 GameObject:
   m_ObjectHideFlags: 0

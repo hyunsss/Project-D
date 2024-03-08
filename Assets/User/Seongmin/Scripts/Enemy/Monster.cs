@@ -90,7 +90,7 @@ public class Monster : MonoBehaviour
             if (target!=null && state != State.towerReqair)
             {
                 float checkAttack = Vector3.Distance(gameObject.transform.position, target.position);
-                state = checkAttack <= 10f ? state = State.attack : state = State.chase;
+                state = checkAttack <= 12f ? state = State.attack : state = State.chase;
             }
 
             // user Chase
@@ -102,7 +102,8 @@ public class Monster : MonoBehaviour
             else if (state == State.attack)
             {
                 animator.SetTrigger("isAttack");
-                Debug.Log("잘 맞음"); 
+                Debug.Log("잘 맞음");
+                nav.updateRotation = false;
             }
             // Monster Tower Repairing
             else if (state == State.towerReqair && tower != null) 
@@ -166,7 +167,7 @@ public class Monster : MonoBehaviour
                
             }
         }
-        nav.SetDestination(target.position + (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
+        nav.SetDestination(target.position+ (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
     }
     protected void SetUnitTarget() //UserUnit
     {

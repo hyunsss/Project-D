@@ -120700,7 +120700,7 @@ MonoBehaviour:
   targetBuilding: {fileID: 0}
   CancelButton: {fileID: 150861781}
   SingleCanon: {fileID: 278194903}
-  MageCanon: {fileID: 359743153}
+  MageCanon: {fileID: 161218492}
 --- !u!1 &4528541269776388274
 GameObject:
   m_ObjectHideFlags: 0
