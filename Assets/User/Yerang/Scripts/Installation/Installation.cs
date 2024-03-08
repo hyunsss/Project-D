@@ -45,6 +45,7 @@ public class Installation : MonoBehaviour
 
         if (currentHp <= 0)
         {
+            
             Destroyed();
         }
 
@@ -56,7 +57,7 @@ public class Installation : MonoBehaviour
         Debug.Log(gameObject.GetInstanceID());
         //�μ����� �ִϸ��̼�
         GameDB.Instance.tower_Player.Remove(transform);
-        Lean.Pool.LeanPool.Despawn(gameObject);
+        Lean.Pool.LeanPool.Despawn(this);
     }
 
     public virtual void CollocateWorker(WorkerUnit worker)

@@ -103,8 +103,10 @@ public class Global_Selection : MonoBehaviour
 
                 selectionBox = gameObject.AddComponent<MeshCollider>();
                 selectionBox.sharedMesh = selectionMesh;
-                selectionBox.convex = true;
-                selectionBox.isTrigger = true;
+                if(selectionBox.sharedMesh != null) {
+                    selectionBox.convex = true;
+                    selectionBox.isTrigger = true;
+                }
 
                 if (!Input.GetKey(KeyCode.LeftShift))
                 {
