@@ -23,7 +23,12 @@ public class TurretTowerBeingBuilt : Installation
         currentTime = 0f;
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
+        GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
+    }
+
+    private void OnDisable() {
+        GameDB.Instance.tower_Player.Remove(transform);
     }
 
     private void Update()
@@ -56,13 +61,13 @@ public class TurretTowerBeingBuilt : Installation
     {
         base.CollocateWorker(worker);
 
-        print("°Ç¼³ ¹èÄ¡µÊ");
+        print("ï¿½Ç¼ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½");
     }
 
     public override void DecollocateWorker(WorkerUnit worker)
     {
         base.DecollocateWorker(worker);
 
-        print("°Ç¼³ ¹èÄ¡ ÇØÁ¦µÊ");
+        print("ï¿½Ç¼ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
     }
 }

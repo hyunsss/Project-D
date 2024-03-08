@@ -17,12 +17,7 @@ public class Selection_Dictionary : MonoBehaviour
             unitListData.UnitListDraw();
         }
     }
-
-    public void Deselect(int id) {
-        GameDB.Instance.selectedTable.Remove(id);
-    }
-
-
+    
     public void DeselectAll() {
         foreach(KeyValuePair<int, Unit> pair in GameDB.Instance.selectedTable) {
             if(pair.Value != null) {

@@ -53,7 +53,7 @@ public class Installation : MonoBehaviour
 
     public void Destroyed()
     {
-        //ºÎ¼­Áö´Â ¾Ö´Ï¸ÞÀÌ¼Ç
+        //ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
         Lean.Pool.LeanPool.Despawn(gameObject);
     }
 
