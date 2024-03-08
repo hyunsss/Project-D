@@ -100,7 +100,7 @@ public class Monster : MonoBehaviour
             if(target != null) 
             {
                 float checkAttack = Vector3.Distance(transform.position, target.position);
-                if( checkAttack < 12f)
+                if( checkAttack < 14f)
                 {
                     state = State.attack;
                 }
@@ -114,16 +114,19 @@ public class Monster : MonoBehaviour
             // Monster Attack
             else if (state == State.attack)
             {
-                if(target == null)
+                if (target == null)
                 {
                     state = State.chase;
                     nav.updatePosition = true;
-                    break;
+
                 }
-                animator.SetTrigger("isAttack");
-                Debug.Log("잘 맞음");
-                nav.updateRotation = false;
-                Attack();
+                else
+                {
+                    animator.SetTrigger("isAttack");
+                    Debug.Log("잘 맞음");
+                    nav.updateRotation = false;
+                    Attack();
+                }
             }
             // Monster Tower Repairing
             else if (state == State.towerReqair && tower != null) 
