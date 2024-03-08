@@ -57,8 +57,6 @@ public class UI_UnitList : MonoBehaviour
             {
                 break;
             }
-            
-            
         }
     }
 
