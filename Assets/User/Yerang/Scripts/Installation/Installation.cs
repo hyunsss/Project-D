@@ -36,7 +36,7 @@ public class Installation : MonoBehaviour
     protected virtual void Awake()
     {
         //canvas = GetComponentInChildren<Canvas>();
-        hpBar = canvas.GetComponentInChildren<HpBar>();
+        //hpBar = canvas.GetComponentInChildren<HpBar>();
     }
 
     public void GetDamage(float damage)
