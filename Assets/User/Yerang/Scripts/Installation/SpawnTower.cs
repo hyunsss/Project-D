@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO: 매니저 만들어서 스폰 관리
 public class SpawnTower : Tower
 {
     public SpawnTowerInfo towerInfo;
 
     public float iteration;
-
-    //public GameObject[] characterPrefabs;
-    //public int[][] requiredResource;
-
-    private bool isSpawning = false;
-
     private Transform spawnPoint;
+
+    public struct SpawnableUnit
+    {
+        public GameObject unitPrefab;
+        public Resource requiredResource;
+    }
+    public SpawnableUnit[] spawnableUnits;
+
+    private GameObject selectedUnit;
+    private int spawnCount;
+
+    //private bool isSpawning = false;
+    //private Coroutine currentCoroutine;
+    //private List<Coroutine> waitingLine = new List<Coroutine>();
 
     protected override void Awake()
     {
@@ -44,12 +51,44 @@ public class SpawnTower : Tower
         Instantiate(towerInfo.rendererPrefabs[level - 1], renderParent);
     }
 
-    public void Spawn(int spawnCount, GameObject characterPrefab)
+    //-----------//
+    public void SelectUnit(int i)
     {
-        StartCoroutine(SpawnCoroutine(spawnCount, characterPrefab));
+        selectedUnit = spawnableUnits[i].unitPrefab;
     }
 
-    private IEnumerator SpawnCoroutine(int spawnCount, GameObject characterPrefab) //TODO: 순서 꼬이는 문제 있음
+    public void SetSpawnCount(int count)
+    {
+        spawnCount = count;
+    }
+
+    public bool IsCanSpawn()
+    {
+        //재화가 부족하면
+        if (!GameDB.Instance.IsEnoughResource(spawnableUnits[spawnCount].requiredResource)) 
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public void Spawn()
+    {
+        GameDB.Instance.UseReSource(spawnableUnits[spawnCount].requiredResource); //재화 사용
+
+        GameObject spawnedUnit =
+                Lean.Pool.LeanPool.Spawn(selectedUnit, spawnPoint.position, transform.rotation,
+                UnitManager.Instance.UnitParent);
+
+        GameDB.Instance.unit_Player.Add(spawnedUnit.transform);
+    }
+    //-----------//
+
+
+    /*private IEnumerator SpawnCoroutine(int spawnCount, GameObject characterPrefab) //TODO: 순서 꼬이는 문제 있음
     {
         while (isSpawning) yield return null; //스폰중인 상태면 대기
 
@@ -65,5 +104,5 @@ public class SpawnTower : Tower
         }
         isSpawning = false;
         yield break;
-    }
+    }*/
 }

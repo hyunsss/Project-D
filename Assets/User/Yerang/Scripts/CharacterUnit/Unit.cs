@@ -49,6 +49,7 @@ public class Unit : MonoBehaviour
 
     private void Die()
     {
+        GameDB.Instance.unit_Player.Remove(transform);
         Lean.Pool.LeanPool.Despawn(gameObject);
     }
 }

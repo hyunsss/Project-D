@@ -50,6 +50,19 @@ public class GameDB : MonoBehaviour
         this.ownResource.gas += gas;
     }
 
+    public bool IsEnoughResource(Resource requiredResource)
+    {
+        if (requiredResource.mineral >= ownResource.mineral //재화가 부족하면
+            || requiredResource.gas >= ownResource.gas)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public bool UseReSource(Resource requiredResource)
     {
         if (requiredResource.mineral >= ownResource.mineral //재화가 부족하면

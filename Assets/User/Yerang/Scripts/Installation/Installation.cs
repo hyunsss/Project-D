@@ -54,6 +54,7 @@ public class Installation : MonoBehaviour
     public void Destroyed()
     {
         //부서지는 애니메이션
+        GameDB.Instance.tower_Player.Remove(transform);
         Lean.Pool.LeanPool.Despawn(gameObject);
     }
 
