@@ -29,8 +29,8 @@ public class MonsterTower : MonoBehaviour
     }
     IEnumerator spawnMonster()
     {
-        monsterSpawner.SpawnMonster();
-        while (towerCurrentHp < 0)
+
+        while (towerCurrentHp > 0)
         {
             GameDB.Instance.monsterCount++;
             monsterSpawner.SpawnMonster();

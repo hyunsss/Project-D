@@ -3,8 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.AI.Navigation.Editor;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 public class Monster : MonoBehaviour
@@ -15,10 +17,10 @@ public class Monster : MonoBehaviour
     public MonsterData          MonsterData { get { return monsterData; }  set { monsterData = value; } }
     [HideInInspector]
     public float                currentHp;
-    public UnitAStar            aStar;
     public Animator             animator;
     public Transform            target;
 
+    private NavMeshAgent        nav;
     private Vector3             moveCheck;
     private float               repairing = 5f;
     private MonsterTower        tower = null;
@@ -36,7 +38,8 @@ public class Monster : MonoBehaviour
 
     protected void Awake()
     {
-        aStar =  GetComponent<UnitAStar>();
+        nav = GetComponent<NavMeshAgent>();
+       
         animator = GetComponent<Animator>();
         tower = GetComponent<MonsterTower>();
         monsterHPBar = GetComponentInChildren<MonsterHPBar>();
@@ -46,7 +49,7 @@ public class Monster : MonoBehaviour
     {
         moveCheck = transform.position;
 
-        aStar.speed = MonsterData.MonsterSpeed;
+        nav.speed = MonsterData.MonsterSpeed;
         currentHp = MonsterData.MonsterHp;
 
 
@@ -145,6 +148,8 @@ public class Monster : MonoBehaviour
                 SetUnitTarget();
                 
             }
+         ;
+      
     }
 
     protected void SetTowerTarget() //UserTower
@@ -157,9 +162,10 @@ public class Monster : MonoBehaviour
                 {
                     sortDistance = targetDistance;
                 target =  _target;
-                aStar.Chase(target);
+               
             }
         }
+        nav.SetDestination(target.position + (Vector3.right * 10) + (Vector3.forward * 10) + (Vector3.up * 4));
     }
     protected void SetUnitTarget() //UserUnit
     {
@@ -172,9 +178,10 @@ public class Monster : MonoBehaviour
             {
                 sortDistance = targetDistance;
                 target = _target;
-                aStar.Chase(target);
+               
             }
         }
+        nav.SetDestination(target.position);
     }
 
     public void SetTowerObject(MonsterTower _tower) //MonsterTower
