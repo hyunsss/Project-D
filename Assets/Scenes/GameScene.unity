@@ -46135,6 +46135,7 @@ GameObject:
   - component: {fileID: 1053239294}
   - component: {fileID: 1053239298}
   - component: {fileID: 1053239297}
+  - component: {fileID: 1053239299}
   - component: {fileID: 1053239295}
   m_Layer: 5
   m_Name: SpawnTowerPanel
@@ -46228,6 +46229,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053239293}
   m_CullTransparentMesh: 1
+--- !u!114 &1053239299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053239293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b6a829ab435294fb03760867e4fe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TowerPrefab: {fileID: 0}
 --- !u!1 &1053365705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7018910462315877233, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
@@ -76252,7 +76266,10 @@ MonoBehaviour:
   - {fileID: 1748381585}
   - {fileID: 1098219828}
   scv_Player: []
-  monsterCount: 0
+  monsterCount: 10000
+  ownResource:
+    mineral: 0
+    gas: 0
 --- !u!1 &1711791390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4635498946480619368, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}

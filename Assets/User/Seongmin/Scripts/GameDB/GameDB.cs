@@ -35,7 +35,7 @@ public class GameDB : MonoBehaviour
     public List<Transform>      scv_Player = new List<Transform>();
     public int                  monsterCount = 0;
 
-
+    [SerializeField]
     private Resource ownResource;
     public Resource OwnResource { get { return ownResource; } }
 
@@ -65,8 +65,8 @@ public class GameDB : MonoBehaviour
 
     public bool UseReSource(Resource requiredResource)
     {
-        if (requiredResource.mineral >= ownResource.mineral //재화가 부족하면
-            || requiredResource.gas >= ownResource.gas)
+        if (requiredResource.mineral > ownResource.mineral //재화가 부족하면
+            || requiredResource.gas > ownResource.gas)
         {
             return false;
         }
