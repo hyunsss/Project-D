@@ -40,13 +40,14 @@ public class MouseController : MonoBehaviour
                         UI_PanelManager.Instance.BattleUnitPanel_OPEN();
                         UI_PanelManager.Instance.gameObjectINFO.BattleUnitSetINFO(selectedUnit);
                     }
-                    else if (hit.collider.GetComponent<WorkerUnitMove>())
+                    else if (hit.collider.GetComponent<WorkerUnit>())
                     {
-                        var selectedUnit = hit.collider.GetComponent<WorkerUnitMove>();
+                        var selectedUnit = hit.collider.GetComponent<WorkerUnit>();
                         target = selectedUnit.gameObject;
                         ClickSelected(target);
                         //TODO
                         UI_PanelManager.Instance.WorkerUnitPanel_OPEN();
+                        UI_PanelManager.Instance.gameObjectINFO.WorkerUnitSetINFO(selectedUnit);
                     }
                     else if (hit.collider.GetComponent<TurretTower>())
                     {
