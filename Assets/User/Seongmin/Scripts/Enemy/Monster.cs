@@ -227,7 +227,7 @@ public class Monster : MonoBehaviour
             if (target.TryGetComponent<Installation>(out Installation tower))
             {
                 tower.GetDamage(monsterData.MonsterDamage);
-                print("공격");
+                //print("공격");
             }
             if(target.TryGetComponent<Unit>(out Unit unit))
             {

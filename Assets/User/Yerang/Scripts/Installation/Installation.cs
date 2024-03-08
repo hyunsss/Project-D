@@ -41,7 +41,7 @@ public class Installation : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        print("데미지 받음");
+        //print("데미지 받음");
         currentHp -= damage;
 
         if (currentHp <= 0)
