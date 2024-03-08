@@ -60,10 +60,10 @@ public class SpawnTower : Tower
         IsCanSpawn();
     }
 
-    public void SetSpawnCount(int count)
+    /*public void SetSpawnCount(int count)
     {
         spawnCount = count;
-    }
+    }*/
 
     public bool IsCanSpawn()
     {
