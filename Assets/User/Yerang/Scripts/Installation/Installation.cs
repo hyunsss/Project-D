@@ -13,7 +13,7 @@ public class Installation : MonoBehaviour
     public float maxHp;
 
     protected float currentHp;
-    public float CurrentHp { get { return currentHp; } }
+    public float CurrentHp { get { return currentHp; } set { currentHp = value; } }
 
     [SerializeField]
     protected Canvas canvas;

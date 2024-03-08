@@ -39,7 +39,7 @@ public class GameDB : MonoBehaviour
     private Resource ownResource;
     public Resource OwnResource { get { return ownResource; } }
 
-
+    
     public void GainMineral(int mineral)
     {
         this.ownResource.mineral += mineral;
