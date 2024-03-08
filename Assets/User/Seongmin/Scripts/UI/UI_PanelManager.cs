@@ -171,6 +171,8 @@ public class UI_PanelManager : MonoBehaviour
         }
 
         unitListPanel.UnitListDraw();
+
+        print(GameDB.Instance.selectedTable.Count);
     }
     IEnumerator DontBuildMessageCoroutine()
     {
