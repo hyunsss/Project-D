@@ -91,6 +91,17 @@ public class UI_PanelManager : MonoBehaviour
         ui_CurrentPanel = ui_TowerBuildPanel;
         OpenPanel();
     }
+    public void SpawnTowerPanel_OPEN()
+    {
+        ui_CurrentPanel = ui_SpawnTowerPanel;
+        OpenPanel();
+    }
+    public void LevelUPPanel_OPEN()
+    {
+
+        ui_CurrentPanel = ui_LevelUPPanel;
+        OpenPanel();
+    }
     public void MonsterINFOPanel_OPEN()
     {
         ui_CurrentPanel = ui_MonsterINFO;
@@ -115,12 +126,6 @@ public class UI_PanelManager : MonoBehaviour
         gameObjectINFO = ui_WorkerUnitPanel.GetComponent<UI_GameObject_INFO>();
         OpenPanel();
     }
-    public void LevelUPPanel_OPEN()
-    {
-
-        ui_CurrentPanel = ui_LevelUPPanel;
-        OpenPanel();
-    }
 
 
 
@@ -135,9 +140,11 @@ public class UI_PanelManager : MonoBehaviour
     {
         ui_CurrentPanel.SetActive(false);
         ui_TowerBuildPanel.SetActive(false);
+        ui_WorkerUnitPanel.SetActive(false);
+        ui_SpawnTowerPanel.SetActive(false);
+
         ui_BattleUnitINFO.SetActive(false);
         ui_LevelUPPanel.SetActive(false);
-        ui_WorkerUnitPanel.SetActive(false);
         ui_MonsterINFO.SetActive(false);
         ui_PlayerTowerInfo.SetActive(false);
     }
