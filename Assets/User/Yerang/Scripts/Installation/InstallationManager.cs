@@ -70,7 +70,7 @@ public class InstallationManager : MonoBehaviour
         }
 
         //재화 사용
-        if (!TestGameManager.Instance.UseReSource(turretTower.towerInfo.price[turretTower.level]))
+        if (!GameDB.Instance.UseReSource(turretTower.towerInfo.price[turretTower.level]))
         {
             //재화가 부족하면 업그레이드 실패
             return;
@@ -90,7 +90,7 @@ public class InstallationManager : MonoBehaviour
         }
 
         //재화 사용
-        if (!TestGameManager.Instance.UseReSource(spawnTower.towerInfo.price[spawnTower.level]))
+        if (!GameDB.Instance.UseReSource(spawnTower.towerInfo.price[spawnTower.level]))
         {
             //재화가 부족하면 업그레이드 실패
             return;
@@ -110,7 +110,7 @@ public class InstallationManager : MonoBehaviour
         }
 
         //재화 사용
-        if (!TestGameManager.Instance.UseReSource(field.fieldInfo.price[field.level]))
+        if (!GameDB.Instance.UseReSource(field.fieldInfo.price[field.level]))
         {
             //재화가 부족하면 업그레이드 실패
             return;

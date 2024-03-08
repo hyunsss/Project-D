@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+/*[Serializable]
 public struct Resource
 {
     public int mineral;
     public int gas;
-}
+}*/
 
 public class TestGameManager : MonoBehaviour
 {

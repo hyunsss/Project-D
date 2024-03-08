@@ -52,11 +52,11 @@ public class Field : Installation
 
             if (resourceType == ResourceType.Mineral)
             {
-                TestGameManager.Instance.GainMineral(allAmountPerSec);
+                GameDB.Instance.GainMineral(allAmountPerSec);
             }
             else if (resourceType == ResourceType.Gas)
             {
-                TestGameManager.Instance.GainGas(allAmountPerSec);
+                GameDB.Instance.GainGas(allAmountPerSec);
             }
         }
     }
