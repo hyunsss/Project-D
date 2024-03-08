@@ -335,6 +335,23 @@ MonoBehaviour:
   level: 0
   towerInfo: {fileID: 11400000, guid: 833e441dd7d0e2046b42c92f2f985dfd, type: 2}
   iteration: 3
+  spawnableUnits:
+  - unitPrefab: {fileID: 7371667728712835575, guid: d795299dfcbe6c5449185bbcbf046988, type: 3}
+    requiredResource:
+      mineral: 0
+      gas: 0
+  - unitPrefab: {fileID: 7371667728712835575, guid: eac085089dce95a4e9749a3f1afe8412, type: 3}
+    requiredResource:
+      mineral: 0
+      gas: 0
+  - unitPrefab: {fileID: 7371667728712835575, guid: fdea7a1295630f74fa42a4d70af1bd07, type: 3}
+    requiredResource:
+      mineral: 0
+      gas: 0
+  - unitPrefab: {fileID: 5114337013183921267, guid: c5a751d4516494d4f9650a903870e28d, type: 3}
+    requiredResource:
+      mineral: 0
+      gas: 0
 --- !u!114 &9146945704498219944
 MonoBehaviour:
   m_ObjectHideFlags: 0

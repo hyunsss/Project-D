@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class SpawnTower : Tower
     public float iteration;
     private Transform spawnPoint;
 
+    [Serializable]
     public struct SpawnableUnit
     {
         public GameObject unitPrefab;
