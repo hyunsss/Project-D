@@ -97,6 +97,15 @@ public class Monster : MonoBehaviour
     {
         while (state != State.die)
         {
+            if(target != null) 
+            {
+                float checkAttack = Vector3.Distance(transform.position, target.position);
+                if( checkAttack < 12f)
+                {
+                    state = State.attack;
+                }
+            }
+
             // user Chase
             if (state == State.chase)
             {
