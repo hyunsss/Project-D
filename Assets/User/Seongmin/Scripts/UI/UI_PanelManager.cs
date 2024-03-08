@@ -31,9 +31,14 @@ public class UI_PanelManager : MonoBehaviour
     public TextMeshProUGUI      unitText;
     public TextMeshProUGUI      towerText;
     public TextMeshProUGUI      scvText;
-    public TextMeshProUGUI      playTimeText;
+    public TextMeshProUGUI      playTimeText_Sec;
+    public TextMeshProUGUI      playTimeText_Min;
+    public TextMeshProUGUI      playTimeText_Hour;
 
     private float               startTime;
+    private int                 time_Sec;
+    private int                 time_Min;
+    private int                 time_Hour;
    
     private void Awake()
     {
@@ -63,7 +68,14 @@ public class UI_PanelManager : MonoBehaviour
     void Update()
     {
         float playTime = Time.time - startTime;
-        playTimeText.text = playTime.ToString("F0");
+        time_Hour = (int)(playTime / 3600);
+        time_Min = (int)((playTime % 3600) / 60);
+        time_Sec = (int)(playTime % 60);
+
+        playTimeText_Sec.text = time_Sec.ToString();
+        playTimeText_Min.text = time_Min.ToString();
+        playTimeText_Hour.text = time_Hour.ToString();
+
         towerText.text = GameDB.Instance.tower_Player.Count.ToString();
         unitText.text = GameDB.Instance.unit_Player.Count.ToString();
         monsterText.text = GameDB.Instance.monsterCount.ToString();

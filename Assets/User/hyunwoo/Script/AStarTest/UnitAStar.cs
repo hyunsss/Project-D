@@ -4,16 +4,32 @@ using System.Collections;
 public class UnitAStar : MonoBehaviour
 {
 
-    public UnityEngine.Transform target;
+    public UnityEngine.Transform target = null;
     public float speed = 20;
     Vector3[] path;
     int targetIndex;
 
     public void Chase(UnityEngine.Transform _target)
     {
-
+       if(target == _target)
+        {
+            PathRequestManager.instance.RequestPath(gameObject.transform.position, target.position, OnPathFound);
+        }
+       else if(target != _target)
+        {
+            target = _target;
+            PathRequestManager.instance.pathRequestQueue.Clear();
+            PathRequestManager.instance.RequestPath(gameObject.transform.position, target.position, OnPathFound);
+        }
+        /* 원래 코드
         target = _target;
         PathRequestManager.instance.RequestPath(gameObject.transform.position, target.position, OnPathFound);
+        */ 
+    }
+
+    public void ResetPathFind()
+    {
+
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
