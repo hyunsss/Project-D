@@ -12,8 +12,6 @@ public class Selection_Dictionary : MonoBehaviour
             GameDB.Instance.selectedTable.Add(id, unit);
             GameDB.Instance.unitlist.Add(unit);
             go.gameObject.AddComponent<Selection_Component>();
-            Debug.Log("Added " + id + " to selected dict");
-
             unitListData.UnitListDraw();
         }
     }

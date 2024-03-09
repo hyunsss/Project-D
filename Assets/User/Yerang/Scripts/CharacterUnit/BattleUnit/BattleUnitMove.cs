@@ -153,10 +153,7 @@ public class BattleUnitMove : UnitMove
         //�ƴ� ��� ������ �̵�
         else
         {
-            Debug.Log(target);
-            nav.stoppingDistance = 1f;
-            Debug.Log(target.position);
-            Debug.Log("Is Agent on NavMesh? " + nav.isOnNavMesh);
+            nav.stoppingDistance = 3f;
             nav.SetDestination(target.position);
         }
 

@@ -37,6 +37,7 @@ public class MonsterSpawner : MonoBehaviour
             randPos,Quaternion.identity, gameObject.transform).GetComponent<Monster>();
         currentMonsterPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
         currentMonsterPrefab.state = Monster.State.chase;
+        currentMonsterPrefab.SetInfo();
 
         currentMonsterPrefab.transform.SetParent(monsterSpawnPoint.transform);
 
@@ -57,6 +58,7 @@ public class MonsterSpawner : MonoBehaviour
         currentKeeperPrefab.MonsterData = monsterDatas[spawnDataRandomValue];
         currentKeeperPrefab.SetTowerObject(_tower);
         currentKeeperPrefab.state = Monster.State.towerReqair;
+        currentMonsterPrefab.SetInfo();
 
         currentKeeperPrefab.transform.SetParent(monsterSpawnPoint.transform);
     }

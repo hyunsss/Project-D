@@ -25,6 +25,8 @@ public class Monster : MonoBehaviour
     private MonsterTower        tower = null;
     private MonsterHPBar        monsterHPBar;
 
+    Transform tempTarget;
+
     public enum State
     {
         chase,
@@ -45,21 +47,34 @@ public class Monster : MonoBehaviour
 
     private void Start() {
         moveCheck = transform.position;
-
-        nav.speed = MonsterData.MonsterSpeed;
-        currentHp = MonsterData.MonsterHp;
+        SetInfo();
     }
 
     protected void OnEnable()
     {
         moveCheck = transform.position;
-        if(MonsterData != null) {
-            monsterHPBar.HPUpdate(currentHp, monsterData.MonsterHp);
-            nav.speed = MonsterData.MonsterSpeed;
-            currentHp = MonsterData.MonsterHp;
-        }
+
+        // Vector3 agentStartPosition = transform.position;
+        // NavMeshHit hit;
+        // if (NavMesh.SamplePosition(agentStartPosition, out hit, 10.0f, NavMesh.AllAreas))
+        // {
+        //     nav.transform.position = hit.position;
+        //     nav.enabled = true;
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("Failed to place the agent on a NavMesh.");
+        // }
+
+    }
+
+    public void SetInfo() {
+        nav.speed = MonsterData.MonsterSpeed;
+        currentHp = MonsterData.MonsterHp;
+        monsterHPBar.HPUpdate(currentHp, monsterData.MonsterHp);
         StartCoroutine(ChangeState());
     }
+
     protected void Update() {
         if(state == State.chase) {
             if(target == null) TargetChase();
@@ -103,7 +118,7 @@ public class Monster : MonoBehaviour
             state  = State.attack;
         }
     }
-    protected IEnumerator ChangeState()
+    public IEnumerator ChangeState()
     {
         while (state != State.die)
         {
@@ -174,12 +189,12 @@ public class Monster : MonoBehaviour
             if(GameDB.Instance.tower_Player.Count > 0)
             {
                 SetTowerTarget();
-                
+                return;
             }
             else if(GameDB.Instance.unit_Player.Count > 0)
             {
                 SetUnitTarget();
-                
+                return;
             }
          ;
       
@@ -188,6 +203,7 @@ public class Monster : MonoBehaviour
     protected void SetTowerTarget() //UserTower
     {
         float sortDistance = 99999f;
+
         foreach (Transform _target in GameDB.Instance.tower_Player)
         {
             float targetDistance = Vector3.Distance(transform.position, _target.position);
@@ -195,10 +211,14 @@ public class Monster : MonoBehaviour
                 {
                     sortDistance = targetDistance;
                
-                    target =  _target;
+                    tempTarget =  _target;
             }
         }
-        nav.SetDestination(target.position+ (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
+        if(tempTarget != target) {
+            target = tempTarget;
+            nav.SetDestination(target.position+ (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
+        }
+        
     }
     protected void SetUnitTarget() //UserUnit
     {
@@ -214,6 +234,7 @@ public class Monster : MonoBehaviour
                
             }
         }
+        Debug.Log(target + ", " + target.position);
         nav.SetDestination(target.position);
     }
 
@@ -253,6 +274,8 @@ public class Monster : MonoBehaviour
         state = State.die;
         animator.SetTrigger("isDeath");
         GameDB.Instance.monsterCount--;
-        LeanPool.Despawn(gameObject);
+        StopCoroutine(ChangeState());
+        target = null;
+        LeanPool.Despawn(this);
     }
 }

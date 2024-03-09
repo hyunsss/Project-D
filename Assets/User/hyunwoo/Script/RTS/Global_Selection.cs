@@ -44,7 +44,6 @@ public class Global_Selection : MonoBehaviour
             //레이가 만난 지점에서 해당 포지션을 가져옵니다. 
             targetPos = ray.GetPoint(enter);
         } else targetPos = Vector3.zero;
-        Debug.Log(targetPos);
         return targetPos;
     }
 
