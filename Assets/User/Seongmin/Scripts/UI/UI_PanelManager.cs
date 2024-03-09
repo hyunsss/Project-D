@@ -17,37 +17,46 @@ public class UI_PanelManager : MonoBehaviour
     public GameObject           ui_SpawnTowerPanel;
     public GameObject           ui_SpawnTowerUnitListPanel;
 
+
     //------------------INFO Panel-------------
-    public GameObject           ui_WorkerUnitPanel;
-    public GameObject           ui_MonsterINFO;
-    public GameObject           ui_PlayerTowerInfo;
-    public GameObject           ui_BattleUnitINFO;
+    public GameObject ui_WorkerUnitPanel;
+    public GameObject ui_MonsterINFO;
+    public GameObject ui_PlayerTowerInfo;
+    public GameObject ui_BattleUnitINFO;
 
 
+    //-------------------Event---------------
     [Header("Event")]
-    public UI_Boss_Text         bossPanel;
-    public UI_GameObject_INFO   gameObjectINFO;
-    public UI_UnitList          unitListPanel;
-    public GameObject           dontBuildMessage;
-    public MouseController      mouseController;
-    [Header("Texts")]
-    public TextMeshProUGUI      monsterText;
-    public TextMeshProUGUI      unitText;
-    public TextMeshProUGUI      towerText;
-    public TextMeshProUGUI      scvText;
-    public TextMeshProUGUI      moneyText;
-    public TextMeshProUGUI      playTimeText_Sec;
-    public TextMeshProUGUI      playTimeText_Min;
-    public TextMeshProUGUI      playTimeText_Hour;
+    public UI_Boss_Text bossPanel;
+    public UI_GameObject_INFO gameObjectINFO;
+    public UI_UnitList unitListPanel;
+    public MouseController mouseController;
 
-    private float               startTime;
-    private int                 time_Sec;
-    private int                 time_Min;
-    private int                 time_Hour;
-   
+    public GameObject currentMessage = null;
+    public GameObject dontBuildMessage;
+    public GameObject noMoneyMessage;
+
+
+    // -----------Top INFO Texts---------------
+    [Header("Texts")]
+    public TextMeshProUGUI monsterText;
+    public TextMeshProUGUI unitText;
+    public TextMeshProUGUI towerText;
+    public TextMeshProUGUI scvText;
+    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI playTimeText_Sec;
+    public TextMeshProUGUI playTimeText_Min;
+    public TextMeshProUGUI playTimeText_Hour;
+
+    // -------------Time Data ------------------
+    private float startTime;
+    private int time_Sec;
+    private int time_Min;
+    private int time_Hour;
+
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -56,7 +65,7 @@ public class UI_PanelManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        
+
         ui_TowerBuildPanel.gameObject.SetActive(false);
         ui_BattleUnitINFO.gameObject.SetActive(false);
         ui_LevelUPPanel.gameObject.SetActive(false);
@@ -85,7 +94,7 @@ public class UI_PanelManager : MonoBehaviour
         unitText.text = GameDB.Instance.unit_Player.Count.ToString();
         monsterText.text = GameDB.Instance.currentMonsterCount.ToString();
         scvText.text = GameDB.Instance.scv_Player.Count.ToString();
-        moneyText.text = GameDB.Instance.mineral.ToString();
+        moneyText.text = GameDB.Instance.Mineral.ToString();
 
     }
 
@@ -157,11 +166,15 @@ public class UI_PanelManager : MonoBehaviour
     public void BossPanelSet()
     {
         bossPanel.gameObject.SetActive(true);
-        
+
     }
     public void DontBuildMessage()
     {
-        StartCoroutine(DontBuildMessageCoroutine());
+        StartCoroutine(EventMessageCoroutine(dontBuildMessage));
+    }
+    public void NoMoneyMessage()
+    {
+        StartCoroutine(EventMessageCoroutine(noMoneyMessage));
     }
     public void ALLUnitSelect()
     {
@@ -170,17 +183,19 @@ public class UI_PanelManager : MonoBehaviour
         {
             if (unit.gameObject.TryGetComponent(out Unit _unit))
             {
-                
+
                 GameDB.Instance.unitlist.Add(_unit);
             }
         }
 
         unitListPanel.UnitListDraw();
     }
-    IEnumerator DontBuildMessageCoroutine()
+    IEnumerator EventMessageCoroutine(GameObject _currentMessage)
     {
-        dontBuildMessage.gameObject.SetActive(true);
+        currentMessage = _currentMessage;
+
+        currentMessage.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        dontBuildMessage.gameObject.SetActive(false);
+        currentMessage.gameObject.SetActive(false);
     }
 }
