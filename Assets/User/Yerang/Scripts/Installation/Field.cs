@@ -22,6 +22,7 @@ public class Field : Installation
 
     private void OnEnable()
     {
+        workers.Clear();
         canvas.gameObject.SetActive(false);
     }
 

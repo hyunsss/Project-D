@@ -35,9 +35,13 @@ public class Installation : MonoBehaviour
 
     protected virtual void Awake()
     {
-        workers.Clear();
         //canvas = GetComponentInChildren<Canvas>();
         //hpBar = canvas.GetComponentInChildren<HpBar>();
+    }
+
+    protected virtual void OnEnable()
+    {
+        workers.Clear();
     }
 
     public void GetDamage(float damage)

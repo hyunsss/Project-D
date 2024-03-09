@@ -23,6 +23,7 @@ public class SpawnTowerBeingBuilt : Installation
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
 
+        workers.Clear();
         GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
     }
