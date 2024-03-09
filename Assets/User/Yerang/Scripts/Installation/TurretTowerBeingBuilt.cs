@@ -64,6 +64,11 @@ public class TurretTowerBeingBuilt : Installation
             Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, InstallationManager.Instance.InstallationParent);
         
         completeTower.SetHp(currentHp);
+        if (completeTower.TryGetComponent(out TowerAttack _towerAttack) && completeTower.TryGetComponent(out Installation _tower))
+        {
+            _towerAttack.Damage += GameDB.Instance.value_Tower_Damgae_Level_UP;
+            _tower.maxHp += GameDB.Instance.value_Tower_HP_Level_UP;
+        }
 
         Lean.Pool.LeanPool.Despawn(this);
     }

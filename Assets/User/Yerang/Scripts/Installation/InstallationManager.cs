@@ -71,7 +71,7 @@ public class InstallationManager : MonoBehaviour
 
         if (!GameDB.Instance.IsEnoughResource(turretTower.towerInfo.price[turretTower.level]))
         {
-            //재화가 부족하면 업그레이드 실패
+            UI_PanelManager.Instance.NoMoneyMessage();
             return;
         }
 
@@ -93,7 +93,7 @@ public class InstallationManager : MonoBehaviour
 
         if (!GameDB.Instance.IsEnoughResource(spawnTower.towerInfo.prices[spawnTower.level]))
         {
-            //재화가 부족하면 업그레이드 실패
+            UI_PanelManager.Instance.NoMoneyMessage();
             return;
         }
 
@@ -115,7 +115,7 @@ public class InstallationManager : MonoBehaviour
 
         if (!GameDB.Instance.IsEnoughResource(field.fieldInfo.price[field.level]))
         {
-            //재화가 부족하면 업그레이드 실패
+            UI_PanelManager.Instance.NoMoneyMessage();
             return;
         }
 
