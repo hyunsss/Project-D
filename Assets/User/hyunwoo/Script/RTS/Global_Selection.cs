@@ -20,12 +20,32 @@ public class Global_Selection : MonoBehaviour
     Vector2[] corners;
     Vector3[] verts;
     Vector3[] vecs;
+    Plane plane;
+
+    public Transform SkyTransform;
 
     private void Start()
     {
         id_table = GetComponent<Id_Dictionary>();
         selected_table = GetComponent<Selection_Dictionary>();
         dragSelect = false;
+        plane = MapManager.Instance.plane;
+    }
+
+    private Vector3 PlaneTransform()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        float enter;
+        Vector3 targetPos;
+        //가상 평면에 레이와 마우스 클릭했을 때 쏜 레이가 맞았다면 그 아래 함수를 실행합니다.
+        if (plane.Raycast(ray, out enter))
+        {
+            //레이가 만난 지점에서 해당 포지션을 가져옵니다. 
+            targetPos = ray.GetPoint(enter);
+        } else targetPos = Vector3.zero;
+        Debug.Log(targetPos);
+        return targetPos;
     }
 
     void Update()
@@ -50,9 +70,9 @@ public class Global_Selection : MonoBehaviour
         {
             if (dragSelect == false) //single select
             {
-                Ray ray = Camera.main.ScreenPointToRay(p1);
+                Ray ray = new Ray(SkyTransform.position, PlaneTransform() - SkyTransform.position);
 
-                if (Physics.Raycast(ray, out hit, 50000.0f, 1 << 10))
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 10))
                 {
                     if (Input.GetKey(KeyCode.LeftShift)) //inclusive select
                     {
@@ -103,7 +123,8 @@ public class Global_Selection : MonoBehaviour
 
                 selectionBox = gameObject.AddComponent<MeshCollider>();
                 selectionBox.sharedMesh = selectionMesh;
-                if(selectionBox.sharedMesh != null) {
+                if (selectionBox.sharedMesh != null)
+                {
                     selectionBox.convex = true;
                     selectionBox.isTrigger = true;
                 }

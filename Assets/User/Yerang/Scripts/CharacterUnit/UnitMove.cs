@@ -20,7 +20,7 @@ public abstract class UnitMove : MonoBehaviour
 
     protected Transform priorityTarget;
 
-    protected Unit unit; //À½...
+    protected Unit unit; //ï¿½ï¿½...
 
 
     protected virtual void Awake()
@@ -31,6 +31,21 @@ public abstract class UnitMove : MonoBehaviour
         unit = GetComponent<Unit>();
 
         state = State.Idle;
+    }
+
+    private void OnEnable()
+    {
+        Vector3 agentStartPosition = transform.position;
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(agentStartPosition, out hit, 10.0f, NavMesh.AllAreas))
+        {
+            nav.transform.position = hit.position;
+            nav.enabled = true;
+        }
+        else
+        {
+            Debug.LogWarning("Failed to place the agent on a NavMesh.");
+        }
     }
 
     protected void Start()

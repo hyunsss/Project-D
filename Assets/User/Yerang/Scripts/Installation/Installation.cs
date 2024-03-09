@@ -53,10 +53,8 @@ public class Installation : MonoBehaviour
 
     public void Destroyed()
     {
-        Debug.Log(gameObject.GetInstanceID());
-        //�μ����� �ִϸ��̼�
         GameDB.Instance.tower_Player.Remove(transform);
-        Lean.Pool.LeanPool.Despawn(gameObject);
+        Lean.Pool.LeanPool.Despawn(this);
         UI_PanelManager.Instance.PanelReSet();
     }
 
