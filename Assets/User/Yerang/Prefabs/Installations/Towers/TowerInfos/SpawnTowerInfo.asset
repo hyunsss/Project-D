@@ -12,25 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13099788744a82045bf0365d295fdde2, type: 3}
   m_Name: SpawnTowerInfo
   m_EditorClassIdentifier: 
+  towerName: 
   maxlevel: 4
+  prices: 
   levelStat:
-  - maxHp: 10
-    iteration: 5
-  - maxHp: 20
-    iteration: 4
-  - maxHp: 30
-    iteration: 3
-  - maxHp: 40
-    iteration: 2
-  price:
-  - mineral: 0
-    gas: 0
-  - mineral: 10
-    gas: 5
-  - mineral: 20
-    gas: 10
-  - mineral: 30
-    gas: 20
+  - maxHp: 80
+    iteration: 10
+  - maxHp: 90
+    iteration: 9
+  - maxHp: 100
+    iteration: 8
+  - maxHp: 150
+    iteration: 6
   rendererPrefabs:
   - {fileID: 1337083809761150, guid: 13bd3ef044da10e4fb7a6a3a587c072b, type: 3}
   - {fileID: 1136921692887686, guid: 0b73ec62e208e044e902eb50056b96be, type: 3}

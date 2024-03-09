@@ -89,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaWidth: 1
   areaHeight: 1
-  maxHp: 100
+  maxHp: 150
   canvas: {fileID: 3408035891699597620}
   hpBar: {fileID: 1664424250718925756}
   type: 0

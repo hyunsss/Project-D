@@ -14,32 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: CanonTower
   maxlevel: 4
-  price:
-  - mineral: 0
-    gas: 0
-  - mineral: 10
-    gas: 5
-  - mineral: 20
-    gas: 10
-  - mineral: 30
-    gas: 20
+  price: 00000000000000000000000000000000
   levelStat:
-  - maxHp: 10
-    ap: 1
+  - maxHp: 70
+    ap: 10
     attackCycle: 6
-    attackRange: 50
-  - maxHp: 20
-    ap: 2
+    attackRange: 70
+  - maxHp: 80
+    ap: 15
+    attackCycle: 6
+    attackRange: 70
+  - maxHp: 80
+    ap: 15
     attackCycle: 5
-    attackRange: 50
-  - maxHp: 30
-    ap: 3
+    attackRange: 75
+  - maxHp: 100
+    ap: 20
     attackCycle: 4
-    attackRange: 50
-  - maxHp: 40
-    ap: 4
-    attackCycle: 3
-    attackRange: 50
+    attackRange: 80
   rendererPrefabs:
   - {fileID: 5109520016762078461, guid: cce1d493918ae5b4c9d6b1864959529e, type: 3}
   - {fileID: 1830982163091832963, guid: ccf2ca1209376f74d9fffcf84eabbcfd, type: 3}
