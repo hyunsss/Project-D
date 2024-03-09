@@ -26,7 +26,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
 
     private void TowerHpUp()
     {
-        if (GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP))
+        if (GameDB.Instance.UseReSource(GameDB.Instance.cost_Tower_HP_Level_UP))
         {
             foreach (var tower in GameDB.Instance.tower_Player)
             {
@@ -36,6 +36,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
                     _tower.CurrentHp += HPlevelUP;
                 }
             }
+            GameDB.Instance.value_Tower_HP_Level_UP++;
         }
         else
         {
@@ -45,7 +46,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
 
     private void TowerDamageUp()
     {
-        if(GameDB.Instance.UseReSource(GameDB.Instance.tower_Damage_Level_UP))
+        if(GameDB.Instance.UseReSource(GameDB.Instance.cost_Tower_Damage_Level_UP))
         {
             foreach (var tower in GameDB.Instance.tower_Player)
             {
@@ -54,6 +55,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
                     _tower.Damage += DamgelevelUP;
                 }
             }
+            GameDB.Instance.value_Tower_Damgae_Level_UP++;
         }
         else
         {
@@ -62,7 +64,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
     }
     private void UnitHpUp()
     {
-        if (GameDB.Instance.UseReSource(GameDB.Instance.unit_HP_Level_UP))
+        if (GameDB.Instance.UseReSource(GameDB.Instance.cost_Unit_HP_Level_UP))
         {
             foreach (var unit in GameDB.Instance.unit_Player)
             {
@@ -72,6 +74,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
                     _unit.CurrentHP += HPlevelUP;
                 }
             }
+            GameDB.Instance.value_Unit_HP_Level_UP++;
         }
         else
         {
@@ -80,7 +83,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
     }
     private void UnitDamageUp()
     {
-        if (GameDB.Instance.UseReSource(GameDB.Instance.unit_Damage_Level_UP))
+        if (GameDB.Instance.UseReSource(GameDB.Instance.cost_Unit_Damage_Level_UP))
         {
             foreach (var unit in GameDB.Instance.unit_Player)
             {
@@ -89,6 +92,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
                     _unit.ap += DamgelevelUP;
                 }
             }
+            GameDB.Instance.value_Unit_Damage_Level_UP++;
         }
         else
         {

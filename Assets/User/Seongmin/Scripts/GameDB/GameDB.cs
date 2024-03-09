@@ -24,7 +24,8 @@ public class GameDB : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-    // ------------- Player Game Object List(DB) -------------------
+
+    // ------------- Player InGame Object List(DB) -------------------
     public List<Transform>      tower_Player = new List<Transform>();
     public List<Transform>      unit_Player  = new List<Transform>();
     public List<Transform>      scv_Player   = new List<Transform>();
@@ -33,10 +34,16 @@ public class GameDB : MonoBehaviour
     private int mineral; 
     public int Mineral { get { return mineral; } }
     // ------------ Player Cost Value  mineral---------------------
-    public int tower_HP_Level_UP      = 1;
-    public int tower_Damage_Level_UP  = 1;
-    public int unit_HP_Level_UP       = 1;
-    public int unit_Damage_Level_UP   = 1;
+    public int cost_Tower_HP_Level_UP      = 1;
+    public int cost_Tower_Damage_Level_UP  = 1;
+    public int cost_Unit_HP_Level_UP       = 1;
+    public int cost_Unit_Damage_Level_UP   = 1;
+    // ------------ Player LevelUP Data --------------------
+
+    public int value_Tower_HP_Level_UP      = 0;
+    public int value_Tower_Damgae_Level_UP  = 0;
+    public int value_Unit_HP_Level_UP       = 0;
+    public int value_Unit_Damage_Level_UP   = 0;
     // ------------- Monster DB-------------------------------------
     public int                  currentMonsterCount = 0;
 

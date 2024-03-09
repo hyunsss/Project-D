@@ -82,6 +82,15 @@ public class SpawnTower : Tower
         GameObject spawnedUnit =
                 Lean.Pool.LeanPool.Spawn(selectedUnit, spawnPoint.position, transform.rotation,
                 UnitManager.Instance.UnitParent);
+        if (spawnedUnit.TryGetComponent(out BattleUnit _battleUnit)) 
+        {
+            _battleUnit.maxHp += GameDB.Instance.value_Unit_HP_Level_UP;
+            _battleUnit.ap    += GameDB.Instance.value_Unit_Damage_Level_UP;
+        }
+        else if(spawnedUnit.TryGetComponent(out BattleUnit _unit))
+        {
+            _unit.maxHp       += GameDB.Instance.value_Unit_HP_Level_UP;
+        }
 
         GameDB.Instance.unit_Player.Add(spawnedUnit.transform);
     }
