@@ -56,10 +56,10 @@ public class Installation : MonoBehaviour
     public void Destroyed()
     {
         //배치되어 있던 일꾼 모두 해제
-        /*foreach (WorkerUnit worker in workers)
+        foreach (WorkerUnit worker in workers)
         {
             worker.Decollocate();
-        }*/
+        }
 
         Debug.Log(gameObject.GetInstanceID());
         //�μ����� �ִϸ��̼�
