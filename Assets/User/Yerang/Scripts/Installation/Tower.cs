@@ -24,6 +24,7 @@ public abstract class Tower : Installation
         SetTower();
         GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
+        progressBar.gameObject.SetActive(false);
     }
 
     public void SetHp(float hp)

@@ -64,6 +64,7 @@ public class MouseController : MonoBehaviour
                         target = selectedUnit.gameObject.transform.Find("Render").gameObject;
                         ClickSelected(target);
                         UI_PanelManager.Instance.SpawnTowerPanel_OPEN();
+                        UI_PanelManager.Instance.ui_SpawnTowerUnitListPanel.GetComponent<SpawnUnitListPanel>().currentSpawnTower = selectedUnit;
                         UI_PanelManager.Instance.ui_SpawnTowerPanel.TryGetComponent(out UI_SpawnTowerPanel panel);
                         panel.TowerPrefab = selectedUnit;
                     }

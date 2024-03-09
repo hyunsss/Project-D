@@ -15,6 +15,7 @@ public class UI_PanelManager : MonoBehaviour
     public GameObject           ui_TowerBuildPanel;
     public GameObject           ui_LevelUPPanel;
     public GameObject           ui_SpawnTowerPanel;
+    public GameObject           ui_SpawnTowerUnitListPanel;
 
     //------------------INFO Panel-------------
     public GameObject           ui_WorkerUnitPanel;
@@ -96,7 +97,9 @@ public class UI_PanelManager : MonoBehaviour
     public void SpawnTowerPanel_OPEN()
     {
         ui_CurrentPanel = ui_SpawnTowerPanel;
+
         OpenPanel();
+        ui_SpawnTowerUnitListPanel.SetActive(true);
     }
     public void LevelUPPanel_OPEN()
     {
@@ -143,6 +146,7 @@ public class UI_PanelManager : MonoBehaviour
         ui_TowerBuildPanel.SetActive(false);
         ui_WorkerUnitPanel.SetActive(false);
         ui_SpawnTowerPanel.SetActive(false);
+        ui_SpawnTowerUnitListPanel.SetActive(false);
 
         ui_BattleUnitINFO.SetActive(false);
         ui_LevelUPPanel.SetActive(false);

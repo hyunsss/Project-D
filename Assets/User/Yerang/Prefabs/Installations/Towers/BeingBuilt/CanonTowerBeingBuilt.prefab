@@ -236,6 +236,7 @@ MonoBehaviour:
   maxHp: 10
   canvas: {fileID: 7893787731956385319}
   hpBar: {fileID: 8101944068830307150}
+  progressBar: {fileID: 7117543003378850837}
   type: 1
   workers: []
   tower: {fileID: 7503663070600382469, guid: 59783a1780d6230489c1f393d017b726, type: 3}
@@ -1077,6 +1078,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6982769653275574183, guid: b5d7fe72a08214d74a5cafd0b4c594b5, type: 3}
   m_PrefabInstance: {fileID: 5739750572310728937}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7117543003378850837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3269937799689374972, guid: b5d7fe72a08214d74a5cafd0b4c594b5, type: 3}
+  m_PrefabInstance: {fileID: 5739750572310728937}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9220393291515568229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517b0e629ac18455ba6e55abdc633ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9220393291515568229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3482085588830728332, guid: b5d7fe72a08214d74a5cafd0b4c594b5, type: 3}
@@ -1094,3 +1106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517b0e629ac18455ba6e55abdc633ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fillImage: {fileID: 0}

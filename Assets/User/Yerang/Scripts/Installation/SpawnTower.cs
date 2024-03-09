@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class SpawnTower : Tower
@@ -19,7 +20,12 @@ public class SpawnTower : Tower
     public SpawnableUnit[] spawnableUnits;
 
     private GameObject selectedUnit;
+    public List<GameObject> createList = new List<GameObject>();
     private int spawnCount;
+
+    float currentTime;
+    float startTime;
+    bool isGet;
 
     //private bool isSpawning = false;
     //private Coroutine currentCoroutine;
@@ -31,16 +37,56 @@ public class SpawnTower : Tower
         spawnPoint = transform.Find("SpawnPoint");
     }
 
+
+    private void Update() {
+        if(selectedUnit == null && createList.Count != 0) {
+            selectedUnit = createList[0];
+            isGet = false;
+        }
+
+        if(selectedUnit != null) {
+            GetStartTime();
+            currentTime = Time.time - startTime;
+            if(progressBar.gameObject.activeSelf == false) progressBar.gameObject.SetActive(true);
+            progressBar.FillAmount(currentTime / towerInfo.levelStat[level].iteration);
+
+            if(currentTime > towerInfo.levelStat[level].iteration) {
+                Spawn();
+                createList.RemoveAt(0);
+                selectedUnit = null;
+                progressBar.FillReset();
+                progressBar.gameObject.SetActive(false);
+                
+            }
+        }
+    }
+
+    public void CancelSpawnUnit(int i) {
+        if(createList.Count < i) return;
+        if(createList.Count == 0) return;
+
+        createList.RemoveAt(i);
+        selectedUnit = null;
+        GameDB.Instance.GainMineral(spawnableUnits[spawnCount].requiredResource);
+        progressBar.FillReset();
+        progressBar.gameObject.SetActive(false);
+    }
+
+    private void GetStartTime() {
+        if(isGet == false) startTime = Time.time;
+        isGet = true;
+    }
+
     public override void SetTower()
     {
-        //½ºÅÈ ¼³Á¤
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         this.maxHp = towerInfo.levelStat[level - 1].maxHp;
         this.iteration = towerInfo.levelStat[level - 1].iteration;
 
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
 
-        //·»´õ·¯ ¼³Á¤
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         SetRender();
 
         StopAllCoroutines();
@@ -55,30 +101,30 @@ public class SpawnTower : Tower
 
     //-----------//
     public void SelectUnit(int i)
-    {
-        selectedUnit = spawnableUnits[i].unitPrefab;
+    {   
         IsCanSpawn();
+        if(createList.Count > 4) Debug.Log("ë” ì´ìƒ ì„ íƒí•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+        else {
+            GameDB.Instance.UseReSource(spawnableUnits[spawnCount].requiredResource);
+
+            createList.Add(spawnableUnits[i].unitPrefab);
+
+        }
     }
 
     public bool IsCanSpawn()
     {
-        //ÀçÈ­°¡ ºÎÁ·ÇÏ¸é
         if (!GameDB.Instance.IsEnoughResource(spawnableUnits[spawnCount].requiredResource)) 
         {
-
+            Debug.Log("ëˆì´ ë¶€ì¡±í•©ë‹ˆë‹¤");
             return false;
         }
-        else
-        {
-            Spawn();
-            return true;
-        }
+
+        return true;
     }
 
     public void Spawn()
     {
-        GameDB.Instance.UseReSource(spawnableUnits[spawnCount].requiredResource); //ÀçÈ­ »ç¿ë
-
         GameObject spawnedUnit =
                 Lean.Pool.LeanPool.Spawn(selectedUnit, spawnPoint.position, transform.rotation,
                 UnitManager.Instance.UnitParent);
@@ -92,12 +138,12 @@ public class SpawnTower : Tower
         pawnCount = count;
     }*/
 
-    /*private IEnumerator SpawnCoroutine(int spawnCount, GameObject characterPrefab) //TODO: ¼ø¼­ ²¿ÀÌ´Â ¹®Á¦ ÀÖÀ½
+    /*private IEnumerator SpawnCoroutine(int spawnCount, GameObject characterPrefab) //TODO: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
-        while (isSpawning) yield return null; //½ºÆùÁßÀÎ »óÅÂ¸é ´ë±â
+        while (isSpawning) yield return null; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½
 
         isSpawning = true;
-        //print($"Spawn ÄÚ·çÆ¾ ÁøÀÔ: {spawnCount}");
+        //print($"Spawn ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½: {spawnCount}");
         for (int i = 0; i < spawnCount; i++)
         {
             yield return new WaitForSeconds(iteration);

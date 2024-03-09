@@ -44,7 +44,7 @@ public class TurretTowerBeingBuilt : Installation
             surportedTime += Time.deltaTime * workerUnit.buildSpeed;
         }
         currentTime += (Time.deltaTime * builtSpeed + surportedTime);
-
+        progressBar.FillAmount(currentTime / completeTime);
         if (currentTime >= completeTime)
         {
             CompleteBuild();
