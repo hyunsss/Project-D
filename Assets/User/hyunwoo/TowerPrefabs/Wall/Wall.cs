@@ -32,6 +32,7 @@ public class Wall : MonoBehaviour
             {
                 if(item.gameObject.tag == "Wall") {
                     CreateWallBridge(cellPos, item.GetComponentInParent<Wall>(), false);
+                    Debug.Log("wall 발견!");
                     break;
                 }
 
