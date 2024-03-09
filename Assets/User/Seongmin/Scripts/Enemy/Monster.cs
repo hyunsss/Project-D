@@ -15,7 +15,6 @@ public class Monster : MonoBehaviour
     private MonsterData         monsterData;
     [HideInInspector]
     public MonsterData          MonsterData { get { return monsterData; }  set { monsterData = value; } }
-    [HideInInspector]
     public float                currentHp;
     public Animator             animator;
     public Transform            target;
@@ -44,17 +43,29 @@ public class Monster : MonoBehaviour
         monsterHPBar = GetComponentInChildren<MonsterHPBar>();
     }
 
-    protected void Start()
-    {
+    private void Start() {
         moveCheck = transform.position;
 
         nav.speed = MonsterData.MonsterSpeed;
         currentHp = MonsterData.MonsterHp;
+    }
 
-
+    protected void OnEnable()
+    {
+        moveCheck = transform.position;
+        if(MonsterData != null) {
+            monsterHPBar.HPUpdate(currentHp, monsterData.MonsterHp);
+            nav.speed = MonsterData.MonsterSpeed;
+            currentHp = MonsterData.MonsterHp;
+        }
         StartCoroutine(ChangeState());
     }
     protected void Update() {
+        if(state == State.chase) {
+            if(target == null) TargetChase();
+        }
+
+
         if(state == State.towerReqair )
         {
 
@@ -240,7 +251,7 @@ public class Monster : MonoBehaviour
     protected void Die()
     {
         state = State.die;
-        animator.SetTrigger("isDie");
+        animator.SetTrigger("isDeath");
         GameDB.Instance.monsterCount--;
         LeanPool.Despawn(gameObject);
     }

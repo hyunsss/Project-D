@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.AI;
 
-//¾Ë¾Æ¼­ °¡±î¿î Å¸°Ù Ã£¾Æ ÀÌµ¿
-//¼öµ¿À¸·Î ÀÌµ¿ ½ÃÅ°±â
+//ï¿½Ë¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½Ìµï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½Å°ï¿½ï¿½
 public class BattleUnitMove : UnitMove
 {
     public float detectingRange;
@@ -14,6 +15,21 @@ public class BattleUnitMove : UnitMove
         base.Awake();
 
         attackRange = GetComponent<BattleUnit>().attackRange;
+    }
+    
+    private void OnEnable()
+    {
+        Vector3 agentStartPosition = transform.position;
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(agentStartPosition, out hit, 10.0f, NavMesh.AllAreas))
+        {
+            nav.transform.position = hit.position;
+            nav.enabled = true;
+        }
+        else
+        {
+            Debug.LogWarning("Failed to place the agent on a NavMesh.");
+        }
     }
 
     protected void Update()
@@ -47,7 +63,7 @@ public class BattleUnitMove : UnitMove
 
     private void DetectEnemy()
     {
-        if (priorityTarget != null) //¿ì¼±À¸·Î Å¸°ÙÇÒ ´ë»óÀÌ ÀÖÀ¸¸é priorityTargetÀ» targetÀ¸·Î ÁöÁ¤ÇÏ°í ºüÁ®³ª°¨
+        if (priorityTarget != null) //ï¿½ì¼±ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ priorityTargetï¿½ï¿½ targetï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             target = priorityTarget;
             return;
@@ -85,7 +101,7 @@ public class BattleUnitMove : UnitMove
         Gizmos.DrawWireSphere(transform.position, detectingRange);
     }
 
-    public override void SetPriorityTarget(Transform target) //ArrowDrawer·Î ¼³Á¤
+    public override void SetPriorityTarget(Transform target) //ArrowDrawerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         if (priorityTarget != null)
         {
@@ -117,30 +133,34 @@ public class BattleUnitMove : UnitMove
 
     protected override void MoveToTarget()
     {
-        //Å¸°ÙÀÌ ÀûÀÏ °æ¿ì »çÁ¤°Å¸® ¾È¿¡ µé¾î¿Ã ¶§ ±îÁö¸¸ ÀÌµ¿
+        if (target == null && priorityTarget == null) return; 
+        //Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         if (target.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             nav.stoppingDistance = attackRange - 0.1f;
             nav.SetDestination(target.position);
         }
-        //Å¸°ÙÀÌ °Ç¹°ÀÎ °æ¿ì Å¸°ÙÀÇ ÀÎÁ¢Á¡±îÁö ÀÌµ¿
+        //Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         else if (priorityTarget.gameObject.layer == LayerMask.NameToLayer("Installation"))
         { 
             Collider targetCollider = priorityTarget.GetComponent<Collider>();
-            //Á¢Á¡
+            //ï¿½ï¿½ï¿½ï¿½
             Vector3 tangentPoint = targetCollider.ClosestPoint(transform.position);
 
             nav.stoppingDistance = 1.0f;
             nav.SetDestination(tangentPoint);
         }
-        //¾Æ´Ò °æ¿ì ³¡±îÁö ÀÌµ¿
+        //ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         else
         {
-            nav.stoppingDistance = 0f;
+            Debug.Log(target);
+            nav.stoppingDistance = 1f;
+            Debug.Log(target.position);
+            Debug.Log("Is Agent on NavMesh? " + nav.isOnNavMesh);
             nav.SetDestination(target.position);
         }
 
-        if (nav.velocity.sqrMagnitude >= 0.1f //±æÃ£±â ½ÃÀÛÇÒ¶§µµ ³²Àº °Å¸®°¡ 0À¸·Î ¶ß°ÔµÇ¹Ç·Î, ¿òÁ÷ÀÌ´Â »óÅÂÀÎÁö Ã¼Å©
+        if (nav.velocity.sqrMagnitude >= 0.1f //ï¿½ï¿½Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ÔµÇ¹Ç·ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
             && nav.remainingDistance <= nav.stoppingDistance + 0.1f)
         {
             ResetTarget();
