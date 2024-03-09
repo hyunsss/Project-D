@@ -55,9 +55,9 @@ public class SpawnTowerBeingBuilt : Installation
     public void CompleteBuild()
     {
         //배치되어 있던 일꾼 모두 해제
-        foreach (WorkerUnit worker in workers)
+        for (int i = 0; i < workers.Count; i++)
         {
-            worker.Decollocate();
+            workers[i].Decollocate();
         }
 
         //타워 생성
