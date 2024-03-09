@@ -55,18 +55,17 @@ public class SpawnTowerBeingBuilt : Installation
     public void CompleteBuild()
     {
         //배치되어 있던 일꾼 모두 해제
-        /*foreach (WorkerUnit worker in workers)
+        foreach (WorkerUnit worker in workers)
         {
             worker.Decollocate();
-        }*/
+        }
 
         //타워 생성
         Tower completeTower =
             Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, InstallationManager.Instance.InstallationParent);
 
         completeTower.SetHp(currentHp);
-        //Lean.Pool.LeanPool.Despawn(gameObject);
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 
     public override void CollocateWorker(WorkerUnit worker)
