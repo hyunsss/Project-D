@@ -43,6 +43,8 @@ public class SpawnTowerBeingBuilt : Installation
             surportedTime += Time.deltaTime * workerUnit.buildSpeed;
         }
         currentTime += (Time.deltaTime * builtSpeed + surportedTime);
+        progressBar.FillAmount(currentTime / completeTime);
+        
 
         if (currentTime >= completeTime)
         {
@@ -63,7 +65,6 @@ public class SpawnTowerBeingBuilt : Installation
             Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, InstallationManager.Instance.InstallationParent);
 
         completeTower.SetHp(currentHp);
-
         //Lean.Pool.LeanPool.Despawn(gameObject);
         Destroy(gameObject);
     }
