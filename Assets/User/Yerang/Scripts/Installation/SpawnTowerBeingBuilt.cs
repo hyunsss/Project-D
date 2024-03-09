@@ -23,10 +23,6 @@ public class SpawnTowerBeingBuilt : Installation
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
 
-        /*foreach (WorkerUnit worker in workers)
-        {
-            DecollocateWorker(worker);
-        }*/
         GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
     }

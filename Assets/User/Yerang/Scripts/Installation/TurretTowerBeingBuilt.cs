@@ -24,11 +24,6 @@ public class TurretTowerBeingBuilt : Installation
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
 
-        for(int i = 0; workers.Count > 0; i++)
-        {
-            workers[i].Decollocate();
-        }
-
         GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
     }
