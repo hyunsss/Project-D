@@ -3,13 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public struct Resource
-{
-    public int mineral;
-    public int gas;
-}
-
 public class GameDB : MonoBehaviour
 {
    
@@ -35,25 +28,16 @@ public class GameDB : MonoBehaviour
     public List<Transform>      scv_Player = new List<Transform>();
     public int                  monsterCount = 0;
 
-    [SerializeField]
-    private Resource ownResource;
-    public Resource OwnResource { get { return ownResource; } }
-
+    public int mineral;
 
     public void GainMineral(int mineral)
     {
-        this.ownResource.mineral += mineral;
+        this.mineral += mineral;
     }
 
-    public void GainGas(int gas)
+    public bool IsEnoughResource(int requiredmineral)
     {
-        this.ownResource.gas += gas;
-    }
-
-    public bool IsEnoughResource(Resource requiredResource)
-    {
-        if (requiredResource.mineral > ownResource.mineral //재화가 부족하면
-            || requiredResource.gas > ownResource.gas)
+        if (requiredmineral > mineral) //재화가 부족하면
         {
             return false;
         }
@@ -63,16 +47,14 @@ public class GameDB : MonoBehaviour
         }
     }
 
-    public bool UseReSource(Resource requiredResource)
+    public bool UseReSource(int requiredmineral)
     {
-        if (requiredResource.mineral > ownResource.mineral //재화가 부족하면
-            || requiredResource.gas > ownResource.gas)
+        if (requiredmineral > mineral) //재화가 부족하면
         {
             return false;
         }
 
-        ownResource.mineral -= requiredResource.mineral;
-        ownResource.gas -= requiredResource.gas;
+        mineral -= requiredmineral;
         return true;
     }
 }

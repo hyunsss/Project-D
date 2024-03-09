@@ -122,7 +122,7 @@ public class Monster : MonoBehaviour
                 else
                 {
                     animator.SetTrigger("isAttack");
-                    Debug.Log("잘 맞음");
+                    //Debug.Log("잘 맞음");
                     nav.updateRotation = false;
                     Attack();
                 }

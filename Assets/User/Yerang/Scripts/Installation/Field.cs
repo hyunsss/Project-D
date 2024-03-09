@@ -7,11 +7,6 @@ public class Field : Installation
 {
     public FieldInfo fieldInfo;
 
-    [Serializable]
-    private enum ResourceType { Mineral, Gas }
-    [SerializeField]
-    private ResourceType resourceType;
-
     public int level;
 
     [SerializeField]
@@ -50,14 +45,7 @@ public class Field : Installation
 
             int allAmountPerSec = workers.Count * amountPerSec; //ÀÏ²Û ¼ö ¸¸Å­ ÀÚ¿ø È¹µæ
 
-            if (resourceType == ResourceType.Mineral)
-            {
-                GameDB.Instance.GainMineral(allAmountPerSec);
-            }
-            else if (resourceType == ResourceType.Gas)
-            {
-                GameDB.Instance.GainGas(allAmountPerSec);
-            }
+            GameDB.Instance.GainMineral(allAmountPerSec);
         }
     }
 

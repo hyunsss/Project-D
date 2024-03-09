@@ -9,7 +9,7 @@ public class SpawnTowerInfo : ScriptableObject
     public string towerName;
     public int maxlevel;
 
-    public Resource[] price;
+    public int[] prices;
 
     [Serializable]
     public struct Stat

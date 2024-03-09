@@ -14,7 +14,7 @@ public class SpawnTower : Tower
     public struct SpawnableUnit
     {
         public GameObject unitPrefab;
-        public Resource requiredResource;
+        public int requiredResource;
     }
     public SpawnableUnit[] spawnableUnits;
 
