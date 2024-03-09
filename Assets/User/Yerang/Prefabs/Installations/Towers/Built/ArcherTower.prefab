@@ -481,11 +481,12 @@ MonoBehaviour:
   maxHp: 0
   canvas: {fileID: 2422235603402114404}
   hpBar: {fileID: 4347468639888003092}
+  progressBar: {fileID: 0}
   type: 0
   workers: []
   level: 0
   towerInfo: {fileID: 11400000, guid: e5d3bd87fcda1a0449647a8ab931d08e, type: 2}
-  attackPrefab: {fileID: 364416783602528187, guid: c82ababdac9c369458c8a861e50210a7, type: 3}
+  attackPrefab: {fileID: 364416783602528187, guid: 9cb38017529730340a73dc6af8c6db9f, type: 3}
 --- !u!114 &4461496996532820269
 MonoBehaviour:
   m_ObjectHideFlags: 0
