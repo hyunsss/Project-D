@@ -84,7 +84,7 @@ public class UI_PanelManager : MonoBehaviour
         unitText.text = GameDB.Instance.unit_Player.Count.ToString();
         monsterText.text = GameDB.Instance.monsterCount.ToString();
         scvText.text = GameDB.Instance.scv_Player.Count.ToString();
-        moneyText.text = GameDB.Instance.OwnResource.mineral.ToString();
+        moneyText.text = GameDB.Instance.mineral.ToString();
 
     }
 

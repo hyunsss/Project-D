@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3860950671792885724}
   - component: {fileID: 7069722513343921468}
   - component: {fileID: 3397074446898594977}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8162410479311175271}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 2396567199910399534}
   - component: {fileID: 3864277474558354571}
   - component: {fileID: 1972844617862605958}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 2821464923713486880}
   - component: {fileID: 506115882775535409}
   - component: {fileID: 6476687248021528672}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 2990262740863924432}
   - component: {fileID: 3740751989474039518}
   - component: {fileID: 2352562431806363373}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 4177062247646521319}
   - component: {fileID: 8584451664115042879}
   - component: {fileID: 6474054317206517658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SlowTowerBeingBuilt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3457883908005800981}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}

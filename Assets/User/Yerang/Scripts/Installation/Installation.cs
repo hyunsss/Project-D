@@ -39,6 +39,11 @@ public class Installation : MonoBehaviour
         //hpBar = canvas.GetComponentInChildren<HpBar>();
     }
 
+    protected virtual void OnEnable()
+    {
+        workers.Clear();
+    }
+
     public void GetDamage(float damage)
     {
         currentHp -= damage;
@@ -53,8 +58,16 @@ public class Installation : MonoBehaviour
 
     public void Destroyed()
     {
+        //배치되어 있던 일꾼 모두 해제
+        foreach (WorkerUnit worker in workers)
+        {
+            worker.Decollocate();
+        }
+
+        Debug.Log(gameObject.GetInstanceID());
+        //�μ����� �ִϸ��̼�
         GameDB.Instance.tower_Player.Remove(transform);
-        Lean.Pool.LeanPool.Despawn(this);
+        Lean.Pool.LeanPool.Despawn(gameObject);
         UI_PanelManager.Instance.PanelReSet();
     }
 

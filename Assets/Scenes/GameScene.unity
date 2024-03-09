@@ -76236,9 +76236,7 @@ MonoBehaviour:
   - {fileID: 2126428489}
   scv_Player: []
   monsterCount: 0
-  ownResource:
-    mineral: 59
-    gas: 51
+  mineral: 1000
 --- !u!1 &1711791390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4635498946480619368, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}

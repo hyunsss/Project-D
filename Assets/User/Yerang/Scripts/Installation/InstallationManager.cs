@@ -91,14 +91,14 @@ public class InstallationManager : MonoBehaviour
             return;
         }
 
-        if (!GameDB.Instance.IsEnoughResource(spawnTower.towerInfo.price[spawnTower.level]))
+        if (!GameDB.Instance.IsEnoughResource(spawnTower.towerInfo.prices[spawnTower.level]))
         {
             //재화가 부족하면 업그레이드 실패
             return;
         }
 
         //재화 사용
-        GameDB.Instance.UseReSource(spawnTower.towerInfo.price[spawnTower.level]);
+        GameDB.Instance.UseReSource(spawnTower.towerInfo.prices[spawnTower.level]);
 
         //타워 레벨업
         spawnTower.level++;

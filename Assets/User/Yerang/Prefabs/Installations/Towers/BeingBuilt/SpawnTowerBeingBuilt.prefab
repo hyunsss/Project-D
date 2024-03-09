@@ -589,7 +589,7 @@ MonoBehaviour:
   workers: []
   tower: {fileID: 1092345454388106063, guid: 0f07fec05385c4d498420c2ef2d5ac71, type: 3}
   builtSpeed: 1
-  completeTime: 3
+  completeTime: 30
 --- !u!114 &556701543511443658
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,9 +29,13 @@ public class PlayerInput : MonoBehaviour
                     movePos = ray.GetPoint(enter);
                     targetObject = LeanPool.Spawn(goalPointPrefab, movePos, Quaternion.identity).transform;
                 }
+                //레이가 건물에 맞는다면 아래 내용을 실행합니다.
+                if (Physics.Raycast(ray, out RaycastHit hit, 999, 1 << LayerMask.NameToLayer("Installation")))
+                {
+                    targetObject = hit.transform;
+                }
 
-
-                foreach (Unit unit in GameDB.Instance.unitlist)
+                    foreach (Unit unit in GameDB.Instance.unitlist)
                 {
                     UnitMove moveCompo = unit.GetComponent<UnitMove>();
                     moveCompo.SetPriorityTarget(targetObject);

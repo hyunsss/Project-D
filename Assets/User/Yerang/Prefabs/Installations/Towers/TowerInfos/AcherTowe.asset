@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c74b43aebd568b4c8ce07eadae0a8bd, type: 3}
+  m_Name: AcherTowe
+  m_EditorClassIdentifier: 
+  towerName: AcherTower
+  maxlevel: 4
+  price: 00000000000000000000000000000000
+  levelStat:
+  - maxHp: 10
+    ap: 1
+    attackCycle: 4
+    attackRange: 50
+  - maxHp: 20
+    ap: 2
+    attackCycle: 3
+    attackRange: 50
+  - maxHp: 30
+    ap: 3
+    attackCycle: 2
+    attackRange: 50
+  - maxHp: 40
+    ap: 4
+    attackCycle: 1
+    attackRange: 50
+  rendererPrefabs:
+  - {fileID: 1376233406905130, guid: 4964fa1aa5596094186c4ec7b5c53c9e, type: 3}
+  - {fileID: 1539728516898772, guid: 7c88f68ba23dd1f49bedeb3b992140cf, type: 3}
+  - {fileID: 1059502961608188, guid: 8a2696ceb828e0743abdbff73a9969f6, type: 3}
+  - {fileID: 1989364573068550, guid: ce81af57c4b272b46aca1ff42b7d6e43, type: 3}

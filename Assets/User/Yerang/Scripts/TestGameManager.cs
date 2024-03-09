@@ -15,8 +15,8 @@ public class TestGameManager : MonoBehaviour
     private static TestGameManager instance;
     public static TestGameManager Instance { get { return instance; } }
 
-    private Resource ownResource;
-    public Resource OwnResource { get { return ownResource; } }
+    //private Resource ownResource;
+    //public Resource OwnResource { get { return ownResource; } }
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class TestGameManager : MonoBehaviour
         }
     }
 
-    public void GainMineral(int mineral)
+    /*public void GainMineral(int mineral)
     {
         this.ownResource.mineral += mineral;
     }
@@ -52,5 +52,5 @@ public class TestGameManager : MonoBehaviour
         ownResource.mineral -= requiredResource.mineral;
         ownResource.gas -= requiredResource.gas;
         return true;
-    }
+    }*/
 }

@@ -22,6 +22,8 @@ public class SpawnTowerBeingBuilt : Installation
         currentTime = 0f;
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
+
+        workers.Clear();
         GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
     }
@@ -47,6 +49,13 @@ public class SpawnTowerBeingBuilt : Installation
 
     public void CompleteBuild()
     {
+        //배치되어 있던 일꾼 모두 해제
+        foreach (WorkerUnit worker in workers)
+        {
+            worker.Decollocate();
+        }
+
+        //타워 생성
         Tower completeTower =
             Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, InstallationManager.Instance.InstallationParent);
 
@@ -60,13 +69,13 @@ public class SpawnTowerBeingBuilt : Installation
     {
         base.CollocateWorker(worker);
 
-        print("�Ǽ� ��ġ��");
+        print("건설 배치됨");
     }
 
     public override void DecollocateWorker(WorkerUnit worker)
     {
         base.DecollocateWorker(worker);
 
-        print("�Ǽ� ��ġ ������");
+        print("건설 배치 해제됨");
     }
 }

@@ -92,7 +92,7 @@ public class BuildingManager : MonoBehaviour
             }
             grid.GetXY(InstallPosition, out int posx, out int posy);
             // Debug.Log(grid.NodeFromWorldPoint(InstallPosition).worldPosition + "," + grid.GetWorldPosition(posx, posy));
-            Debug.Log(grid.NodeFromWorldPoint(InstallPosition).walkable);
+            //Debug.Log(grid.NodeFromWorldPoint(InstallPosition).walkable);
         }
 
     }
