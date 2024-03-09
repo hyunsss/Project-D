@@ -14,7 +14,11 @@ public class BlockWall : Installation
 
     protected virtual void OnEnable()
     {
-        workers.Clear();
+        /*foreach (WorkerUnit worker in workers)
+        {
+            DecollocateWorker(worker);
+        }*/
+
         currentHp = maxHp;
         canvas.gameObject.SetActive(false);
         GameDB.Instance.tower_Player.Add(transform);

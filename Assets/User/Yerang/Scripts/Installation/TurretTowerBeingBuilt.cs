@@ -24,7 +24,10 @@ public class TurretTowerBeingBuilt : Installation
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
 
-        workers.Clear();
+        /*foreach (WorkerUnit worker in workers)
+        {
+            DecollocateWorker(worker);
+        }*/
         GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
     }
@@ -51,10 +54,10 @@ public class TurretTowerBeingBuilt : Installation
     public void CompleteBuild()
     {
         //배치되어 있던 일꾼 모두 해제
-        foreach (WorkerUnit worker in workers)
+        /*foreach (WorkerUnit worker in workers)
         {
             worker.Decollocate();
-        }
+        }*/
 
         //타워 생성
         Tower completeTower = 

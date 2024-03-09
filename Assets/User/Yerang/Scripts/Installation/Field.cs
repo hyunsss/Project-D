@@ -22,7 +22,11 @@ public class Field : Installation
 
     private void OnEnable()
     {
-        workers.Clear();
+        /*foreach (WorkerUnit worker in workers)
+        {
+            DecollocateWorker(worker);
+        }*/
+
         canvas.gameObject.SetActive(false);
     }
 
