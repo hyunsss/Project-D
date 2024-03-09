@@ -27,7 +27,7 @@ public class UI_GameObject_INFO : MonoBehaviour
     }
 
     public void PlayerTowerSetINFO(TurretTower _turretTower)
-    {   //TOOD
+    {   
         damage.text                 = _turretTower.AP.ToString();
         HP.text                     = _turretTower.CurrentHp.ToString();
         speed_OR_price.text         = _turretTower.towerInfo.price.ToString();
@@ -35,7 +35,6 @@ public class UI_GameObject_INFO : MonoBehaviour
     }
     public void WorkerUnitSetINFO(WorkerUnit _workerUnit)
     {
-        //TODO
         damage.text             = 0.ToString();
         HP.text                 = _workerUnit.CurrentHP.ToString();
         speed_OR_price.text     = _workerUnit.price.ToString();

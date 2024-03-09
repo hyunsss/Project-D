@@ -28,8 +28,11 @@ public class GameDB : MonoBehaviour
     public List<Transform>      tower_Player = new List<Transform>();
     public List<Transform>      unit_Player  = new List<Transform>();
     public List<Transform>      scv_Player   = new List<Transform>();
-
-    // ------------ Player Cost Value      (mineral, gas) ------------------------------
+    // ------------ Player Money ----------------------------------
+    [SerializeField]
+    private int mineral; 
+    public int Mineral { get { return mineral; } }
+    // ------------ Player Cost Value  mineral---------------------
     public int tower_HP_Level_UP      = 1;
     public int tower_Damage_Level_UP  = 1;
     public int unit_HP_Level_UP       = 1;
@@ -37,10 +40,6 @@ public class GameDB : MonoBehaviour
     // ------------- Monster DB-------------------------------------
     public int                  currentMonsterCount = 0;
 
-
-    [SerializeField]
-    private int mineral;
-    public int Mineral { get { return mineral; } }
 
 
     public void GainMineral(int mineral)

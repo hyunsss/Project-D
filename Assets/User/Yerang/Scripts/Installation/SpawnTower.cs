@@ -65,7 +65,7 @@ public class SpawnTower : Tower
         //재화가 부족하면
         if (!GameDB.Instance.IsEnoughResource(spawnableUnits[spawnCount].requiredResource)) 
         {
-
+            UI_PanelManager.Instance.NoMoneyMessage();
             return false;
         }
         else

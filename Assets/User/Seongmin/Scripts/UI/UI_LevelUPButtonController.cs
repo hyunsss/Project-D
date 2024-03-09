@@ -37,6 +37,10 @@ public class UI_LevelUPButtonController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            UI_PanelManager.Instance.NoMoneyMessage();
+        }
     }
 
     private void TowerDamageUp()
@@ -50,6 +54,10 @@ public class UI_LevelUPButtonController : MonoBehaviour
                     _tower.Damage += DamgelevelUP;
                 }
             }
+        }
+        else
+        {
+            UI_PanelManager.Instance.NoMoneyMessage();
         }
     }
     private void UnitHpUp()
@@ -65,6 +73,10 @@ public class UI_LevelUPButtonController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            UI_PanelManager.Instance.NoMoneyMessage();
+        }
     }
     private void UnitDamageUp()
     {
@@ -77,6 +89,10 @@ public class UI_LevelUPButtonController : MonoBehaviour
                     _unit.ap += DamgelevelUP;
                 }
             }
+        }
+        else
+        {
+            UI_PanelManager.Instance.NoMoneyMessage();
         }
     }
 }
