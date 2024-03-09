@@ -52,6 +52,8 @@ public class Arrow : Projectile
         {
             if(target.TryGetComponent<Monster>(out Monster monster)) //TODO: TestEnemy -> Enemy
                 monster.HitDamage(damage);
+            if(target.TryGetComponent<MonsterTower>(out MonsterTower tower))
+                tower.HitDamage(damage);
             Lean.Pool.LeanPool.Despawn(this);
         }
     }

@@ -272,10 +272,16 @@ public class Monster : MonoBehaviour
     protected void Die()
     {
         state = State.die;
+<<<<<<< HEAD
         animator.SetTrigger("isDeath");
         GameDB.Instance.monsterCount--;
         StopCoroutine(ChangeState());
         target = null;
         LeanPool.Despawn(this);
+=======
+        animator.SetTrigger("isDie");
+        GameDB.Instance.currentMonsterCount--;
+        LeanPool.Despawn(gameObject);
+>>>>>>> SeongMin
     }
 }

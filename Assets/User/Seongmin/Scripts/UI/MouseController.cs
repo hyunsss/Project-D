@@ -56,6 +56,7 @@ public class MouseController : MonoBehaviour
                         target = selectedUnit.gameObject.transform.Find("Render").gameObject;
                         ClickSelected(target);
                         UI_PanelManager.Instance.TowerBuildPanel_OPEN();
+                        UI_PanelManager.Instance.gameObjectINFO.PlayerTowerSetINFO(selectedUnit);
                     }
                     else if (hit.collider.GetComponent<SpawnTower>())
                     {

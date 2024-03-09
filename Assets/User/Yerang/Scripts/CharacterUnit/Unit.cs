@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour
 
     public float maxHp;
     protected float currentHp;
-    public float CurrentHP { get { return currentHp; } }
+    public float CurrentHP { get { return currentHp; } set { currentHp = value; } }
     
     public float dp;
 
