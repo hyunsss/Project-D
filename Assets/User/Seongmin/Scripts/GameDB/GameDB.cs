@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-<<<<<<< HEAD
-=======
 [Serializable]
 public struct Resource
 {
@@ -18,8 +16,6 @@ public struct Resource
     }
 }
 
-
->>>>>>> SeongMin
 public class GameDB : MonoBehaviour
 {
    
@@ -53,16 +49,14 @@ public class GameDB : MonoBehaviour
     // ------------- Monster DB-------------------------------------
     public int                  currentMonsterCount = 0;
 
-<<<<<<< HEAD
+
     public int mineral;
 
-=======
     [SerializeField]
     private Resource ownResource;
     public Resource OwnResource { get { return ownResource; } }
 
-    
->>>>>>> SeongMin
+
     public void GainMineral(int mineral)
     {
         this.mineral += mineral;
@@ -70,7 +64,7 @@ public class GameDB : MonoBehaviour
 
     public bool IsEnoughResource(int requiredmineral)
     {
-        if (requiredmineral > mineral) //ÀçÈ­°¡ ºÎÁ·ÇÏ¸é
+        if (requiredmineral > mineral) //ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½
         {
             return false;
         }
@@ -82,9 +76,9 @@ public class GameDB : MonoBehaviour
 
     public bool UseReSource(int requiredmineral)
     {
-        if (requiredmineral > mineral) //ÀçÈ­°¡ ºÎÁ·ÇÏ¸é
+        if (requiredmineral > mineral) //ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½
         {
-            //TODO UI ¶ç¿ì±â
+            //TODO UI ï¿½ï¿½ï¿½ï¿½
             return false;
         }
 

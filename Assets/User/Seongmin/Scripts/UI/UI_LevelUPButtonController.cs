@@ -26,7 +26,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
 
     private void TowerHpUp()
     {
-        if (GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP))
+        if (GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP.mineral))
         {
             foreach (var tower in GameDB.Instance.tower_Player)
             {
