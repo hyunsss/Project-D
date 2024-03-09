@@ -62,14 +62,16 @@ public class SpawnTower : Tower
     }
 
     public void CancelSpawnUnit(int i) {
-        if(createList.Count < i) return;
+        if(createList.Count <= i) return;
         if(createList.Count == 0) return;
 
         createList.RemoveAt(i);
-        selectedUnit = null;
+        if(i == 0) {
+            selectedUnit = null;
+            progressBar.FillReset();
+            progressBar.gameObject.SetActive(false);
+        }
         GameDB.Instance.GainMineral(spawnableUnits[spawnCount].requiredResource);
-        progressBar.FillReset();
-        progressBar.gameObject.SetActive(false);
     }
 
     private void GetStartTime() {
