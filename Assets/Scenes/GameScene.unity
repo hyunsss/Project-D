@@ -76266,6 +76266,18 @@ MonoBehaviour:
   - {fileID: 1748381585}
   - {fileID: 1098219828}
   scv_Player: []
+  tower_HP_Level_UP:
+    mineral: 10
+    gas: 0
+  tower_Damage_Level_UP:
+    mineral: 10
+    gas: 0
+  unit_HP_Level_UP:
+    mineral: 10
+    gas: 0
+  unit_Damage_Level_UP:
+    mineral: 10
+    gas: 0
   currentMonsterCount: 0
   ownResource:
     mineral: 59
@@ -78983,7 +78995,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2684355537
+    m_Bits: 2684355543
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 1a381aa3aa518cb408f6d2db777d4b24, type: 2}
   m_TargetDisplay: 0
@@ -85871,8 +85883,8 @@ MonoBehaviour:
   ui_CurrentPanel: {fileID: 1699837472}
   ui_TowerBuildPanel: {fileID: 1699837472}
   ui_LevelUPPanel: {fileID: 1274768575}
-  ui_WorkerUnitPanel: {fileID: 1309574352}
   ui_SpawnTowerPanel: {fileID: 1053239293}
+  ui_WorkerUnitPanel: {fileID: 1309574352}
   ui_MonsterINFO: {fileID: 551126361}
   ui_PlayerTowerInfo: {fileID: 40099241}
   ui_BattleUnitINFO: {fileID: 696596116}

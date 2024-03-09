@@ -37,6 +37,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
 
         GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP);
     }
+
     private void TowerDamageUp()
     {
         foreach (var tower in GameDB.Instance.tower_Player)
