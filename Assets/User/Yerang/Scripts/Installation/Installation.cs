@@ -35,6 +35,7 @@ public class Installation : MonoBehaviour
 
     protected virtual void Awake()
     {
+        workers.Clear();
         //canvas = GetComponentInChildren<Canvas>();
         //hpBar = canvas.GetComponentInChildren<HpBar>();
     }
@@ -53,6 +54,12 @@ public class Installation : MonoBehaviour
 
     public void Destroyed()
     {
+        //배치되어 있던 일꾼 모두 해제
+        foreach (WorkerUnit worker in workers)
+        {
+            worker.Decollocate();
+        }
+
         Debug.Log(gameObject.GetInstanceID());
         //�μ����� �ִϸ��̼�
         GameDB.Instance.tower_Player.Remove(transform);
