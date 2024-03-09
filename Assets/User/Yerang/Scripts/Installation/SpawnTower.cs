@@ -14,7 +14,7 @@ public class SpawnTower : Tower
     public struct SpawnableUnit
     {
         public GameObject unitPrefab;
-        public Resource requiredResource;
+        public int requiredResource;
     }
     public SpawnableUnit[] spawnableUnits;
 
@@ -60,11 +60,6 @@ public class SpawnTower : Tower
         IsCanSpawn();
     }
 
-    /*public void SetSpawnCount(int count)
-    {
-        spawnCount = count;
-    }*/
-
     public bool IsCanSpawn()
     {
         //재화가 부족하면
@@ -92,6 +87,10 @@ public class SpawnTower : Tower
     }
     //-----------//
 
+    /*public void SetSpawnCount(int count)
+    {    
+        pawnCount = count;
+    }*/
 
     /*private IEnumerator SpawnCoroutine(int spawnCount, GameObject characterPrefab) //TODO: 순서 꼬이는 문제 있음
     {
