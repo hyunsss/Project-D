@@ -50,7 +50,7 @@ public class MonsterTower : MonoBehaviour
         towerCurrentHp -= _damage;
         if(towerCurrentHp <= 0) 
         {
-            
+            Destroy(gameObject);
         }
     }
     public void RepairingTower(float _heal)
