@@ -4,6 +4,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
+public struct Resource
+{
+    public int mineral;
+    public int gas;
+    public Resource(int _mineral, int _gas)
+    {
+        this.mineral = _mineral;
+        this.gas = _gas;
+    }
+}
+
 public class GameDB : MonoBehaviour
 {
    
@@ -24,29 +36,25 @@ public class GameDB : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-
-    // ------------- Player InGame Object List(DB) -------------------
+    // ------------- Player Game Object List(DB) -------------------
     public List<Transform>      tower_Player = new List<Transform>();
     public List<Transform>      unit_Player  = new List<Transform>();
     public List<Transform>      scv_Player   = new List<Transform>();
-    // ------------ Player Money ----------------------------------
-    [SerializeField]
-    private int mineral; 
-    public int Mineral { get { return mineral; } }
-    // ------------ Player Cost Value  mineral---------------------
-    public int cost_Tower_HP_Level_UP      = 1;
-    public int cost_Tower_Damage_Level_UP  = 1;
-    public int cost_Unit_HP_Level_UP       = 1;
-    public int cost_Unit_Damage_Level_UP   = 1;
-    // ------------ Player LevelUP Data --------------------
 
-    public int value_Tower_HP_Level_UP      = 0;
-    public int value_Tower_Damgae_Level_UP  = 0;
-    public int value_Unit_HP_Level_UP       = 0;
-    public int value_Unit_Damage_Level_UP   = 0;
+    // ------------ Player Cost Value      (mineral, gas) ------------------------------
+    public Resource tower_HP_Level_UP      = new(10,0);
+    public Resource tower_Damage_Level_UP  = new(10,0);
+    public Resource unit_HP_Level_UP       = new(10,0);
+    public Resource unit_Damage_Level_UP   = new(10,0);
     // ------------- Monster DB-------------------------------------
     public int                  currentMonsterCount = 0;
 
+
+    public int mineral;
+
+    [SerializeField]
+    private Resource ownResource;
+    public Resource OwnResource { get { return ownResource; } }
 
 
     public void GainMineral(int mineral)
@@ -56,7 +64,7 @@ public class GameDB : MonoBehaviour
 
     public bool IsEnoughResource(int requiredmineral)
     {
-        if (requiredmineral > mineral)
+        if (requiredmineral > mineral) //��ȭ�� �����ϸ�
         {
             return false;
         }
@@ -68,8 +76,9 @@ public class GameDB : MonoBehaviour
 
     public bool UseReSource(int requiredmineral)
     {
-        if (requiredmineral > mineral) 
+        if (requiredmineral > mineral) //��ȭ�� �����ϸ�
         {
+            //TODO UI ����
             return false;
         }
 

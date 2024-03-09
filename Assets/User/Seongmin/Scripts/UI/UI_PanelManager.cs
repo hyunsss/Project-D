@@ -1,6 +1,8 @@
 using System.Collections;
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UI_PanelManager : MonoBehaviour
 {
@@ -9,7 +11,6 @@ public class UI_PanelManager : MonoBehaviour
    
     [SerializeField] 
     private GameObject          ui_CurrentPanel;
-    // ----------------Click Panel-------------
     [Header("Panels")]
     public GameObject           ui_TowerBuildPanel;
     public GameObject           ui_LevelUPPanel;
@@ -21,19 +22,13 @@ public class UI_PanelManager : MonoBehaviour
     public GameObject           ui_PlayerTowerInfo;
     public GameObject           ui_BattleUnitINFO;
 
-    //-------------------Event---------------
+
     [Header("Event")]
     public UI_Boss_Text         bossPanel;
     public UI_GameObject_INFO   gameObjectINFO;
     public UI_UnitList          unitListPanel;
-    public MouseController      mouseController;
-
-    public GameObject           currentMessage = null;
     public GameObject           dontBuildMessage;
-    public GameObject           noMoneyMessage;
-
-
-    // -----------Top INFO Texts---------------
+    public MouseController      mouseController;
     [Header("Texts")]
     public TextMeshProUGUI      monsterText;
     public TextMeshProUGUI      unitText;
@@ -44,7 +39,6 @@ public class UI_PanelManager : MonoBehaviour
     public TextMeshProUGUI      playTimeText_Min;
     public TextMeshProUGUI      playTimeText_Hour;
 
-    // -------------Time Data ------------------
     private float               startTime;
     private int                 time_Sec;
     private int                 time_Min;
@@ -90,11 +84,10 @@ public class UI_PanelManager : MonoBehaviour
         unitText.text = GameDB.Instance.unit_Player.Count.ToString();
         monsterText.text = GameDB.Instance.currentMonsterCount.ToString();
         scvText.text = GameDB.Instance.scv_Player.Count.ToString();
-        moneyText.text = GameDB.Instance.Mineral.ToString();
+        moneyText.text = GameDB.Instance.mineral.ToString();
 
     }
 
-    // --------Panel Controlls-----------
     public void TowerBuildPanel_OPEN()
     {
         ui_CurrentPanel = ui_TowerBuildPanel;
@@ -165,11 +158,7 @@ public class UI_PanelManager : MonoBehaviour
     }
     public void DontBuildMessage()
     {
-        StartCoroutine(EventMessageCoroutine(dontBuildMessage));
-    }
-    public void NoMoneyMessage()
-    {
-        StartCoroutine(EventMessageCoroutine(noMoneyMessage));
+        StartCoroutine(DontBuildMessageCoroutine());
     }
     public void ALLUnitSelect()
     {
@@ -185,11 +174,10 @@ public class UI_PanelManager : MonoBehaviour
 
         unitListPanel.UnitListDraw();
     }
-    IEnumerator EventMessageCoroutine(GameObject _currentMessage)
+    IEnumerator DontBuildMessageCoroutine()
     {
-        currentMessage = _currentMessage;
-        currentMessage.gameObject.SetActive(true);
+        dontBuildMessage.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        currentMessage.gameObject.SetActive(false);
+        dontBuildMessage.gameObject.SetActive(false);
     }
 }

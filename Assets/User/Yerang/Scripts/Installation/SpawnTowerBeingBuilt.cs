@@ -63,10 +63,6 @@ public class SpawnTowerBeingBuilt : Installation
             Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, InstallationManager.Instance.InstallationParent);
 
         completeTower.SetHp(currentHp);
-         if (completeTower.TryGetComponent(out Installation _installation))
-        {
-            _installation.maxHp += GameDB.Instance.value_Tower_HP_Level_UP;
-        }
 
         //Lean.Pool.LeanPool.Despawn(gameObject);
         Destroy(gameObject);
