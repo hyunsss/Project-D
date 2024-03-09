@@ -26,7 +26,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
 
     private void TowerHpUp()
     {
-        if (GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP.mineral))
+        if (GameDB.Instance.UseReSource(GameDB.Instance.cost_Tower_HP_Level_UP))
         {
             foreach (var tower in GameDB.Instance.tower_Player)
             {
@@ -36,38 +36,67 @@ public class UI_LevelUPButtonController : MonoBehaviour
                     _tower.CurrentHp += HPlevelUP;
                 }
             }
+            GameDB.Instance.value_Tower_HP_Level_UP++;
+        }
+        else
+        {
+            UI_PanelManager.Instance.NoMoneyMessage();
         }
     }
 
     private void TowerDamageUp()
     {
-        foreach (var tower in GameDB.Instance.tower_Player)
+        if(GameDB.Instance.UseReSource(GameDB.Instance.cost_Tower_Damage_Level_UP))
         {
-            if (tower.gameObject.TryGetComponent<TowerAttack>(out TowerAttack _tower))
+            foreach (var tower in GameDB.Instance.tower_Player)
             {
-                _tower.Damage += DamgelevelUP;
+                if (tower.gameObject.TryGetComponent<TowerAttack>(out TowerAttack _tower))
+                {
+                    _tower.Damage += DamgelevelUP;
+                }
             }
+            GameDB.Instance.value_Tower_Damgae_Level_UP++;
+        }
+        else
+        {
+            UI_PanelManager.Instance.NoMoneyMessage();
         }
     }
     private void UnitHpUp()
     {
-        foreach(var  unit in GameDB.Instance.unit_Player)
+        if (GameDB.Instance.UseReSource(GameDB.Instance.cost_Unit_HP_Level_UP))
         {
-            if(unit.gameObject.TryGetComponent<Unit>(out Unit _unit))
+            foreach (var unit in GameDB.Instance.unit_Player)
             {
-                _unit.maxHp     += HPlevelUP;
-                _unit.CurrentHP += HPlevelUP;
+                if (unit.gameObject.TryGetComponent<Unit>(out Unit _unit))
+                {
+                    _unit.maxHp += HPlevelUP;
+                    _unit.CurrentHP += HPlevelUP;
+                }
             }
+            GameDB.Instance.value_Unit_HP_Level_UP++;
+        }
+        else
+        {
+            UI_PanelManager.Instance.NoMoneyMessage();
         }
     }
     private void UnitDamageUp()
     {
-        foreach(var unit in GameDB.Instance.unit_Player)
+        if (GameDB.Instance.UseReSource(GameDB.Instance.cost_Unit_Damage_Level_UP))
         {
-            if(unit.gameObject.TryGetComponent<BattleUnit>(out BattleUnit _unit))
+            foreach (var unit in GameDB.Instance.unit_Player)
             {
-                _unit.ap += DamgelevelUP;
+                if (unit.gameObject.TryGetComponent<BattleUnit>(out BattleUnit _unit))
+                {
+                    _unit.ap += DamgelevelUP;
+                }
             }
+            GameDB.Instance.value_Unit_Damage_Level_UP++;
+        }
+        else
+        {
+            UI_PanelManager.Instance.NoMoneyMessage();
         }
     }
 }
