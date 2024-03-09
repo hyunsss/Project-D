@@ -107,7 +107,6 @@ public class UI_PanelManager : MonoBehaviour
     }
     public void LevelUPPanel_OPEN()
     {
-
         ui_CurrentPanel = ui_LevelUPPanel;
         OpenPanel();
     }
