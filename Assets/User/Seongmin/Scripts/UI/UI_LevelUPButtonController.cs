@@ -26,16 +26,17 @@ public class UI_LevelUPButtonController : MonoBehaviour
 
     private void TowerHpUp()
     {
-        foreach(var tower in GameDB.Instance.tower_Player)
+        if (GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP))
         {
-           if(tower.gameObject.TryGetComponent<Installation>(out Installation _tower))
-           {
-                _tower.maxHp += HPlevelUP;
-                _tower.CurrentHp += HPlevelUP;
-           }
+            foreach (var tower in GameDB.Instance.tower_Player)
+            {
+                if (tower.gameObject.TryGetComponent<Installation>(out Installation _tower))
+                {
+                    _tower.maxHp += HPlevelUP;
+                    _tower.CurrentHp += HPlevelUP;
+                }
+            }
         }
-
-        GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP);
     }
 
     private void TowerDamageUp()

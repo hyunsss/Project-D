@@ -55747,7 +55747,6 @@ GameObject:
   - component: {fileID: 1274768578}
   - component: {fileID: 1274768577}
   - component: {fileID: 1274768580}
-  - component: {fileID: 1274768581}
   m_Layer: 5
   m_Name: LevelUpPanel
   m_TagString: Untagged
@@ -55940,18 +55939,6 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &1274768581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274768575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea77fe2edaf6ff747b9b9769d60cabf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1275008836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3625822100335925755, guid: d44f8595a3c474c1e98d9bf94ce8a84b, type: 3}
