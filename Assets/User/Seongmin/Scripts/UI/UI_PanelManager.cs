@@ -14,10 +14,10 @@ public class UI_PanelManager : MonoBehaviour
     [Header("Panels")]
     public GameObject           ui_TowerBuildPanel;
     public GameObject           ui_LevelUPPanel;
-    public GameObject           ui_WorkerUnitPanel;
     public GameObject           ui_SpawnTowerPanel;
 
     //------------------INFO Panel-------------
+    public GameObject           ui_WorkerUnitPanel;
     public GameObject           ui_MonsterINFO;
     public GameObject           ui_PlayerTowerInfo;
     public GameObject           ui_BattleUnitINFO;
@@ -82,7 +82,7 @@ public class UI_PanelManager : MonoBehaviour
 
         towerText.text = GameDB.Instance.tower_Player.Count.ToString();
         unitText.text = GameDB.Instance.unit_Player.Count.ToString();
-        monsterText.text = GameDB.Instance.monsterCount.ToString();
+        monsterText.text = GameDB.Instance.currentMonsterCount.ToString();
         scvText.text = GameDB.Instance.scv_Player.Count.ToString();
         moneyText.text = GameDB.Instance.OwnResource.mineral.ToString();
 

@@ -13,15 +13,15 @@ public class UI_LevelUPButtonController : MonoBehaviour
     private int  DamgelevelUP = 1;
     void Start()
     {
-        towerHpUp = transform.Find("TowerHpUp").GetComponent<Button>();
-        towerDamageUp = transform.Find("TowerDamageUp").GetComponent<Button>();
-        unitDamageUp = transform.Find("UnitDamageUp").GetComponent<Button>();
-        unitHpUp = transform.Find("UnitHpUp").GetComponent<Button>();
+        towerHpUp       = transform.Find("TowerHpUp").GetComponent<Button>();
+        towerDamageUp   = transform.Find("TowerDamageUp").GetComponent<Button>();
+        unitDamageUp    = transform.Find("UnitDamageUp").GetComponent<Button>();
+        unitHpUp        = transform.Find("UnitHpUp").GetComponent<Button>();
 
-        towerHpUp.onClick.AddListener(() => TowerHpUp());
-        towerDamageUp.onClick.AddListener(() => TowerDamageUp());
-        unitDamageUp.onClick.AddListener(() => UnitDamageUp());
-        unitHpUp.onClick.AddListener(() => UnitHpUp());
+        towerHpUp.onClick.AddListener(()        => TowerHpUp());
+        towerDamageUp.onClick.AddListener(()    => TowerDamageUp());
+        unitDamageUp.onClick.AddListener(()     => UnitDamageUp());
+        unitHpUp.onClick.AddListener(()         => UnitHpUp());
     }
 
     private void TowerHpUp()
@@ -34,8 +34,8 @@ public class UI_LevelUPButtonController : MonoBehaviour
                 _tower.CurrentHp += HPlevelUP;
            }
         }
-        
-       // GameDB.Instance.UseReSource()
+
+        GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP);
     }
     private void TowerDamageUp()
     {
@@ -53,7 +53,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
         {
             if(unit.gameObject.TryGetComponent<Unit>(out Unit _unit))
             {
-                _unit.maxHp +=     HPlevelUP;
+                _unit.maxHp     += HPlevelUP;
                 _unit.CurrentHP += HPlevelUP;
             }
         }

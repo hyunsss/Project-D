@@ -17627,7 +17627,7 @@ GameObject:
   - component: {fileID: 402214307}
   - component: {fileID: 402214306}
   m_Layer: 5
-  m_Name: Unit_Damage_UP_Button
+  m_Name: UnitDamageUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27521,7 +27521,7 @@ GameObject:
   - component: {fileID: 635136080}
   - component: {fileID: 635136079}
   m_Layer: 5
-  m_Name: Tower_Damage_UP_Button
+  m_Name: TowerDamageUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52040,7 +52040,7 @@ GameObject:
   - component: {fileID: 1190694691}
   - component: {fileID: 1190694690}
   m_Layer: 5
-  m_Name: Unit_Hp_UP_Button
+  m_Name: UnitHpUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76266,7 +76266,7 @@ MonoBehaviour:
   - {fileID: 1748381585}
   - {fileID: 1098219828}
   scv_Player: []
-  monsterCount: 0
+  currentMonsterCount: 0
   ownResource:
     mineral: 59
     gas: 51
@@ -80146,7 +80146,7 @@ GameObject:
   - component: {fileID: 1807167795}
   - component: {fileID: 1807167794}
   m_Layer: 5
-  m_Name: Tower_Hp_UP_Button
+  m_Name: TowerHpUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

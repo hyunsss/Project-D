@@ -32,12 +32,12 @@ public class MonsterTower : MonoBehaviour
 
         while (towerCurrentHp > 0)
         {
-            GameDB.Instance.monsterCount++;
+            GameDB.Instance.currentMonsterCount++;
             monsterSpawner.SpawnMonster();
             
             if(towerCurrentHp < towerMaxHp / 2 && keeperSpawnCount <= keeperMaxCount)
             {
-                GameDB.Instance.monsterCount++;
+                GameDB.Instance.currentMonsterCount++;
                 keeperSpawnCount++;
                 monsterSpawner.SpawnTowerKeeper(this);
             }

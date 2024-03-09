@@ -242,7 +242,7 @@ public class Monster : MonoBehaviour
     {
         state = State.die;
         animator.SetTrigger("isDie");
-        GameDB.Instance.monsterCount--;
+        GameDB.Instance.currentMonsterCount--;
         LeanPool.Despawn(gameObject);
     }
 }
