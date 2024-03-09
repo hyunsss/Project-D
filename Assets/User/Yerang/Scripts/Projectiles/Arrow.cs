@@ -5,16 +5,17 @@ public class Arrow : Projectile
 {
     public float maxHeight;
 
-    private Vector3 startPosition; //È­»ìÀÌ ¹ß»çµÈ À§Ä¡, Æ÷¹°¼±À» ±×¸± ¶§ ½ÃÀÛ À§Ä¡ ±âÁØ ¸Ö¾îÁø ¸¸Å­À¸·Î °è»ê ÇÏ±â À§ÇØ
-    private Vector3 lastFramePosTemp; //Á÷Àü ÇÁ·¹ÀÓ¿¡ È­»ìÀÌ ÀÖ´ø À§Ä¡
+    private Vector3 startPosition; //È­ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ ï¿½ï¿½Ä¡, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½Å­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Vector3 lastFramePosTemp; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Ä¡
 
     private Transform rendererTransform;
     private TrailRenderer trailRenderer;
 
     private void Awake()
     {
-        rendererTransform = transform.GetChild(0); //0: ·»´õ·¯
+        rendererTransform = transform.GetChild(0); //0: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         trailRenderer = rendererTransform.GetComponent<TrailRenderer>();
+        Debug.Log(rendererTransform);
     }
 
     protected void OnEnable()
@@ -25,15 +26,16 @@ public class Arrow : Projectile
 
     protected override void OnMove()
     {
-        //¿ÀºêÁ§Æ® ÀÌµ¿
+
+        //íŠ¸ëœìŠ¤í¼ ì´ë™
         transform.Translate((target.position - transform.position).normalized
             * speed * Time.deltaTime, Space.World);
 
-        //·»´õ·¯ ÀÌµ¿
+        //ëœë”ëŸ¬ ì´ë™
         float totalDistance = Vector3.Distance(startPosition, target.position);
         float remainDistance = Vector3.Distance(transform.position, target.position);
 
-        //ÀüÃ¼ ±æÀÌÁß ÇöÀç µµ´ŞÇÑ À§Ä¡ÀÇ ºñÀ²: 1 - (³²Àº°Å¸® / ÀüÃ¼°Å¸®)
+        //ì „ì²´ ê±°ë¦¬ ì¤‘ ë‚¨ì€ ê±°ë¦¬ì˜ ë¹„ìœ¨: 1 - (ë‚¨ì€ ê±°ë¦¬ / ì „ì²´ ê±°ë¦¬)
         float t = 1f - (remainDistance / totalDistance);
 
         float rendererPosY = Mathf.Sin(Mathf.Lerp(0, 180, t) * Mathf.Deg2Rad) * maxHeight;
@@ -42,21 +44,26 @@ public class Arrow : Projectile
 
         rendererTransform.localPosition = rendererHeight;
 
-        //ÀÌÀü ÇÁ·¹ÀÓ¿¡ ÀÖ´ø À§Ä¡(rendererTransform.forward)·Î ²¿¸®°¡ ÇâÇÏµµ·Ï
+        //í™”ì‚´ì˜ ê¼¬ë¦¬ë¶€ë¶„ì´ ì´ì „ ìœ„ì¹˜ë¥¼ í–¥í•˜ë„ë¡
         rendererTransform.forward = -(lastFramePosTemp - rendererTransform.position).normalized;
 
         lastFramePosTemp = rendererTransform.position;
 
 
-        if (remainDistance <= 0.1) //Å¸°Ù°úÀÇ ³²Àº °Å¸®°¡ 0.1ÀÌÇÏÀÌ¸é µ¥¹ÌÁö¸¦ ÁÖ°í »èÁ¦
+        if (remainDistance <= 0.1) //íƒ€ê²Ÿê³¼ì˜ ê±°ë¦¬ê°€ 0.1ì´í•˜ì´ë©´ ë°ë¯¸ì§€ë¥¼ ì£¼ê³  ì‚­ì œ
         {
-            if(target.TryGetComponent<Monster>(out Monster monster)) //TODO: TestEnemy -> Enemy
+            if (target.TryGetComponent<Monster>(out Monster monster)) //TODO: TestEnemy -> Enemy
                 monster.HitDamage(damage);
-            Lean.Pool.LeanPool.Despawn(this);
+            if (target.TryGetComponent<MonsterTower>(out MonsterTower tower))
+                tower.HitDamage(damage);
+
+            Lean.Pool.LeanPool.Despawn(gameObject);
         }
+
+
     }
 
-    /*private void OnTriggerEnter(Collider other) //Àû¿¡ ´êÀ¸¸é µ¥¹ÌÁö¸¦ ÁÖ°í »èÁ¦
+    /*private void OnTriggerEnter(Collider other) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½
     { //TODO: TestEnemy -> Enemy
         if (other.gameObject.TryGetComponent<TestEnemy>(out TestEnemy testEnemy))
         {

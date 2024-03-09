@@ -1,4 +1,5 @@
 using System.Collections;
+using Lean.Pool;
 using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
@@ -16,19 +17,23 @@ public abstract class Projectile : MonoBehaviour
 
     protected void Update()
     {
-        //Å¸°ÙÀÌ ºñÈ°¼ºÈ­ »óÅÂ?
+        //Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½?
         if (target != null && !target.gameObject.activeSelf)
         {
             target = null;
         }
 
-        if (target == null) //Å¸°ÙÀÌ ¾ø¾îÁö¸é »èÁ¦
+        if (target == null) //Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
-            Lean.Pool.LeanPool.Despawn(this);
+            LeanPool.Despawn(this);
             return;
         }
 
-        OnMove();
+        if(target != null) OnMove();
+    }
+
+    private void OnDestroy() {
+        Debug.Log("destroy");
     }
 
     protected abstract void OnMove();

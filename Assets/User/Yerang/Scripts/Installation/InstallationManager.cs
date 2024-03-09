@@ -12,10 +12,14 @@ public class InstallationManager : MonoBehaviour
     private Transform installationParent;
     public Transform InstallationParent { get { return installationParent; } }
 
-    /*[SerializeField]
-    private TurretTowerInfo[] turretTowerInfos;
+    //[SerializeField]
+    //private TurretTowerInfo[] turretTowerInfos;
+    //private SpawnTowerInfo[] spawnTowerInfos;
+    //private FieldInfo[] fieldInfos;
 
-    private Dictionary<string, TurretTowerInfo> turretTowerDic = new Dictionary<string, TurretTowerInfo>();*/
+    //private Dictionary<string, TurretTowerInfo> turretTowerDic = new Dictionary<string, TurretTowerInfo>();
+    //private Dictionary<string, SpawnTowerInfo> spawnTowerDic = new Dictionary<string, SpawnTowerInfo>();
+    //private Dictionary<string, FieldInfo> fieldDic = new Dictionary<string, FieldInfo>();
 
     private void Awake()
     {
@@ -40,11 +44,21 @@ public class InstallationManager : MonoBehaviour
         {
             turretTowerDic.Add(turretTowerInfo.towerName, turretTowerInfo);
         }
+
+        foreach (SpawnTowerInfo spawnTowerInfo in spawnTowerInfos)
+        {
+            spawnTowerDic.Add(spawnTowerInfo.towerName, spawnTowerInfo);
+        }
+
+        foreach (FieldInfo fieldInfo in fieldInfos)
+        {
+            fieldDic.Add(fieldInfo.fieldName, fieldInfo);
+        }
     }*/
 
     public void BuildTower()
     {
-        
+        //SetTower
     }
 
     public void UpgradeTower(TurretTower turretTower)
@@ -55,12 +69,14 @@ public class InstallationManager : MonoBehaviour
             return;
         }
 
-        //재화 사용
-        if (!TestGameManager.Instance.UseReSource(turretTower.towerInfo.price[turretTower.level]))
+        if (!GameDB.Instance.IsEnoughResource(turretTower.towerInfo.price[turretTower.level]))
         {
-            //재화가 부족하면 업그레이드 실패
+            UI_PanelManager.Instance.NoMoneyMessage();
             return;
         }
+
+        //재화 사용
+        GameDB.Instance.UseReSource(turretTower.towerInfo.price[turretTower.level]);
 
         //타워 레벨업
         turretTower.level++;
@@ -75,12 +91,14 @@ public class InstallationManager : MonoBehaviour
             return;
         }
 
-        //재화 사용
-        if (!TestGameManager.Instance.UseReSource(spawnTower.towerInfo.price[spawnTower.level]))
+        if (!GameDB.Instance.IsEnoughResource(spawnTower.towerInfo.prices[spawnTower.level]))
         {
-            //재화가 부족하면 업그레이드 실패
+            UI_PanelManager.Instance.NoMoneyMessage();
             return;
         }
+
+        //재화 사용
+        GameDB.Instance.UseReSource(spawnTower.towerInfo.prices[spawnTower.level]);
 
         //타워 레벨업
         spawnTower.level++;
@@ -95,12 +113,14 @@ public class InstallationManager : MonoBehaviour
             return;
         }
 
-        //재화 사용
-        if (!TestGameManager.Instance.UseReSource(field.fieldInfo.price[field.level]))
+        if (!GameDB.Instance.IsEnoughResource(field.fieldInfo.price[field.level]))
         {
-            //재화가 부족하면 업그레이드 실패
+            UI_PanelManager.Instance.NoMoneyMessage();
             return;
         }
+
+        //재화 사용
+        GameDB.Instance.UseReSource(field.fieldInfo.price[field.level]);
 
         //타워 레벨업
         field.level++;

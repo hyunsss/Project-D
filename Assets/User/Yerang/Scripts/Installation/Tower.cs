@@ -15,9 +15,16 @@ public abstract class Tower : Installation
 
     protected virtual void OnEnable()
     {
+        /*foreach (WorkerUnit worker in workers)
+        {
+            DecollocateWorker(worker);
+        }*/
+
         level = 1;
         SetTower();
+        GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
+        progressBar.gameObject.SetActive(false);
     }
 
     public void SetHp(float hp)

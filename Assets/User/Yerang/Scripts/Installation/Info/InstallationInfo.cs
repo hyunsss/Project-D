@@ -7,7 +7,7 @@ public abstract class InstallationInfo : ScriptableObject
     public string installationName;
     public int maxlevel;
 
-    public Resource[] price;
+    public int[] price;
 
     public float[] maxHp;
 }

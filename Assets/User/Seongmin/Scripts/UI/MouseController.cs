@@ -23,6 +23,7 @@ public class MouseController : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
+                    // ----Monster selected -------
                     if (hit.collider.GetComponent<Monster>())
                     {
                         var selectedUnit = hit.collider.GetComponent<Monster>();
@@ -40,20 +41,32 @@ public class MouseController : MonoBehaviour
                         UI_PanelManager.Instance.BattleUnitPanel_OPEN();
                         UI_PanelManager.Instance.gameObjectINFO.BattleUnitSetINFO(selectedUnit);
                     }
-                    else if (hit.collider.GetComponent<WorkerUnitMove>())
+                    else if (hit.collider.GetComponent<WorkerUnit>())
                     {
-                        var selectedUnit = hit.collider.GetComponent<WorkerUnitMove>();
+                        var selectedUnit = hit.collider.GetComponent<WorkerUnit>();
                         target = selectedUnit.gameObject;
                         ClickSelected(target);
-                        //TODO
                         UI_PanelManager.Instance.WorkerUnitPanel_OPEN();
+                        UI_PanelManager.Instance.gameObjectINFO.WorkerUnitSetINFO(selectedUnit);
                     }
+                    // ------Player Tower selected----------------
                     else if (hit.collider.GetComponent<TurretTower>())
                     {
                         var selectedUnit = hit.collider.GetComponent<TurretTower>();
-                        target = selectedUnit.gameObject;
+                        target = selectedUnit.gameObject.transform.Find("Render").gameObject;
                         ClickSelected(target);
                         UI_PanelManager.Instance.TowerBuildPanel_OPEN();
+                        UI_PanelManager.Instance.gameObjectINFO.PlayerTowerSetINFO(selectedUnit);
+                    }
+                    else if (hit.collider.GetComponent<SpawnTower>())
+                    {
+                        var selectedUnit = hit.collider.GetComponent<SpawnTower>();
+                        target = selectedUnit.gameObject.transform.Find("Render").gameObject;
+                        ClickSelected(target);
+                        UI_PanelManager.Instance.SpawnTowerPanel_OPEN();
+                        UI_PanelManager.Instance.ui_SpawnTowerUnitListPanel.GetComponent<SpawnUnitListPanel>().currentSpawnTower = selectedUnit;
+                        UI_PanelManager.Instance.ui_SpawnTowerPanel.TryGetComponent(out UI_SpawnTowerPanel panel);
+                        panel.TowerPrefab = selectedUnit;
                     }
                     else
                     {

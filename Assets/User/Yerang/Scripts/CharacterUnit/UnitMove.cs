@@ -20,7 +20,7 @@ public abstract class UnitMove : MonoBehaviour
 
     protected Transform priorityTarget;
 
-    protected Unit unit; //À½...
+    protected Unit unit; //ï¿½ï¿½...
 
 
     protected virtual void Awake()
@@ -32,6 +32,8 @@ public abstract class UnitMove : MonoBehaviour
 
         state = State.Idle;
     }
+
+    
 
     protected void Start()
     {

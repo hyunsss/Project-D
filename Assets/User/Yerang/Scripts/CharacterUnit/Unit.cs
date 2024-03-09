@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour
 
     public float maxHp;
     protected float currentHp;
+    public float CurrentHP { get { return currentHp; } set { currentHp = value; } }
     
     public float dp;
 
@@ -48,6 +49,7 @@ public class Unit : MonoBehaviour
 
     private void Die()
     {
+        GameDB.Instance.unit_Player.Remove(transform);
         Lean.Pool.LeanPool.Despawn(gameObject);
     }
 }

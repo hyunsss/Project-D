@@ -6,9 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FieldInfo", menuName = "Scriptable Object Asset/InstallationInfo/FieldInfo")]
 public class FieldInfo : ScriptableObject
 {
+    public string fieldName;
     public int maxlevel;
 
-    public Resource[] price;
+    public int[] price;
 
     [Serializable]
     public struct Stat

@@ -23,7 +23,17 @@ public class TurretTowerBeingBuilt : Installation
         currentTime = 0f;
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
+
+        /*foreach (WorkerUnit worker in workers)
+        {
+            DecollocateWorker(worker);
+        }*/
+        GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
+    }
+
+    private void OnDisable() {
+        GameDB.Instance.tower_Player.Remove(transform);
     }
 
     private void Update()
@@ -34,7 +44,7 @@ public class TurretTowerBeingBuilt : Installation
             surportedTime += Time.deltaTime * workerUnit.buildSpeed;
         }
         currentTime += (Time.deltaTime * builtSpeed + surportedTime);
-
+        progressBar.FillAmount(currentTime / completeTime);
         if (currentTime >= completeTime)
         {
             CompleteBuild();
@@ -43,26 +53,37 @@ public class TurretTowerBeingBuilt : Installation
 
     public void CompleteBuild()
     {
+        //배치되어 있던 일꾼 모두 해제
+        for (int i = 0; i < workers.Count; i++)
+        {
+            workers[i].Decollocate();
+        }
+
+        //타워 생성
         Tower completeTower = 
             Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, InstallationManager.Instance.InstallationParent);
         
         completeTower.SetHp(currentHp);
+        if (completeTower.TryGetComponent(out TowerAttack _towerAttack) && completeTower.TryGetComponent(out Installation _tower))
+        {
+            _towerAttack.Damage += GameDB.Instance.value_Tower_Damgae_Level_UP;
+            _tower.maxHp += GameDB.Instance.value_Tower_HP_Level_UP;
+        }
 
-        //Lean.Pool.LeanPool.Despawn(gameObject);
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(this);
     }
 
     public override void CollocateWorker(WorkerUnit worker)
     {
         base.CollocateWorker(worker);
 
-        print("�Ǽ� ��ġ��");
+        print("건설 배치됨");
     }
 
     public override void DecollocateWorker(WorkerUnit worker)
     {
         base.DecollocateWorker(worker);
 
-        print("�Ǽ� ��ġ ������");
+        print("건설 배치 해제됨");
     }
 }

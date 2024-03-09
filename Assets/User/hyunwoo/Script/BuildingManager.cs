@@ -92,7 +92,7 @@ public class BuildingManager : MonoBehaviour
             }
             grid.GetXY(InstallPosition, out int posx, out int posy);
             // Debug.Log(grid.NodeFromWorldPoint(InstallPosition).worldPosition + "," + grid.GetWorldPosition(posx, posy));
-            Debug.Log(grid.NodeFromWorldPoint(InstallPosition).walkable);
+            //Debug.Log(grid.NodeFromWorldPoint(InstallPosition).walkable);
         }
 
     }
@@ -157,8 +157,7 @@ public class BuildingManager : MonoBehaviour
         //포지션을 얻고 건물 빌드하는 로직
         int x, y;
         grid.GetXY(position, out x, out y);
-        GameObject Build = LeanPool.Spawn(BuildPrefab, new Vector3(x, 0, y) * grid.CellSize, Quaternion.identity);
-        GameManager.Instance.tower_Player.Add(Build.transform);
+        LeanPool.Spawn(BuildPrefab, new Vector3(x, 0, y) * grid.CellSize, Quaternion.identity);
 
         //지으려는 구역의 cell의 위치를 인자로 넘겨 해당 위치들의 node.walkable 값을 바꿈
         foreach (Cell cell in cells)

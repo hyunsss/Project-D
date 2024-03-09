@@ -30,8 +30,13 @@ public class Wall : MonoBehaviour
             Collider[] cols = Physics.OverlapBox(cellPos, boxsize, Quaternion.identity, 1 << 7 | 1 << 31);
             foreach (var item in cols)
             {
-                if(item.gameObject.tag == "Wall" || item.gameObject.tag == "Mount") {
-                    CreateWallBridge(cellPos, item.GetComponentInParent<Wall>());
+                if(item.gameObject.tag == "Wall") {
+                    CreateWallBridge(cellPos, item.GetComponentInParent<Wall>(), false);
+                    break;
+                }
+
+                if(item.gameObject.tag == "Mount") {
+                    CreateWallBridge(cellPos, item.GetComponentInParent<Wall>(), true);
                     break;
                 }
             }
@@ -43,7 +48,7 @@ public class Wall : MonoBehaviour
         return new int[,]{{x + 1, y}, {x - 1, y}, {x, y - 1}, {x, y + 1}} ;
     }
 
-    private void CreateWallBridge(Vector3 cellPos, Wall targetWall) {
+    private void CreateWallBridge(Vector3 cellPos, Wall targetWall, bool isMount) {
         Vector3 thisPos = transform.position + additionalPos;
         Vector3 direction = (thisPos - cellPos) * -1;
         Vector3 createPos = thisPos + (direction / 2);
@@ -56,5 +61,8 @@ public class Wall : MonoBehaviour
         WallBridge bridgeComponent = bridge.GetComponent<WallBridge>();
         bridgeComponent.mainBodyWall = this;
         bridgeComponent.targetWall = targetWall;
+
+        bridgeComponent.isMount = isMount;
+        
     }
 }

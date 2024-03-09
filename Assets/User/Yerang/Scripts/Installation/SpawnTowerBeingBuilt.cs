@@ -22,7 +22,17 @@ public class SpawnTowerBeingBuilt : Installation
         currentTime = 0f;
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
+
+        /*foreach (WorkerUnit worker in workers)
+        {
+            DecollocateWorker(worker);
+        }*/
+        GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
+    }
+
+    private void OnDisable() {
+        GameDB.Instance.tower_Player.Remove(transform);
     }
 
     private void Update()
@@ -33,6 +43,8 @@ public class SpawnTowerBeingBuilt : Installation
             surportedTime += Time.deltaTime * workerUnit.buildSpeed;
         }
         currentTime += (Time.deltaTime * builtSpeed + surportedTime);
+        progressBar.FillAmount(currentTime / completeTime);
+        
 
         if (currentTime >= completeTime)
         {
@@ -42,26 +54,31 @@ public class SpawnTowerBeingBuilt : Installation
 
     public void CompleteBuild()
     {
+        //배치되어 있던 일꾼 모두 해제
+        for (int i = 0; i < workers.Count; i++)
+        {
+            workers[i].Decollocate();
+        }
+
+        //타워 생성
         Tower completeTower =
             Lean.Pool.LeanPool.Spawn(tower, transform.position, transform.rotation, InstallationManager.Instance.InstallationParent);
 
         completeTower.SetHp(currentHp);
-
-        //Lean.Pool.LeanPool.Despawn(gameObject);
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 
     public override void CollocateWorker(WorkerUnit worker)
     {
         base.CollocateWorker(worker);
 
-        print("�Ǽ� ��ġ��");
+        print("건설 배치됨");
     }
 
     public override void DecollocateWorker(WorkerUnit worker)
     {
         base.DecollocateWorker(worker);
 
-        print("�Ǽ� ��ġ ������");
+        print("건설 배치 해제됨");
     }
 }

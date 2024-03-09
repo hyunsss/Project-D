@@ -13,8 +13,18 @@ public class CameraManager : MonoBehaviour
     private CinemachineInputProvider inputProvider;
     private CinemachineVirtualCamera virtualCamera;
     private UnityEngine.Transform cameraTransform;
+
+    Vector3 currentPos;
+
+    float minX, maxX;
+    float minZ, maxZ;
     
     private void Awake() {
+        minX = 0;
+        maxX = 500;
+        minZ = -30;
+        maxZ = 430;
+
         inputProvider = GetComponent<CinemachineInputProvider>();
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
         cameraTransform = virtualCamera.VirtualCameraGameObject.transform;
@@ -31,6 +41,14 @@ public class CameraManager : MonoBehaviour
         if( z != 0) {
             ZoomScreen(-z);
         }
+
+        //0 500
+        //-30 430
+        currentPos = virtualCamera.transform.position;
+        currentPos.x = Mathf.Clamp(currentPos.x, minX, maxX);
+        currentPos.z = Mathf.Clamp(currentPos.z, minZ, maxZ);
+
+        virtualCamera.transform.position = currentPos;
     }
 
     public void ZoomScreen(float increment) {

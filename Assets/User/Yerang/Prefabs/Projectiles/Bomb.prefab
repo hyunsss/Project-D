@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7688988021862246828}
   m_Father: {fileID: 0}
@@ -69,8 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a482467243d88c44a5d30b22ec65055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  explosionRange: 6
+  speed: 30
+  explosionRange: 10
   ExplosionParticle: {fileID: 0}
 --- !u!2083052967 &-1338861384619365072
 VisualEffect:
@@ -90,7 +90,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 1
+      - m_Value: 4
         m_Name: Size
         m_Overridden: 1
     m_Vector2f:

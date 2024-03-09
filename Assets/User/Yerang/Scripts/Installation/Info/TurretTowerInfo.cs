@@ -6,9 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TurretTowerInfo", menuName = "Scriptable Object Asset/InstallationInfo/TurretTowerInfo")]
 public class TurretTowerInfo : ScriptableObject
 {
+    public string towerName;
     public int maxlevel;
 
-    public Resource[] price;
+    public int[] price;
 
     [Serializable]
     public struct Stat

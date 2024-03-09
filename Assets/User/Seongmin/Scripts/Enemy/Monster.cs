@@ -3,8 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.AI.Navigation.Editor;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 public class Monster : MonoBehaviour
@@ -13,17 +15,17 @@ public class Monster : MonoBehaviour
     private MonsterData         monsterData;
     [HideInInspector]
     public MonsterData          MonsterData { get { return monsterData; }  set { monsterData = value; } }
-    [HideInInspector]
     public float                currentHp;
-    public UnitAStar            aStar;
     public Animator             animator;
     public Transform            target;
 
+    private NavMeshAgent        nav;
     private Vector3             moveCheck;
     private float               repairing = 5f;
     private MonsterTower        tower = null;
     private MonsterHPBar        monsterHPBar;
-    private bool                moveSupport = false;
+
+    Transform tempTarget;
 
     public enum State
     {
@@ -36,23 +38,49 @@ public class Monster : MonoBehaviour
 
     protected void Awake()
     {
-        aStar =  GetComponent<UnitAStar>();
+        nav = GetComponent<NavMeshAgent>();
+       
         animator = GetComponent<Animator>();
         tower = GetComponent<MonsterTower>();
         monsterHPBar = GetComponentInChildren<MonsterHPBar>();
     }
 
-    protected void Start()
+    private void Start() {
+        moveCheck = transform.position;
+        SetInfo();
+    }
+
+    protected void OnEnable()
     {
         moveCheck = transform.position;
 
-        aStar.speed = MonsterData.MonsterSpeed;
+        // Vector3 agentStartPosition = transform.position;
+        // NavMeshHit hit;
+        // if (NavMesh.SamplePosition(agentStartPosition, out hit, 10.0f, NavMesh.AllAreas))
+        // {
+        //     nav.transform.position = hit.position;
+        //     nav.enabled = true;
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("Failed to place the agent on a NavMesh.");
+        // }
+
+    }
+
+    public void SetInfo() {
+        nav.speed = MonsterData.MonsterSpeed;
         currentHp = MonsterData.MonsterHp;
-
-
+        monsterHPBar.HPUpdate(currentHp, monsterData.MonsterHp);
         StartCoroutine(ChangeState());
     }
+
     protected void Update() {
+        if(state == State.chase) {
+            if(target == null) TargetChase();
+        }
+
+
         if(state == State.towerReqair )
         {
 
@@ -62,7 +90,7 @@ public class Monster : MonoBehaviour
         {
             transform.LookAt(target);
         }
-
+        //----------------Move_Distance_Check----------------
         float checkMove = Vector3.Distance(transform.position, moveCheck);
         if(checkMove < 0.01f)
         {
@@ -70,32 +98,59 @@ public class Monster : MonoBehaviour
         }
         moveCheck = transform.position;
         transform.Rotate(new Vector3(0, 0, transform.rotation.z));
-        
-        if(moveSupport)
+        //----------------Move_AI_Support----------------
+     /*
+            if (moveSupport)
+            {
+                Vector3 direction = (target.position - transform.position).normalized;
+                transform.position += direction *monsterData.MonsterSpeed * Time.deltaTime;
+            }
+       */ 
+    }
+    private void OnTriggerEnter(Collider _collider)
+    {
+        if(_collider.TryGetComponent<Installation>(out Installation tower))
         {
-            Vector3 direction = (target.position - transform.position).normalized;
-            transform.position += direction * monsterData.MonsterSpeed * Time.deltaTime;
+            state = State.attack;
+        }
+        if(_collider.TryGetComponent<Unit>(out Unit unit))
+        {
+            state  = State.attack;
         }
     }
-    protected IEnumerator ChangeState()
+    public IEnumerator ChangeState()
     {
         while (state != State.die)
         {
-            if (target != null&& state != State.towerReqair)
+            if(target != null) 
             {
-                float checkAttack = Vector3.Distance(gameObject.transform.position, target.position);
-                state = checkAttack <= 10f ? state = State.attack : state = State.chase;
+                float checkAttack = Vector3.Distance(transform.position, target.position);
+                if( checkAttack < 14f)
+                {
+                    state = State.attack;
+                }
             }
+
             // user Chase
             if (state == State.chase)
             {
                     TargetChase();
             }
-            // Mpnster Attack
+            // Monster Attack
             else if (state == State.attack)
             {
-                animator.SetTrigger("isAttack");
-                Debug.Log("�� ����");
+                if (target == null)
+                {
+                    state = State.chase;
+                    nav.updatePosition = true;
+
+                }
+                else
+                {
+                    animator.SetTrigger("isAttack");
+                    nav.updateRotation = false;
+                    Attack();
+                }
             }
             // Monster Tower Repairing
             else if (state == State.towerReqair && tower != null) 
@@ -111,7 +166,10 @@ public class Monster : MonoBehaviour
                     state = State.chase;  
                 }
             }
-           
+            else
+            {
+                state = State.chase;
+            }
             yield return new WaitForSeconds(0.7f);
         }
         if (state == State.die)
@@ -131,40 +189,36 @@ public class Monster : MonoBehaviour
             if(GameDB.Instance.tower_Player.Count > 0)
             {
                 SetTowerTarget();
-                aStar.Chase(target);
+                return;
             }
             else if(GameDB.Instance.unit_Player.Count > 0)
             {
                 SetUnitTarget();
-                aStar.Chase(target);
+                return;
             }
-        float checkMove = Vector3.Distance(gameObject.transform.position, target.transform.position);
-
+         ;
       
-        if (25f > checkMove && checkMove > 10f)
-        {
-            transform.LookAt(target);
-            moveSupport = true;
-        }
-        else
-        {
-            moveSupport = false;
-        }
-
     }
 
     protected void SetTowerTarget() //UserTower
     {
         float sortDistance = 99999f;
+
         foreach (Transform _target in GameDB.Instance.tower_Player)
         {
             float targetDistance = Vector3.Distance(transform.position, _target.position);
                 if(targetDistance < sortDistance)
                 {
                     sortDistance = targetDistance;
-                target =  _target;
-                }
+               
+                    tempTarget =  _target;
+            }
         }
+        if(tempTarget != target) {
+            target = tempTarget;
+            nav.SetDestination(target.position+ (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
+        }
+        
     }
     protected void SetUnitTarget() //UserUnit
     {
@@ -177,8 +231,11 @@ public class Monster : MonoBehaviour
             {
                 sortDistance = targetDistance;
                 target = _target;
+               
             }
         }
+        Debug.Log(target + ", " + target.position);
+        nav.SetDestination(target.position);
     }
 
     public void SetTowerObject(MonsterTower _tower) //MonsterTower
@@ -195,11 +252,33 @@ public class Monster : MonoBehaviour
             Die();
         }
     }
+
+    public void Attack()
+    {
+        if(target != null)
+        {
+            if (target.TryGetComponent(out Installation tower))
+            {
+                tower.GetDamage(monsterData.MonsterDamage);
+                print($"{tower}공격함");
+            }
+            if(target.TryGetComponent<Unit>(out Unit unit))
+            {
+                unit.GetDamage(monsterData.MonsterDamage);
+                print($"{unit}공격함");
+            }
+        }
+
+    }
     protected void Die()
     {
         state = State.die;
-        animator.SetTrigger("isDie");
-        GameDB.Instance.monsterCount--;
-        LeanPool.Despawn(gameObject);
+        animator.SetTrigger("isDeath");
+        GameDB.Instance.currentMonsterCount--;
+        StopCoroutine(ChangeState());
+        target = null;
+        LeanPool.Despawn(this);
+
+
     }
 }

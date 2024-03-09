@@ -14,30 +14,49 @@ public class UI_PanelManager : MonoBehaviour
     [Header("Panels")]
     public GameObject           ui_TowerBuildPanel;
     public GameObject           ui_LevelUPPanel;
+    public GameObject           ui_SpawnTowerPanel;
+    public GameObject           ui_SpawnTowerUnitListPanel;
 
-    public GameObject           ui_WorkerUnitPanel;
-    public GameObject           ui_MonsterINFO;
-    public GameObject           ui_PlayerTowerInfo;
-    public GameObject           ui_BattleUnitINFO;
-  
+
+    //------------------INFO Panel-------------
+    public GameObject ui_WorkerUnitPanel;
+    public GameObject ui_MonsterINFO;
+    public GameObject ui_PlayerTowerInfo;
+    public GameObject ui_BattleUnitINFO;
+
+
+    //-------------------Event---------------
     [Header("Event")]
-    public UI_Boss_Text         bossPanel;
-    public UI_GameObject_INFO   gameObjectINFO;
-    public UI_UnitList          unitListPanel;
-    public GameObject           dontBuildMessage;
-    public MouseController      mouseController;
-    [Header("Texts")]
-    public TextMeshProUGUI      monsterText;
-    public TextMeshProUGUI      unitText;
-    public TextMeshProUGUI      towerText;
-    public TextMeshProUGUI      scvText;
-    public TextMeshProUGUI      playTimeText;
+    public UI_Boss_Text bossPanel;
+    public UI_GameObject_INFO gameObjectINFO;
+    public UI_UnitList unitListPanel;
+    public MouseController mouseController;
 
-    private float               startTime;
-   
+    public GameObject currentMessage = null;
+    public GameObject dontBuildMessage;
+    public GameObject noMoneyMessage;
+
+
+    // -----------Top INFO Texts---------------
+    [Header("Texts")]
+    public TextMeshProUGUI monsterText;
+    public TextMeshProUGUI unitText;
+    public TextMeshProUGUI towerText;
+    public TextMeshProUGUI scvText;
+    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI playTimeText_Sec;
+    public TextMeshProUGUI playTimeText_Min;
+    public TextMeshProUGUI playTimeText_Hour;
+
+    // -------------Time Data ------------------
+    private float startTime;
+    private int time_Sec;
+    private int time_Min;
+    private int time_Hour;
+
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -46,7 +65,7 @@ public class UI_PanelManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        
+
         ui_TowerBuildPanel.gameObject.SetActive(false);
         ui_BattleUnitINFO.gameObject.SetActive(false);
         ui_LevelUPPanel.gameObject.SetActive(false);
@@ -63,17 +82,37 @@ public class UI_PanelManager : MonoBehaviour
     void Update()
     {
         float playTime = Time.time - startTime;
-        playTimeText.text = playTime.ToString("F0");
+        time_Hour = (int)(playTime / 3600);
+        time_Min = (int)((playTime % 3600) / 60);
+        time_Sec = (int)(playTime % 60);
+
+        playTimeText_Sec.text = time_Sec.ToString();
+        playTimeText_Min.text = time_Min.ToString();
+        playTimeText_Hour.text = time_Hour.ToString();
+
         towerText.text = GameDB.Instance.tower_Player.Count.ToString();
         unitText.text = GameDB.Instance.unit_Player.Count.ToString();
-        monsterText.text = GameDB.Instance.monsterCount.ToString();
+        monsterText.text = GameDB.Instance.currentMonsterCount.ToString();
         scvText.text = GameDB.Instance.scv_Player.Count.ToString();
+        moneyText.text = GameDB.Instance.Mineral.ToString();
 
     }
 
     public void TowerBuildPanel_OPEN()
     {
         ui_CurrentPanel = ui_TowerBuildPanel;
+        OpenPanel();
+    }
+    public void SpawnTowerPanel_OPEN()
+    {
+        ui_CurrentPanel = ui_SpawnTowerPanel;
+
+        OpenPanel();
+        ui_SpawnTowerUnitListPanel.SetActive(true);
+    }
+    public void LevelUPPanel_OPEN()
+    {
+        ui_CurrentPanel = ui_LevelUPPanel;
         OpenPanel();
     }
     public void MonsterINFOPanel_OPEN()
@@ -100,12 +139,6 @@ public class UI_PanelManager : MonoBehaviour
         gameObjectINFO = ui_WorkerUnitPanel.GetComponent<UI_GameObject_INFO>();
         OpenPanel();
     }
-    public void LevelUPPanel_OPEN()
-    {
-
-        ui_CurrentPanel = ui_LevelUPPanel;
-        OpenPanel();
-    }
 
 
 
@@ -120,9 +153,12 @@ public class UI_PanelManager : MonoBehaviour
     {
         ui_CurrentPanel.SetActive(false);
         ui_TowerBuildPanel.SetActive(false);
+        ui_WorkerUnitPanel.SetActive(false);
+        ui_SpawnTowerPanel.SetActive(false);
+        ui_SpawnTowerUnitListPanel.SetActive(false);
+
         ui_BattleUnitINFO.SetActive(false);
         ui_LevelUPPanel.SetActive(false);
-        ui_WorkerUnitPanel.SetActive(false);
         ui_MonsterINFO.SetActive(false);
         ui_PlayerTowerInfo.SetActive(false);
     }
@@ -130,11 +166,15 @@ public class UI_PanelManager : MonoBehaviour
     public void BossPanelSet()
     {
         bossPanel.gameObject.SetActive(true);
-        
+
     }
     public void DontBuildMessage()
     {
-        StartCoroutine(DontBuildMessageCoroutine());
+        StartCoroutine(EventMessageCoroutine(dontBuildMessage));
+    }
+    public void NoMoneyMessage()
+    {
+        StartCoroutine(EventMessageCoroutine(noMoneyMessage));
     }
     public void ALLUnitSelect()
     {
@@ -143,17 +183,19 @@ public class UI_PanelManager : MonoBehaviour
         {
             if (unit.gameObject.TryGetComponent(out Unit _unit))
             {
-                
+
                 GameDB.Instance.unitlist.Add(_unit);
             }
         }
 
         unitListPanel.UnitListDraw();
     }
-    IEnumerator DontBuildMessageCoroutine()
+    IEnumerator EventMessageCoroutine(GameObject _currentMessage)
     {
-        dontBuildMessage.gameObject.SetActive(true);
+        currentMessage = _currentMessage;
+
+        currentMessage.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        dontBuildMessage.gameObject.SetActive(false);
+        currentMessage.gameObject.SetActive(false);
     }
 }

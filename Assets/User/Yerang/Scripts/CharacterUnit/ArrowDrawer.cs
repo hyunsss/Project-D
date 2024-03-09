@@ -75,8 +75,9 @@ public class ArrowDrawer : MonoBehaviour
         {
             target = hit.transform;
         }
-
-        unitMove.SetPriorityTarget(target);
+        foreach(Unit unit in GameDB.Instance.unitlist) {
+            unit.GetComponent<UnitMove>().SetPriorityTarget(target);
+        }
     }
 
     protected void DrawArrow()
@@ -84,13 +85,13 @@ public class ArrowDrawer : MonoBehaviour
         float arrowheadSize = 0.5f;
         float arrowheadRate = (float)(arrowheadSize / Vector3.Distance(startPos, endPos));
 
-        // ¡é           ¡é
-        // ============¢¹
+        // ï¿½ï¿½           ï¿½ï¿½
+        // ============ï¿½ï¿½
         arrowRenderer.SetPosition(0, startPos);
         arrowRenderer.SetPosition(1, Vector3.Lerp(startPos, endPos, 0.999f - arrowheadRate));
 
-        //             ¡é¡é
-        // ============¢¹
+        //             ï¿½ï¿½ï¿½
+        // ============ï¿½ï¿½
         arrowRenderer.SetPosition(2, Vector3.Lerp(startPos, endPos, 1f - arrowheadRate));
         arrowRenderer.SetPosition(3, endPos);
 
@@ -99,13 +100,13 @@ public class ArrowDrawer : MonoBehaviour
         float arrowheadWidth = 0.5f;
 
         arrowRenderer.widthCurve = new AnimationCurve(
-            // ¡é           ¡é
-            // ============¢¹
+            // ï¿½ï¿½           ï¿½ï¿½
+            // ============ï¿½ï¿½
             new Keyframe(0, arrowWidth),
             new Keyframe(0.999f - arrowheadRate, arrowWidth),
-            //             ¡é¡é
-            // ============¢¹
+            //             ï¿½ï¿½ï¿½
+            // ============ï¿½ï¿½
             new Keyframe(1 - arrowheadRate, arrowheadWidth),
-            new Keyframe(1, 0f)); //µÎ²²¸¦ Á¡Á¡ ÁÙ¿©¼­ »ï°¢Çü¸ð¾çÀ¸·Î
+            new Keyframe(1, 0f)); //ï¿½Î²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ï¿½ ï¿½ï°¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 }

@@ -12,17 +12,10 @@ public class Selection_Dictionary : MonoBehaviour
             GameDB.Instance.selectedTable.Add(id, unit);
             GameDB.Instance.unitlist.Add(unit);
             go.gameObject.AddComponent<Selection_Component>();
-            Debug.Log("Added " + id + " to selected dict");
-
             unitListData.UnitListDraw();
         }
     }
-
-    public void Deselect(int id) {
-        GameDB.Instance.selectedTable.Remove(id);
-    }
-
-
+    
     public void DeselectAll() {
         foreach(KeyValuePair<int, Unit> pair in GameDB.Instance.selectedTable) {
             if(pair.Value != null) {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Global_Selection : MonoBehaviour
 {
@@ -19,11 +20,31 @@ public class Global_Selection : MonoBehaviour
     Vector2[] corners;
     Vector3[] verts;
     Vector3[] vecs;
+    Plane plane;
 
-    private void Start() {
+    public Transform SkyTransform;
+
+    private void Start()
+    {
         id_table = GetComponent<Id_Dictionary>();
-        selected_table =  GetComponent<Selection_Dictionary>();
+        selected_table = GetComponent<Selection_Dictionary>();
         dragSelect = false;
+        plane = MapManager.Instance.plane;
+    }
+
+    private Vector3 PlaneTransform()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        float enter;
+        Vector3 targetPos;
+        //가상 평면에 레이와 마우스 클릭했을 때 쏜 레이가 맞았다면 그 아래 함수를 실행합니다.
+        if (plane.Raycast(ray, out enter))
+        {
+            //레이가 만난 지점에서 해당 포지션을 가져옵니다. 
+            targetPos = ray.GetPoint(enter);
+        } else targetPos = Vector3.zero;
+        return targetPos;
     }
 
     void Update()
@@ -37,20 +58,20 @@ public class Global_Selection : MonoBehaviour
         //2. while left mouse button held
         if (Input.GetMouseButton(0))
         {
-            if((p1 - Input.mousePosition).magnitude > 40)
+            if ((p1 - Input.mousePosition).magnitude > 40)
             {
                 dragSelect = true;
             }
         }
 
         //3. when mouse button comes up
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject() == false)
         {
-            if(dragSelect == false) //single select
+            if (dragSelect == false) //single select
             {
-                Ray ray = Camera.main.ScreenPointToRay(p1);
+                Ray ray = new Ray(SkyTransform.position, PlaneTransform() - SkyTransform.position);
 
-                if(Physics.Raycast(ray,out hit, 50000.0f))
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 10))
                 {
                     if (Input.GetKey(KeyCode.LeftShift)) //inclusive select
                     {
@@ -96,37 +117,41 @@ public class Global_Selection : MonoBehaviour
                 }
 
                 //generate the mesh
-                selectionMesh = generateSelectionMesh(verts,vecs);
-                Debug.Log(selectionMesh);
+                selectionMesh = generateSelectionMesh(verts, vecs);
 
                 selectionBox = gameObject.AddComponent<MeshCollider>();
                 selectionBox.sharedMesh = selectionMesh;
-                selectionBox.convex = true;
-                selectionBox.isTrigger = true;
+                if (selectionBox.sharedMesh != null)
+                {
+                    selectionBox.convex = true;
+                    selectionBox.isTrigger = true;
+                }
 
                 if (!Input.GetKey(KeyCode.LeftShift))
                 {
                     selected_table.DeselectAll();
                 }
 
-               Destroy(selectionBox, 0.02f);
+                Destroy(selectionBox, 0.02f);
 
             }//end marquee select
 
             dragSelect = false;
 
         }
-       
+
     }
 
-    private void OnGUI() {
-        if(dragSelect == true) {
+    private void OnGUI()
+    {
+        if (dragSelect == true)
+        {
             var rect = Utils.GetScreenRect(p1, Input.mousePosition);
             Utils.DrawScreenRectBorder(rect, 2, new Color(0.8f, 0.8f, 0.8f));
         }
     }
 
-    Vector2[] getBoundingBox(Vector2 p1,Vector2 p2)
+    Vector2[] getBoundingBox(Vector2 p1, Vector2 p2)
     {
         // Min and Max to get 2 corners of rectangle regardless of drag direction.
         var bottomLeft = Vector3.Min(p1, p2);
@@ -149,19 +174,14 @@ public class Global_Selection : MonoBehaviour
         Vector3[] verts = new Vector3[8];
         int[] tris = { 0, 1, 2, 2, 1, 3, 4, 6, 0, 0, 6, 2, 6, 7, 2, 2, 7, 3, 7, 5, 3, 3, 5, 1, 5, 0, 1, 1, 4, 0, 4, 5, 6, 6, 5, 7 }; //map the tris of our cube
 
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             verts[i] = corners[i];
         }
 
-        for(int j = 4; j < 8; j++)
+        for (int j = 4; j < 8; j++)
         {
             verts[j] = corners[j - 4] + vecs[j - 4];
-        }
-
-        foreach (var item in corners)
-        {
-            Debug.Log(item);
         }
 
         Mesh selectionMesh = new Mesh();
@@ -173,7 +193,8 @@ public class Global_Selection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.TryGetComponent(out Unit unit)) {
+        if (other.gameObject.TryGetComponent(out Unit unit))
+        {
             selected_table.addSelected(unit.gameObject);
 
         }
