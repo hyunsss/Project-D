@@ -77,11 +77,6 @@ public class MouseController : MonoBehaviour
                     }
                 }
             }
-            // ---- Mouse Click is UI Panel ----
-            else
-            {
-              
-            }
         }
         if(target != null)
         {
