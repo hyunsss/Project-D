@@ -26,7 +26,7 @@ public class UI_LevelUPButtonController : MonoBehaviour
 
     private void TowerHpUp()
     {
-        if (GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP.mineral))
+        if (GameDB.Instance.UseReSource(GameDB.Instance.tower_HP_Level_UP))
         {
             foreach (var tower in GameDB.Instance.tower_Player)
             {
@@ -41,32 +41,41 @@ public class UI_LevelUPButtonController : MonoBehaviour
 
     private void TowerDamageUp()
     {
-        foreach (var tower in GameDB.Instance.tower_Player)
+        if(GameDB.Instance.UseReSource(GameDB.Instance.tower_Damage_Level_UP))
         {
-            if (tower.gameObject.TryGetComponent<TowerAttack>(out TowerAttack _tower))
+            foreach (var tower in GameDB.Instance.tower_Player)
             {
-                _tower.Damage += DamgelevelUP;
+                if (tower.gameObject.TryGetComponent<TowerAttack>(out TowerAttack _tower))
+                {
+                    _tower.Damage += DamgelevelUP;
+                }
             }
         }
     }
     private void UnitHpUp()
     {
-        foreach(var  unit in GameDB.Instance.unit_Player)
+        if (GameDB.Instance.UseReSource(GameDB.Instance.unit_HP_Level_UP))
         {
-            if(unit.gameObject.TryGetComponent<Unit>(out Unit _unit))
+            foreach (var unit in GameDB.Instance.unit_Player)
             {
-                _unit.maxHp     += HPlevelUP;
-                _unit.CurrentHP += HPlevelUP;
+                if (unit.gameObject.TryGetComponent<Unit>(out Unit _unit))
+                {
+                    _unit.maxHp += HPlevelUP;
+                    _unit.CurrentHP += HPlevelUP;
+                }
             }
         }
     }
     private void UnitDamageUp()
     {
-        foreach(var unit in GameDB.Instance.unit_Player)
+        if (GameDB.Instance.UseReSource(GameDB.Instance.unit_Damage_Level_UP))
         {
-            if(unit.gameObject.TryGetComponent<BattleUnit>(out BattleUnit _unit))
+            foreach (var unit in GameDB.Instance.unit_Player)
             {
-                _unit.ap += DamgelevelUP;
+                if (unit.gameObject.TryGetComponent<BattleUnit>(out BattleUnit _unit))
+                {
+                    _unit.ap += DamgelevelUP;
+                }
             }
         }
     }

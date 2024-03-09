@@ -4,18 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[Serializable]
-public struct Resource
-{
-    public int mineral;
-    public int gas;
-    public Resource(int _mineral, int _gas)
-    {
-        this.mineral = _mineral;
-        this.gas = _gas;
-    }
-}
-
 public class GameDB : MonoBehaviour
 {
    
@@ -42,19 +30,17 @@ public class GameDB : MonoBehaviour
     public List<Transform>      scv_Player   = new List<Transform>();
 
     // ------------ Player Cost Value      (mineral, gas) ------------------------------
-    public Resource tower_HP_Level_UP      = new(10,0);
-    public Resource tower_Damage_Level_UP  = new(10,0);
-    public Resource unit_HP_Level_UP       = new(10,0);
-    public Resource unit_Damage_Level_UP   = new(10,0);
+    public int tower_HP_Level_UP      = 1;
+    public int tower_Damage_Level_UP  = 1;
+    public int unit_HP_Level_UP       = 1;
+    public int unit_Damage_Level_UP   = 1;
     // ------------- Monster DB-------------------------------------
     public int                  currentMonsterCount = 0;
 
 
-    public int mineral;
-
     [SerializeField]
-    private Resource ownResource;
-    public Resource OwnResource { get { return ownResource; } }
+    private int mineral;
+    public int Mineral { get { return mineral; } }
 
 
     public void GainMineral(int mineral)
@@ -64,7 +50,7 @@ public class GameDB : MonoBehaviour
 
     public bool IsEnoughResource(int requiredmineral)
     {
-        if (requiredmineral > mineral) //��ȭ�� �����ϸ�
+        if (requiredmineral > mineral)
         {
             return false;
         }
@@ -76,9 +62,8 @@ public class GameDB : MonoBehaviour
 
     public bool UseReSource(int requiredmineral)
     {
-        if (requiredmineral > mineral) //��ȭ�� �����ϸ�
+        if (requiredmineral > mineral) 
         {
-            //TODO UI ����
             return false;
         }
 
