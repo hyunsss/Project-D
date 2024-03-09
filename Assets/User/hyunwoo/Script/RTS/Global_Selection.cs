@@ -92,7 +92,6 @@ public class Global_Selection : MonoBehaviour
                     else
                     {
                         selected_table.DeselectAll();
-                        Debug.Log("mouse click (0)");
                     }
                 }
             }
