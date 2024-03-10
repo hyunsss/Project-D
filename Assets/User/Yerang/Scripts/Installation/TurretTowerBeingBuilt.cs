@@ -24,10 +24,6 @@ public class TurretTowerBeingBuilt : Installation
         currentHp = maxHp;
         hpBar.SetHpBar(currentHp, maxHp);
 
-        /*foreach (WorkerUnit worker in workers)
-        {
-            DecollocateWorker(worker);
-        }*/
         GameDB.Instance.tower_Player.Add(transform);
         canvas.gameObject.SetActive(false);
     }
@@ -51,7 +47,7 @@ public class TurretTowerBeingBuilt : Installation
         }
     }
 
-    public void CompleteBuild()
+    public void CompleteBuild() //머지용 주석
     {
         //배치되어 있던 일꾼 모두 해제
         for (int i = 0; i < workers.Count; i++)
