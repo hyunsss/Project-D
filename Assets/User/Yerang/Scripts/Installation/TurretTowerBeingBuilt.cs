@@ -67,6 +67,7 @@ public class TurretTowerBeingBuilt : Installation
         }
         GameDB.Instance.tower_Player.Add(transform);
         PlayerData.Instance.BuildCount += 1;
+        GameDB.Instance.tower_Player.Add(completeTower.transform);
         Lean.Pool.LeanPool.Despawn(this);
     }
 
