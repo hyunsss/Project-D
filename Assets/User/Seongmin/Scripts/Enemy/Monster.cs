@@ -270,13 +270,12 @@ public class Monster : MonoBehaviour
     {
         state = State.die;
         animator.SetTrigger("isDeath");
-        GameDB.Instance.currentMonsterCount--;
-        StopCoroutine(ChangeState());
         target = null;
         GameDB.Instance.GainMineral(10);
+        GameDB.Instance.currentMonsterCount--;
         PlayerData.Instance.KillCount += 1;
         LeanPool.Despawn(this);
-
+        StopCoroutine(ChangeState());
 
     }
 }
