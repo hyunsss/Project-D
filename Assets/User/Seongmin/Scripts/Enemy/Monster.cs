@@ -134,6 +134,7 @@ public class Monster : MonoBehaviour
             // user Chase
             if (state == State.chase)
             {
+                nav.updateRotation = true;
                     TargetChase();
             }
             // Monster Attack
