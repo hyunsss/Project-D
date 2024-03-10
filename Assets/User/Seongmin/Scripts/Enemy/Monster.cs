@@ -41,13 +41,12 @@ public class Monster : MonoBehaviour
 
     private void Start() {
         moveCheck = transform.position;
-        SetInfo();
+      //  SetInfo();
     }
 
     protected void OnEnable()
     {
         moveCheck = transform.position;
-
         // Vector3 agentStartPosition = transform.position;
         // NavMeshHit hit;
         // if (NavMesh.SamplePosition(agentStartPosition, out hit, 10.0f, NavMesh.AllAreas))
@@ -70,10 +69,6 @@ public class Monster : MonoBehaviour
     }
 
     protected void Update() {
-        if(state == State.chase) {
-            if(target == null) TargetChase();
-        }
-
 
         if(state == State.towerReqair )
         {
@@ -128,7 +123,7 @@ public class Monster : MonoBehaviour
             // user Chase
             if (state == State.chase)
             {
-                nav.updateRotation = true;
+
                     TargetChase();
             }
             // Monster Attack
@@ -209,7 +204,7 @@ public class Monster : MonoBehaviour
                     tempTarget =  _target;
             }
         }
-        if(tempTarget != target) {
+        if (tempTarget != target || target == null) {
             target = tempTarget;
             nav.SetDestination(target.position+ (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
         }
@@ -226,11 +221,11 @@ public class Monster : MonoBehaviour
             {
                 sortDistance = targetDistance;
                 target = _target;
-               
+
             }
         }
-        Debug.Log(target + ", " + target.position);
-        nav.SetDestination(target.position);
+
+            nav.SetDestination(target.position + (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
     }
 
     public void SetTowerObject(MonsterTower _tower) //MonsterTower
