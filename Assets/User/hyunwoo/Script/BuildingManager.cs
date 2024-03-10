@@ -21,6 +21,7 @@ public class BuildingManager : MonoBehaviour
     private bool isInstallPossible;
 
     private Vector3 InstallPosition;
+    bool isPossible;
 
     public void SetTarget(BuildKey key) {
         
@@ -136,6 +137,19 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
+    private void TryBuyTower(int payment, out bool isPossible) {
+        if (payment > GameDB.Instance.Mineral)
+            {
+                UI_PanelManager.Instance.NoMoneyMessage();
+                isPossible = false;
+            }
+            else
+            {
+                GameDB.Instance.UseReSource(payment);
+                isPossible = true;
+            }
+    }
+
     /// <summary>
     /// 리스트에 담겨있는 cell들의 material 색들을 확인하고 설치 불가 영역 ( Color.red )인 영역이 하나라도 있다면 에러를 출력하고 리턴합니다.
     /// </summary>
@@ -143,29 +157,22 @@ public class BuildingManager : MonoBehaviour
     /// <param name="position"></param>
     public void SearchBuilding(GameObject BuildPrefab, Vector3 position)
     {
-        if(BuildPrefab.gameObject.TryGetComponent(out TurretTower turretTower))
+        if(BuildPrefab.gameObject.TryGetComponent(out TurretTowerBeingBuilt turretTowerBeingBuilt))
         {
-            if (turretTower.towerInfo.price[0] > GameDB.Instance.Mineral)
-            {
-                UI_PanelManager.Instance.NoMoneyMessage();
-            }
-            else
-            {
-                GameDB.Instance.UseReSource(turretTower.towerInfo.price[0]);
-            }
+            TryBuyTower(turretTowerBeingBuilt.tower.towerInfo.price[0], out isPossible);
         }
+        else if(BuildPrefab.gameObject.TryGetComponent(out SpawnTowerBeingBuilt spawnTowerBeingBuilt))
+        {
+            TryBuyTower(spawnTowerBeingBuilt.tower.towerInfo.prices[0], out isPossible);
+        } else if(BuildPrefab.gameObject.TryGetComponent(out BlockWall wall)) {
 
-        else if(BuildPrefab.gameObject.TryGetComponent(out SpawnTower spawnTower))
-        {
-            if (spawnTower.towerInfo.prices[0] > GameDB.Instance.Mineral)
-            {
-                UI_PanelManager.Instance.NoMoneyMessage();
-            }
-            else
-            {
-                GameDB.Instance.UseReSource(spawnTower.towerInfo.prices[0]);
-            }
+        } else if(BuildPrefab.gameObject.TryGetComponent(out Field field)) {
+            TryBuyTower(field.fieldInfo.price[0], out isPossible);
         }
+        
+        //돈이 부족하면 false 반환
+        if(isPossible == false) return;
+
         foreach (Cell cell in cells)
         {
             if (cell.meshRenderer.material.color == Color.red)
