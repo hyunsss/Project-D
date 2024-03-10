@@ -62,10 +62,10 @@ public class Installation : MonoBehaviour
         }
 
         Debug.Log(gameObject.GetInstanceID());
-        //�μ����� �ִϸ��̼�
+
         GameDB.Instance.tower_Player.Remove(transform);
         Lean.Pool.LeanPool.Despawn(gameObject);
-        UI_PanelManager.Instance.PanelReSet();
+        
     }
 
     public virtual void CollocateWorker(WorkerUnit worker)
