@@ -39,7 +39,7 @@ public class MonsterSpawner : MonoBehaviour
         currentMonsterPrefab.state = Monster.State.chase;
         currentMonsterPrefab.SetInfo();
 
-        currentMonsterPrefab.transform.SetParent(monsterSpawnPoint.transform);
+        currentMonsterPrefab.transform.SetParent(GameObject.Find("SeongminManager").transform);
 
     }
     public void SpawnTowerKeeper(MonsterTower _tower) 
@@ -60,7 +60,7 @@ public class MonsterSpawner : MonoBehaviour
         currentKeeperPrefab.state = Monster.State.towerReqair;
         currentMonsterPrefab.SetInfo();
 
-        currentKeeperPrefab.transform.SetParent(monsterSpawnPoint.transform);
+        currentKeeperPrefab.transform.SetParent(GameObject.Find("SeongminManager").transform);
     }
 
     public void SpawnBossMosnter()
@@ -78,7 +78,7 @@ public class MonsterSpawner : MonoBehaviour
 
         currentBossPrefab.MonsterData = bossDatas[spawnDataRandomValue];
 
-        currentBossPrefab.transform.SetParent(monsterSpawnPoint.transform);
+        currentBossPrefab.transform.SetParent(GameObject.Find("SeongminManager").transform);
         currentBossPrefab.state = Monster.State.chase;
 
         // BossPanel setting
@@ -94,6 +94,6 @@ public class MonsterSpawner : MonoBehaviour
             monsterSpawnPoint.transform.position.y,
             monsterSpawnPoint.transform.position.z + spawnPosY);
 
-        LeanPool.Spawn(_monsterTower,randPos, Quaternion.identity, gameObject.transform);
+        LeanPool.Spawn(_monsterTower,randPos, Quaternion.identity);
     }
 }
