@@ -72,7 +72,7 @@ public class MouseController : MonoBehaviour
                     {
                         DeSelected();
                         target = null;
-                        unitCam.transform.position = Vector3.zero;
+                        
                         UI_PanelManager.Instance.PanelReSet();
                         UI_PanelManager.Instance.unitListPanel.SlotReset();
                     }
