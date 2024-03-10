@@ -32,9 +32,5 @@ public abstract class Projectile : MonoBehaviour
         if(target != null) OnMove();
     }
 
-    private void OnDestroy() {
-        Debug.Log("destroy");
-    }
-
     protected abstract void OnMove();
 }

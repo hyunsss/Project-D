@@ -25,7 +25,6 @@ public class Achievement
     }
 
     public void UpdateValue(int value) {
-        Debug.Log("Action Invoke!!!!!" + " " + achievementData.Progress);
         achievementData.TargetCount = value;
 
         CheckProgress();

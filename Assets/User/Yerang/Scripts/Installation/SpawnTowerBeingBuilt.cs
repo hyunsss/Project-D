@@ -62,6 +62,7 @@ public class SpawnTowerBeingBuilt : Installation
 
         completeTower.SetHp(currentHp);
         Lean.Pool.LeanPool.Despawn(gameObject);
+        PlayerData.Instance.BuildCount += 1;
     }
 
     public override void CollocateWorker(WorkerUnit worker)
