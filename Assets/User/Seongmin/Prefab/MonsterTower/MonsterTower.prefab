@@ -133,6 +133,8 @@ MonoBehaviour:
   towerCurrentHp: 0
   keeperMaxCount: 5
   monsterCount: 0
+  need_Monster_Tower_SpawnCount: 400
+  mosterTowerPrefab: {fileID: 6278168911156057381}
 --- !u!114 &7300197591350407834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,4 +164,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   monsterSpawnPoint: {fileID: 2140342617761728274}
-  currentMonsterPrefab: {fileID: 0}
