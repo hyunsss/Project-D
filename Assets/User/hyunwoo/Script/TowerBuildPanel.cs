@@ -12,7 +12,6 @@ public class TowerBuildPanel : MonoBehaviour
     private Button SlowTowerButton;
     private Button SpawnUnitButton;
     private Button MineralTowerButton;
-    private Button GasTowerButton;
     private Button WallButton;
 
     private void Awake() {
@@ -22,7 +21,6 @@ public class TowerBuildPanel : MonoBehaviour
         SlowTowerButton = transform.Find("SlowTowerButton").GetComponent<Button>();
         SpawnUnitButton = transform.Find("SpawnUnitTowerButton").GetComponent<Button>();
         MineralTowerButton = transform.Find("MineralTowerButton").GetComponent<Button>();
-        GasTowerButton = transform.Find("GasTowerButton").GetComponent<Button>();
         WallButton = transform.Find("WallButton").GetComponent<Button>();
     }
     
@@ -35,7 +33,6 @@ public class TowerBuildPanel : MonoBehaviour
         SlowTowerButton.onClick.AddListener(() => BuildingManager.Instance.SetTarget(BuildingManager.BuildKey.Slow));
         SpawnUnitButton.onClick.AddListener(() => BuildingManager.Instance.SetTarget(BuildingManager.BuildKey.SpawnUnit));
         MineralTowerButton.onClick.AddListener(() => BuildingManager.Instance.SetTarget(BuildingManager.BuildKey.Mineral));
-        GasTowerButton.onClick.AddListener(() => BuildingManager.Instance.SetTarget(BuildingManager.BuildKey.Gas));
         WallButton.onClick.AddListener(() => BuildingManager.Instance.SetTarget(BuildingManager.BuildKey.Wall));
         
     }
