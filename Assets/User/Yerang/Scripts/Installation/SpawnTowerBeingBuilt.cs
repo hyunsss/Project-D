@@ -62,6 +62,7 @@ public class SpawnTowerBeingBuilt : Installation
 
         completeTower.SetHp(currentHp);
         Lean.Pool.LeanPool.Despawn(gameObject);
+        GameDB.Instance.tower_Player.Add(completeTower.transform);
         PlayerData.Instance.BuildCount += 1;
     }
 
