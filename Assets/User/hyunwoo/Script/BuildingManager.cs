@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class BuildingManager : MonoBehaviour
 {
-    public enum BuildKey { Archer, Canon, Slow, SpawnUnit, Mineral, Gas, Wall, None }
+    public enum BuildKey { Archer, Canon, Slow, SpawnUnit, Mineral, Wall, None }
     public List<Installation> buildList = new List<Installation>();
 
     [HideInInspector]public Installation targetBuilding;
