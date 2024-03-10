@@ -26,11 +26,16 @@ public class AchievementManager : MonoBehaviour
     {
         Instance = this;
         filePath = Application.persistentDataPath + "/achievements.json";
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         InitAchieve();
+    }
+
+    public void InitGameScene() {
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
     }
 
     private void InitAchieve()
@@ -113,10 +118,10 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void SaveAchievements(List<Achievement> achievements)
+    public void SaveAchievements()
     {
         List<SerializableAchievement> serializableAchievements = new List<SerializableAchievement>();
-        foreach (Achievement achievement in achievements)
+        foreach (Achievement achievement in achievement_List)
         {
             serializableAchievements.Add(new SerializableAchievement
             {
@@ -159,6 +164,12 @@ public class AchievementManager : MonoBehaviour
             }
 
             // Achievement 객체들이 재구성되었으니, 필요한 액션 연결 등의 초기화 로직을 수행합니다.
+        }
+    }
+
+    public void ResetAchieve() {
+        foreach (AchievementData item in achievementData_List) {
+            item.TargetCount = 0;
         }
     }
 

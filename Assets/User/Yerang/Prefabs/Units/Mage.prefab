@@ -2712,7 +2712,7 @@ MonoBehaviour:
   unitName: 
   maxHp: 5
   dp: 0
-  price: 0
+  price: 140
   canvas: {fileID: 388745914887529458}
   hpBar: {fileID: 2231682262362357181}
   ap: 4

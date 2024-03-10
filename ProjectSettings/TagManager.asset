@@ -8,6 +8,7 @@ TagManager:
   - CutScene
   - Wall
   - Mount
+  - Canvas
   layers:
   - Default
   - TransparentFX

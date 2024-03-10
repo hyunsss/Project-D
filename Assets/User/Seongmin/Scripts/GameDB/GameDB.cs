@@ -22,7 +22,6 @@ public class GameDB : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     // ------------- Player InGame Object List(DB) -------------------

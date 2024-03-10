@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5800ec6ce810fe84f9f6f7622b455735, type: 3}
   m_Name: GasFieldInfo
   m_EditorClassIdentifier: 
+  fieldName: 
   maxlevel: 4
+  price: e8030000e8030000e8030000e8030000
   levelStat:
   - maxHp: 10
     amountPerSec: 1
@@ -22,12 +24,3 @@ MonoBehaviour:
     amountPerSec: 3
   - maxHp: 40
     amountPerSec: 4
-  price:
-  - mineral: 0
-    gas: 0
-  - mineral: 10
-    gas: 5
-  - mineral: 20
-    gas: 10
-  - mineral: 30
-    gas: 20
