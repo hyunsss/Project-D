@@ -46,6 +46,9 @@ public class WorkerUnit : Unit
             case Installation.Type.Field:
                 state = State.Mine;
                 break;
+            case Installation.Type.Wall:
+                state = State.Repair;
+                break;
             default:
                 break;
         }

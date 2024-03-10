@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BlockWall : Installation
 {
+    public int price;
     protected Coroutine repairCoroutine = null;
 
     protected override void Awake()
