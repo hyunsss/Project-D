@@ -33,7 +33,7 @@ public class GameDB : MonoBehaviour
     [SerializeField]
     private int mineral;
     public int Mineral { get { return mineral; } }
-    // ------------ Player Cost Value  mineral---------------------
+    // ------------ Player Cost Value :  mineral---------------------
     public int cost_Tower_HP_Level_UP = 1;
     public int cost_Tower_Damage_Level_UP = 1;
     public int cost_Unit_HP_Level_UP = 1;
@@ -44,6 +44,12 @@ public class GameDB : MonoBehaviour
     public int value_Tower_Damgae_Level_UP = 0;
     public int value_Unit_HP_Level_UP = 0;
     public int value_Unit_Damage_Level_UP = 0;
+
+    //-------------Player Tower Cost Value : mineral-----------------
+    public int cost_Archer_Tower = 50;
+    public int cost_Canon_Tower = 50;
+    public int cost_Slow_Tower = 50;
+    public int cost_Spawn_Tower = 50;
     // ------------- Monster DB-------------------------------------
     public int currentMonsterCount = 0;
 

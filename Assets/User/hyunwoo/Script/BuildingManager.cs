@@ -143,6 +143,29 @@ public class BuildingManager : MonoBehaviour
     /// <param name="position"></param>
     public void SearchBuilding(GameObject BuildPrefab, Vector3 position)
     {
+        if(BuildPrefab.gameObject.TryGetComponent(out TurretTower turretTower))
+        {
+            if (turretTower.towerInfo.price[0] > GameDB.Instance.Mineral)
+            {
+                UI_PanelManager.Instance.NoMoneyMessage();
+            }
+            else
+            {
+                GameDB.Instance.UseReSource(turretTower.towerInfo.price[0]);
+            }
+        }
+
+        else if(BuildPrefab.gameObject.TryGetComponent(out SpawnTower spawnTower))
+        {
+            if (spawnTower.towerInfo.prices[0] > GameDB.Instance.Mineral)
+            {
+                UI_PanelManager.Instance.NoMoneyMessage();
+            }
+            else
+            {
+                GameDB.Instance.UseReSource(spawnTower.towerInfo.prices[0]);
+            }
+        }
         foreach (Cell cell in cells)
         {
             if (cell.meshRenderer.material.color == Color.red)
