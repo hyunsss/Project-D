@@ -59,17 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // if(isChangeScene == true) {
-        //     if(SceneManager.GetActiveScene().buildIndex == 1) {
-        //         GameSceneInit();
-        //         isChangeScene = false;
-        //     } else {
-
-        //         isChangeScene = false;
-        //     }
-        // }
-
-
+        
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             currentTime = Time.time - startTime;
@@ -79,6 +69,15 @@ public class GameManager : MonoBehaviour
                 startTime = Time.time;
             }
         }
+        if(SceneManager.GetActiveScene().buildIndex == 1) {
+            if(GameDB.Instance.unit_Player.Count == 0 && GameDB.Instance.tower_Player.Count == 0 && GameDB.Instance.scv_Player.Count == 0) {
+            Debug.Log("GameOver!!");
+            SceneChange(0);
+            }
+        }
+        
+
+
     }
 
     public void SaveGameSettings()
@@ -99,7 +98,7 @@ public class GameManager : MonoBehaviour
 
     public void SceneChange(int index)
     {
-        SceneManager.sceneLoaded += GameSceneInit;
+        if(index == 1) SceneManager.sceneLoaded += GameSceneInit;
         SceneManager.LoadScene(index);
     }
 

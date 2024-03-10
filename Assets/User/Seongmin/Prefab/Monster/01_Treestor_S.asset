@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 01_Treestor_S
   m_EditorClassIdentifier: 
   monsterName: Level 1 Treestor
-  monsterHp: 30
+  monsterHp: 50
   monsterSpeed: 6
   monsterDamage: 2
   monsterPrefab: {fileID: 22502332593657507, guid: 98e1502f60b7ffb4f8d7dae7fa93affc, type: 3}

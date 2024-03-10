@@ -279,6 +279,7 @@ public class Monster : MonoBehaviour
         StopCoroutine(ChangeState());
         target = null;
         PlayerData.Instance.KillCount += 1;
+        GameDB.Instance.GainMineral(10);
         LeanPool.Despawn(this);
 
 

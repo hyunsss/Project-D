@@ -13,6 +13,8 @@ public class MouseController : MonoBehaviour
 
     private GameObject      target = null;
 
+    int LayerMask = ~(1 << 29);
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -21,7 +23,7 @@ public class MouseController : MonoBehaviour
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask))
                 {
                     // ----Monster selected -------
                     if (hit.collider.GetComponent<Monster>())

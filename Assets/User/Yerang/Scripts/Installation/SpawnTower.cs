@@ -65,13 +65,13 @@ public class SpawnTower : Tower
         if(createList.Count <= i) return;
         if(createList.Count == 0) return;
 
+        GameDB.Instance.GainMineral(createList[i].GetComponent<Unit>().price);
         createList.RemoveAt(i);
         if(i == 0) {
             selectedUnit = null;
             progressBar.FillReset();
             progressBar.gameObject.SetActive(false);
         }
-        GameDB.Instance.GainMineral(spawnableUnits[spawnCount].requiredResource);
     }
 
     private void GetStartTime() {
@@ -104,19 +104,19 @@ public class SpawnTower : Tower
     //-----------//
     public void SelectUnit(int i)
     {   
-        IsCanSpawn();
+        if(IsCanSpawn(i) == false) return;
         if(createList.Count > 4) Debug.Log("더 이상 선택할 수 없습니다.");
         else {
-            GameDB.Instance.UseReSource(spawnableUnits[spawnCount].requiredResource);
+            GameDB.Instance.UseReSource(spawnableUnits[i].unitPrefab.GetComponent<Unit>().price);
 
             createList.Add(spawnableUnits[i].unitPrefab);
 
         }
     }
 
-    public bool IsCanSpawn()
+    public bool IsCanSpawn(int i)
     {
-        if (!GameDB.Instance.IsEnoughResource(spawnableUnits[spawnCount].requiredResource)) 
+        if (!GameDB.Instance.IsEnoughResource(spawnableUnits[i].unitPrefab.GetComponent<Unit>().price)) 
         {
             UI_PanelManager.Instance.NoMoneyMessage();
             return false;

@@ -165,7 +165,7 @@ public class BuildingManager : MonoBehaviour
         {
             TryBuyTower(spawnTowerBeingBuilt.tower.towerInfo.prices[0], out isPossible);
         } else if(BuildPrefab.gameObject.TryGetComponent(out BlockWall wall)) {
-
+            TryBuyTower(wall.price, out isPossible);
         } else if(BuildPrefab.gameObject.TryGetComponent(out Field field)) {
             TryBuyTower(field.fieldInfo.price[0], out isPossible);
         }

@@ -25,9 +25,17 @@ public class AchievementManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
         filePath = Application.persistentDataPath + "/achievements.json";
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return; // 여기를 추가합니다.
+        }
     }
 
     private void Start()

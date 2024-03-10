@@ -10,8 +10,16 @@ public class PlayerData : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
 

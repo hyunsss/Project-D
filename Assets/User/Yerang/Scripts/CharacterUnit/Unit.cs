@@ -15,7 +15,7 @@ public class Unit : MonoBehaviour
     
     public float dp;
 
-    public float price;
+    public int price;
 
     [SerializeField]
     private Canvas canvas;
