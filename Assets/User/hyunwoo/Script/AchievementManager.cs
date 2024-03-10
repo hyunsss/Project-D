@@ -113,10 +113,10 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void SaveAchievements(List<Achievement> achievements)
+    public void SaveAchievements()
     {
         List<SerializableAchievement> serializableAchievements = new List<SerializableAchievement>();
-        foreach (Achievement achievement in achievements)
+        foreach (Achievement achievement in achievement_List)
         {
             serializableAchievements.Add(new SerializableAchievement
             {

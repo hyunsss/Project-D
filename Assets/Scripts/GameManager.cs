@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame() {
         Application.Quit();
+        PlayerData.Instance.SaveData();
+        AchievementManager.Instance.SaveAchievements();
     }
 
 }
