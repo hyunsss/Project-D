@@ -56,7 +56,7 @@ public class Installation : MonoBehaviour
     public void Destroyed()
     {
         //배치되어 있던 일꾼 모두 해제
-        for(int i = 0;  i < workers.Count; i++)
+        for (int i = 0;  i < workers.Count; i++)
         {
             workers[i].Decollocate();
         }
@@ -64,8 +64,8 @@ public class Installation : MonoBehaviour
         Debug.Log(gameObject.GetInstanceID());
 
         GameDB.Instance.tower_Player.Remove(transform);
+
         Lean.Pool.LeanPool.Despawn(gameObject);
-        
     }
 
     public virtual void CollocateWorker(WorkerUnit worker)

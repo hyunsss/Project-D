@@ -53,7 +53,7 @@ public class Field : Installation
     {
         base.CollocateWorker(worker);
 
-        print("¹ç ¹èÄ¡µÊ");
+        //print("¹ç ¹èÄ¡µÊ");
 
         if (minedCoroutine == null)
         {
@@ -65,7 +65,7 @@ public class Field : Installation
     {
         base.DecollocateWorker(worker);
 
-        print("¹ç ¹èÄ¡ ÇØÁ¦µÊ");
+        //print("¹ç ¹èÄ¡ ÇØÁ¦µÊ");
 
         if (workers.Count == 0)
         {

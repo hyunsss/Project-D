@@ -15,7 +15,6 @@ public class Arrow : Projectile
     {
         rendererTransform = transform.GetChild(0); //0: ������
         trailRenderer = rendererTransform.GetComponent<TrailRenderer>();
-        Debug.Log(rendererTransform);
     }
 
     protected void OnEnable()
