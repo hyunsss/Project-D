@@ -69,13 +69,13 @@ public class SpawnTowerBeingBuilt : Installation
     {
         base.CollocateWorker(worker);
 
-        print("건설 배치됨");
+        //print("건설 배치됨");
     }
 
     public override void DecollocateWorker(WorkerUnit worker)
     {
         base.DecollocateWorker(worker);
 
-        print("건설 배치 해제됨");
+        //print("건설 배치 해제됨");
     }
 }

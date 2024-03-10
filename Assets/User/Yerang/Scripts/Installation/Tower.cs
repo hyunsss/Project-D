@@ -39,7 +39,7 @@ public abstract class Tower : Installation
     {
         base.CollocateWorker(worker);
 
-        print("수리 배치됨");
+        //print("수리 배치됨");
 
         if(repairCoroutine == null)
         {
@@ -52,7 +52,7 @@ public abstract class Tower : Installation
     {
         base.DecollocateWorker(worker);
 
-        print("수리 배치 해제됨");
+        //print("수리 배치 해제됨");
 
         if(workers.Count == 0)
         {
