@@ -11,6 +11,7 @@ public class PlayerData : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
 
@@ -42,6 +43,14 @@ public class PlayerData : MonoBehaviour
             string json = File.ReadAllText(path);
             JsonUtility.FromJsonOverwrite(json, this);
         }
+    }
+
+    public void ResetData() {
+        playtime = 0;
+        killCount = 0;
+        deathCount = 0;
+        buildCount = 0;
+        unitbuildCount = 0;
     }
 
 }

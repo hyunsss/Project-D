@@ -64,7 +64,6 @@ public class UI_PanelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
 
         ui_TowerBuildPanel.gameObject.SetActive(false);
         ui_BattleUnitINFO.gameObject.SetActive(false);
