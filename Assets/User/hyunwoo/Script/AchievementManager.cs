@@ -5,7 +5,7 @@ using Lean.Pool;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum AchievementType { KillCount, PlayTime, DeathCount, BuildCount, }
+public enum AchievementType { KillCount, PlayTime, DeathCount, BuildCount, UnitBuildCount}
 
 public class AchievementManager : MonoBehaviour
 {
@@ -77,6 +77,9 @@ public class AchievementManager : MonoBehaviour
             case AchievementType.BuildCount:
                 BuildCount -= achievement.UpdateValue;
                 break;
+            case AchievementType.UnitBuildCount:
+                BuildCount -= achievement.UpdateValue;
+                break;
         }
     }
 
@@ -102,6 +105,9 @@ public class AchievementManager : MonoBehaviour
                 DeathCount += achievement.UpdateValue;
                 break;
             case AchievementType.BuildCount:
+                BuildCount += achievement.UpdateValue;
+                break;
+            case AchievementType.UnitBuildCount:
                 BuildCount += achievement.UpdateValue;
                 break;
         }

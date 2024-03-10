@@ -277,6 +277,7 @@ public class Monster : MonoBehaviour
         GameDB.Instance.currentMonsterCount--;
         StopCoroutine(ChangeState());
         target = null;
+        PlayerData.Instance.KillCount += 1;
         LeanPool.Despawn(this);
 
 

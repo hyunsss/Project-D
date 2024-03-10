@@ -346,6 +346,7 @@ MonoBehaviour:
     requiredResource: 0
   - unitPrefab: {fileID: 5114337013183921267, guid: c5a751d4516494d4f9650a903870e28d, type: 3}
     requiredResource: 0
+  createList: []
 --- !u!114 &9146945704498219944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,7 +1017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982769653275574183, guid: b5d7fe72a08214d74a5cafd0b4c594b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 2.51
       objectReference: {fileID: 0}
     - target: {fileID: 6982769653275574183, guid: b5d7fe72a08214d74a5cafd0b4c594b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

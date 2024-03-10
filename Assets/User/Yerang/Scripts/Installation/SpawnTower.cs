@@ -141,7 +141,7 @@ public class SpawnTower : Tower
         }
         GameDB.Instance.unit_Player.Add(spawnedUnit.transform);
 
-        GameDB.Instance.unit_Player.Add(spawnedUnit.transform);
+        PlayerData.Instance.UnitbuildCount += 1;
     }
     //-----------//
 

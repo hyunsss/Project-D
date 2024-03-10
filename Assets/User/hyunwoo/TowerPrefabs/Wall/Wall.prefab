@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1941981909132195777}
   - component: {fileID: 6929287382701478297}
   - component: {fileID: 1179025291428995328}
+  - component: {fileID: 1666824038885339181}
   m_Layer: 7
   m_Name: Wall
   m_TagString: Wall
@@ -92,6 +93,7 @@ MonoBehaviour:
   maxHp: 150
   canvas: {fileID: 3408035891699597620}
   hpBar: {fileID: 1664424250718925756}
+  progressBar: {fileID: 0}
   type: 0
   workers: []
 --- !u!114 &1179025291428995328
@@ -107,6 +109,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallBridge: {fileID: 4294514615148006715, guid: 907119505a6534978b628e2bc516d3de, type: 3}
+--- !u!114 &1666824038885339181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57646822650087629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde110d2e2df7494cadfd72d5fd983b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 3408035891699597620}
 --- !u!1 &573314058532827461
 GameObject:
   m_ObjectHideFlags: 0

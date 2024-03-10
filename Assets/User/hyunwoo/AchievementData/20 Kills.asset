@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bfa99d54c714228902d217f16384fd, type: 3}
+  m_Name: 20 Kills
+  m_EditorClassIdentifier: 
+  uid: 1002
+  rate: 3
+  achievementType: 0
+  Achievement_name: "\uB204\uC801 \uBAAC\uC2A4\uD130 \uD0AC\uC218 20\uB9C8\uB9AC!!"
+  desc: "\uBAAC\uC2A4\uD130\uB97C 20\uB9C8\uB9AC \uC7A1\uC558\uC2B5\uB2C8\uB2E4!!"
+  isLocked: 1
+  count: 20
+  targetCount: 0
