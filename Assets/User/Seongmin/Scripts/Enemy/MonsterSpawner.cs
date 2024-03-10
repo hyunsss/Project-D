@@ -85,4 +85,15 @@ public class MonsterSpawner : MonoBehaviour
         UI_PanelManager.Instance.BossPanelSet();
        
     }
+    public void SpawnMonsterTower(GameObject _monsterTower)
+    {
+        spawnPosX = Random.Range(-20, 20);
+        spawnPosY = Random.Range(-20, 20);
+
+        Vector3 randPos = new Vector3(monsterSpawnPoint.transform.position.x + spawnPosX,
+            monsterSpawnPoint.transform.position.y,
+            monsterSpawnPoint.transform.position.z + spawnPosY);
+
+        LeanPool.Spawn(_monsterTower,randPos, Quaternion.identity, gameObject.transform);
+    }
 }
