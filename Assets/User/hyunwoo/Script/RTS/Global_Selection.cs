@@ -51,22 +51,33 @@ public class Global_Selection : MonoBehaviour
     {
         //1. when left mouse button clicked (but not released)
         if (Input.GetMouseButtonDown(0))
-        {
+        {   
+            
             p1 = Input.mousePosition;
         }
 
         //2. while left mouse button held
         if (Input.GetMouseButton(0))
         {
+            if( EventSystem.current.IsPointerOverGameObject() == true ) {
+                dragSelect = false;
+                return;
+            }
             if ((p1 - Input.mousePosition).magnitude > 40)
             {
                 dragSelect = true;
             }
         }
 
+        
+
         //3. when mouse button comes up
-        if (Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject() == false)
+        if (Input.GetMouseButtonUp(0))
         {
+            if( EventSystem.current.IsPointerOverGameObject() == true ) {
+                dragSelect = false;
+                return;
+            }
             if (dragSelect == false) //single select
             {
                 Ray ray = new Ray(SkyTransform.position, PlaneTransform() - SkyTransform.position);
