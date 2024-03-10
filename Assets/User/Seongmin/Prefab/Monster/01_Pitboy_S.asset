@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: Level 1 Pitboy
   monsterHp: 100
   monsterSpeed: 4
-  monsterDamage: 4
+  monsterDamage: 6
   monsterPrefab: {fileID: 6904802638445669043, guid: 48b86528c0b963c4fa9a224d099d7ee0, type: 3}
