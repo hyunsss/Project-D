@@ -1,23 +1,29 @@
 using Lean.Pool;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using Unity.AI.Navigation.Editor;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class Monster : MonoBehaviour
 {
     [SerializeField]
-    private MonsterData         monsterData;
+    private MonsterData monsterData;
     [HideInInspector]
-    public MonsterData          MonsterData { get { return monsterData; }  set { monsterData = value; } }
-    public float                currentHp;
-    public Animator             animator;
-    public Transform            target;
+    public MonsterData MonsterData { get { return monsterData; } set { monsterData = value; } }
+    public float currentHp;
+    public Animator animator;
+    public Transform target;
 
-    private NavMeshAgent        nav;
-    private Vector3             moveCheck;
-    private float               repairing = 5f;
-    private MonsterTower        tower = null;
-    private MonsterHPBar        monsterHPBar;
+    private NavMeshAgent nav;
+    private Vector3 moveCheck;
+    private float repairing = 5f;
+    private MonsterTower tower = null;
+    private MonsterHPBar monsterHPBar;
 
     Transform tempTarget;
 
@@ -33,20 +39,22 @@ public class Monster : MonoBehaviour
     protected void Awake()
     {
         nav = GetComponent<NavMeshAgent>();
-       
+
         animator = GetComponent<Animator>();
         tower = GetComponent<MonsterTower>();
         monsterHPBar = GetComponentInChildren<MonsterHPBar>();
     }
 
-    private void Start() {
+    private void Start()
+    {
         moveCheck = transform.position;
-      //  SetInfo();
+        SetInfo();
     }
 
     protected void OnEnable()
     {
         moveCheck = transform.position;
+
         // Vector3 agentStartPosition = transform.position;
         // NavMeshHit hit;
         // if (NavMesh.SamplePosition(agentStartPosition, out hit, 10.0f, NavMesh.AllAreas))
@@ -61,16 +69,23 @@ public class Monster : MonoBehaviour
 
     }
 
-    public void SetInfo() {
+    public void SetInfo()
+    {
         nav.speed = MonsterData.MonsterSpeed;
         currentHp = MonsterData.MonsterHp;
         monsterHPBar.HPUpdate(currentHp, monsterData.MonsterHp);
         StartCoroutine(ChangeState());
     }
 
-    protected void Update() {
+    protected void Update()
+    {
+        if (state == State.chase)
+        {
+            if (target == null) TargetChase();
+        }
 
-        if(state == State.towerReqair )
+
+        if (state == State.towerReqair)
         {
 
             transform.LookAt(tower.transform);
@@ -81,40 +96,40 @@ public class Monster : MonoBehaviour
         }
         //----------------Move_Distance_Check----------------
         float checkMove = Vector3.Distance(transform.position, moveCheck);
-        if(checkMove < 0.01f)
+        if (checkMove < 0.01f)
         {
             animator.SetTrigger("isIdle");
         }
         moveCheck = transform.position;
         transform.Rotate(new Vector3(0, 0, transform.rotation.z));
         //----------------Move_AI_Support----------------
-     /*
-            if (moveSupport)
-            {
-                Vector3 direction = (target.position - transform.position).normalized;
-                transform.position += direction *monsterData.MonsterSpeed * Time.deltaTime;
-            }
-       */ 
+        /*
+               if (moveSupport)
+               {
+                   Vector3 direction = (target.position - transform.position).normalized;
+                   transform.position += direction *monsterData.MonsterSpeed * Time.deltaTime;
+               }
+          */
     }
     private void OnTriggerEnter(Collider _collider)
     {
-        if(_collider.TryGetComponent<Installation>(out Installation tower))
+        if (_collider.TryGetComponent<Installation>(out Installation tower))
         {
             state = State.attack;
         }
-        if(_collider.TryGetComponent<Unit>(out Unit unit))
+        if (_collider.TryGetComponent<Unit>(out Unit unit))
         {
-            state  = State.attack;
+            state = State.attack;
         }
     }
     public IEnumerator ChangeState()
     {
         while (state != State.die)
         {
-            if(target != null) 
+            if (target != null)
             {
                 float checkAttack = Vector3.Distance(transform.position, target.position);
-                if( checkAttack < 14f)
+                if (checkAttack < 14f)
                 {
                     state = State.attack;
                 }
@@ -123,8 +138,8 @@ public class Monster : MonoBehaviour
             // user Chase
             if (state == State.chase)
             {
-
-                    TargetChase();
+                nav.updateRotation = true;
+                TargetChase();
             }
             // Monster Attack
             else if (state == State.attack)
@@ -143,9 +158,9 @@ public class Monster : MonoBehaviour
                 }
             }
             // Monster Tower Repairing
-            else if (state == State.towerReqair && tower != null) 
+            else if (state == State.towerReqair && tower != null)
             {
-                if(tower.TowerCurrnetHp < tower.TowerMaxHp)
+                if (tower.TowerCurrnetHp < tower.TowerMaxHp)
                 {
                     tower.RepairingTower(repairing);
                     animator.SetTrigger("isRepair");
@@ -153,7 +168,7 @@ public class Monster : MonoBehaviour
                 // State Change
                 else
                 {
-                    state = State.chase;  
+                    state = State.chase;
                 }
             }
             else
@@ -176,18 +191,18 @@ public class Monster : MonoBehaviour
 
     protected void TargetChase()
     {
-            if(GameDB.Instance.tower_Player.Count > 0)
-            {
-                SetTowerTarget();
-                return;
-            }
-            else if(GameDB.Instance.unit_Player.Count > 0)
-            {
-                SetUnitTarget();
-                return;
-            }
+        if (GameDB.Instance.tower_Player.Count > 0)
+        {
+            SetTowerTarget();
+            return;
+        }
+        else if (GameDB.Instance.unit_Player.Count > 0)
+        {
+            SetUnitTarget();
+            return;
+        }
          ;
-      
+
     }
 
     protected void SetTowerTarget() //UserTower
@@ -197,18 +212,15 @@ public class Monster : MonoBehaviour
         foreach (Transform _target in GameDB.Instance.tower_Player)
         {
             float targetDistance = Vector3.Distance(transform.position, _target.position);
-                if(targetDistance < sortDistance)
-                {
-                    sortDistance = targetDistance;
-               
-                    tempTarget =  _target;
+            if (targetDistance < sortDistance)
+            {
+                sortDistance = targetDistance;
+
+                target = _target;
             }
         }
-        if (tempTarget != target || target == null) {
-            target = tempTarget;
-            nav.SetDestination(target.position+ (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
-        }
-        
+        nav.SetDestination(target.position);
+
     }
     protected void SetUnitTarget() //UserUnit
     {
@@ -224,8 +236,8 @@ public class Monster : MonoBehaviour
 
             }
         }
-
-            nav.SetDestination(target.position + (Vector3.right * 8) + (Vector3.forward * 8) + (Vector3.up * 4));
+        Debug.Log(target + ", " + target.position);
+        nav.SetDestination(target.position);
     }
 
     public void SetTowerObject(MonsterTower _tower) //MonsterTower
@@ -235,7 +247,7 @@ public class Monster : MonoBehaviour
     }
     public void HitDamage(float _damage)
     {
-       currentHp -= _damage;
+        currentHp -= _damage;
         monsterHPBar.HPUpdate(currentHp, monsterData.MonsterHp);
         if (currentHp <= 0)
         {
@@ -245,14 +257,14 @@ public class Monster : MonoBehaviour
 
     public void Attack()
     {
-        if(target != null)
+        if (target != null)
         {
             if (target.TryGetComponent(out Installation tower))
             {
                 tower.GetDamage(monsterData.MonsterDamage);
                 print($"{tower}공격함");
             }
-            if(target.TryGetComponent<Unit>(out Unit unit))
+            if (target.TryGetComponent<Unit>(out Unit unit))
             {
                 unit.GetDamage(monsterData.MonsterDamage);
                 print($"{unit}공격함");
@@ -268,7 +280,6 @@ public class Monster : MonoBehaviour
         StopCoroutine(ChangeState());
         target = null;
         PlayerData.Instance.KillCount += 1;
-        GameDB.Instance.GainMineral(10);
         LeanPool.Despawn(this);
 
 
