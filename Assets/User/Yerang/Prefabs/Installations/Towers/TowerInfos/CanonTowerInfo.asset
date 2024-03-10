@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: CanonTower
   maxlevel: 4
-  price: c8000000fa0000009001000090010000
+  price: fa000000fa0000009001000090010000
   levelStat:
   - maxHp: 70
-    ap: 10
+    ap: 13
     attackCycle: 6
     attackRange: 70
   - maxHp: 80
-    ap: 15
+    ap: 17
     attackCycle: 6
     attackRange: 70
   - maxHp: 80
-    ap: 15
+    ap: 17
     attackCycle: 5
     attackRange: 75
   - maxHp: 100
-    ap: 20
+    ap: 24
     attackCycle: 4
     attackRange: 80
   rendererPrefabs:

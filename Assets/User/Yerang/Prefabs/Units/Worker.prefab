@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: 
-  maxHp: 10
+  maxHp: 100
   dp: 0
   price: 100
   canvas: {fileID: 3030264271963499387}

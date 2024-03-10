@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: AcherTower
   maxlevel: 4
-  price: 6400000096000000c8000000fa000000
+  price: 96000000c8000000fa0000002c010000
   levelStat:
   - maxHp: 50
-    ap: 7
+    ap: 10
     attackCycle: 4
     attackRange: 60
   - maxHp: 60
-    ap: 7
+    ap: 10
     attackCycle: 4
     attackRange: 70
   - maxHp: 80
-    ap: 8
+    ap: 11
     attackCycle: 3
     attackRange: 75
   - maxHp: 80
-    ap: 10
+    ap: 13
     attackCycle: 3
     attackRange: 80
   rendererPrefabs:
