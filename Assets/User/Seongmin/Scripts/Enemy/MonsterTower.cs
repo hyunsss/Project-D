@@ -5,41 +5,54 @@ using UnityEngine;
 public class MonsterTower : MonoBehaviour
 {
     [SerializeField]
-    private float               towerMaxHp = 100f;
-    public float                TowerMaxHp { get { return towerMaxHp; } set { towerMaxHp = value; } }
+    private float towerMaxHp = 100f;
+    public float TowerMaxHp { get { return towerMaxHp; } set { towerMaxHp = value; } }
     [SerializeField]
-    private float               towerCurrentHp;
-    public float                TowerCurrnetHp { get { return towerCurrentHp; } set { towerCurrentHp = value; } }
+    private float towerCurrentHp;
+    public float TowerCurrnetHp { get { return towerCurrentHp; } set { towerCurrentHp = value; } }
     [SerializeField]
-    private int                 keeperMaxCount = 10;
-    private int                 keeperSpawnCount = 0;
-    public int                  monsterCount = 0;
-    private MonsterSpawner      monsterSpawner;
+    private int keeperMaxCount = 10;
+    private int keeperSpawnCount = 0;
+    [SerializeField]
+    private int monsterCount = 0;
+    [SerializeField]
+    private int need_Monster_Tower_SpawnCount = 300;
+
+    public GameObject mosterTowerPrefab;
+
+    private MonsterSpawner monsterSpawner;
 
 
     private void Awake()
     {
-        monsterSpawner = GetComponent<MonsterSpawner>();       
+        monsterSpawner = GetComponent<MonsterSpawner>();
     }
 
     private void Start()
     {
+        mosterTowerPrefab = this.gameObject;
         towerCurrentHp = 30f;
         StartCoroutine(spawnMonster());
     }
+
+    // ------------SpawnCoroutine------------
     IEnumerator spawnMonster()
     {
 
         while (towerCurrentHp > 0)
         {
-            GameDB.Instance.currentMonsterCount++;
-            monsterSpawner.SpawnMonster();
-            
-            if(towerCurrentHp < towerMaxHp / 2 && keeperSpawnCount <= keeperMaxCount)
+
+            MosnterSpawn();
+
+            if (towerCurrentHp < towerMaxHp / 2 && keeperSpawnCount <= keeperMaxCount)
             {
-                GameDB.Instance.currentMonsterCount++;
-                keeperSpawnCount++;
-                monsterSpawner.SpawnTowerKeeper(this);
+                RepairMonsterSpawn();
+            }
+
+            if (monsterCount >= need_Monster_Tower_SpawnCount)
+            {
+                monsterCount = 0;
+                MonsterTowerSpawn();
             }
             yield return new WaitForSeconds(2f);
         }
@@ -48,16 +61,36 @@ public class MonsterTower : MonoBehaviour
     public void HitDamage(float _damage)
     {
         towerCurrentHp -= _damage;
-        if(towerCurrentHp <= 0) 
+        if (towerCurrentHp <= 0)
         {
             Destroy(gameObject);
         }
     }
+
     public void RepairingTower(float _heal)
     {
         towerCurrentHp += _heal;
     }
-    public void TestBossSpawn()
+    public void MosnterSpawn()
+    {
+        monsterSpawner.SpawnMonster();
+        GameDB.Instance.currentMonsterCount++;
+        monsterCount++;
+
+    }
+    public void RepairMonsterSpawn()
+    {
+        monsterSpawner.SpawnTowerKeeper(this);
+        GameDB.Instance.currentMonsterCount++;
+        keeperSpawnCount++;
+        monsterCount++;
+    }
+    public void MonsterTowerSpawn()
+    {
+        //   mosterTowerPrefab
+        BossSpawn();
+    }
+    public void BossSpawn()
     {
         monsterSpawner.SpawnBossMosnter();
     }
