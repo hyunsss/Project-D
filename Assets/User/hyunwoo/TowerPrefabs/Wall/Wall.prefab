@@ -97,6 +97,7 @@ MonoBehaviour:
   progressBar: {fileID: 0}
   type: 0
   workers: []
+  price: 100
 --- !u!114 &1179025291428995328
 MonoBehaviour:
   m_ObjectHideFlags: 0

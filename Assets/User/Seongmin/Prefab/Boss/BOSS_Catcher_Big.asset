@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BOSS_Catcher_Big
   m_EditorClassIdentifier: 
   monsterName: BOSS_Catcher_Big
-  monsterHp: 150
+  monsterHp: 300
   monsterSpeed: 3
   monsterDamage: 10
   monsterPrefab: {fileID: 4541496759540571392, guid: f027b522799935843a4d129ff549c431, type: 3}

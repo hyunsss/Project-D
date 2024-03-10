@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 01_Knight_S
   m_EditorClassIdentifier: 
   monsterName: Level 1 Hnight
-  monsterHp: 40
-  monsterSpeed: 5
+  monsterHp: 75
+  monsterSpeed: 0
   monsterDamage: 2
   monsterPrefab: {fileID: 6125368571652672990, guid: ab9f7cd31fe5ab04b9414b795021befd, type: 3}

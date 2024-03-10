@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BOSS_Fishguard_Big
   m_EditorClassIdentifier: 
   monsterName: BOSS_Fishguard_Big
-  monsterHp: 150
+  monsterHp: 300
   monsterSpeed: 3
   monsterDamage: 10
   monsterPrefab: {fileID: 5787900779625630442, guid: 7d63c219cb1cbc74c806b6b8e66a7352, type: 3}

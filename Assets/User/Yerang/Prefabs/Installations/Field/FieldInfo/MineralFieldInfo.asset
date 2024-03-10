@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldName: 
   maxlevel: 4
-  price: e8030000e8030000e8030000e8030000
+  price: ee020000ee020000ee020000ee020000
   levelStat:
   - maxHp: 10
     amountPerSec: 1

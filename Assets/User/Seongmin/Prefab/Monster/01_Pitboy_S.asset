@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 01_Pitboy_S
   m_EditorClassIdentifier: 
   monsterName: Level 1 Pitboy
-  monsterHp: 40
-  monsterSpeed: 5
+  monsterHp: 75
+  monsterSpeed: 0
   monsterDamage: 2
   monsterPrefab: {fileID: 6904802638445669043, guid: 48b86528c0b963c4fa9a224d099d7ee0, type: 3}
