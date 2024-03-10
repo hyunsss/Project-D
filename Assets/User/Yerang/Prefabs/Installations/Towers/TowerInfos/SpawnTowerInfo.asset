@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: 
   maxlevel: 4
-  prices: 
+  prices: f4010000f4010000f4010000f4010000
   levelStat:
   - maxHp: 80
     iteration: 10

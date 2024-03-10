@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: CanonTower
   maxlevel: 4
-  price: 00000000000000000000000000000000
+  price: c8000000fa0000009001000090010000
   levelStat:
   - maxHp: 70
     ap: 10

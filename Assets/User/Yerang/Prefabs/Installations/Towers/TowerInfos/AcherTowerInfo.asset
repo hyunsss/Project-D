@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: AcherTower
   maxlevel: 4
-  price: 00000000000000000000000000000000
+  price: 6400000096000000c8000000fa000000
   levelStat:
   - maxHp: 50
     ap: 7
