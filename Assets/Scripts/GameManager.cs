@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex == 1) {
             if(GameDB.Instance.unit_Player.Count == 0 && GameDB.Instance.tower_Player.Count == 0 && GameDB.Instance.scv_Player.Count == 0) {
             Debug.Log("GameOver!!");
+            PlayerData.Instance.DeathCount += 1;
             SceneChange(0);
             }
         }
