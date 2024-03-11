@@ -10,7 +10,7 @@ public class Field : Installation
     public int level;
 
     [SerializeField]
-    private int amountPerSec; //ÃÊ´ç ¾ò´Â ÀÚ¿øÀÇ ¾ç;
+    private int amountPerSec; //ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½;
 
     private Coroutine minedCoroutine = null;
 
@@ -23,11 +23,12 @@ public class Field : Installation
     private void OnEnable()
     {
         canvas.gameObject.SetActive(false);
+        GameDB.Instance.tower_Player.Add(transform);
     }
 
     public void SetField()
     {
-        //½ºÅÈ ¼³Á¤
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         this.maxHp = fieldInfo.levelStat[level - 1].maxHp;
         this.amountPerSec = fieldInfo.levelStat[level - 1].amountPerSec;
 
@@ -43,7 +44,7 @@ public class Field : Installation
         {
             yield return new WaitForSeconds(1f);
 
-            int allAmountPerSec = workers.Count * amountPerSec; //ÀÏ²Û ¼ö ¸¸Å­ ÀÚ¿ø È¹µæ
+            int allAmountPerSec = workers.Count * amountPerSec; //ï¿½Ï²ï¿½ ï¿½ï¿½ ï¿½ï¿½Å­ ï¿½Ú¿ï¿½ È¹ï¿½ï¿½
 
             GameDB.Instance.GainMineral(allAmountPerSec);
         }
@@ -53,7 +54,7 @@ public class Field : Installation
     {
         base.CollocateWorker(worker);
 
-        //print("¹ç ¹èÄ¡µÊ");
+        //print("ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½");
 
         if (minedCoroutine == null)
         {
@@ -65,7 +66,7 @@ public class Field : Installation
     {
         base.DecollocateWorker(worker);
 
-        //print("¹ç ¹èÄ¡ ÇØÁ¦µÊ");
+        //print("ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
         if (workers.Count == 0)
         {
