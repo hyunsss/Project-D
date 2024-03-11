@@ -65,7 +65,6 @@ public class TurretTowerBeingBuilt : Installation
             _towerAttack.Damage += GameDB.Instance.value_Tower_Damgae_Level_UP;
             _tower.maxHp += GameDB.Instance.value_Tower_HP_Level_UP;
         }
-        GameDB.Instance.tower_Player.Add(transform);
         PlayerData.Instance.BuildCount += 1;
         GameDB.Instance.tower_Player.Add(completeTower.transform);
         Lean.Pool.LeanPool.Despawn(this);
