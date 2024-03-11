@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: SlowTower
   maxlevel: 4
-  price: 96000000c8000000c8000000c8000000
+  price: fa000000fa000000fa00000090010000
   levelStat:
   - maxHp: 70
     ap: 0

@@ -16,7 +16,7 @@ public class MonsterTower : MonoBehaviour
     [SerializeField]
     private int monsterCount = 0;
     [SerializeField]
-    private int need_Monster_Tower_SpawnCount = 400;
+    private int need_Monster_Tower_SpawnCount = 20;
 
     public GameObject mosterTowerPrefab;
 
@@ -54,7 +54,7 @@ public class MonsterTower : MonoBehaviour
                 monsterCount = 0;
                 MonsterTowerSpawn();
             }
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
         }
         yield break;
     }

@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 7535022818594592658}
   - component: {fileID: 8013255060890850530}
   - component: {fileID: 8966381365353018548}
+  - component: {fileID: 5476359175235850809}
   m_Layer: 8
   m_Name: BOSS_Catcher_Big
   m_TagString: Untagged
@@ -579,6 +580,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &5476359175235850809
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541496759540571392}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4572214058626331453
 GameObject:
   m_ObjectHideFlags: 0

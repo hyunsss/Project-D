@@ -386,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaWidth: 3
   areaHeight: 3
-  maxHp: 0
+  maxHp: 200
   canvas: {fileID: 8446327866057720093}
   hpBar: {fileID: 8910354319257821968}
   progressBar: {fileID: 8413616823957489903}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 01_Monkeydong_S
   m_EditorClassIdentifier: 
   monsterName: Level 1 Monkey
-  monsterHp: 60
+  monsterHp: 80
   monsterSpeed: 6
-  monsterDamage: 1
+  monsterDamage: 4
   monsterPrefab: {fileID: 4773305875034289141, guid: 0cc85bc464d8f684bb22328dd930248f, type: 3}

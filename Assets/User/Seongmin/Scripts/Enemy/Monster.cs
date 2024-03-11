@@ -1,13 +1,7 @@
 using Lean.Pool;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.AI.Navigation.Editor;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class Monster : MonoBehaviour
 {
@@ -277,6 +271,7 @@ public class Monster : MonoBehaviour
         state = State.die;
         animator.SetTrigger("isDeath");
         target = null;
+        GameDB.Instance.GainMineral(10);
         GameDB.Instance.currentMonsterCount--;
         PlayerData.Instance.KillCount += 1;
         LeanPool.Despawn(this);

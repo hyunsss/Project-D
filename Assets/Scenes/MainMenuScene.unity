@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 6855647}
   - component: {fileID: 6855649}
   - component: {fileID: 6855648}
+  - component: {fileID: 6855650}
   m_Layer: 5
   m_Name: PlayerStatusPanel
   m_TagString: Untagged
@@ -391,6 +392,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6855646}
   m_CullTransparentMesh: 1
+--- !u!114 &6855650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2100abfb551d2417386167cdce6f6737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1 &8100837
 GameObject:
   m_ObjectHideFlags: 0
@@ -15735,7 +15749,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD50C\uB808\uC774 \uD0C0\uC784 : 10\uC2DC\uAC04"
+  m_text: "\uD50C\uB808\uC774 \uD0C0\uC784 : \n\uBAAC\uC2A4\uD130 \uD0AC \uC218 :
+    \n\uC720\uB2DB \uC0DD\uC0B0 : \n\uAC74\uBB3C \uBE4C\uB4DC : "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f952047aee42e494f9530fa3331e4c33, type: 2}
   m_sharedMaterial: {fileID: -543642437651723995, guid: f952047aee42e494f9530fa3331e4c33, type: 2}

@@ -3164,12 +3164,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: 
-  maxHp: 5
+  maxHp: 70
   dp: 0
   price: 120
   canvas: {fileID: 442855681682844533}
   hpBar: {fileID: 4549662975209740914}
-  ap: 3
+  ap: 15
   attackCycle: 1
   attackRange: 20
   priorityTarget: {fileID: 0}
@@ -3189,7 +3189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   moveSpeed: 10
-  detectingRange: 20
+  detectingRange: 30
 --- !u!114 &8934051485674264589
 MonoBehaviour:
   m_ObjectHideFlags: 0

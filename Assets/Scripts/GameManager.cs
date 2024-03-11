@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     float startTime;
     float currentTime;
 
-    bool isFirst = true;
     bool isChangeScene;
 
     private void Awake()
@@ -36,12 +35,12 @@ public class GameManager : MonoBehaviour
             return; // 여기를 추가합니다.
         }
 
-
+        LoadGameSettings();
     }
 
     private void Start()
     {
-        if (isFirst == false)
+        if (settings.isFirst == false)
         {
             PlayerData.Instance.LoadData();
             AchievementManager.Instance.LoadAchievements();
@@ -53,7 +52,7 @@ public class GameManager : MonoBehaviour
             SaveGameSettings();
             PlayerData.Instance.SaveData();
             AchievementManager.Instance.SaveAchievements();
-            isFirst = false;
+            settings.isFirst = false;
         }
     }
 
@@ -72,6 +71,7 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex == 1) {
             if(GameDB.Instance.unit_Player.Count == 0 && GameDB.Instance.tower_Player.Count == 0 && GameDB.Instance.scv_Player.Count == 0) {
             Debug.Log("GameOver!!");
+            PlayerData.Instance.DeathCount += 1;
             SceneChange(0);
             }
         }
